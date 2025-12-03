@@ -2,8 +2,8 @@ project:
   type: book
 
 book:
-  title: "quarto-js-book"
-  author: "Norah Jones"
+  title: "Domina JavaScript. +200 retos de programación"
+  author: "Cristian Fernando Villca Gutierrez"
   date: "1/12/2025"
   chapters:
     - index.qmd
