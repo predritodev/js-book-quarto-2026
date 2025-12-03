@@ -1,13 +1,11 @@
 # Soluciones {.unnumbered} 
 ## Reto #1 {#sec-sol-array-1}
 
-::: {.callout-tip title="Solución" collapse="true"}
+
 
 La respuesta del [Reto #1](#sec-array-1) es:
 
 **A. `[1, 33, 9, -2]`**
-
----
 
 **Explicación:**
 
@@ -15,17 +13,12 @@ El objeto `Number` de javascript puede convertir los los valores de un arreglo a
 
 Este hack es muy útil cuando tenemos un arreglo de strings que queremos convertir a números.
 
-:::
 
 ## Reto #2 {#sec-sol-array-2}
-
-::: {.callout-tip title="Solución" collapse="true"}
 
 La respuesta del [Reto #2](#sec-array-2) es:
 
 **D. `Pera`**
-
----
 
 **Explicación:**
 
@@ -47,6 +40,43 @@ Donde el `3` representa las posiciones que deseamos saltar.
 
 Nota que aunque frutas sea un arreglo usamos `{}` para la desestructuración.
 
-:::
+---
 
+## Reto #3 {#sec-sol-array-3}
+
+**Explicación:**
+
+JavaScript tiene una peculiaridad que se denomina **coerción de tipos**. Al intentar realizar algún tipo de operación o comparación ambigua el lenguaje tratará de realizar una conversión de tipos implícita para poder devolver un resultado más o menos lógico, el problema acá radica en que muchas veces el resultado obtenido será diferente al esperado.
+
+Veamos el primer ejemplo:
+```js
+console.log(false == 0)
+```
+En javascript existen lo que denomina como **valores `falsy`** y son los siguientes:
+* `0`
+* `-0`
+* `0n`
+* `false`
+* `null`
+* `undefined`
+* `NaN`
+* Cualquier tipo de cadena vacía: `'', ""`
+
+Todos estos valores son considerados como falsos para el lenguaje.
+
+Como `0` es un valor `falsy` entonces, aunque no lo veamos, javascript hace algo como esto tras bambalinas:
+
+```js
+console.log(false == false)
+```
+Y como estamos usando el operador de comparación débil `==` nos limitamos a comparar los valores **mas NO los tipos de datos**.
+En conclusión, la respuesta es `true` por **coerción de tipos**
+
+Pasemos al siguiente ejemplo:
+
+```js
+console.log(false === 0)
+```
+Al usar el **operador estricto de comparación** `===` comparamos tanto el **valor** como el **tipo de dato**, `false` es de tipo `boolean` y `0` es de tipo `number` ergo, la respuesta es `false`.
+En otras palabras, también es correcto afirmar que al usar el `===` javascript no hace **coerciones de tipo**, por ello es ampliamente sugerido usarlo.
 

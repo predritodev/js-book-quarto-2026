@@ -1,6 +1,6 @@
 # Retos {.unnumbered}
 
-## Reto #1 {#sec-array-1}
+## Reto #1: Conversión rápida a number {#sec-array-1}
 
 ::: {.callout-caution title="Dificultad" collapse="true"}
 **Intermedio**
@@ -29,7 +29,7 @@ console.log(result)
 
 ---
 
-## Reto #2 {#sec-array-2}
+## Reto #2: Desestucturación de arreglos {#sec-array-2}
 
 ::: {.callout-caution title="Dificultad" collapse="true"}
 **Intermedio**
@@ -52,6 +52,24 @@ console.log(pear);
 
 **[Ver solución](#sec-sol-array-2)**
 
+---
+
+## Reto #3: Igualdad débil vs Igualdad estricta {#sec-array-3}
+
+::: {.callout-caution title="Dificultad" collapse="true"}
+**Básico**
+:::
+
+**¿Puedes explicar el siguiente código?**
+
+```js
+console.log(false == 0) // true
+console.log(false === 0) // false
+```
+
+**Pista:** Notar la comparasión de variables con igualdad debil e igualdad estricta.
+
+**[Ver solución](#sec-sol-array-3)**
 
 
 
