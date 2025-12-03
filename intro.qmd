@@ -1,0 +1,53 @@
+# Introduction
+
+This is a book created from markdown and executable code.
+
+See @knuth84 for additional discussion of literate programming.
+
+## Hola Mundo en JavaScript
+
+### 1. JavaScript básico
+
+```javascript
+// Este código muestra "Hola Mundo!" en la consola
+console.log("Hola Mundo!");
+
+// Variables en JavaScript
+let saludo = "¡Hola Mundo!";
+console.log(saludo);
+
+// Función que retorna un saludo
+function saludar(nombre) {
+  return `¡Hola ${nombre}!`;
+}
+
+console.log(saludar("Mundo"));
+```
+
+::: {.content-visible when-format="html"}
+
+### 2. JavaScript con Observable (solo HTML)
+
+```{ojs}
+mensaje = "Hola Mundo desde Observable!"
+```
+
+```{ojs}
+html`<h3>${mensaje}</h3>`
+```
+
+### 3. JavaScript interactivo (solo HTML)
+
+```{ojs}
+viewof nombre = Inputs.text({label: "Tu nombre:", placeholder: "Ingresa tu nombre"})
+```
+
+```{ojs}
+html`<p style="color: blue; font-size: 20px;">¡Hola ${nombre || 'Mundo'}!</p>`
+```
+
+:::
+
+**Nota:** Los ejemplos interactivos solo funcionan en formato HTML. En PDF verás el código JavaScript estático.
+
+
