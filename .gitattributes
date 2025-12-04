@@ -1,0 +1,13 @@
+# Para archivos de texto
+* text=auto
+
+# Para archivos específicos
+*.yml text eol=lf
+*.json text eol=lf
+*.qmd text eol=lf
+*.js text eol=lf
+*.py text eol=lf
+
+# Para archivos binarios
+*.png binary
+*.jpg binary

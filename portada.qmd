@@ -1,0 +1,18 @@
+---
+title: ""
+format:
+  pdf:
+    include-in-header:
+      text: |
+        \usepackage{graphicx}
+---
+
+\thispagestyle{empty}
+
+\begin{figure}[h!]
+\centering
+\vspace*{0.075\textheight}
+\includegraphics[width=0.85\textwidth, height=0.85\textheight, keepaspectratio]{photos/portada.png}
+\end{figure}
+
+\clearpage
