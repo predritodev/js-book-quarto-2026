@@ -115,7 +115,7 @@ Esto para evitar que javascript haga **coerciones de tipos** y obtengamos result
 
 --- 
 
-# Reto #5 {#sec-sol-array-5}
+## Reto #5 {#sec-sol-array-5}
 
 **Explicación:**
 
