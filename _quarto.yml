@@ -24,6 +24,14 @@ format:
       - brand
   pdf:
     documentclass: scrreprt
+    include-before-body:
+      - text: |
+          \begin{titlepage}
+          \centering
+          \vspace*{\fill}
+          \includegraphics[width=\textwidth, height=\textheight, keepaspectratio]{photos/portada.png}
+          \vspace*{\fill}
+          \end{titlepage}
 
 
 
