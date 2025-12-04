@@ -24,14 +24,12 @@ format:
       - brand
   pdf:
     documentclass: scrreprt
+    include-in-header:
+      - text: |
+          \usepackage{pdfpages}
     include-before-body:
       - text: |
-          \begin{titlepage}
-          \centering
-          \vspace*{\fill}
-          \includegraphics[width=\textwidth, height=\textheight, keepaspectratio]{photos/portada.png}
-          \vspace*{\fill}
-          \end{titlepage}
+          \includepdf[pages=-, noautoscale=true, width=\paperwidth, height=\paperheight]{photos/portada.png}
 
 
 
