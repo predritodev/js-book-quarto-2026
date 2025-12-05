@@ -178,3 +178,55 @@ console.log(c.greeting); // Hello
 ```
 
 Este método solo sirve para copiar objetos en el primer nivel, si deseamos realizar copias de objetos anidados se puede recurrir a otras alternativas como por ejemplo `JSON.stringify`.
+
+---
+
+## Reto #7 {#sec-sol-array-7}
+
+La respuesta del [Reto #7](#sec-array-7) es:
+
+**A. `1` y `false`**
+
+**Explicación:**
+
+El el primer caso, el operador `+` intenta convertir a `number` al valor `true`, por **coerción de tipos** javascript infiere a `true` como 1. 
+
+En el segundo caso, intentamos negar un `string`, dicho `string` es un valor `truthy`, por ende, nuevamente por **coerción de tipos** javascript infiere al `string` "Lydia" como `true`, y la negación de `true` es `false`.
+
+---
+
+## Reto #8 {#sec-sol-array-8}
+
+La respuesta del [Reto #8](#sec-array-8) es:
+
+**C. `true`, `false`, `false`**
+
+**Explicación:**
+
+En el primer `console.log`:
+
+```js
+console.log(a == b);
+```
+
+Vemos que hacemos una comparación débil con el operador `==`, esto significa que **solo compararemos los valores de `a` y `b`**, por ende obtendremos un `true`.
+
+En el segundo `console.log`:
+
+```js
+console.log(a === b);
+```
+
+Hacemos una comparación estricta usando el operador `===`, esto significa que compararemos **valores** y **tipos de datos**, `a` y `b` tienen el mismo valor, pero `a` es de tipo `number` y `b` esta siendo inicializada usando el contructor `Number`, por ende es un objeto; entonces obtendremos un `false`.
+
+En el tercer `console.log`
+
+```js
+console.log(b === c);
+```
+
+Al igual que el caso anterior, intentamos comparar de manera estricta un objeto contra un número, entonces tendremos como resultado un `false`.
+
+**Conclusión: trata de usar simpre `===`.**
+
+---

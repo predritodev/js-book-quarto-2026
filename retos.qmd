@@ -142,5 +142,58 @@ console.log(d.greeting);
 
 ---
 
+## Reto #7: El operador `+` y `!`  {#sec-array-7}
+
+::: {.callout-caution title="Dificultad" collapse="true"}
+**Básico**
+:::
+
+**¿Qué imprime este código?**
+
+```js
+console.log(+true);
+console.log(!"Messi")
+```
+
+**Pista:** Recuerda los conceptos de valores falsy y truthy.
+
+* A. `1` y `false`
+* B. `false` y `NaN`
+* C. `false` y `false`
+* D. `Ninguno de los anteriores`
+
+**[Ver solución](#sec-sol-array-7)**
+
+---
+
+## Reto #8: Comparaciones entre primitivos y objetos {#sec-array-8}
+
+::: {.callout-caution title="Dificultad" collapse="true"}
+**Básico**
+:::
+
+**¿Qué imprime este código?**
+
+```js
+let a = 3;
+let b = new Number(3);
+let c = 3;
+
+console.log(a == b);
+console.log(a === b);
+console.log(b === c);
+```
+
+**Pista:** Notar la diferencia entre `==` y `===`. Notar que `b` es un objeto y no primitivo.
+
+* A. `true`, `false`, `true`
+* B. `false`, `false`, `true`
+* C. `true`, `false`, `false`
+* D. `false`, `true`, `true`
+
+**[Ver solución](#sec-sol-array-8)**
+
+---
+
 
 
