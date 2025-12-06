@@ -275,3 +275,87 @@ console.log(y - z)
 **[Ver solución](#sec-sol-array-11)**
 
 ---
+
+## Reto #12: Comparación de objetos {#sec-array-12}
+
+::: {.callout-caution title="Dificultad" collapse="true"}
+**Básico**
+:::
+
+**¿Qué imprime este código?**
+
+```js
+function checkAge(data) {
+  if (data === { age: 18 }) {
+    console.log("You are an adult!");
+  } else if (data == { age: 18 }) {
+    console.log("You are still an adult.");
+  } else {
+    console.log(`Hmm... You don't have an age I guess`);
+  }
+}
+
+const result = checkAge({ age: 18 });
+console.log(result);
+```
+
+**Pista:** Recordar que los objetos se almacenan en memoria teniendo en cuenta su **referencia** y no su **valor**.
+
+* A. `You are an adult!`
+* B. `You are still an adult.`
+* C. `Hmm... You don't have an age I guess`
+* D. `Ninguna de las anteriores`
+
+**[Ver solución](#sec-sol-array-12)**
+
+---
+
+## Reto #13: Parámetros REST {#sec-array-13}
+
+::: {.callout-caution title="Dificultad" collapse="true"}
+**Básico**
+:::
+
+**¿Qué imprime este código?**
+
+```js
+function getAge(...args) {
+  console.log(typeof args);
+}
+
+getAge(21);
+```
+
+**Pista:** Los parámetros REST permiten pasar un número variable de argumentos a una función.
+
+* A. `number`
+* B. `array`
+* C. `objet`
+* D. `NaN`
+
+**[Ver solución](#sec-sol-array-13)**
+
+---
+
+## Reto #14: `typeof` {#sec-array-14}
+
+::: {.callout-caution title="Dificultad" collapse="true"}
+**Básico**
+:::
+
+**¿Qué imprime este código?**
+
+```js
+console.log(typeof([] + []));
+```
+
+**Pista:** Recuerda el el operador `+` sirve para hacer concatenaciones de cadenas.
+
+* A. `undefined`
+* B. `number`
+* C. `object`
+* D. `string`
+
+**[Ver solución](#sec-sol-array-14)**
+
+---

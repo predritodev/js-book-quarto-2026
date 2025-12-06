@@ -320,5 +320,57 @@ Intentamos restar las variables `y` y `z`, pero `y` es una cadena y `z` es un n�
 ## Tip
 En JavaScript el operador `+` puede significar una suma o una concatenación según el caso de uso, pero el operador `-` siempre significara una resta artimética.
 :::
+
+---
+
+## Reto #12 {#sec-sol-array-12}
+
+La respuesta del [Reto #12](#sec-array-12) es:
+
+**C. `Hmm... You don't have an age I guess`**
+
+**Explicación:**
+
+Cuando comparamos objetos hay que tener mucho cuidado.
+
+Comparar primitivos es sencillo, pero recuerda que los objetos se almacenan en memoria teniendo en cuenta su **referencia** y no su **valor**.
+
+Dicho esto, el objeto que pasamos como argumento a `checkAge` es el objeto `{ age: 18 }`, este es diferente al objeto que evaluamos en los `if` de la función, por más que usemos comparación estricta, seguirán siendo objetos diferentes **por que sus referencias son diferentes**:
+
+```js
+{ age: 18 } == { age: 18 } //false
+{ age: 18 } === { age: 18 } //false
+```
+
+---
+
+## Reto #13 {#sec-sol-array-13}
+
+La respuesta del [Reto #13](#sec-array-13) es:
+
+**C. `object`**
+
+**Explicación:**
+
+Cuando usamos la sintaxis de `...` en los parámetros de una función (REST parameter desde ES6) convertimos a dicho parámetro a un arreglo. Entonces es tentador marcar la opción B: `"array"` pero esto sería un **error de novato**. En JavaScript no existe el tipo de dato `array`, para **tipos no primitivos** el lenguaje los evalua como `object`. Por ese motivo la respuesta correcta es la opción C. `object`.
+
+---
+
+## Reto #14 {#sec-sol-array-14}
+
+La respuesta del [Reto #14](#sec-array-14) es:
+
+**D. `string`**
+
+**Explicación:**
+
+El operador `+` por lo general intentará realizar una concateneción, en este caso, el interprete de JavaScript, por **coerción de tipos** intentará convertir los arreglos a cadenas de texto, haciendo algo como esto aunque no lo veamos:
+
+```js
+console.log(typeof ([].toString() + [].toString())); 
+console.log(typeof ("" + ""));
+console.log(typeof ("")); //string
+```
+
 ---
 
