@@ -1,7 +1,6 @@
 # Soluciones {.unnumbered} 
+
 ## Reto #1 {#sec-sol-array-1}
-
-
 
 La respuesta del [Reto #1](#sec-array-1) es:
 
@@ -13,6 +12,7 @@ El objeto `Number` de javascript puede convertir los los valores de un arreglo a
 
 Este hack es muy útil cuando tenemos un arreglo de strings que queremos convertir a números.
 
+---
 
 ## Reto #2 {#sec-sol-array-2}
 
@@ -49,10 +49,13 @@ Nota que aunque frutas sea un arreglo usamos `{}` para la desestructuración.
 JavaScript tiene una peculiaridad que se denomina **coerción de tipos**. Al intentar realizar algún tipo de operación o comparación ambigua el lenguaje tratará de realizar una conversión de tipos implícita para poder devolver un resultado más o menos lógico, el problema acá radica en que muchas veces el resultado obtenido será diferente al esperado.
 
 Veamos el primer ejemplo:
+
 ```js
 console.log(false == 0)
 ```
+
 En javascript existen lo que denomina como **valores `falsy`** y son los siguientes:
+
 * `0`
 * `-0`
 * `0n`
@@ -69,7 +72,9 @@ Como `0` es un valor `falsy` entonces, aunque no lo veamos, javascript hace algo
 ```js
 console.log(false == false)
 ```
+
 Y como estamos usando el operador de comparación débil `==` nos limitamos a comparar los valores **mas NO los tipos de datos**.
+
 En conclusión, la respuesta es `true` por **coerción de tipos**
 
 Pasemos al siguiente ejemplo:
@@ -77,6 +82,295 @@ Pasemos al siguiente ejemplo:
 ```js
 console.log(false === 0)
 ```
+
 Al usar el **operador estricto de comparación** `===` comparamos tanto el **valor** como el **tipo de dato**, `false` es de tipo `boolean` y `0` es de tipo `number` ergo, la respuesta es `false`.
+
 En otras palabras, también es correcto afirmar que al usar el `===` javascript no hace **coerciones de tipo**, por ello es ampliamente sugerido usarlo.
+
+--- 
+
+## Reto #4 {#sec-sol-array-4}
+
+**Explicación:**
+
+Si bien `null` y `undefined` son valores `falsy` al momento de que javascript haga **coerciones de tipo** pasa algo raro, esto se debe a que tanto `null` como `undefined` sólo son **iguales** a sí mismos y entre ellos:
+
+```js
+console.log(null == null); // true
+console.log(undefined == undefined); // true
+console.log(undefined == null); // true
+```
+
+Solo en estos casos obtendremos como salida un `true`.
+
+Pero es recomendable usar siempre el **operador estricto de igualdad** `===`:
+
+```js
+console.log(null === null); // true
+console.log(undefined === undefined); // true
+console.log(undefined === null); // false
+```
+
+Esto para evitar que javascript haga **coerciones de tipos** y obtengamos resultados no esperados.
+
+--- 
+
+## Reto #5 {#sec-sol-array-5}
+
+**Explicación:**
+
+`NaN` o "Not a Number" es el resultado que nos lanza javascript cuando intentamos hacer una operación que no tiene sentido, y por ende el resultado no será un número, por ejemplo:
+
+```js
+console.log(Math.sqrt(-1)) // NaN
+console.log(10 / "hola") // NaN
+console.log(Number("hola")) // NaN
+```
+
+Obtener la raiz cuadrada de `-1`, dividir un entero entre una cadena y convertir una cadena a un número son algunas operaciones que nos dan `NaN`.
+
+Ahora bien, cuando intentamos hacer `console.log(NaN === NaN)`, aún usando el operador `===` obtenemos `false` ya que el `NaN` de una operación no puede ser igual al `NaN` de otra. Dos `NaN` nunca serán iguales por este motivo. 
+
+En conclusión, no existe ningún valor en javascript que igualado a `NaN` sea `true`, ni siquiera el mismo `NaN`. Esto es una característica propia del lenguaje.
+
+---
+
+## Reto #6 {#sec-sol-array-6}
+
+La respuesta del [Reto #6](#sec-array-6) es:
+
+**A. `Hello`**
+
+**Explicación:**
+
+Cuando aplicamos el operador de asignación `=` entre objetos pensado que así lograremos obtener una copia del mismo estamos cayendo en un **error de novato**.
+
+Recuerda que los objetos se manejan segun su **referencia** y no por su **valor** como lo hacen los tipos primitivos del lenguaje, esto significa que al hacer esto:
+
+```js
+let c = { greeting: "Hey!" };
+let d;
+
+d = c;
+```
+
+No solo estamos copiando los valores del objeto `c` al objeto `d` sino que también copiamos su **referencia en memoria**. Esta referencia es la dirección donde dicho objeto se almacenerá en el disco duro del ordenador; en JavaScript al ser un lenguaje de alto nivel no podemos acceder a dichas direcciones como en lenguajes de bajo nivel como por ejemplo **lenguaje ensamblador**.
+
+Dicho en otras palabras, las direcciones de memoria del objeto `c` y del objeto `d` son las mismas, apuntan a la misma dirección, por ello, cuando intentamos modificar el objeto `c`:
+
+```js
+c.greeting = "Hello";
+```
+
+En realidad, estamos modificando ambos objetos.
+
+Para crear copias de objetos de manera segura se recomienda usar el **spread operator** con su sintaxis de tres puntos `...`
+
+```js
+let c = { greeting: "Hey!" };
+let d;
+
+d = {...c};
+
+c.greeting = "Hello";
+console.log(d.greeting); // Hey!
+console.log(c.greeting); // Hello
+```
+
+Este método solo sirve para copiar objetos en el primer nivel, si deseamos realizar copias de objetos anidados se puede recurrir a otras alternativas como por ejemplo `JSON.stringify`.
+
+---
+
+## Reto #7 {#sec-sol-array-7}
+
+La respuesta del [Reto #7](#sec-array-7) es:
+
+**A. `1` y `false`**
+
+**Explicación:**
+
+El el primer caso, el operador `+` intenta convertir a `number` al valor `true`, por **coerción de tipos** javascript infiere a `true` como 1. 
+
+En el segundo caso, intentamos negar un `string`, dicho `string` es un valor `truthy`, por ende, nuevamente por **coerción de tipos** javascript infiere al `string` "Lydia" como `true`, y la negación de `true` es `false`.
+
+---
+
+## Reto #8 {#sec-sol-array-8}
+
+La respuesta del [Reto #8](#sec-array-8) es:
+
+**C. `true`, `false`, `false`**
+
+**Explicación:**
+
+En el primer `console.log`:
+
+```js
+console.log(a == b);
+```
+
+Vemos que hacemos una comparación débil con el operador `==`, esto significa que **solo compararemos los valores de `a` y `b`**, por ende obtendremos un `true`.
+
+En el segundo `console.log`:
+
+```js
+console.log(a === b);
+```
+
+Hacemos una comparación estricta usando el operador `===`, esto significa que compararemos **valores** y **tipos de datos**, `a` y `b` tienen el mismo valor, pero `a` es de tipo `number` y `b` esta siendo inicializada usando el contructor `Number`, por ende es un objeto; entonces obtendremos un `false`.
+
+En el tercer `console.log`
+
+```js
+console.log(b === c);
+```
+
+Al igual que el caso anterior, intentamos comparar de manera estricta un objeto contra un número, entonces tendremos como resultado un `false`.
+
+**Conclusión: trata de usar simpre `===`.**
+
+---
+
+## Reto #9 {#sec-sol-array-9}
+
+La respuesta del [Reto #9](#sec-array-9) es:
+
+**A. `No pasa nada, es totalmente correcto.`**
+
+**Explicación:**
+
+WTF! Cuando vi que hacer esto es posible casi me caigo de la silla. Expliquemos por que:
+
+Oiste o leiste alguna vez esta frase: **"Todo en JavaScript es un objeto"** Dejame decirte que no es mentira, literalmente todo es un objeto, todo lo que no sea un tipo primitivo en JavaScript es un objeto, desde arreglos, los propios objetos claro, las promesas, y también las **funciones**.
+
+En el ejemplo, la función `bark()` funciona completamente bien:
+
+```js
+function bark() {
+  console.log("Woof!");
+}
+console.log(bark()) // Woof!
+```
+
+Y si intentamos acceder a la propiedad `animal` no tendremos ningún problema:
+
+```js
+function bark() {
+  return "Woof!"
+}
+
+bark.animal = "dog";
+console.log(bark.animal); // dog
+```
+Este es un comportamiento muy jocoso del lenguaje y esta bueno saber que es posible hacer estas cosas aunque no tenga muchos casos de uso.
+
+---
+
+## Reto #10 {#sec-sol-array-10}
+
+La respuesta del [Reto #10](#sec-array-10) es:
+
+**A. `{}`**
+
+**Explicación:**
+
+En la primera línea declaramos `let greeting;`, al declarar una variable con `let` sin inicializarla, esta toma el valor de `undefined`.
+
+En la segunda línea, se comete un error de tipeo `greetign = {};`, pero como la variable no esta declarada ni con `var`, `let` o `const`; Javascript tras bambalinas hace algo como lo siguiente aunque el programador no lo vea:
+
+```js
+var greetign = {}; // Typo!
+```
+
+Entonces `greetign` se crea como **variable global**, en el navegador en el objeto `window` y en un entorno de Node.js en el objeto `global`.
+
+El código final se veria así:
+
+```js
+let greeting; // undefined
+var greetign = {}; // Typo!
+console.log(greetign); // {}
+```
+
+::: {.callout-tip}
+## Tip
+
+Siempre declara tus variables con `let` o `const`. Deja que `var` muera y no la uses mas.
+:::
+
+---
+
+## Reto #11 {#sec-sol-array-11}
+
+La respuesta del [Reto #11](#sec-array-11) es:
+
+**C. `11111`, `10`**
+
+**Explicación:**
+
+Vayamos por partes.
+
+En el primer `console.log(x + y)`:
+Intentamos sumas las variables `x` y `y`, pero `x` es una cadena y `y` es un número, por **coersión de tipos** la operación ya no será una suma aritmética sino una concatenación de cadenas. Dicho en otras palabras la variable `y` sera convetida implicitamente por el interprete de JavaScript a cadena, por lo que el resultado será `11111`.
+
+En el segundo `console.log(y - z)`:
+Intentamos restar las variables `y` y `z`, pero `y` es una cadena y `z` es un número, por **coersión de tipos** la operación será una resta artimética de toda la vida. Dicho en otras palabras la variable `z` sera convetida implicitamente por el interprete de JavaScript a número, por lo que el resultado será `10`.
+
+::: {.callout-tip}
+## Tip
+En JavaScript el operador `+` puede significar una suma o una concatenación según el caso de uso, pero el operador `-` siempre significara una resta artimética.
+:::
+
+---
+
+## Reto #12 {#sec-sol-array-12}
+
+La respuesta del [Reto #12](#sec-array-12) es:
+
+**C. `Hmm... You don't have an age I guess`**
+
+**Explicación:**
+
+Cuando comparamos objetos hay que tener mucho cuidado.
+
+Comparar primitivos es sencillo, pero recuerda que los objetos se almacenan en memoria teniendo en cuenta su **referencia** y no su **valor**.
+
+Dicho esto, el objeto que pasamos como argumento a `checkAge` es el objeto `{ age: 18 }`, este es diferente al objeto que evaluamos en los `if` de la función, por más que usemos comparación estricta, seguirán siendo objetos diferentes **por que sus referencias son diferentes**:
+
+```js
+{ age: 18 } == { age: 18 } //false
+{ age: 18 } === { age: 18 } //false
+```
+
+---
+
+## Reto #13 {#sec-sol-array-13}
+
+La respuesta del [Reto #13](#sec-array-13) es:
+
+**C. `object`**
+
+**Explicación:**
+
+Cuando usamos la sintaxis de `...` en los parámetros de una función (REST parameter desde ES6) convertimos a dicho parámetro a un arreglo. Entonces es tentador marcar la opción B: `"array"` pero esto sería un **error de novato**. En JavaScript no existe el tipo de dato `array`, para **tipos no primitivos** el lenguaje los evalua como `object`. Por ese motivo la respuesta correcta es la opción C. `object`.
+
+---
+
+## Reto #14 {#sec-sol-array-14}
+
+La respuesta del [Reto #14](#sec-array-14) es:
+
+**D. `string`**
+
+**Explicación:**
+
+El operador `+` por lo general intentará realizar una concateneción, en este caso, el interprete de JavaScript, por **coerción de tipos** intentará convertir los arreglos a cadenas de texto, haciendo algo como esto aunque no lo veamos:
+
+```js
+console.log(typeof ([].toString() + [].toString())); 
+console.log(typeof ("" + ""));
+console.log(typeof ("")); //string
+```
+
+---
 
