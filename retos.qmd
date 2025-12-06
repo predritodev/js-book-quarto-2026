@@ -71,13 +71,26 @@ console.log(false === 0) // false
 
 **[Ver solución](#sec-sol-array-3)**
 
+---
 
+## Reto #4: Comparación de valores falsy {#sec-array-4}
 
+::: {.callout-caution title="Dificultad" collapse="true"}
+**Básico**
+:::
 
+**¿Puedes explicar el siguiente código?**
 
+```js
+console.log(false == null); // false
+console.log(false == undefined); // false
+```
 
+Siendo `null` y `undefined` valores falsy, ¿por qué pasa esto?
 
+**Pista:** Notar que todos los valores de la comparación son considerados valores falsy para el interprete de JavaScript 
 
+**[Ver solución](#sec-sol-array-4)**
 
-
+---
 

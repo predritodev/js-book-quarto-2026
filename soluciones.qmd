@@ -49,10 +49,13 @@ Nota que aunque frutas sea un arreglo usamos `{}` para la desestructuración.
 JavaScript tiene una peculiaridad que se denomina **coerción de tipos**. Al intentar realizar algún tipo de operación o comparación ambigua el lenguaje tratará de realizar una conversión de tipos implícita para poder devolver un resultado más o menos lógico, el problema acá radica en que muchas veces el resultado obtenido será diferente al esperado.
 
 Veamos el primer ejemplo:
+
 ```js
 console.log(false == 0)
 ```
+
 En javascript existen lo que denomina como **valores `falsy`** y son los siguientes:
+
 * `0`
 * `-0`
 * `0n`
@@ -69,7 +72,9 @@ Como `0` es un valor `falsy` entonces, aunque no lo veamos, javascript hace algo
 ```js
 console.log(false == false)
 ```
+
 Y como estamos usando el operador de comparación débil `==` nos limitamos a comparar los valores **mas NO los tipos de datos**.
+
 En conclusión, la respuesta es `true` por **coerción de tipos**
 
 Pasemos al siguiente ejemplo:
@@ -77,6 +82,37 @@ Pasemos al siguiente ejemplo:
 ```js
 console.log(false === 0)
 ```
+
 Al usar el **operador estricto de comparación** `===` comparamos tanto el **valor** como el **tipo de dato**, `false` es de tipo `boolean` y `0` es de tipo `number` ergo, la respuesta es `false`.
+
 En otras palabras, también es correcto afirmar que al usar el `===` javascript no hace **coerciones de tipo**, por ello es ampliamente sugerido usarlo.
+
+--- 
+
+## Reto #4 {#sec-sol-array-4}
+
+**Explicación:**
+
+Si bien `null` y `undefined` son valores `falsy` al momento de que javascript haga **coerciones de tipo** pasa algo raro, esto se debe a que tanto `null` como `undefined` sólo son **iguales** a sí mismos y entre ellos:
+
+```js
+console.log(null == null); // true
+console.log(undefined == undefined); // true
+console.log(undefined == null); // true
+```
+
+Solo en estos casos obtendremos como salida un `true`.
+
+Pero es recomendable usar siempre el **operador estricto de igualdad** `===`:
+
+```js
+console.log(null === null); // true
+console.log(undefined === undefined); // true
+console.log(undefined === null); // false
+```
+
+Esto para evitar que javascript haga **coerciones de tipos** y obtengamos resultados no esperados.
+
+--- 
+
 
