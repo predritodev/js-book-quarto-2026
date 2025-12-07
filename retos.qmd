@@ -441,3 +441,80 @@ name.giveLydiaPizza();
 **[Ver solución](#sec-sol-array-17)**
 
 ---
+
+## Reto #18: Simulando asincronía con `setTimeOut()` {#sec-array-18}
+
+::: {.callout-caution title="Dificultad" collapse="true"}
+**Intermedio**
+:::
+
+**¿Qué imprime este código?**
+
+```js
+const foo = () => console.log("First");
+const bar = () => setTimeout(() => console.log("Second"));
+const baz = () => console.log("Third");
+
+bar();
+foo();
+baz();
+```
+
+**Pista:** `setTimeout` es una web API.
+
+* A. `First`, `Second`, `Third`
+* B. `First`, `Third`, `Second`
+* C. `Second`, `First`, `Third`
+* D. `Second`, `Third`, `First`
+
+**[Ver solución](#sec-sol-array-18)**
+
+---
+
+## Reto #19: `typeof` de `typeof` {#sec-array-19}
+
+::: {.callout-caution title="Dificultad" collapse="true"}
+**Básico**
+:::
+
+**¿Qué imprime este código?**
+
+```js
+console.log(typeof typeof 1);
+```
+
+**Pista:** `typeof` retorna un primitivo. ¿Pero cuál?
+
+* A: `number`
+* B: `string`
+* C: `object`
+* D: `undefined`
+
+**[Ver solución](#sec-sol-array-19)**
+
+---
+
+## Reto #20: Posiciones indexadas de un arreglo {#sec-array-20}
+
+::: {.callout-caution title="Dificultad" collapse="true"}
+**Básico**
+:::
+
+**¿Qué imprime este código?**
+
+```js
+const numbers = [1, 2, 3];
+numbers[10] = 11;
+console.log(numbers);
+```
+
+**Pista:** Los arreglos en JavaScript son muy permisivos.
+
+* A. `[1, 2, 3, 7 x null, 11]`
+* B. `[1, 2, 3, 11]`
+* C. `[1, 2, 3, 7 x empty, 11]`
+* D. `SyntaxError`
+
+**[Ver solución](#sec-sol-array-20)**
+
+---

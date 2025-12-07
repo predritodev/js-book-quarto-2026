@@ -443,5 +443,68 @@ Obtendremos un error, `giveLydiaPizza` solo se puede usar con un `string`.
 
 ---
 
+## Reto #18 {#sec-sol-array-18}
+
+La respuesta del [Reto #18](#sec-array-18) es:
+
+**B. `First`, `Third`, `Second`**
+
+**Explicación:**
+
+Para comprender la respuesta es necesario entender temas estructurales del lenjuage, es decir, ir a las bases de JavaScript y conocer conceptos como **Event Loop**, **Call Stack**, **Task Queue**, **Web Api's** entre otros. 
+
+Para poder darse cuenta, el secreto que puedo compartirte es concentrarse en el orden de las llamadas a las funciones, es decir en estas líneas:
+
+```js
+bar(); // primero llamamos a bar()
+foo(); // luego a foo()
+baz(); // finalmente baz()
+```
+
+Primero, llamamos a la función `bar()` que tiene en su cuerpo un `setTimeout` puedes pensar que al carecer de delay en ms este código se ejecuta de inmediato, pero no es así, ya que `setTimeout` es una `Web API`, por este motivo este código debe almacenarse en lo que llamamos **Task Queue**.
+
+Segundo, llamamos a la función `foo()`, que contiene código síncrono, por ende pasa directamente al **Call Stack** y mostramos por consola `First`.
+
+Tercero, llamamos a la función `baz()`, que contiene código síncrono nuevamente, por ello pasa al **Call Stack** y mostramos por consola `Third`.
+
+Ahora, el algotirmo del **Even Loop** se da cuenta que no hay mas funciones por llamar, y verifica que el **Call Stack** esta vacio, entonces busca si hay algo en el **Task Queue**, y oh sorpresa, esta nuestro `setTimeout`, entonces lo pasa al **Call Stack** para finalmente mostrar por consola `Second`
+
+Es complicado de entender al principio, te dejo una [demostración gráfica](https://www.jsv9000.app/?code=Y29uc3QgZm9vID0gKCkgPT4gY29uc29sZS5sb2coIkZpcnN0Iik7CmNvbnN0IGJhciA9ICgpID0%2BIHNldFRpbWVvdXQoKCkgPT4gY29uc29sZS5sb2coIlNlY29uZCIpKTsKY29uc3QgYmF6ID0gKCkgPT4gY29uc29sZS5sb2coIlRoaXJkIik7CgpiYXIoKTsKZm9vKCk7CmJheigpOw%3D%3D) 
+
+---
+
+## Reto #19 {#sec-sol-array-19}
+
+La respuesta del [Reto #19](#sec-array-19) es:
+
+**B. `string`**
+
+**Explicación:**
+
+Esta pregunta es un poco trampa. Pero la respuesta es chistosa:
+
+`typeof 1` regresa `"number"`, literalemnte la cadena `"number"`, entonces tendriamos `typeof "number"` y esto da obiamente `string`. 
+
+---
+
+## Reto #20 {#sec-sol-array-20}
+
+La respuesta del [Reto #20](#sec-array-20) es:
+
+**C. `[1, 2, 3, 7 x empty, 11]`**
+
+**Explicación:**
+
+JavaScript no arroja ningún error, crea valores `undefined` hasta completar los índices pertinentes, luego muestra el último valor creado, en este caso `11`.
+
+Dependiendo en que entorno de ejecución se ejecute el código puede variar un poco la salida, una respuesta valida también sería:
+
+```js
+[1, 2, 3, undefined, undefined, undefined, undefined, undefined, undefined, undefined, 11]
+```
+
+---
+
+
 
 
