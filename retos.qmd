@@ -337,7 +337,7 @@ getAge(21);
 
 ---
 
-## Reto #14: `typeof` {#sec-array-14}
+## Reto #14: `typeof` de expresiones extrañas {#sec-array-14}
 
 ::: {.callout-caution title="Dificultad" collapse="true"}
 **Básico**
@@ -516,5 +516,81 @@ console.log(numbers);
 * D. `SyntaxError`
 
 **[Ver solución](#sec-sol-array-20)**
+
+---
+
+## Reto #21: Entendiendo `reduce` con matrices  {#sec-array-21}
+
+::: {.callout-caution title="Dificultad" collapse="true"}
+**Básico**
+:::
+
+**¿Qué imprime este código?**
+
+```js
+[[0, 1], [2, 3]].reduce(
+  (acc, cur) => {
+    return acc.concat(cur);
+  },
+  [1, 2]
+);
+```
+
+**Pista:** El segundo parámetro de `reduce` es el valor inicial de `acc`.
+
+* A. `[0, 1, 2, 3, 1, 2]`
+* B. `[6, 1, 2]`
+* C. `[1, 2, 0, 1, 2, 3]`
+* D. `[1, 2, 6]`
+
+**[Ver solución](#sec-sol-array-21)**
+
+---
+
+## Reto #22: El operador de doble negación  {#sec-array-22}
+
+::: {.callout-caution title="Dificultad" collapse="true"}
+**Básico**
+:::
+
+**¿Qué imprime este código?**
+
+```js
+!!null;
+!!"";
+!!1;
+```
+
+**Pista:** El operador `!!` convierte un valor en su equivalente booleano.
+
+* A. `false`, `true`, `false`
+* B. `false`, `false`, `true`
+* C. `false`, `true`, `true`
+* D. `true`, `true`, `false`
+
+**[Ver solución](#sec-sol-array-22)**
+
+---
+
+## Reto #23: Uso de `setInterval` {#sec-array-23}
+
+::: {.callout-caution title="Dificultad" collapse="true"}
+**Básico**
+:::
+
+**¿Qué imprime este código?**
+
+```js
+setInterval(() => console.log("Hi"), 1000);
+```
+
+**Pista:** `setInterval` es una Web API que se ejecuta cada x milisegundos.
+
+* A. `1000`
+* B. `Hi 1000 veces`
+* C. `Hi cada segundo`
+* D. `undefined`
+
+**[Ver solución](#sec-sol-array-23)**
 
 ---

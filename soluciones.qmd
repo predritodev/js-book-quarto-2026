@@ -502,9 +502,49 @@ Dependiendo en que entorno de ejecución se ejecute el código puede variar un p
 ```js
 [1, 2, 3, undefined, undefined, undefined, undefined, undefined, undefined, undefined, 11]
 ```
+---
+
+## Reto #21 {#sec-sol-array-21}
+
+La respuesta del [Reto #21](#sec-array-21) es:
+
+**C. `[1, 2, 0, 1, 2, 3]`**
+
+**Explicación:**
+
+`acc` se inicializa con `[1, 2]`. En el `return` de la función concatenamos este valor de inicialización con el arreglo anidado, arreglo por arreglo.
 
 ---
 
+## Reto #22 {#sec-sol-array-22}
+
+La respuesta del [Reto #22](#sec-array-22) es:
+
+**B. `false`, `false`, `true`**
+
+**Explicación:**
+
+El operador `!!` realiza una doble negación.
+
+En el primer caso, por **coerción de tipos**, `null` es un valor **falsy**, si lo negamos 2 veces, tendríamos `false`.
+
+En el segundo caso, por **coerción de tipos**, `""` es un valor **falsy**, si lo negamos 2 veces tendríamos `false`.
+
+Por último, el tercer caso, y nuevamente por **coerción de tipos**, el valor `1` es un valor `truthy`, si lo negamos 2 veces, obtendremos `true`.
+
+---
+
+## Reto #23 {#sec-sol-array-23}
+
+La respuesta del [Reto #23](#sec-array-23) es:
+
+**C. `Hi cada segundo`**
+
+**Explicación:**
+
+La función `setInterval` es una `Web API` que recibe un intervalo en milisegundos, e imprime el cuerpo de la función en dicho intervalo.
+
+---
 
 
 
