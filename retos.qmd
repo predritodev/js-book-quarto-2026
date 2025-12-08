@@ -29,7 +29,7 @@ console.log(result)
 
 ---
 
-## Reto #2: Desestucturación de arreglos {#sec-array-2}
+## Reto #2: Desestructuración de arreglos {#sec-array-2}
 
 ::: {.callout-caution title="Dificultad" collapse="true"}
 **Intermedio**
@@ -43,7 +43,7 @@ const { 3:pear } = fruits;
 console.log(pear);
 ```
 
-**Pista:** Es simplemente una desestucturación de arreglos.
+**Pista:** Es simplemente una desestructuración de arreglos.
 
 * A. `Uncaught TypeError : cannot read property`
 * B. `TypeError: null is not an object (evaluating)`
@@ -67,7 +67,7 @@ console.log(false == 0) // true
 console.log(false === 0) // false
 ```
 
-**Pista:** Notar la comparasión de variables con igualdad debil e igualdad estricta.
+**Pista:** Notar la comparación de variables con igualdad débil e igualdad estricta.
 
 **[Ver solución](#sec-sol-array-3)**
 
@@ -157,9 +157,9 @@ console.log(!"Messi")
 
 **Pista:** Recuerda los conceptos de valores falsy y truthy.
 
-* A. `1` y `false`
-* B. `false` y `NaN`
-* C. `false` y `false`
+* A. `1`, `false`
+* B. `false`, `NaN`
+* C. `false`, `false`
 * D. `Ninguno de los anteriores`
 
 **[Ver solución](#sec-sol-array-7)**
@@ -213,10 +213,10 @@ bark.animal = "dog";
 
 **Pista:** Todo en JavaScript es una función.
 
-* A: `No pasa nada, es totalmente correcto.`
-* B: `SyntaxError. No es posible agregar propiedades a una función de esta manera.`
-* C: `undefined`
-* D: `ReferenceError`
+* A. `No pasa nada, es totalmente correcto.`
+* B. `SyntaxError. No es posible agregar propiedades a una función de esta manera.`
+* C. `undefined`
+* D. `ReferenceError`
 
 **[Ver solución](#sec-sol-array-9)**
 
@@ -236,11 +236,11 @@ greetign = {}; // Typo!
 console.log(greetign);
 ```
 
-**Pista:** ¿Qué pasa cuando declaramos una variable sin `var`, `let` o `const`?
+**Pista:** ¿Qué pasa cuando declaramos una variable sin `var`, `let` o `const`? ¿Piensas que es posible hacer algo así o tendremos algún tipo de error por parte de JavaScript?
 
-* A: `{}`
-* B: `ReferenceError: greetign is not defined`
-* C: `undefined`
+* A. `{}`
+* B. `ReferenceError: greetign is not defined`
+* C. `undefined`
 * D. `Ninguna de las anteriores`
 
 **[Ver solución](#sec-sol-array-10)**
@@ -265,12 +265,12 @@ console.log(x + y)
 console.log(y - z)
 ```
 
-**Pista:** Diferenciar cuando hacer una suma artimética de una concatenación de cadenas.
+**Pista:** Diferenciar una suma artimética de una concatenación de cadenas.
 
-* A. `122`, `1`
-* B. `11111`, `1`
-* C. `11111`, `10`
-* D. `122`, `111`
+* A. `122`, `10`
+* B. `"11111"`, `1`
+* C. `"11111"`, `10`
+* D. `122`, `"111"`
 
 **[Ver solución](#sec-sol-array-11)**
 
@@ -413,7 +413,7 @@ console.log(obj);
 
 ---
 
-## Reto #17:Hablemos sobre prototipos  {#sec-array-17}
+## Reto #17: Hablemos sobre prototipos  {#sec-array-17}
 
 ::: {.callout-caution title="Dificultad" collapse="true"}
 **Intermedio**
@@ -460,7 +460,7 @@ foo();
 baz();
 ```
 
-**Pista:** `setTimeout` es una web API.
+**Pista:** `setTimeout` es una Web API.
 
 * A. `First`, `Second`, `Third`
 * B. `First`, `Third`, `Second`
@@ -485,10 +485,10 @@ console.log(typeof typeof 1);
 
 **Pista:** `typeof` retorna un primitivo. ¿Pero cuál?
 
-* A: `number`
-* B: `string`
-* C: `object`
-* D: `undefined`
+* A. `number`
+* B. `string`
+* C. `object`
+* D. `undefined`
 
 **[Ver solución](#sec-sol-array-19)**
 
@@ -556,9 +556,9 @@ console.log(numbers);
 **¿Qué imprime este código?**
 
 ```js
-!!null;
-!!"";
-!!1;
+console.log(!!null);
+console.log(!!"");
+console.log(!!1);
 ```
 
 **Pista:** El operador `!!` convierte un valor en su equivalente booleano.

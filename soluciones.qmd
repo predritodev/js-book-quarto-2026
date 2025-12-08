@@ -8,7 +8,7 @@ La respuesta del [Reto #1](#sec-array-1) es:
 
 **Explicación:**
 
-El objeto `Number` de javascript puede convertir los los valores de un arreglo a números, pero hay que tener cuidado con tipos boolean, `undefined` o `null`.
+El objeto `Number` de JavaScript puede convertir los los valores de un arreglo a números, pero hay que tener cuidado con tipos `boolean`, `undefined` o `null`.
 
 Este hack es muy útil cuando tenemos un arreglo de strings que queremos convertir a números.
 
@@ -22,7 +22,7 @@ La respuesta del [Reto #2](#sec-array-2) es:
 
 **Explicación:**
 
-Para usar la desestructuración en arreglos es importante tener en cuenta los índices de los elementos. Por ello para acceder a Pera en el arreglo frutas hariamos algo como:
+Para usar la desestructuración en arreglos es importante tener en cuenta los índices de los elementos. Por ello para acceder a `Pera` en el arreglo `fruits` haríamos algo como:
 
 ```js
 const [, , , pear]  = fruits;
@@ -54,7 +54,7 @@ Veamos el primer ejemplo:
 console.log(false == 0)
 ```
 
-En javascript existen lo que denomina como **valores `falsy`** y son los siguientes:
+En JavaScript existen lo que denomina **valores `falsy`** y son los siguientes:
 
 * `0`
 * `-0`
@@ -67,13 +67,13 @@ En javascript existen lo que denomina como **valores `falsy`** y son los siguien
 
 Todos estos valores son considerados como falsos para el lenguaje.
 
-Como `0` es un valor `falsy` entonces, aunque no lo veamos, javascript hace algo como esto tras bambalinas:
+Como `0` es un **valor falsy** entonces, aunque no lo veamos, JavaScript hace algo como esto tras bambalinas:
 
 ```js
 console.log(false == false)
 ```
 
-Y como estamos usando el operador de comparación débil `==` nos limitamos a comparar los valores **mas NO los tipos de datos**.
+Y como estamos usando el operador de comparación débil `==` nos limitamos a comparar los valores **más NO los tipos de datos**.
 
 En conclusión, la respuesta es `true` por **coerción de tipos**
 
@@ -85,7 +85,7 @@ console.log(false === 0)
 
 Al usar el **operador estricto de comparación** `===` comparamos tanto el **valor** como el **tipo de dato**, `false` es de tipo `boolean` y `0` es de tipo `number` ergo, la respuesta es `false`.
 
-En otras palabras, también es correcto afirmar que al usar el `===` javascript no hace **coerciones de tipo**, por ello es ampliamente sugerido usarlo.
+En otras palabras, también es correcto afirmar que al usar el `===` JavaScript no hace **coerciones de tipo**, por ello es ampliamente sugerido usarlo.
 
 --- 
 
@@ -93,7 +93,7 @@ En otras palabras, también es correcto afirmar que al usar el `===` javascript 
 
 **Explicación:**
 
-Si bien `null` y `undefined` son valores `falsy` al momento de que javascript haga **coerciones de tipo** pasa algo raro, esto se debe a que tanto `null` como `undefined` sólo son **iguales** a sí mismos y entre ellos:
+Si bien `null` y `undefined` son valores `falsy` al momento de que JavaScript haga **coerciones de tipo** pasa algo raro, esto se debe a que tanto `null` como `undefined` sólo son **iguales** a sí mismos y entre ellos:
 
 ```js
 console.log(null == null); // true
@@ -111,7 +111,7 @@ console.log(undefined === undefined); // true
 console.log(undefined === null); // false
 ```
 
-Esto para evitar que javascript haga **coerciones de tipos** y obtengamos resultados no esperados.
+Esto para evitar que JavaScript haga **coerciones de tipos** y obtengamos resultados no esperados.
 
 --- 
 
@@ -119,7 +119,7 @@ Esto para evitar que javascript haga **coerciones de tipos** y obtengamos result
 
 **Explicación:**
 
-`NaN` o "Not a Number" es el resultado que nos lanza javascript cuando intentamos hacer una operación que no tiene sentido, y por ende el resultado no será un número, por ejemplo:
+`NaN` o "Not a Number" es el resultado que nos brinda JavaScript cuando intentamos hacer una operación que no tiene sentido, y por ende el resultado no será un número, por ejemplo:
 
 ```js
 console.log(Math.sqrt(-1)) // NaN
@@ -131,7 +131,7 @@ Obtener la raiz cuadrada de `-1`, dividir un entero entre una cadena y convertir
 
 Ahora bien, cuando intentamos hacer `console.log(NaN === NaN)`, aún usando el operador `===` obtenemos `false` ya que el `NaN` de una operación no puede ser igual al `NaN` de otra. Dos `NaN` nunca serán iguales por este motivo. 
 
-En conclusión, no existe ningún valor en javascript que igualado a `NaN` sea `true`, ni siquiera el mismo `NaN`. Esto es una característica propia del lenguaje.
+En conclusión, no existe ningún valor en JavaScript que igualado a `NaN` sea `true`, ni siquiera el mismo `NaN`. Esto es una característica propia del lenguaje.
 
 ---
 
@@ -154,7 +154,7 @@ let d;
 d = c;
 ```
 
-No solo estamos copiando los valores del objeto `c` al objeto `d` sino que también copiamos su **referencia en memoria**. Esta referencia es la dirección donde dicho objeto se almacenerá en el disco duro del ordenador; en JavaScript al ser un lenguaje de alto nivel no podemos acceder a dichas direcciones como en lenguajes de bajo nivel como por ejemplo **lenguaje ensamblador**.
+No solo estamos copiando los valores del objeto `c` al objeto `d` sino que también copiamos su **referencia en memoria**. Esta referencia es la dirección donde dicho objeto se almacenerá en el disco duro del ordenador; en JavaScript al ser un lenguaje de alto nivel no podemos acceder a dichas direcciones como en lenguajes de bajo nivel como por ejemplo **lenguaje ensamblador** (aunque en Python si se pude con la función `id()` pero este no es un libro de Python).
 
 Dicho en otras palabras, las direcciones de memoria del objeto `c` y del objeto `d` son las mismas, apuntan a la misma dirección, por ello, cuando intentamos modificar el objeto `c`:
 
@@ -185,13 +185,13 @@ Este método solo sirve para copiar objetos en el primer nivel, si deseamos real
 
 La respuesta del [Reto #7](#sec-array-7) es:
 
-**A. `1` y `false`**
+**A. `1`, `false`**
 
 **Explicación:**
 
-El el primer caso, el operador `+` intenta convertir a `number` al valor `true`, por **coerción de tipos** javascript infiere a `true` como 1. 
+El el primer caso, el operador `+` intenta convertir a `number` al valor `true`, por **coerción de tipos** JavaScript infiere a `true` como 1. 
 
-En el segundo caso, intentamos negar un `string`, dicho `string` es un valor `truthy`, por ende, nuevamente por **coerción de tipos** javascript infiere al `string` "Lydia" como `true`, y la negación de `true` es `false`.
+En el segundo caso, intentamos negar un `string`, dicho `string` es un valor truthy, por ende, nuevamente por **coerción de tipos** JavaScript infiere al `string` "Lydia" como `true`, y la negación de `true` es `false`.
 
 ---
 
@@ -227,7 +227,7 @@ console.log(b === c);
 
 Al igual que el caso anterior, intentamos comparar de manera estricta un objeto contra un número, entonces tendremos como resultado un `false`.
 
-**Conclusión: trata de usar simpre `===`.**
+**Conclusión: trata de usar simpre `===`**
 
 ---
 
@@ -295,7 +295,7 @@ console.log(greetign); // {}
 ::: {.callout-tip}
 ## Tip
 
-Siempre declara tus variables con `let` o `const`. Deja que `var` muera y no la uses mas.
+Siempre declara tus variables con `let` o `const`. Deja que `var` muera y no la uses más.
 :::
 
 ---
@@ -304,14 +304,14 @@ Siempre declara tus variables con `let` o `const`. Deja que `var` muera y no la 
 
 La respuesta del [Reto #11](#sec-array-11) es:
 
-**C. `11111`, `10`**
+**C. `"11111"`, `10`**
 
 **Explicación:**
 
 Vayamos por partes.
 
 En el primer `console.log(x + y)`:
-Intentamos sumas las variables `x` y `y`, pero `x` es una cadena y `y` es un número, por **coersión de tipos** la operación ya no será una suma aritmética sino una concatenación de cadenas. Dicho en otras palabras la variable `y` sera convetida implicitamente por el interprete de JavaScript a cadena, por lo que el resultado será `11111`.
+Intentamos sumar las variables `x` y `y`, pero `x` es una cadena y `y` es un número, por **coersión de tipos** la operación ya no será una suma aritmética sino una concatenación de cadenas. Dicho en otras palabras la variable `y` sera convetida implicitamente por el interprete de JavaScript a cadena, por lo que el resultado será `"11111"`.
 
 En el segundo `console.log(y - z)`:
 Intentamos restar las variables `y` y `z`, pero `y` es una cadena y `z` es un número, por **coersión de tipos** la operación será una resta artimética de toda la vida. Dicho en otras palabras la variable `z` sera convetida implicitamente por el interprete de JavaScript a número, por lo que el resultado será `10`.
@@ -342,6 +342,8 @@ Dicho esto, el objeto que pasamos como argumento a `checkAge` es el objeto `{ ag
 { age: 18 } === { age: 18 } //false
 ```
 
+Entonces nunca se cumple ni la condición del `if` ni del `else if` y se ejecuta el `else` directamente, imprimiendo `Hmm... You don't have an age I guess` como resultado final.
+
 ---
 
 ## Reto #13 {#sec-sol-array-13}
@@ -352,7 +354,7 @@ La respuesta del [Reto #13](#sec-array-13) es:
 
 **Explicación:**
 
-Cuando usamos la sintaxis de `...` en los parámetros de una función (REST parameter desde ES6) convertimos a dicho parámetro a un arreglo. Entonces es tentador marcar la opción B: `"array"` pero esto sería un **error de novato**. En JavaScript no existe el tipo de dato `array`, para **tipos no primitivos** el lenguaje los evalua como `object`. Por ese motivo la respuesta correcta es la opción C. `object`.
+Cuando usamos la sintaxis de `...` en los parámetros de una función (REST parameter desde ES6) convertimos a dicho parámetro en un arreglo. Entonces es tentador marcar la opción **B. `"array"`** pero esto sería un **error de novato**. En JavaScript no existe el tipo de dato `array`, para **tipos no primitivos** el lenguaje los evalua como `object`. Por ese motivo la respuesta correcta es la opción **C. `object`**.
 
 ---
 
@@ -436,7 +438,8 @@ String.prototype.giveLydiaPizza = () => {
 };
 
 const bool = true;
-console.log(bool.giveLydiaPizza()); //TypeError: bool.giveLydiaPizza is not a function 
+console.log(bool.giveLydiaPizza()); 
+//TypeError: bool.giveLydiaPizza is not a function 
 ```
 
 Obtendremos un error, `giveLydiaPizza` solo se puede usar con un `string`. 
@@ -451,7 +454,7 @@ La respuesta del [Reto #18](#sec-array-18) es:
 
 **Explicación:**
 
-Para comprender la respuesta es necesario entender temas estructurales del lenjuage, es decir, ir a las bases de JavaScript y conocer conceptos como **Event Loop**, **Call Stack**, **Task Queue**, **Web Api's** entre otros. 
+Para comprender la respuesta es necesario entender temas estructurales del lenjuage, es decir, ir a las bases de JavaScript y conocer conceptos como **Event Loop**, **Call Stack**, **Task Queue**, **Web API's** entre otros. 
 
 Para poder darse cuenta, el secreto que puedo compartirte es concentrarse en el orden de las llamadas a las funciones, es decir en estas líneas:
 
@@ -500,7 +503,8 @@ JavaScript no arroja ningún error, crea valores `undefined` hasta completar los
 Dependiendo en que entorno de ejecución se ejecute el código puede variar un poco la salida, una respuesta valida también sería:
 
 ```js
-[1, 2, 3, undefined, undefined, undefined, undefined, undefined, undefined, undefined, 11]
+[1, 2, 3, undefined, undefined, undefined, undefined, 
+undefined, undefined, undefined, 11]
 ```
 ---
 
@@ -531,6 +535,8 @@ En el primer caso, por **coerción de tipos**, `null` es un valor **falsy**, si 
 En el segundo caso, por **coerción de tipos**, `""` es un valor **falsy**, si lo negamos 2 veces tendríamos `false`.
 
 Por último, el tercer caso, y nuevamente por **coerción de tipos**, el valor `1` es un valor `truthy`, si lo negamos 2 veces, obtendremos `true`.
+
+Dicho de otra manera, el operador de doble negación realiza una conversión de tipo a booleano, es decir, transforma cualquier valor en su equivalente booleano.
 
 ---
 
