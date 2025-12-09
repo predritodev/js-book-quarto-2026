@@ -374,3 +374,74 @@ console.log(typeof ("")); //string
 
 ---
 
+## Reto #15 {#sec-sol-array-15}
+
+La respuesta del [Reto #15](#sec-array-15) es:
+
+**C: `true`, `true`, `false`, `true`**
+
+**Explicación:**
+
+En el objeto:
+
+```js
+const obj = { 1: "a", 2: "b", 3: "c" };
+obj.hasOwnProperty("1"); //true
+obj.hasOwnProperty(1); //true
+```
+
+El método `hasOwnProperty` propio de los objetos retorna un `boolean` dependiendo **si la key del objeto existe o no**.
+
+Lo que hay que tener en cuenta es que las claves de un objeto siempre son de tipo `string` aunque no lo especifiquemos.
+
+En el `set`:
+
+```js
+const set = new Set([1, 2, 3, 4, 5]);
+set.has("1"); //false
+set.has(1); //true
+```
+
+Esto no funciona como en un objeto, recuerda que un `set` es como un tipo de arreglo de valores no repetidos. Por ello `1` `string` no concuerda con `1` `number`.
+
+---
+
+## Reto #16 {#sec-sol-array-16}
+
+La respuesta del [Reto #16](#sec-array-16) es:
+
+**C: `{ a: "three", b: "two" }`**
+
+**Explicación:**
+
+Cuando en un objeto tenemos keys repetidas, estas se sobre escriben respetando el orden alfabético. Por ello la respuesta es C.
+
+---
+
+## Reto #17 {#sec-sol-array-17}
+
+La respuesta del [Reto #17](#sec-array-17) es:
+
+**A. "Just give Lydia pizza already!"**
+
+**Explicación:**
+
+`String` es el contructor que tiene JavaScript para gestionar las cadenas de texto. En el ejemplo se agrega la función `giveLydiaPizza` al prototipo de las cadenas, con ello, esta función estará disponible para todas las cadenas.
+
+Si intentamos hacer algo como lo siguiente:
+
+```js
+String.prototype.giveLydiaPizza = () => {
+  return "Just give Lydia pizza already!";
+};
+
+const bool = true;
+console.log(bool.giveLydiaPizza()); //TypeError: bool.giveLydiaPizza is not a function 
+```
+
+Obtendremos un error, `giveLydiaPizza` solo se puede usar con un `string`. 
+
+---
+
+
+

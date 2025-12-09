@@ -359,3 +359,85 @@ console.log(typeof([] + []));
 **[Ver solución](#sec-sol-array-14)**
 
 ---
+
+## Reto #15: Objetos y conjuntos {#sec-array-15}
+
+::: {.callout-caution title="Dificultad" collapse="true"}
+**Avanzado**
+:::
+
+**¿Qué imprime este código?**
+
+```js
+const obj = { 1: "a", 2: "b", 3: "c" };
+const set = new Set([1, 2, 3, 4, 5]);
+
+obj.hasOwnProperty("1");
+obj.hasOwnProperty(1);
+set.has("1");
+set.has(1);
+```
+
+**Pista:** Recuerda que un `set` no es lo mismo que un objeto.
+
+* A. `false`, `true`, `false`, `true`
+* B. `false`, `true`, `true`, `true`
+* C. `true`, `true`, `false`, `true`
+* D. `true`, `true`, `true`, `true`
+
+**[Ver solución](#sec-sol-array-15)**
+
+---
+
+## Reto #16: Una curiosidad sobre los objetos {#sec-array-16}
+
+::: {.callout-caution title="Dificultad" collapse="true"}
+**Intermedio**
+:::
+
+**¿Qué imprime este código?**
+
+```js
+const obj = { a: "one", b: "two", a: "three" };
+console.log(obj);
+```
+
+**Pista:** Los objetos son estructuras de datos no indexadas.
+
+* A. `{ a: "one", b: "two" }`
+* B. `{ b: "two", a: "three" }`
+* C. `{ a: "three", b: "two" }`
+* D. `SyntaxError`
+
+**[Ver solución](#sec-sol-array-16)**
+
+---
+
+## Reto #17:Hablemos sobre prototipos  {#sec-array-17}
+
+::: {.callout-caution title="Dificultad" collapse="true"}
+**Intermedio**
+:::
+
+**¿Qué imprime este código?**
+
+```js
+String.prototype.giveLydiaPizza = () => {
+  return "Just give Lydia pizza already!";
+};
+
+const name = "Lydia";
+
+name.giveLydiaPizza();
+```
+
+**Pista:** Los objetos son estructuras de datos no indexadas.
+
+* A. `"Just give Lydia pizza already!"`
+* B. `TypeError: not a function`
+* C. `SyntaxError`
+* D. `undefined`
+
+**[Ver solución](#sec-sol-array-17)**
+
+---
