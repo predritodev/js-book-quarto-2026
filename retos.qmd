@@ -674,3 +674,4 @@ for (const item in person) {
 **[Ver solución](#sec-sol-array-26)**
 
 ---
+

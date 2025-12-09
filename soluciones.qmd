@@ -604,8 +604,8 @@ Si vemos esto:
 
 ```js
 const person = {
-  name: "Lydia",
-  age: 21
+  name: "Carla",
+  age: 26
 };
 ```
 
@@ -613,8 +613,8 @@ JavaScript verá esto:
 
 ```js
 const person = {
-  "name": "Lydia",
-  "age": 21
+  "name": "Carla",
+  "age": 26
 };
 
 ```
@@ -629,3 +629,4 @@ for (const item in person) {
 La variable `item` tendrá el valor de cada llave del objeto en cada iteración; en el ejemplo al tener solo 2 llaves, primer `item` valdrá `name` y luego `age`.
 
 ---
+
