@@ -8,7 +8,7 @@ La respuesta del [Reto #1](#sec-array-1) es:
 
 **Explicación:**
 
-El objeto `Number` de javascript puede convertir los los valores de un arreglo a números, pero hay que tener cuidado con tipos boolean, `undefined` o `null`.
+El objeto `Number` de JavaScript puede convertir los los valores de un arreglo a números, pero hay que tener cuidado con tipos `boolean`, `undefined` o `null`.
 
 Este hack es muy útil cuando tenemos un arreglo de strings que queremos convertir a números.
 
@@ -22,7 +22,7 @@ La respuesta del [Reto #2](#sec-array-2) es:
 
 **Explicación:**
 
-Para usar la desestructuración en arreglos es importante tener en cuenta los índices de los elementos. Por ello para acceder a Pera en el arreglo frutas hariamos algo como:
+Para usar la desestructuración en arreglos es importante tener en cuenta los índices de los elementos. Por ello para acceder a `Pera` en el arreglo `fruits` haríamos algo como:
 
 ```js
 const [, , , pear]  = fruits;
@@ -54,7 +54,7 @@ Veamos el primer ejemplo:
 console.log(false == 0)
 ```
 
-En javascript existen lo que denomina como **valores `falsy`** y son los siguientes:
+En JavaScript existen lo que denomina **valores `falsy`** y son los siguientes:
 
 * `0`
 * `-0`
@@ -67,13 +67,13 @@ En javascript existen lo que denomina como **valores `falsy`** y son los siguien
 
 Todos estos valores son considerados como falsos para el lenguaje.
 
-Como `0` es un valor `falsy` entonces, aunque no lo veamos, javascript hace algo como esto tras bambalinas:
+Como `0` es un **valor falsy** entonces, aunque no lo veamos, JavaScript hace algo como esto tras bambalinas:
 
 ```js
 console.log(false == false)
 ```
 
-Y como estamos usando el operador de comparación débil `==` nos limitamos a comparar los valores **mas NO los tipos de datos**.
+Y como estamos usando el operador de comparación débil `==` nos limitamos a comparar los valores **más NO los tipos de datos**.
 
 En conclusión, la respuesta es `true` por **coerción de tipos**
 
@@ -85,7 +85,7 @@ console.log(false === 0)
 
 Al usar el **operador estricto de comparación** `===` comparamos tanto el **valor** como el **tipo de dato**, `false` es de tipo `boolean` y `0` es de tipo `number` ergo, la respuesta es `false`.
 
-En otras palabras, también es correcto afirmar que al usar el `===` javascript no hace **coerciones de tipo**, por ello es ampliamente sugerido usarlo.
+En otras palabras, también es correcto afirmar que al usar el `===` JavaScript no hace **coerciones de tipo**, por ello es ampliamente sugerido usarlo.
 
 --- 
 
@@ -93,7 +93,7 @@ En otras palabras, también es correcto afirmar que al usar el `===` javascript 
 
 **Explicación:**
 
-Si bien `null` y `undefined` son valores `falsy` al momento de que javascript haga **coerciones de tipo** pasa algo raro, esto se debe a que tanto `null` como `undefined` sólo son **iguales** a sí mismos y entre ellos:
+Si bien `null` y `undefined` son valores `falsy` al momento de que JavaScript haga **coerciones de tipo** pasa algo raro, esto se debe a que tanto `null` como `undefined` sólo son **iguales** a sí mismos y entre ellos:
 
 ```js
 console.log(null == null); // true
@@ -111,7 +111,7 @@ console.log(undefined === undefined); // true
 console.log(undefined === null); // false
 ```
 
-Esto para evitar que javascript haga **coerciones de tipos** y obtengamos resultados no esperados.
+Esto para evitar que JavaScript haga **coerciones de tipos** y obtengamos resultados no esperados.
 
 --- 
 
@@ -119,7 +119,7 @@ Esto para evitar que javascript haga **coerciones de tipos** y obtengamos result
 
 **Explicación:**
 
-`NaN` o "Not a Number" es el resultado que nos lanza javascript cuando intentamos hacer una operación que no tiene sentido, y por ende el resultado no será un número, por ejemplo:
+`NaN` o "Not a Number" es el resultado que nos brinda JavaScript cuando intentamos hacer una operación que no tiene sentido, y por ende el resultado no será un número, por ejemplo:
 
 ```js
 console.log(Math.sqrt(-1)) // NaN
@@ -131,7 +131,7 @@ Obtener la raiz cuadrada de `-1`, dividir un entero entre una cadena y convertir
 
 Ahora bien, cuando intentamos hacer `console.log(NaN === NaN)`, aún usando el operador `===` obtenemos `false` ya que el `NaN` de una operación no puede ser igual al `NaN` de otra. Dos `NaN` nunca serán iguales por este motivo. 
 
-En conclusión, no existe ningún valor en javascript que igualado a `NaN` sea `true`, ni siquiera el mismo `NaN`. Esto es una característica propia del lenguaje.
+En conclusión, no existe ningún valor en JavaScript que igualado a `NaN` sea `true`, ni siquiera el mismo `NaN`. Esto es una característica propia del lenguaje.
 
 ---
 
@@ -154,7 +154,7 @@ let d;
 d = c;
 ```
 
-No solo estamos copiando los valores del objeto `c` al objeto `d` sino que también copiamos su **referencia en memoria**. Esta referencia es la dirección donde dicho objeto se almacenerá en el disco duro del ordenador; en JavaScript al ser un lenguaje de alto nivel no podemos acceder a dichas direcciones como en lenguajes de bajo nivel como por ejemplo **lenguaje ensamblador**.
+No solo estamos copiando los valores del objeto `c` al objeto `d` sino que también copiamos su **referencia en memoria**. Esta referencia es la dirección donde dicho objeto se almacenerá en el disco duro del ordenador; en JavaScript al ser un lenguaje de alto nivel no podemos acceder a dichas direcciones como en lenguajes de bajo nivel como por ejemplo **lenguaje ensamblador** (aunque en Python si se pude con la función `id()` pero este no es un libro de Python).
 
 Dicho en otras palabras, las direcciones de memoria del objeto `c` y del objeto `d` son las mismas, apuntan a la misma dirección, por ello, cuando intentamos modificar el objeto `c`:
 
@@ -185,13 +185,13 @@ Este método solo sirve para copiar objetos en el primer nivel, si deseamos real
 
 La respuesta del [Reto #7](#sec-array-7) es:
 
-**A. `1` y `false`**
+**A. `1`, `false`**
 
 **Explicación:**
 
-El el primer caso, el operador `+` intenta convertir a `number` al valor `true`, por **coerción de tipos** javascript infiere a `true` como 1. 
+El el primer caso, el operador `+` intenta convertir a `number` al valor `true`, por **coerción de tipos** JavaScript infiere a `true` como 1. 
 
-En el segundo caso, intentamos negar un `string`, dicho `string` es un valor `truthy`, por ende, nuevamente por **coerción de tipos** javascript infiere al `string` "Lydia" como `true`, y la negación de `true` es `false`.
+En el segundo caso, intentamos negar un `string`, dicho `string` es un valor truthy, por ende, nuevamente por **coerción de tipos** JavaScript infiere al `string` "Lydia" como `true`, y la negación de `true` es `false`.
 
 ---
 
@@ -227,7 +227,7 @@ console.log(b === c);
 
 Al igual que el caso anterior, intentamos comparar de manera estricta un objeto contra un número, entonces tendremos como resultado un `false`.
 
-**Conclusión: trata de usar simpre `===`.**
+**Conclusión: trata de usar simpre `===`**
 
 ---
 
@@ -295,7 +295,7 @@ console.log(greetign); // {}
 ::: {.callout-tip}
 ## Tip
 
-Siempre declara tus variables con `let` o `const`. Deja que `var` muera y no la uses mas.
+Siempre declara tus variables con `let` o `const`. Deja que `var` muera y no la uses más.
 :::
 
 ---
@@ -304,14 +304,14 @@ Siempre declara tus variables con `let` o `const`. Deja que `var` muera y no la 
 
 La respuesta del [Reto #11](#sec-array-11) es:
 
-**C. `11111`, `10`**
+**C. `"11111"`, `10`**
 
 **Explicación:**
 
 Vayamos por partes.
 
 En el primer `console.log(x + y)`:
-Intentamos sumas las variables `x` y `y`, pero `x` es una cadena y `y` es un número, por **coersión de tipos** la operación ya no será una suma aritmética sino una concatenación de cadenas. Dicho en otras palabras la variable `y` sera convetida implicitamente por el interprete de JavaScript a cadena, por lo que el resultado será `11111`.
+Intentamos sumar las variables `x` y `y`, pero `x` es una cadena y `y` es un número, por **coersión de tipos** la operación ya no será una suma aritmética sino una concatenación de cadenas. Dicho en otras palabras la variable `y` sera convetida implicitamente por el interprete de JavaScript a cadena, por lo que el resultado será `"11111"`.
 
 En el segundo `console.log(y - z)`:
 Intentamos restar las variables `y` y `z`, pero `y` es una cadena y `z` es un número, por **coersión de tipos** la operación será una resta artimética de toda la vida. Dicho en otras palabras la variable `z` sera convetida implicitamente por el interprete de JavaScript a número, por lo que el resultado será `10`.
@@ -342,6 +342,8 @@ Dicho esto, el objeto que pasamos como argumento a `checkAge` es el objeto `{ ag
 { age: 18 } === { age: 18 } //false
 ```
 
+Entonces nunca se cumple ni la condición del `if` ni del `else if` y se ejecuta el `else` directamente, imprimiendo `Hmm... You don't have an age I guess` como resultado final.
+
 ---
 
 ## Reto #13 {#sec-sol-array-13}
@@ -352,7 +354,7 @@ La respuesta del [Reto #13](#sec-array-13) es:
 
 **Explicación:**
 
-Cuando usamos la sintaxis de `...` en los parámetros de una función (REST parameter desde ES6) convertimos a dicho parámetro a un arreglo. Entonces es tentador marcar la opción B: `"array"` pero esto sería un **error de novato**. En JavaScript no existe el tipo de dato `array`, para **tipos no primitivos** el lenguaje los evalua como `object`. Por ese motivo la respuesta correcta es la opción C. `object`.
+Cuando usamos la sintaxis de `...` en los parámetros de una función (REST parameter desde ES6) convertimos a dicho parámetro en un arreglo. Entonces es tentador marcar la opción **B. `"array"`** pero esto sería un **error de novato**. En JavaScript no existe el tipo de dato `array`, para **tipos no primitivos** el lenguaje los evalua como `object`. Por ese motivo la respuesta correcta es la opción **C. `object`**.
 
 ---
 
@@ -374,3 +376,348 @@ console.log(typeof ("")); //string
 
 ---
 
+## Reto #15 {#sec-sol-array-15}
+
+La respuesta del [Reto #15](#sec-array-15) es:
+
+**C: `true`, `true`, `false`, `true`**
+
+**Explicación:**
+
+En el objeto:
+
+```js
+const obj = { 1: "a", 2: "b", 3: "c" };
+obj.hasOwnProperty("1"); //true
+obj.hasOwnProperty(1); //true
+```
+
+El método `hasOwnProperty` propio de los objetos retorna un `boolean` dependiendo **si la key del objeto existe o no**.
+
+Lo que hay que tener en cuenta es que las claves de un objeto siempre son de tipo `string` aunque no lo especifiquemos.
+
+En el `set`:
+
+```js
+const set = new Set([1, 2, 3, 4, 5]);
+set.has("1"); //false
+set.has(1); //true
+```
+
+Esto no funciona como en un objeto, recuerda que un `set` es como un tipo de arreglo de valores no repetidos. Por ello `1` `string` no concuerda con `1` `number`.
+
+---
+
+## Reto #16 {#sec-sol-array-16}
+
+La respuesta del [Reto #16](#sec-array-16) es:
+
+**C: `{ a: "three", b: "two" }`**
+
+**Explicación:**
+
+Cuando en un objeto tenemos keys repetidas, estas se sobre escriben respetando el orden alfabético. Por ello la respuesta es C.
+
+---
+
+## Reto #17 {#sec-sol-array-17}
+
+La respuesta del [Reto #17](#sec-array-17) es:
+
+**A. "Just give Lydia pizza already!"**
+
+**Explicación:**
+
+`String` es el contructor que tiene JavaScript para gestionar las cadenas de texto. En el ejemplo se agrega la función `giveLydiaPizza` al prototipo de las cadenas, con ello, esta función estará disponible para todas las cadenas.
+
+Si intentamos hacer algo como lo siguiente:
+
+```js
+String.prototype.giveLydiaPizza = () => {
+  return "Just give Lydia pizza already!";
+};
+
+const bool = true;
+console.log(bool.giveLydiaPizza()); 
+//TypeError: bool.giveLydiaPizza is not a function 
+```
+
+Obtendremos un error, `giveLydiaPizza` solo se puede usar con un `string`. 
+
+---
+
+## Reto #18 {#sec-sol-array-18}
+
+La respuesta del [Reto #18](#sec-array-18) es:
+
+**B. `First`, `Third`, `Second`**
+
+**Explicación:**
+
+Para comprender la respuesta es necesario entender temas estructurales del lenjuage, es decir, ir a las bases de JavaScript y conocer conceptos como **Event Loop**, **Call Stack**, **Task Queue**, **Web API's** entre otros. 
+
+Para poder darse cuenta, el secreto que puedo compartirte es concentrarse en el orden de las llamadas a las funciones, es decir en estas líneas:
+
+```js
+bar(); // primero llamamos a bar()
+foo(); // luego a foo()
+baz(); // finalmente baz()
+```
+
+Primero, llamamos a la función `bar()` que tiene en su cuerpo un `setTimeout` puedes pensar que al carecer de delay en ms este código se ejecuta de inmediato, pero no es así, ya que `setTimeout` es una `Web API`, por este motivo este código debe almacenarse en lo que llamamos **Task Queue**.
+
+Segundo, llamamos a la función `foo()`, que contiene código síncrono, por ende pasa directamente al **Call Stack** y mostramos por consola `First`.
+
+Tercero, llamamos a la función `baz()`, que contiene código síncrono nuevamente, por ello pasa al **Call Stack** y mostramos por consola `Third`.
+
+Ahora, el algotirmo del **Even Loop** se da cuenta que no hay mas funciones por llamar, y verifica que el **Call Stack** esta vacio, entonces busca si hay algo en el **Task Queue**, y oh sorpresa, esta nuestro `setTimeout`, entonces lo pasa al **Call Stack** para finalmente mostrar por consola `Second`
+
+Es complicado de entender al principio, te dejo una [demostración gráfica](https://www.jsv9000.app/?code=Y29uc3QgZm9vID0gKCkgPT4gY29uc29sZS5sb2coIkZpcnN0Iik7CmNvbnN0IGJhciA9ICgpID0%2BIHNldFRpbWVvdXQoKCkgPT4gY29uc29sZS5sb2coIlNlY29uZCIpKTsKY29uc3QgYmF6ID0gKCkgPT4gY29uc29sZS5sb2coIlRoaXJkIik7CgpiYXIoKTsKZm9vKCk7CmJheigpOw%3D%3D) 
+
+---
+
+## Reto #19 {#sec-sol-array-19}
+
+La respuesta del [Reto #19](#sec-array-19) es:
+
+**B. `string`**
+
+**Explicación:**
+
+Esta pregunta es un poco trampa. Pero la respuesta es chistosa:
+
+`typeof 1` regresa `"number"`, literalemnte la cadena `"number"`, entonces tendriamos `typeof "number"` y esto da obiamente `string`. 
+
+---
+
+## Reto #20 {#sec-sol-array-20}
+
+La respuesta del [Reto #20](#sec-array-20) es:
+
+**C. `[1, 2, 3, 7 x empty, 11]`**
+
+**Explicación:**
+
+JavaScript no arroja ningún error, crea valores `undefined` hasta completar los índices pertinentes, luego muestra el último valor creado, en este caso `11`.
+
+Dependiendo en que entorno de ejecución se ejecute el código puede variar un poco la salida, una respuesta valida también sería:
+
+```js
+[1, 2, 3, undefined, undefined, undefined, undefined, 
+undefined, undefined, undefined, 11]
+```
+---
+
+## Reto #21 {#sec-sol-array-21}
+
+La respuesta del [Reto #21](#sec-array-21) es:
+
+**C. `[1, 2, 0, 1, 2, 3]`**
+
+**Explicación:**
+
+`acc` se inicializa con `[1, 2]`. En el `return` de la función concatenamos este valor de inicialización con el arreglo anidado, arreglo por arreglo.
+
+---
+
+## Reto #22 {#sec-sol-array-22}
+
+La respuesta del [Reto #22](#sec-array-22) es:
+
+**B. `false`, `false`, `true`**
+
+**Explicación:**
+
+El operador `!!` realiza una doble negación.
+
+En el primer caso, por **coerción de tipos**, `null` es un valor **falsy**, si lo negamos 2 veces, tendríamos `false`.
+
+En el segundo caso, por **coerción de tipos**, `""` es un valor **falsy**, si lo negamos 2 veces tendríamos `false`.
+
+Por último, el tercer caso, y nuevamente por **coerción de tipos**, el valor `1` es un valor `truthy`, si lo negamos 2 veces, obtendremos `true`.
+
+Dicho de otra manera, el operador de doble negación realiza una conversión de tipo a booleano, es decir, transforma cualquier valor en su equivalente booleano.
+
+---
+
+## Reto #23 {#sec-sol-array-23}
+
+La respuesta del [Reto #23](#sec-array-23) es:
+
+**C. `Hi cada segundo`**
+
+**Explicación:**
+
+La función `setInterval` es una `Web API` que recibe un intervalo en milisegundos, e imprime el cuerpo de la función en dicho intervalo.
+
+---
+
+## Reto #24 {#sec-sol-array-24}
+
+La respuesta del [Reto #24](#sec-array-24) es:
+
+**A. `["O", "s", "c", "a", "r"]`**
+
+**Explicación:**
+
+Un `string` es un elemento iterable en JavaScript, por ende es posible usar el `spread operator` directamente obteniendo la propagación de la cadena letra por letra.
+
+---
+
+## Reto #25 {#sec-sol-array-25}
+
+La respuesta del [Reto #25](#sec-array-25) es:
+
+**D. `[{ name: "Lydia" }]`**
+
+**Explicación:**
+
+Cuando hacemos:
+
+```js
+const members = [person];
+```
+
+En realidad estamos realizando una copia a la referencia de `person`, tanto `person` como `members` apuntan a la misma referencia del objeto en memoria.
+
+Por este motivo al hacer:
+
+```js
+person = null;
+```
+
+Cambiamos el valor de `person` a `null` pero `members` conserva la referencia al objeto y por ello también su valor.
+
+---
+
+## Reto #26 {#sec-sol-array-26}
+
+La respuesta del [Reto #26](#sec-array-26) es:
+
+**B. `"name"`, `"age"`**
+
+**Explicación:**
+
+El bucle `for...in` en JavaScript aplicado sobre un objeto nos brinda las llaves del objeto per se. Recuerda que aunque no lo veamos el lenguaje interpreta las llaves de los objetos como un `string` a no ser que dichas llaves sean de tipo `symbol`. 
+
+Si vemos esto:
+
+```js
+const person = {
+  name: "Carla",
+  age: 26
+};
+```
+
+JavaScript verá esto:
+
+```js
+const person = {
+  "name": "Carla",
+  "age": 26
+};
+
+```
+Es por este motivo que cuando ejecutamos: 
+
+```js
+for (const item in person) {
+  console.log(item);
+}
+```
+
+La variable `item` tendrá el valor de cada llave del objeto en cada iteración; en el ejemplo al tener solo 2 llaves, primer `item` valdrá `name` y luego `age`.
+
+---
+
+## Reto #27 {#sec-sol-array-27}
+
+La respuesta del [Reto #27](#sec-array-27) es:
+
+**B. `"75"`**
+
+**Explicación:**
+
+El código JavaScript se ejecuta de arriba hacia abajo y de izquierda a derecha.
+
+Primero realizamos la suma `3 + 4`, puesto que ambos son  de tipo `number` obtenemos `7`.
+
+Ahora tenemos `7 + "5"`, como `"5"` es de tipo `string`, ahora realizamos una concatenación de valores y por `coerción de tipos` el resultado final seria `"75"` como `string`.
+
+---
+
+## Reto #28 {#sec-sol-array-28}
+
+La respuesta del [Reto #28](#sec-array-28) es:
+
+**C. `7`**
+
+**Explicación:**
+
+`parseInt` convierte un valor a tipo `number` de una base concreta (base binaria, octal, decimal, etc).
+
+En el ejemplo intentamos convertir `"7*6"` a base `10`, osea, a base decimal.
+
+`parseInt` toma los valores validos de izquierda a derecha, dicho esto, solo tomará el valor `7` (el `*` y todo lo que le precede no es un valor valido para `parseInt`).
+
+En conclusión, solo convierte al `7` de `string` a `number`. 
+
+---
+
+## Reto #29 {#sec-sol-array-29}
+
+La respuesta del [Reto #29](#sec-array-29) es:
+
+**C. `[undefined, undefined, undefined]`**
+
+**Explicación:**
+
+El método `map` es propio del paradigma de la programación funcional. Este método siempre retorna una nuevo arreglo.
+
+En el ejemplo puesto que estamos iterando sobre un arreglo de números, la condición evaluerá `true` para cada uno de los elementos del arreglo, pero hay 2 sentencias `return`. JavaScript ignora todo el código que esta después del primer `return` que encuntra. Dicho esto, tendriamos algo así:
+
+```js
+[1, 2, 3].map(num => {
+  if (typeof num === "number") return;
+});
+```
+Ahora, si bien la condición se evalua a `true`, el `return` no devuelve nada, simplemente hace que el código se salga del `map`.
+
+Cuando no devolvemos nada en `return`, `map` regresa siempre `undefined`.
+
+Al tener 3 elementos en el arreglo, y recordando siempre que `map` regresa un nuevo arreglo, obtenemos como resultado final un arreglo de 3 `undefined`
+
+---
+
+## Reto #30 {#sec-sol-array-30}
+
+La respuesta del [Reto #30](#sec-array-30) es:
+
+**A. `60`, `40`**
+
+**Explicación:**
+
+Las variables declaradas con `let` y `const` tienen un contexto de bloque, esto significa que solo podrán ser accedidas dentro del bloque de llaves donde fueron declaradas, por ejemplo dentro de un bloque `if` o dentro de una función.
+
+Esta premisa se cumple siempre y cuando esten declaradas dentro de un bloque, si una variable esta fuera de todo bloque entonces se dice que es una variable global y por ende puede ser accedida desde cualquier parte del código.
+
+`let x = 10` es una variable global, puesto que no esta encerrada en ningún tipo de bloque.
+
+Dentro del `if` :
+
+```js
+console.log(x + y + z);
+```
+En el bloque del `if` no se tiene acceso a ninguna variable `x`, por lo tanto javascript subirá al siguiente contexto para buscar una variable `x`, al encontrarla recien realiza la suma `x + y + z` que sería `60`.
+
+En el último `console`:
+
+```js
+console.log(x + z);
+```
+La variable `x` esta en el contexto global, por ende accedemos a su valor sin problema alguno.
+
+La variable `z` esta dentro del bloque `if` y no deberiamos poder acceder a ella, pero `z` esta declarada con `var`, esto la convierte en una variable con contexto de función y no de bloque, entonces accedemos a su valor, para poder sumar `x + z` que sería `40`.
+
+
+---
