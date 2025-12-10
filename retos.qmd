@@ -805,7 +805,7 @@ console.log(second.toString())
 
 ---
 
-## Reto #32: {#sec-array-32}
+## Reto #32: Funciones Tradicionales vs Funciones Flecha {#sec-array-32}
 
 ::: {.callout-caution title="Dificultad" collapse="true"}
 **Intermedio**
@@ -836,7 +836,7 @@ const addArrow = (a, b) => {
 
 ---
 
-## Reto #33:  {#sec-array-33}
+## Reto #33: Excepciones con `try...catch` {#sec-array-33}
 
 ::: {.callout-caution title="Dificultad" collapse="true"}
 **Básico**

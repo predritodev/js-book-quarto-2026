@@ -2,7 +2,7 @@ project:
   type: book
 
 book:
-  title: "Domina JavaScript. +200 retos de programación"
+  title: "Domina JavaScript. 100 retos de programación"
   author: "Cristian Fernando Villca Gutierrez"
   date: "1/12/2025"
   chapters:
@@ -29,7 +29,7 @@ format:
           \usepackage{pdfpages}
     include-before-body:
       - text: |
-          \includepdf[pages=-, noautoscale=true, width=\paperwidth, height=\paperheight]{photos/portada.png}
+          \includepdf[pages=-, noautoscale=true, width=\paperwidth, height=\paperheight]{photos/portada2.png}
 
 
 

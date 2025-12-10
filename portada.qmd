@@ -12,7 +12,7 @@ format:
 \begin{figure}[h!]
 \centering
 \vspace*{0.075\textheight}
-\includegraphics[width=0.85\textwidth, height=0.85\textheight, keepaspectratio]{photos/portada.png}
+\includegraphics[width=0.85\textwidth, height=0.85\textheight, keepaspectratio]{photos/portada2.png}
 \end{figure}
 
 \clearpage
