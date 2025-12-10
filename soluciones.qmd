@@ -721,3 +721,78 @@ La variable `z` esta dentro del bloque `if` y no deberiamos poder acceder a ella
 
 
 ---
+
+
+## Reto #31 {#sec-sol-array-31}
+
+La respuesta del [Reto #31](#sec-array-31) es:
+
+**C. `"9001"`**
+
+**Explicación:**
+
+Cuando una función regresa un arreglo en Javascript es muy usual utilizar la sintaxis de desestructuración para poder acceder a sus elementos por separado. 
+
+En este ejemplo accedemos a la segunda posición del arreglo de la siguiente manera: 
+
+```js
+const [, second] = fn()
+```
+
+Esto es lo mismo que decir:
+
+```js
+const second = fn()[1]
+```
+
+Finalmente convertimos el valor de `number` a `string`.
+
+---
+
+## Reto #32 {#sec-sol-array-32}
+
+La respuesta del [Reto #32](#sec-array-32) es:
+
+**C. La primera función tiene hoisting, la segunda no.**
+
+**Explicación:**
+
+Con una función como la primera es posible hacer esto:
+
+```js
+console.log(addTraditional(3,5)); //8
+function addTraditional(a, b){
+  return a + b;
+}
+```
+
+Podemos llamar a la función antes de su declaración, caracteristica que se denomina **hoisting**.
+
+Con una función de flecha esto no es posible:
+
+```js
+console.log(addArrow(3,5)); // ReferenceError: can't access lexical declaration 'addArrow' before initialization 
+
+const addArrow = (a, b) => {
+  return a + b;
+}
+```
+
+_Nota_: Esta es solo una de las diferencias entre ambas funciones. También podemos mencionar como diferencia el contexto de `this` en ambas funciones pero eso lo dejamos para otro reto.
+
+---
+
+## Reto #33 {#sec-sol-array-33}
+
+La respuesta del [Reto #33](#sec-array-33) es:
+
+**D: `"Oh no an error! Hello world!`**
+
+**Explicación:**
+
+La función `greeting` con la palabra reservada `throw` genera una excepción de tipo `string` en el código.
+
+La función `sayHi` consta de una sentencia `try...catch`, recordemos que si no hay ningún tipo de excepción el código ejecuta el bloque `try` pero como si generamos una excepción entonces entramos al bloque `catch` donde el parámetro `e` adopta el valor de la excepción, osea, `Hello world!`. Por eso el resultado es `"Oh no an error! Hello world!"`
+
+
+---

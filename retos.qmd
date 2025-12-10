@@ -776,3 +776,98 @@ console.log(x + z);
 **[Ver solución](#sec-sol-array-30)**
 
 ---
+
+## Reto #31: Desestructuración de arreglos {#sec-array-31}
+
+::: {.callout-caution title="Dificultad" collapse="true"}
+**Básico**
+:::
+
+**¿Qué imprime este código?**
+
+```js
+const fn = () => {
+  return [1000, 9000+1]
+}
+
+const [, second] = fn()
+console.log(second.toString())
+```
+
+**Pista:** Es posible omitir posiciones no deseadas del arreglo usando `,` en la desestructuración.
+
+* A. `1000`
+* B. `9001`
+* C. `"9001"`
+* D. `SyntaxError`
+
+**[Ver solución](#sec-sol-array-31)**
+
+---
+
+## Reto #32: {#sec-array-32}
+
+::: {.callout-caution title="Dificultad" collapse="true"}
+**Intermedio**
+:::
+
+**Explica este código JavaScript**
+
+¿Cuál es la diferencia entre las siguientes funciones?
+
+```js
+function addTraditional(a, b){
+  return a + b;
+}
+
+const addArrow = (a, b) => {
+  return a + b;
+}
+```
+
+**Pista:** No tiene nada que ver con la sintaxis.
+
+* A. `No hay diferencia, son exactamente iguales.`
+* B. `La primera función es más rápida que la segunda.`
+* C. `La primera función tiene hoisting, la segunda no.`
+* D. `Solo cambia la sintaxis, luego son iguales.`
+
+**[Ver solución](#sec-sol-array-32)**
+
+---
+
+## Reto #33:  {#sec-array-33}
+
+::: {.callout-caution title="Dificultad" collapse="true"}
+**Básico**
+:::
+
+**¿Qué imprime este código?**
+
+```js
+function greeting() {
+  throw "Hello world!";
+}
+
+function sayHi() {
+  try {
+    const data = greeting();
+    console.log("It worked!", data);
+  } catch (e) {
+    console.log("Oh no an error!", e);
+  }
+}
+
+sayHi();
+```
+
+**Pista:** La sentencia `catch` siempre atrapa los errores.
+
+* A. `"It worked! Hello world!"`
+* B. `"Oh no an error!" undefined`
+* C. `SyntaxError: can only throw Error objects`
+* D. `"Oh no an error! Hello world!"`
+
+**[Ver solución](#sec-sol-array-33)**
+
+---
