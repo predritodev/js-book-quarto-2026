@@ -1003,4 +1003,84 @@ La respuesta del [Reto #46](#sec-array-46) es:
 
 Las cadenas de texto en JavaScript son iterables, por ello, al igual que con los arreglos es posible acceder a sus caracteres individuales con la notación de corchetes.
 
---
+---
+
+## Reto #47 {#sec-sol-array-47}
+
+La respuesta del [Reto #47](#sec-array-47) es:
+
+**B. `20`**
+
+**Explicación:**
+
+Desde ES6 es posible usar parámetros por defecto (siempre y cuando sean los últimos declarados en la función).
+
+En este caso el parámetro por defecto `num1` es el mismo que el primer parámetro, no hay ningun problema simpre y cuando este declarado al final de la lista de parámetros de la función.
+
+Pasamos el argumento `10` a la función `sum`, esto significa que `num2` deberá usar su valor por defecto que seria el mismo de `num1`, osea `10`; entonces `10 + 10` nos da el resultado final `20`.
+
+---
+
+## Reto #48 {#sec-sol-array-48}
+
+La respuesta del [Reto #48](#sec-array-48) es:
+
+**D. `TypeError: newList.push is not a function`**
+
+**Explicación:**
+
+El método `push` regresa la longitud de un arreglo y no el arreglo en si mismo, podemos ver este comportamiento si hacemos lo siguiente:
+
+```js
+let newList = [1, 2, 3].push(4)
+console.log(typeof newList); // number
+```
+
+Después de aplicar por primera vez el método `push`, `newList` ahora ya no es un arreglo, sino un primitivo de tipo `number` entonces cuando intentamos aplicar `push` por segunda vez tratamos de implementar un método propio de los arreglos a una variable de tipo `number`, es justo aqui donde salta el error.
+
+---
+
+## Reto #49 {#sec-sol-array-49}
+
+La respuesta del [Reto #49](#sec-array-49) es:
+
+**A. `name Robert` y `age 30`**
+
+**Explicación:**
+
+El método `entries` del constructor `Object` regresa un arreglo anidado donde cada sub arreglo corresponde a la llave y valor del objeto:
+
+```js
+[ [ 'name', 'Robert' ], [ 'age', 30 ] ]
+```
+
+Con el bucle `for...of` iteramos sobre el objeto desestructurando los valores con la sintaxis `[x, y]`.
+
+El primer sub arreglo es `[ "name", "Robert" ]` donde `x` toma el valor `name` y `y` toma el valor `Robert`.
+
+El segundo arreglo es `[ 'age', 30 ]` donde `x` toma el valor `age` y `y` toma el valor `30`.
+
+---
+
+## Reto #50 {#sec-sol-array-50}
+
+La respuesta del [Reto #50](#sec-array-50) es:
+
+**D. `SyntaxError`**
+
+**Explicación:**
+
+Cuando vemos en la lista de parámetros de una función la sintaxis de tres puntos `...` nos referimos a lo que se denomina un **paramétro de tipo REST**. En el cuerpo de la función este tipo de parámetro se trata como un arreglo pero siempre debe estar declarado al final de la lista de parámetros, caso contrario tendremos un error de sintaxis.
+
+Si volvemos a escribir la función pero esta vez teniendo en cuenta lo anterior dicho:
+
+```js
+function getItems(fruitList, favoriteFruit, ...args) {
+  return [...fruitList, ...args, favoriteFruit]
+}
+
+console.log(getItems(["banana", "apple"], "pear", "orange"))
+```
+Obtemos por consola: `["banana", "apple", "orange", "pear"]`
+
+---

@@ -1244,3 +1244,113 @@ console.log("I want pizza"[0])
 **[Ver solución](#sec-sol-array-46)**
 
 ---
+
+## Reto #47: Parámetros de funciones y valores por defecto {#sec-array-47}
+
+::: {.callout-caution title="Dificultad" collapse="true"}
+**Básico**
+:::
+
+**¿Qué imprime este código?**
+
+```js
+function sum(num1, num2 = num1) {
+  console.log(num1 + num2)
+}
+
+sum(10)
+```
+
+**Pista:** Los parámetros por defecto toman el valor pertinente cuando no proporcionamos el argumento correspondiente.
+
+* A. `NaN`
+* B. `20`
+* C. `ReferenceError`
+* D. `undefined`
+
+**[Ver solución](#sec-sol-array-47)**
+
+---
+
+## Reto #48: Otra vez el método `push`  {#sec-array-48}
+
+::: {.callout-caution title="Dificultad" collapse="true"}
+**Intermedio**
+:::
+
+**¿Qué imprime este código?**
+
+```js
+let newList = [1, 2, 3].push(4)
+
+console.log(newList.push(5))
+```
+
+**Pista:** Notar que no estamos imprimiendo el arreglo `newList` suelto, sino usando el método `push`.
+
+* A. `[1, 2, 3, 4, 5]`
+* B. `[1, 2, 3, 5]`
+* C. `[1, 2, 3, 4]`
+* D. `TypeError: newList.push is not a function`
+
+**[Ver solución](#sec-sol-array-48)**
+
+---
+
+## Reto #49: `Object.entries` para iterar objetos {#sec-array-49}
+
+::: {.callout-caution title="Dificultad" collapse="true"}
+**Intermedio**
+:::
+
+**¿Qué imprime este código?**
+
+```js
+const person = {
+  name: "Robert",
+  age: 30
+}
+
+for (const [x, y] of Object.entries(person)) {
+  console.log(x, y)
+}
+```
+
+**Pista:** Notar la desestructuración de variables en el bucle `for...of`.
+
+* A. `name Robert` y `age 30`
+* B. `["name", "Robert"]` y `["age", 30]`
+* C. `["name", "age"]` y `undefined`
+* D. `SyntaxError`
+
+
+**[Ver solución](#sec-sol-array-49)**
+
+---
+
+## Reto #50: Parametros REST en funciones modernas {#sec-array-50}
+
+::: {.callout-caution title="Dificultad" collapse="true"}
+**Básico**
+:::
+
+**¿Qué imprime este código?**
+
+```js
+function getItems(fruitList, ...args, favoriteFruit) {
+  return [...fruitList, ...args, favoriteFruit]
+}
+
+getItems(["banana", "apple"], "pear", "orange")
+```
+
+**Pista:** Cuidado con el orden de los parámetros en las funciones.
+
+* A. `["banana", "apple", "pear", "orange"]`
+* B. `[["banana", "apple"], "pear", "orange"]`
+* C. `["banana", "apple", ["pear"], "orange"]`
+* D. `SyntaxError`
+
+**[Ver solución](#sec-sol-array-50)**
+
+---
