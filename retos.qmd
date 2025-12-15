@@ -1128,7 +1128,7 @@ console.log(list)
 
 ---
 
-## Reto #43: Olvide el parámetro de la función {#sec-array-43}
+## Reto #43: Olvidar el parámetro de la función {#sec-array-43}
 
 ::: {.callout-caution title="Dificultad" collapse="true"}
 **Básico**
@@ -1152,5 +1152,95 @@ console.log(sayHi())
 * D. `ReferenceError`
 
 **[Ver solución](#sec-sol-array-43)**
+
+---
+
+## Reto #44: Alcance de las variables {#sec-array-44}
+
+::: {.callout-caution title="Dificultad" collapse="true"}
+**Básico**
+:::
+
+**¿Qué imprime este código?**
+
+```js
+var status = "A"
+
+setTimeout(() => {
+  const status = "B"
+
+  const data = {
+    status: "C",
+    getStatus() {
+      return this.status
+    }
+  }
+  console.log(data.getStatus())
+}, 0)
+```
+
+**Pista:** 
+
+* A. `"C"`
+* B. `"B"`
+* C. `"A"`
+* D. `ReferenceError`
+
+**[Ver solución](#sec-sol-array-44)**
+
+---
+
+## Reto #45: `const` y el alcance de bloque {#sec-array-45}
+
+::: {.callout-caution title="Dificultad" collapse="true"}
+**Básico**
+:::
+
+**¿Qué imprime este código?**
+
+```js
+function checkAge(age) {
+  if (age < 18) {
+    const message = "Sorry, you're too young."
+  } else {
+    const message = "Yay! You're old enough!"
+  }
+  return message
+}
+
+console.log(checkAge(21))
+```
+
+**Pista:** 
+
+* A. `"Sorry, you're too young."`
+* B. `"Yay! You're old enough!"`
+* C. `ReferenceError`
+* D. `undefined`
+
+**[Ver solución](#sec-sol-array-45)**
+
+---
+
+## Reto #46: I want pizza {#sec-array-46}
+
+::: {.callout-caution title="Dificultad" collapse="true"}
+**Básico**
+:::
+
+**¿Qué imprime este código?**
+
+```js
+console.log("I want pizza"[0])
+```
+
+**Pista:** 
+
+* A. `"""`
+* B. `"I"`
+* C. `SyntaxError`
+* D. `undefined`
+
+**[Ver solución](#sec-sol-array-46)**
 
 ---

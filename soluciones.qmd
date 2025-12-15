@@ -966,3 +966,39 @@ La respuesta del [Reto #43](#sec-array-43) es:
 En javascript los parámetros tienen por defecto el valor `undefined`, esto quiere decir que sino pasamos ningún parámetro a una función que los necesite tendremos `undefined`.
 
 ---
+
+## Reto #44 {#sec-sol-array-44}
+
+La respuesta del [Reto #44](#sec-array-44) es:
+
+**A. `"C"`**
+
+**Explicación:**
+
+Al llamar a `getStatus` debemos tener el cuenta el scope de las variables, recuerda que tanto `let` como `const` tienen scope de bloque, por ende buscara una variable `status` dentro del bloque de `data` y regresara la cadena `"C"`.
+
+---
+
+## Reto #45 {#sec-sol-array-45}
+
+La respuesta del [Reto #45](#sec-array-45) es:
+
+**C. `ReferenceError`**
+
+**Explicación:**
+
+`const` tiene scope de bloque para las variables, cuando intentamos hacer `return message` la variable `message` no puede ser accedida. Tanto `message` en el bloque `if` como en el `else` son variables diferentes por que estan en bloques diferentes pese a que se llaman igual. Como no es posible acceder a la variable la respuesta es `ReferenceError`.
+
+---
+
+## Reto #46 {#sec-sol-array-46}
+
+La respuesta del [Reto #46](#sec-array-46) es:
+
+**B. `"I"`**
+
+**Explicación:**
+
+Las cadenas de texto en JavaScript son iterables, por ello, al igual que con los arreglos es posible acceder a sus caracteres individuales con la notación de corchetes.
+
+--
