@@ -841,3 +841,88 @@ La primera función en llamarse es `increaseNumber` que solo se encarga de retor
 `num1` se pasa como parámetro a `increasePassedNumber` que hace lo mismo que `increaseNumber`, regresa primero el valor de la variable y luego la incrementa, por ello obtenemos nuevamente como salida el valor `10`.
 
 ---
+
+## Reto #37 {#sec-sol-array-37}
+
+La respuesta del [Reto #37](#sec-array-37) es:
+
+**C. `20`, `20`, `20`, `40`**
+
+**Explicación:**
+
+Hay que concentrarse en el orden en que se llaman las funciones para comprender que es lo que pasa acá.
+
+**Primera llamada:**
+A `multiply` no le pasamos ningún parámetro, por ende, toma el parámetro por defecto `x` que es un objeto desestructurado cuya key `number` tiene el valor de `10`. Entonces `x.number *= 2` nos retorna `20`.
+
+**Segunda llamada:**
+Similar a la primera llamada, hacemos lo mismo, entonces obtenemos nuevamente `20`.
+
+**Tercera llamada:**
+A `multiply` en su llamada le pasamos el argumento `value` por lo que la función ahora ignora el parámetro por defecto. `number` es nuevamente `10`, por ello el resultado de la multiplicación nuevamente será `20`.
+
+**Cuarta llamada:**
+Similar a la tercera llamada, pero el valor de `value` actual es `20` que fue el resultado de la tercera llamada, entonces ahora `x.number *= 2`, será `40`.
+
+
+---
+
+## Reto #38 {#sec-sol-array-38}
+
+La respuesta del [Reto #38](#sec-array-38) es:
+
+**A. `true`, `true`, `false`**
+
+**Explicación:**
+
+Primero, usamos el constructor `Number` para convertir `2` a `number`, como solo es una conversión de primitivos entonces el resultado es `true`.
+
+Segundo, usamos el constructor `Boolean` para convertir `false` a boleano, nuevamente solo es una conversión, entonces el resultado de la comparación es `true`.
+
+Tercero, ningún `Symbol` es igual a otro `Symbol`, por más que en el ejemplo tengan los mismos placeholders `foo`, nunca serán iguales. Entonces siempre nos dará `false`.
+
+No debemos confundir el contructor `Number` y `Boolean` por sí mismos, con dichos costructures acompañados de la palabra `new`, si hacemos lo siguiente:
+
+```js
+const a = new Number(2);
+const b = new Boolean(true);
+```
+
+Ambas variables serán objetos creados por medio de estos contructores y no solo conversiones como en el ejercicio de este reto.
+
+---
+
+## Reto #39 {#sec-sol-array-39}
+
+La respuesta del [Reto #39](#sec-array-39) es:
+
+**C. `Promise {<pending>}`**
+
+**Explicación:**
+
+Una función asíncrona siempre regresa una **promesa** pero dicha promesa no basta con ser devuelta sino que debe ser consumida, para ello debemos usar las palabras reservadas `then` y `catch`.
+
+Cuando llamamos `getData()` no consumimos la promesa con `then`, solo llamamos a la función por ende no podemos afirmar que la promesa esta en **estado resuelto** o **estado rechazado**, en conclusión inevitablemente la promesa esta en **estado pendiente**.
+
+---
+
+## Reto #40 {#sec-sol-array-40}
+
+La respuesta del [Reto #40](#sec-array-40) es:
+
+**B. `2`**
+
+**Explicación:**
+
+El método `push` regresa la longitud del arreglo. Inicialmente el arreglo `["banana"]` tiene langitud `1`, al hacer el `push` del item `apple` la longitud será de `2` y ojo, no hacemos un `return` de `list` sino de `list.push(item)` por ello regresamos la longitud que es `2`.
+
+Si quisieramos regresar el arreglo resultante completo deberiamos hacer:
+
+```js
+function addToList(item, list) {
+  list.push(item);
+  return list; // ["banana","apple"]
+}
+```
+
+---

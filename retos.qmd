@@ -959,3 +959,116 @@ console.log(num2);
 **[Ver solución](#sec-sol-array-36)**
 
 ---
+
+## Reto #37: Multiples llamadas a una función {#sec-array-37}
+
+::: {.callout-caution title="Dificultad" collapse="true"}
+**Intermedio**
+:::
+
+**¿Qué imprime este código?**
+
+```js
+const value = { number: 10 };
+
+const multiply = (x = { ...value }) => {
+  console.log((x.number *= 2));
+};
+
+multiply();
+multiply();
+multiply(value);
+multiply(value);
+```
+
+**Pista:** Diferenciar entre las referencias de un objeto como parámetro en una función.
+
+* A. `20`, `40`, `80`, `160`
+* B. `20`, `40`, `20`, `40`
+* C. `20`, `20`, `20`, `40`
+* D. `NaN`, `NaN`, `20`, `40`
+
+**[Ver solución](#sec-sol-array-37)**
+
+---
+
+## Reto #38:  {#sec-array-38}
+
+::: {.callout-caution title="Dificultad" collapse="true"}
+**Básico**
+:::
+
+**¿Qué imprime este código?**
+
+```js
+console.log(Number(2) === Number(2))
+console.log(Boolean(false) === Boolean(false))
+console.log(Symbol('foo') === Symbol('foo'))
+```
+
+**Pista:** Cuidado con las comparaciones entre primitivos `Symbol`.
+
+* A. `true`, `true`, `false`
+* B. `false`, `true`, `false`
+* C. `true`, `false`, `true`
+* D. `true`, `true`, `true`
+
+**[Ver solución](#sec-sol-array-38)**
+
+---
+
+## Reto #39: Funciones asíncronas {#sec-array-39}
+
+::: {.callout-caution title="Dificultad" collapse="true"}
+**Intermedio**
+:::
+
+**¿Qué imprime este código?**
+
+```js
+async function getData() {
+  return await Promise.resolve("I made it!");
+}
+
+const data = getData();
+console.log(data);
+```
+
+**Pista:** Las promesas son objetos especiales de JavaScript que solo tienen tres posibles estados: promesa resuelta, promesa rechazada o promesa pendiente.
+
+* A. `"I made it!"`
+* B. `Promise {<resolved>: "I made it!"}`
+* C. `Promise {<pending>}`
+* D. `undefined`
+
+**[Ver solución](#sec-sol-array-39)**
+
+---
+
+## Reto #40:  {#sec-array-40}
+
+::: {.callout-caution title="Dificultad" collapse="true"}
+**Básico**
+:::
+
+**¿Qué imprime este código?**
+
+```js
+function addToList(item, list) {
+  return list.push(item);
+}
+
+const result = addToList("apple", ["banana"]);
+console.log(result);
+```
+
+**Pista:** ¿El método `push` de los arreglos solo agrega un elemento al final de un arreglo?
+
+* A. `['banana', 'apple']`
+* B. `2`
+* C. `true`
+* D. `undefined`
+
+**[Ver solución](#sec-sol-array-40)**
+
+---
