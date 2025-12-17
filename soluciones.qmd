@@ -794,5 +794,50 @@ La función `greeting` con la palabra reservada `throw` genera una excepción de
 
 La función `sayHi` consta de una sentencia `try...catch`, recordemos que si no hay ningún tipo de excepción el código ejecuta el bloque `try` pero como si generamos una excepción entonces entramos al bloque `catch` donde el parámetro `e` adopta el valor de la excepción, osea, `Hello world!`. Por eso el resultado es `"Oh no an error! Hello world!"`
 
+---
+
+## Reto #34 {#sec-sol-array-34}
+
+La respuesta del [Reto #34](#sec-array-34) es:
+
+**B. { admin: true, name: "Lydia", age: 21 }**
+
+**Explicación:**
+
+El **spread operator** en este ejemplo se encarga de propagar el objeto `user` dentro del objeto `admin`.
+
+**Sin** usar el `spread operator` tendriamos un objeto anidado:
+
+```js
+{ admin: true, { name: "Lydia", age: 21 } }
+```
+
+Justamente el **spread operator** se encarga de expandir `user` para evitar el anidamiento.
+
+---
+
+## Reto #35 {#sec-sol-array-35}
+
+La respuesta del [Reto #35](#sec-array-35) es:
+
+**A: `'{"level":19, "health":90}'`**
+
+**Explicación:**
+
+`JSON.stringify` puede recibir un segundo parámetro opcional denominado `replacer`, puede ser una función o un arreglo, y se encarga de hacer un filtro de las propiedades del objeto que deseamos convertir a `string`, en el ejemplo solo deseamos convertir las propiedades `["level", "health"]`, ignorando `username`. 
+
+---
+
+## Reto #36 {#sec-sol-array-36}
+
+La respuesta del [Reto #36](#sec-array-36) es:
+
+**A. `10`, `10`**
+
+**Explicación:**
+
+La primera función en llamarse es `increaseNumber` que solo se encarga de retornar la variable `num` y luego la incrementa; `num` no esta en el scope de la función por eso pasamos a buscar la variable en el scope global. Esta función regresará `10`.
+
+`num1` se pasa como parámetro a `increasePassedNumber` que hace lo mismo que `increaseNumber`, regresa primero el valor de la variable y luego la incrementa, por ello obtenemos nuevamente como salida el valor `10`.
 
 ---

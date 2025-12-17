@@ -595,7 +595,7 @@ setInterval(() => console.log("Hi"), 1000);
 
 ---
 
-## Reto #24: Uso del spread operator {#sec-array-24}
+## Reto #24: Spread operator con cedenas {#sec-array-24}
 
 ::: {.callout-caution title="Dificultad" collapse="true"}
 **Básico**
@@ -777,7 +777,7 @@ console.log(x + z);
 
 ---
 
-## Reto #31: Desestructuración de arreglos {#sec-array-31}
+## Reto #31: Otra desestructuración de arreglos {#sec-array-31}
 
 ::: {.callout-caution title="Dificultad" collapse="true"}
 **Básico**
@@ -869,5 +869,93 @@ sayHi();
 * D. `"Oh no an error! Hello world!"`
 
 **[Ver solución](#sec-sol-array-33)**
+
+---
+
+## Reto #34: Spread operator con objetos {#sec-array-34}
+
+::: {.callout-caution title="Dificultad" collapse="true"}
+**Básico**
+:::
+
+**¿Qué imprime este código?**
+
+```js
+const user = { name: "Hernan", age: 21 };
+const admin = { admin: true, ...user };
+
+console.log(admin);
+```
+
+**Pista:** El **spread operator** expande las propiedades del objeto. 
+
+* A. `{ admin: true, user: { name: "Hernan", age: 21 } }`
+* B. `{ admin: true, name: "Hernan", age: 21 }`
+* C. `{ admin: true, user: ["Hernan", 21] }`
+* D. `{ admin: true }`
+
+**[Ver solución](#sec-sol-array-34)**
+
+---
+
+## Reto #35: El segundo parámetro de `JSON.stringify` {#sec-array-35}
+
+::: {.callout-caution title="Dificultad" collapse="true"}
+**Intermedio**
+:::
+
+**¿Qué imprime este código?**
+
+```js
+const settings = {
+  username: "asterion",
+  level: 80,
+  health: 25
+};
+
+const data = JSON.stringify(settings, ["level", "health"]);
+console.log(data);
+```
+
+**Pista:** `JSON.stringify` convierte un objeto a cadena. 
+
+* A. `'{"level":80, "health":25}'`
+* B. `'{"username": "asterion"}'`
+* C. `'["level", "health"]'`
+* D. `'{"username": "asterion", "level":80, "health":25}'`
+
+**[Ver solución](#sec-sol-array-35)**
+
+---
+
+## Reto #36: Alcance de variables y paso de parámetros {#sec-array-36}
+
+::: {.callout-caution title="Dificultad" collapse="true"}
+**Básico**
+:::
+
+**¿Qué imprime este código?**
+
+```js
+let num = 10;
+
+const increaseNumber = () => num++;
+const increasePassedNumber = number => number++;
+
+const num1 = increaseNumber();
+const num2 = increasePassedNumber(num1);
+
+console.log(num1);
+console.log(num2);
+```
+
+**Pista:** La variable `num` tiene alcance global.
+
+* A. `10`, `10`
+* B. `10`, `11`
+* C. `11`, `11`
+* D. `11`, `12`
+
+**[Ver solución](#sec-sol-array-36)**
 
 ---
