@@ -719,9 +719,7 @@ La variable `x` esta en el contexto global, por ende accedemos a su valor sin pr
 
 La variable `z` esta dentro del bloque `if` y no deberiamos poder acceder a ella, pero `z` esta declarada con `var`, esto la convierte en una variable con **contexto de función** y no de bloque, entonces accedemos a su valor, para poder sumar `x + z` que sería `40`.
 
-
 ---
-
 
 ## Reto #31 {#sec-sol-array-31}
 
@@ -1268,5 +1266,73 @@ Entonces nos queda `false || ""`, y obtenemos como resultado la cadena vacia `""
 Primero evaluamos `[] || 0`, el arreglo vacio es un valor `truthy` por lo que `0` no se ejecuta.
 
 Entonces nos queda `[] || true`, nuevamente el arreglo vacio es `truthy` y esta vez es `true` quien no se llega a ejecutar, entonces el resultado es `[]`.
+
+---
+
+## Reto #57 {#sec-sol-array-57}
+
+La respuesta del [Reto #57](#sec-array-57) es:
+
+**D. `second`, `I have resolved!` y `I have resolved!`, `second`**
+
+**Explicación:**
+
+`firstFunction` es una función simple que llama a `myPromise` usando el método `then` propio de las promesas. Por **Event Loop** las promesas pasan al **Task Queue** entonces primero ejecutamos el `console.log` y mostramos `second` por consola, ahora el **Call Stack** esta vacio y la promesa que estaba en la **Task Queue** pasa al **Call Stack** y resolvemos la promesa mostrando `'I have resolved!'`.
+
+
+`secondFunction` es una función asíncrona, al llamar a `myPromise` con `await` esperamos el tiempo necesario para que la promesa se ejecute, entonces mostramos primero por consola `'I have resolved!'` y luego `second`.
+
+Cuando tenemos sintaxis `async await` escribimos código de manera síncrona pero se ejecuta de manera asíncrona.  
+
+---
+
+## Reto #58 {#sec-sol-array-58}
+
+La respuesta del [Reto #58](#sec-array-58) es:
+
+**C. `3`, `Lydia2`, `[Object object]2`**
+
+**Explicación:**
+
+A cada `item` de la variable `set` aplicamos el operador `+` con el número `2`.
+
+Para `1` que es `number` realizamos una suma simple obteniendo como resultado `3`.
+
+Para la cadena `Cris` y por **coerción de tipos** convertimos al número `2` en `string` y realizamos una concatenación obteniendo `Cris2`.
+
+Para el objeto `{ name: "Cris" }` nuevemente por **coerción de tipos** convertimos tanto al objeto y al número `2` a `string` obteniendo `[Object object]2`.
+
+Recuerda que en JavaScript el operador `+` puede ser usado para sumar números y para concatenar cadenas de texto.
+
+---
+
+## Reto #59 {#sec-sol-array-59}
+
+La respuesta del [Reto #59](#sec-array-59) es:
+
+**B. `They are the same!`**
+
+**Explicación:**
+
+Tanto el parámetro `person1` como `person2` adoptará el valor de `person`, osea el objeto `{ name: "Allan" }`.
+
+Los objetos se pasan por referencia. En el ejemplo, `person1` y `person2` apuntan a la misma dirección de memoria entonces la condición del `if` no se cumple y pasamos a imprimir `They are the same!`.
+
+---
+
+## Reto #60 {#sec-sol-array-60}
+
+La respuesta del [Reto #60](#sec-array-60) es:
+
+**D. `TypeError`**
+
+**Explicación:**
+
+En JavaScript existen 2 maneras de acceder a las propiedades de los objetos, por notación del punto o por notación de corchetes.
+
+Cuando hacemos `colorConfig.colors[1]` literalmente estamos buscando una propiedad `colors` en el objeto `colorConfig` y como no existe esta propiedad entonces obtenemos un `undefiend`, entonces ahora JavaScript intentará hacer `undefined[1]` y esto no es un código valido, por ello la consola muestra un `TypeError`.
+
+Cuando queremos usar variables para hacer lo que se denomina **acceso a propiedades dinámicas de objetos** necesitamos usar la notación de corchetes: `colorConfig[colors[1]]` que nos devolverá `true`, el valor de la propiedad `red` del objeto `colorConfig`.
+
 
 ---
