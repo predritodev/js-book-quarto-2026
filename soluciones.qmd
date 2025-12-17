@@ -568,7 +568,7 @@ Un `string` es un elemento iterable en JavaScript, por ende es posible usar el `
 
 La respuesta del [Reto #25](#sec-array-25) es:
 
-**D. `[{ name: "Lydia" }]`**
+**D. `[{ name: "Carmen" }]`**
 
 **Explicación:**
 
@@ -626,7 +626,7 @@ for (const item in person) {
 }
 ```
 
-La variable `item` tendrá el valor de cada llave del objeto en cada iteración; en el ejemplo al tener solo 2 llaves, primer `item` valdrá `name` y luego `age`.
+La variable `item` tendrá el valor de cada llave del objeto en cada iteración; en el ejemplo al tener solo 2 llaves, entonces `item` valdrá `name` y luego `age`.
 
 ---
 
@@ -642,7 +642,7 @@ El código JavaScript se ejecuta de arriba hacia abajo y de izquierda a derecha.
 
 Primero realizamos la suma `3 + 4`, puesto que ambos son  de tipo `number` obtenemos `7`.
 
-Ahora tenemos `7 + "5"`, como `"5"` es de tipo `string`, ahora realizamos una concatenación de valores y por `coerción de tipos` el resultado final seria `"75"` como `string`.
+Ahora tenemos `7 + "5"`, como `"5"` es de tipo `string`, ahora realizamos una concatenación de valores y por `coerción de tipos` el resultado final es `"75"` como `string`.
 
 ---
 
@@ -672,9 +672,9 @@ La respuesta del [Reto #29](#sec-array-29) es:
 
 **Explicación:**
 
-El método `map` es propio del paradigma de la programación funcional. Este método siempre retorna una nuevo arreglo.
+El método `map` es propio del paradigma de la programación funcional. Este método siempre retorna una nuevo arreglo de longitud igual al arreglo original.
 
-En el ejemplo puesto que estamos iterando sobre un arreglo de números, la condición evaluerá `true` para cada uno de los elementos del arreglo, pero hay 2 sentencias `return`. JavaScript ignora todo el código que esta después del primer `return` que encuntra. Dicho esto, tendriamos algo así:
+En el ejemplo, puesto que estamos iterando sobre un arreglo de números, la condición evaluará `true` para cada uno de los elementos del arreglo, pero hay 2 sentencias `return`. JavaScript ignora todo el código que esta después del primer `return` que encuntra. Dicho esto, tenemos algo así:
 
 ```js
 [1, 2, 3].map(num => {
@@ -683,9 +683,9 @@ En el ejemplo puesto que estamos iterando sobre un arreglo de números, la condi
 ```
 Ahora, si bien la condición se evalua a `true`, el `return` no devuelve nada, simplemente hace que el código se salga del `map`.
 
-Cuando no devolvemos nada en `return`, `map` regresa siempre `undefined`.
+Cuando no devolvemos nada en la sentencia `return`, `map` regresa siempre `undefined`.
 
-Al tener 3 elementos en el arreglo, y recordando siempre que `map` regresa un nuevo arreglo, obtenemos como resultado final un arreglo de 3 `undefined`
+Al tener 3 elementos en el arreglo, y recordando siempre que `map` regresa un nuevo arreglo, obtenemos como resultado final un arreglo de 3 `undefined`.
 
 ---
 
@@ -708,7 +708,7 @@ Dentro del `if` :
 ```js
 console.log(x + y + z);
 ```
-En el bloque del `if` no se tiene acceso a ninguna variable `x`, por lo tanto javascript subirá al siguiente contexto para buscar una variable `x`, al encontrarla recien realiza la suma `x + y + z` que sería `60`.
+En el bloque del `if` no se tiene acceso a ninguna variable `x`, por lo tanto JavaScript subirá al siguiente contexto para buscar una variable `x`, al encontrarla recien realiza la suma `x + y + z` que sería `60`.
 
 En el último `console`:
 
@@ -717,7 +717,7 @@ console.log(x + z);
 ```
 La variable `x` esta en el contexto global, por ende accedemos a su valor sin problema alguno.
 
-La variable `z` esta dentro del bloque `if` y no deberiamos poder acceder a ella, pero `z` esta declarada con `var`, esto la convierte en una variable con contexto de función y no de bloque, entonces accedemos a su valor, para poder sumar `x + z` que sería `40`.
+La variable `z` esta dentro del bloque `if` y no deberiamos poder acceder a ella, pero `z` esta declarada con `var`, esto la convierte en una variable con **contexto de función** y no de bloque, entonces accedemos a su valor, para poder sumar `x + z` que sería `40`.
 
 
 ---
@@ -771,7 +771,9 @@ Podemos llamar a la función antes de su declaración, caracteristica que se den
 Con una función de flecha esto no es posible:
 
 ```js
-console.log(addArrow(3,5)); // ReferenceError: can't access lexical declaration 'addArrow' before initialization 
+// ReferenceError: can't access lexical declaration 
+// 'addArrow' before initialization 
+console.log(addArrow(3,5)); 
 
 const addArrow = (a, b) => {
   return a + b;
@@ -800,7 +802,7 @@ La función `sayHi` consta de una sentencia `try...catch`, recordemos que si no 
 
 La respuesta del [Reto #34](#sec-array-34) es:
 
-**B. { admin: true, name: "Lydia", age: 21 }**
+**B. { admin: true, name: "Hernan", age: 21 }**
 
 **Explicación:**
 
@@ -809,7 +811,7 @@ El **spread operator** en este ejemplo se encarga de propagar el objeto `user` d
 **Sin** usar el `spread operator` tendriamos un objeto anidado:
 
 ```js
-{ admin: true, { name: "Lydia", age: 21 } }
+{ admin: true, { name: "Hernan", age: 21 } }
 ```
 
 Justamente el **spread operator** se encarga de expandir `user` para evitar el anidamiento.
@@ -881,14 +883,14 @@ Segundo, usamos el constructor `Boolean` para convertir `false` a boleano, nueva
 
 Tercero, ningún `Symbol` es igual a otro `Symbol`, por más que en el ejemplo tengan los mismos placeholders `foo`, nunca serán iguales. Entonces siempre nos dará `false`.
 
-No debemos confundir el contructor `Number` y `Boolean` por sí mismos, con dichos costructures acompañados de la palabra `new`, si hacemos lo siguiente:
+No debemos confundir el contructor `Number` y `Boolean` por sí mismos, con dichos costructores acompañados de la palabra `new`, si hacemos lo siguiente:
 
 ```js
 const a = new Number(2);
 const b = new Boolean(true);
 ```
 
-Ambas variables serán objetos creados por medio de estos contructores y no solo conversiones como en el ejercicio de este reto.
+Ambas variables serán objetos creados por medio de estos contructores y no solo conversiones como en este reto.
 
 ---
 
@@ -900,7 +902,7 @@ La respuesta del [Reto #39](#sec-array-39) es:
 
 **Explicación:**
 
-Una función asíncrona siempre regresa una **promesa** pero dicha promesa no basta con ser devuelta sino que debe ser consumida, para ello debemos usar las palabras reservadas `then` y `catch`.
+Una función asíncrona siempre regresa una **promesa** pero dicha promesa no basta con ser devuelta sino que debe ser consumida, una posible solución es usar las palabras reservadas `then` y `catch`.
 
 Cuando llamamos `getData()` no consumimos la promesa con `then`, solo llamamos a la función por ende no podemos afirmar que la promesa esta en **estado resuelto** o **estado rechazado**, en conclusión inevitablemente la promesa esta en **estado pendiente**.
 
@@ -935,11 +937,11 @@ La respuesta del [Reto #41](#sec-array-41) es:
 
 **Explicación:**
 
-Con el bucle _for-in_, podemos iterar sobre propiedades **enumerables**. Los enumerables en el arreglo son justamente sus índices. Por ello es `0` `1` `2`.
+Con el bucle _for...in_, podemos iterar sobre propiedades **enumerables**. Los enumerables en el arreglo son justamente sus índices. Por ello el resultado es `0` `1` `2`.
 
-Con un bucle _for-of_, podemos iterar sobre **iterables**. Un arreglo por definición es un iterable, en cada iteración la variable `item` es igual al elemento sobre el cual se itera en ese momento. Por ello es `"Radiohead"` `"Coldplay"` `"Nirvana"`.
+Con un bucle _for...of_, podemos recorrer sobre **iterables**. Un arreglo por definición es un iterable, en cada iteración la variable `item` es igual al elemento sobre el cual se itera en ese momento. Por ello el resultado es `"Radiohead"` `"Coldplay"` `"Nirvana"`.
 
-En la practica los bucles _for-of_ son más usados y usualmente en raras ocaciones se ven bucles _for-in_.
+En la practica los bucles _for...of_ son más usados y usualmente en raras ocaciones se ven bucles _for...in_.
 
 ---
 
@@ -951,7 +953,7 @@ La respuesta del [Reto #42](#sec-array-42) es:
 
 **Explicación:**
 
-Los arreglos en javascript pueden soportar cualquier tipo de dato incluyendo expresiones a ser evaluadas, por ello todas las operaciones aritméticas se resuelven y acomodan en los índices correspondientes del arreglo.
+Los arreglos en JavaScript pueden soportar cualquier tipo de dato incluyendo expresiones a ser evaluadas, por ello todas las operaciones aritméticas se resuelven y acomodan en los índices correspondientes del arreglo.
 
 ---
 
@@ -963,6 +965,42 @@ La respuesta del [Reto #43](#sec-array-43) es:
 
 **Explicación:**
 
-En javascript los parámetros tienen por defecto el valor `undefined`, esto quiere decir que sino pasamos ningún parámetro a una función que los necesite tendremos `undefined`.
+En JavaScript los parámetros tienen por defecto el valor `undefined`, esto quiere decir que sino pasamos ningún parámetro a una función que los necesite tendremos `undefined`.
 
 ---
+
+## Reto #44 {#sec-sol-array-44}
+
+La respuesta del [Reto #44](#sec-array-44) es:
+
+**A. `"C"`**
+
+**Explicación:**
+
+Al llamar a `getStatus` debemos tener el cuenta el scope de las variables, recuerda que tanto `let` como `const` tienen scope de bloque, por ende buscara una variable `status` dentro del bloque de `data` y regresara la cadena `"C"`.
+
+---
+
+## Reto #45 {#sec-sol-array-45}
+
+La respuesta del [Reto #45](#sec-array-45) es:
+
+**C. `ReferenceError`**
+
+**Explicación:**
+
+`const` tiene scope de bloque para las variables, cuando intentamos hacer `return message` la variable `message` no puede ser accedida. Tanto `message` en el bloque `if` como en el `else` son variables diferentes por que estan en bloques diferentes pese a que se llaman igual. Como no es posible acceder a la variable la respuesta es `ReferenceError`.
+
+---
+
+## Reto #46 {#sec-sol-array-46}
+
+La respuesta del [Reto #46](#sec-array-46) es:
+
+**B. `"I"`**
+
+**Explicación:**
+
+Las cadenas de texto en JavaScript son iterables, por ello, al igual que con los arreglos es posible acceder a sus caracteres individuales con la notación de corchetes.
+
+--

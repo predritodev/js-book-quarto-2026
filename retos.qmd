@@ -595,7 +595,7 @@ setInterval(() => console.log("Hi"), 1000);
 
 ---
 
-## Reto #24: Spread operator con cedenas {#sec-array-24}
+## Reto #24: Spread operator con cadenas {#sec-array-24}
 
 ::: {.callout-caution title="Dificultad" collapse="true"}
 **Básico**
@@ -711,7 +711,7 @@ const num = parseInt("7*6", 10);
 console.log(num); 
 ```
 
-**Pista:** `parseInt()` convierte un número a una base númerica.
+**Pista:** `parseInt()` convierte un número a una base númerica dada.
 
 * A. `42`
 * B. `"42"`
@@ -737,7 +737,7 @@ console.log(num);
 });
 ```
 
-**Pista:** 
+**Pista:** Ojo con la sentencia `return`
 
 * A. `[]`
 * B. `[null, null, null]`
@@ -981,7 +981,7 @@ multiply(value);
 multiply(value);
 ```
 
-**Pista:** Diferenciar entre las referencias de un objeto como parámetro en una función.
+**Pista:** Atención al objeto como parámetro en la función y los valores por defecto.
 
 * A. `20`, `40`, `80`, `160`
 * B. `20`, `40`, `20`, `40`
@@ -992,7 +992,7 @@ multiply(value);
 
 ---
 
-## Reto #38:  {#sec-array-38}
+## Reto #38: `Number`, `Boolean`, `Symbol` {#sec-array-38}
 
 ::: {.callout-caution title="Dificultad" collapse="true"}
 **Básico**
@@ -1045,7 +1045,7 @@ console.log(data);
 
 ---
 
-## Reto #40:  {#sec-array-40}
+## Reto #40: `Array.push` {#sec-array-40}
 
 ::: {.callout-caution title="Dificultad" collapse="true"}
 **Básico**
@@ -1082,7 +1082,7 @@ console.log(result);
 **¿Qué imprime este código?**
 
 ```js
-const bands = ["Radiohead", "Coldplay", "Nirvana", "Oasis"]
+const bands = ["Radiohead", "Coldplay", "Nirvana"]
 
 for (let item in bands) {
   console.log(item)
@@ -1117,7 +1117,7 @@ const list = [1 + 2, 1 * 2, 1 / 2]
 console.log(list)
 ```
 
-**Pista:** 
+**Pista:** Los elementos de un arreglo pueden contener expresiones a ser evaluadas por el interprete de JavaScript.
 
 * A. `["1 + 2", "1 * 2", "1 / 2"]`
 * B. `["12", 2, 0.5]`
@@ -1128,7 +1128,7 @@ console.log(list)
 
 ---
 
-## Reto #43: Olvide el parámetro de la función {#sec-array-43}
+## Reto #43: Olvidar el parámetro de la función {#sec-array-43}
 
 ::: {.callout-caution title="Dificultad" collapse="true"}
 **Básico**
@@ -1144,7 +1144,7 @@ function sayHi(name) {
 console.log(sayHi())
 ```
 
-**Pista:** 
+**Pista:** No imprime ningún tipo de error.
 
 * A. `Hi there`
 * B. `Hi there, undefined`
@@ -1152,5 +1152,95 @@ console.log(sayHi())
 * D. `ReferenceError`
 
 **[Ver solución](#sec-sol-array-43)**
+
+---
+
+## Reto #44: Otra vez el alcance de las variables {#sec-array-44}
+
+::: {.callout-caution title="Dificultad" collapse="true"}
+**Básico**
+:::
+
+**¿Qué imprime este código?**
+
+```js
+var status = "A"
+
+setTimeout(() => {
+  const status = "B"
+
+  const data = {
+    status: "C",
+    getStatus() {
+      return this.status
+    }
+  }
+  console.log(data.getStatus())
+}, 0)
+```
+
+**Pista:** `var` tiene scope de función mientras que `const`scope de bloque.
+
+* A. `"C"`
+* B. `"B"`
+* C. `"A"`
+* D. `ReferenceError`
+
+**[Ver solución](#sec-sol-array-44)**
+
+---
+
+## Reto #45: `const` y el alcance de bloque {#sec-array-45}
+
+::: {.callout-caution title="Dificultad" collapse="true"}
+**Básico**
+:::
+
+**¿Qué imprime este código?**
+
+```js
+function checkAge(age) {
+  if (age < 18) {
+    const message = "Sorry, you're too young."
+  } else {
+    const message = "Yay! You're old enough!"
+  }
+  return message
+}
+
+console.log(checkAge(21))
+```
+
+**Pista:** El valor de una variable `const` solo existe en el bloque donde fue declarada.
+
+* A. `"Sorry, you're too young."`
+* B. `"Yay! You're old enough!"`
+* C. `ReferenceError`
+* D. `undefined`
+
+**[Ver solución](#sec-sol-array-45)**
+
+---
+
+## Reto #46: I want pizza {#sec-array-46}
+
+::: {.callout-caution title="Dificultad" collapse="true"}
+**Básico**
+:::
+
+**¿Qué imprime este código?**
+
+```js
+console.log("I want pizza"[0])
+```
+
+**Pista:** Las cadenas, al igual que los arreglos, son elementos iterables.
+
+* A. `"""`
+* B. `"I"`
+* C. `SyntaxError`
+* D. `undefined`
+
+**[Ver solución](#sec-sol-array-46)**
 
 ---
