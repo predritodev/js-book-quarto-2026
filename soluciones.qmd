@@ -1334,5 +1334,131 @@ Cuando hacemos `colorConfig.colors[1]` literalmente estamos buscando una propied
 
 Cuando queremos usar variables para hacer lo que se denomina **acceso a propiedades dinámicas de objetos** necesitamos usar la notación de corchetes: `colorConfig[colors[1]]` que nos devolverá `true`, el valor de la propiedad `red` del objeto `colorConfig`.
 
+---
+
+## Reto #61 {#sec-sol-array-61}
+
+La respuesta del [Reto #61](#sec-array-61) es:
+
+**D. `splice`**
+
+**Explicación:**
+
+`splice` es un método mutable de arreglos capaz de agregar, eliminar o reemplazar los elementos del mismo.
+
+El resto de los métodos son usados mucho en programación funcional y por ende son **inmutables**.
 
 ---
+
+## Reto #62 {#sec-sol-array-62}
+
+La respuesta del [Reto #62](#sec-array-62) es:
+
+**A. `['pizza', 'chocolat', 'avocat', 'egg']`**
+
+**Explicación:**
+
+Tenemos un arreglo `food` y un objeto `info` independiente uno del otro.
+
+`info` solo tiene la propiedad `favoriteFood` que apunta al índice `0` del arreglo `food`, por lo tanto `info` seria igual a:
+
+```js
+const info = { favoriteFood:'pizza'}
+```
+
+Posteriormente "pisamos" o sobre escribimos este valor modifiando `'pizza'` por `'apple'`.
+
+```js
+info.favoriteFood = 'apple'
+```
+
+Ahora `info` se ve así:
+
+```js
+const info = { favoriteFood:'apple'}
+```
+
+En ningún momento modificamos de ninguna manera el array `food`, por ende sigue siendo el mismo: `['pizza', 'chocolat', 'avocat', 'egg']`
+
+
+---
+
+## Reto #63 {#sec-sol-array-63}
+
+La respuesta del [Reto #63](#sec-array-63) es:
+
+**D. `ReferenceError`**
+
+**Explicación:**
+
+Las variables declaradas con `let` y `const` tienen **scope de bloque** es por este motivo que si bien tenemos 2 variables con el nombre `name`, ambas son diferentes e independientes en sus respectivos scopes.
+
+La función `getName` intenta imprimir por consola `name` antes de ser declarada, por **hoisting** el interprete de JavaScript hará que `name` entre en lo que se denomina **Temporal Dead Zone**, una región del código donde la variable esta declarada pero no es posible acceder a ella.
+
+Todo esto producirá un `ReferenceError`.
+
+Si dentro de la función `getName` la variable `name` estuviera declara con `var`:
+
+```js
+function getName() {
+  console.log(name)
+  var name = 'Sarah'
+}
+```
+Por **hoisting** el resultado seria `undefined` puesto que la **Temporal Dead Zone** solo existe con variables declaradas con `let` y `const`.
+
+---
+
+## Reto #64 {#sec-sol-array-64}
+
+La respuesta del [Reto #64](#sec-array-64) es:
+
+**A. `I love to program`**
+
+**Explicación:**
+
+Al usar los **backtiks de ES6**, las expresiones se evaluan primero.
+
+En este caso la expresión completa es:
+
+```js
+${(x => x)('I love')}
+```
+
+Donde:
+* `(x => x)` es una función anónima de tipo flecha, que recibe un parámetro `x` y con un **return implícito** lo devuelve.
+
+* `('I love')` es la llamada a la función anónima, acá pasamos como argumento a la función la cadena `I love`.
+
+Entonces, la función es llamada y regresa únicamente el parámetro que se le pasa. Por ello la respuesta es `I love to program`.
+
+---
+
+## Reto #65 {#sec-sol-array-65}
+
+La respuesta del [Reto #65](#sec-array-65) es:
+
+**C. `string`**
+
+**Explicación:**
+
+La función `sayHi` regresa una otra función de tipo flecha, dicha función es anónima y solo devuelve la cadena `Hi JavaScript`, el detalle acá es que esta función anónima una vez regresada es inmediatamente llamada.
+
+Entonces `sayHi` será igual a la cadena `Hi Javascript` y en conclusión su `typeof` igual a `string`.
+
+Podriamos ver también este ejemplo si extraemos la función anónima y escribimos en una función auxiliar por aparte, de la siguente manera:
+
+```js
+const aux = () => {
+  return "Hi Javascript!"
+}
+
+const sayHi = () => {
+  return aux();
+}
+
+console.log(typeof sayHi()); // string
+```
+
+---
+
