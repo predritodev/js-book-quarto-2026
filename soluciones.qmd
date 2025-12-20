@@ -1700,3 +1700,112 @@ En este caso usar `length` y setterlo a `0` es una buena manera de borrar todos 
 Saber esto es muy útil cuando tengamos qu eliminar algunos o todos los elementos de un arreglo.
 
 ---
+
+## Reto #76 {#sec-sol-array-76}
+
+La respuesta del [Reto #76](#sec-array-76) es:
+
+**A. `true`**
+
+**Explicación:**
+
+Una manera adecuada de comprobar que un arreglo es efectivamente un arreglo es usar el constructor `Array` con su método `isArray`.
+
+Como `arr` es un arreglo (vacío pero arreglo al fin), entonces regresamos `true`.
+
+Como los arreglos no son un tipo de dato per se en JavaScript, la mejor manera de comprobar si un arreglo es un arreglo es de esta manera.
+
+¿Te cuento un secreto? Esta pregunta es bastante frecuente en entrevistas laborales, pero shhh, no se lo digas a nadie.
+
+---
+
+## Reto #77 {#sec-sol-array-77}
+
+La respuesta del [Reto #77](#sec-array-77) es:
+
+**A. `true`**
+
+**Explicación:**
+
+Pese a que `null` es un primitivo, debido a un bug del lenguaje su tipo de dato es `object`.
+
+Este bug es muy antiguo y se determino que no vale la pena arreglarlo al día de hoy ya que se pueden romper muchos programas que dependen de este error.
+
+Este bug es bastante conocido en programadores experimentados y usado en entrevistas laborales para estimar tu conocimiento del lenguaje.  
+
+---
+
+## Reto #78 {#sec-sol-array-78}
+
+La respuesta del [Reto #78](#sec-array-78) es:
+
+**A. Los 3 imprimen: `['A','l','e','j','a','n','d','r','o']`**
+
+**Explicación:**
+
+* `split` es un **String Method** que se encarga de convertir una cadena en arreglo, donde cada elemento del arreglo lo determina el separador que recibe `split` como parámetro. 
+Como le pasamos una cadena vacía entonces `Alejandro` se convierte en `['A','l','e','j','a','n','d','r','o']`.
+
+* Spread Operator (`...`) expandirá o propagará la cadena `Alejandro` en `['A','l','e','j','a','n','d','r','o']`. El Spread Operator no solo funciona con arreglos, también puede ser usado con cadenas.
+
+* `Array.from` es desde ES6 una manera más de convertir cadenas a arreglos, tambiém regresa `['A','l','e','j','a','n','d','r','o']`.
+
+
+---
+
+## Reto #79 {#sec-sol-array-79}
+
+La respuesta del [Reto #79](#sec-array-79) es:
+
+**D. `"olleh"`**
+
+**Explicación:**
+
+Estos 3 métodos de cadenas se preguntan mucho en entrevistas.
+
+Veamos paso por paso que sucede:
+
+* Aplicamos `split`:
+
+`split` convierte una cadena en arreglo dependiendo del parámetro que se le pase, en este caso una cedena vacía: `['h','e','l','l','o']`.
+
+* Aplicamos `reverse`:
+
+`reverse` es un método de arreglos, invierte todos los elementos del arreglo: `['o','l','l','e','h']`.
+
+* Aplicamos `join`:
+
+`join` es un método de arreglos que convierte un arreglo en cadena nuevamente dependiendo del parámetro que se le pase, en este caso una cadena vacía:  `"olleh"`
+
+---
+
+## Reto #80 {#sec-sol-array-80}
+
+La respuesta del [Reto #80](#sec-array-80) es:
+
+**C. `Ambas`**
+
+**Explicación:**
+
+Por definición una Higher Order Function es:
+
+* Una función que regresa otra función.
+* Una función que puede tener funciones en sus parámetros.
+
+`multiply` aunque no lo parezca regresa otra función, podría escribirse también de la siguiente manera:
+
+```js
+function multiply(a){
+  return function(b){
+    return a * b;
+  }
+}
+```
+
+Acá se observa mejor que `multiply` regresa una función anónima que realiza la operación del producto, es mucho más sencillo usar retornos implícitos para poder escribir lo mismo en una sola línea como en el ejemplo original.
+
+`test` recibe 2 parámetros, uno de ellos es una función que en el ejemplo es `console.log` de javascript nativo, esto es motivo suficiente para que sea considerada una **Higher Order Function**.
+
+
+
+---
