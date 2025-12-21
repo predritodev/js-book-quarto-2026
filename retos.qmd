@@ -2208,30 +2208,31 @@ console.log(test("Ana", console.log));
 
 ---
 
-## Reto #81: {#sec-array-81}
+## Reto #81: El método `flat` de los arreglos {#sec-array-81}
 
 ::: {.callout-caution title="Dificultad" collapse="true"}
-**Intermedio**
+**Básico**
 :::
 
 **¿Qué imprime este código?**
 
 ```js
-
+const numbers = [1, 2, [3, 4], 5, 6, [7, 8], 9, 0];
+console.log(numbers.flat());
 ```
 
-**Pista:** 
+**Pista:** `flat` permite aplanar arreglos en JavaScript.
 
-* A. `multiply`
-* B. `test`
-* C. `Ambas`
-* D. `Ninguna`
+* A. `Error, el método flat no existe.`
+* B. `[1, 2, 3, 4, 5, 6, 7, 8, 9, 0]`
+* C. `[1, 2, 3, 4, 5, 6, [7, 8], 9, 0]`
+* D. `[1, 2, [3, 4], 5, 7, 8, 9, 0]`
 
 **[Ver solución](#sec-sol-array-81)**
 
 ---
 
-## Reto #82: {#sec-array-82}
+## Reto #82: El método `repeat` de las cadenas {#sec-array-82}
 
 ::: {.callout-caution title="Dificultad" collapse="true"}
 **Intermedio**
@@ -2240,67 +2241,105 @@ console.log(test("Ana", console.log));
 **¿Qué imprime este código?**
 
 ```js
-
+console.log("--- Menu ---");
+console.log("tea" + ".".repeat(5) + ":" + "$1.50");
+console.log("coffee" + ".".repeat(3.2) + ":" + "$3.75");
+console.log("beer" + ".".repeat(-1) + ":" + "$5.00");
 ```
 
-**Pista:** 
+**Pista:** `repeat` es un método de cadenas poco conocido pero muy útil para repetir cadenas de manera controlada.
 
-* A. `multiply`
-* B. `test`
-* C. `Ambas`
-* D. `Ninguna`
+* A. 
+
+```js
+--- Menu ---
+tea.....:$1.50
+coffee..:$3.75
+RangeError: repeat count must be non-negative
+```
+* B. 
+
+```js
+--- Menu ---
+tea.....:$1.50
+coffee..:$3.75
+beer....:$5.00
+```
+
+* C. 
+
+```js
+--- Menú ---
+té.....:$1.50
+RangeError: repeat count must be non-decimal numbers
+RangeError: repeat count must be non-negative numbers
+```
 
 **[Ver solución](#sec-sol-array-82)**
 
 ---
 
-## Reto #83: {#sec-array-83}
+## Reto #83: `var`, `let` y `const` y el alcance global {#sec-array-83}
 
 ::: {.callout-caution title="Dificultad" collapse="true"}
-**Intermedio**
+**Básico**
 :::
 
 **¿Qué imprime este código?**
 
 ```js
+var name = "Camila";
+let lastName = "Rodriguez";
+const age = 25;
 
+const getPersonalData = () => {
+  console.log(name);
+  console.log(lastName);
+  console.log(age);
+}
+
+console.log(getPersonalData());
 ```
 
-**Pista:** 
+**Pista:** Diferenciar entre alcance global y de bloque.
 
-* A. `multiply`
-* B. `test`
-* C. `Ambas`
-* D. `Ninguna`
+* A. `Camila`, `Rodriguez`, `25`
+* B. `Camila`, `undefined`, `undefined`
+* C. `ReferenceError`
+* D. `undefined`, `Rodriguez`, `25`
 
 **[Ver solución](#sec-sol-array-83)**
 
 ---
 
-## Reto #84: {#sec-array-84}
+## Reto #84: Trailing commas {#sec-array-84}
 
 ::: {.callout-caution title="Dificultad" collapse="true"}
 **Intermedio**
 :::
 
-**¿Qué imprime este código?**
+**Explica este código JavaScript**
+
+Nota que en la línea `age:7,` termina con `,` pero no hay ninguna sentencia del objeto `dog` después 😯
 
 ```js
-
+const dog = {
+  id:1,
+  name:"Boby",
+  age:7,
+};
 ```
 
-**Pista:** 
+**Pista:** Esta sintaxis es común en lenguajes modernos para facilitar el control de versiones al añadir nuevos elementos sin modificar líneas anteriores.
 
-* A. `multiply`
-* B. `test`
-* C. `Ambas`
-* D. `Ninguna`
+* A. `El código es incorrecto, no es posible escribir una , al final de una sentencia de objeto.`
+* B. `El código es correcto, esta característica de JavaScript se denomina Trailing commas y es perfectamente válido.`
 
 **[Ver solución](#sec-sol-array-84)**
 
 ---
 
-## Reto #85: {#sec-array-85}
+## Reto #85: Algo raro pasa con las palabras reservadas {#sec-array-85}
 
 ::: {.callout-caution title="Dificultad" collapse="true"}
 **Intermedio**
@@ -2309,15 +2348,20 @@ console.log(test("Ana", console.log));
 **¿Qué imprime este código?**
 
 ```js
-
+const test = {
+  if:"It's a conditional",
+  let: "It's a way to declare variables",
+  for: "It's a loop",
+};
+console.log(test.for); 
 ```
 
-**Pista:** 
+**Pista:** Cuidado con el uso de palabras reservadas como nombres de `keys` en objetos.
 
-* A. `multiply`
-* B. `test`
-* C. `Ambas`
-* D. `Ninguna`
+* A. `SyntaxError: unexpected token: keyword 'for'`
+* B. `Es un bucle`
+* C. `ReferenceError`
+* D. `Ninguna de las anteriores`
 
 **[Ver solución](#sec-sol-array-85)**
 

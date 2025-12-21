@@ -1812,9 +1812,13 @@ Acá se observa mejor que `multiply` regresa una función anónima que realiza l
 
 La respuesta del [Reto #81](#sec-array-81) es:
 
-**C. `Ambas`**
+**B. `[1, 2, 3, 4, 5, 6, 7, 8, 9, 0]`**
 
 **Explicación:**
+
+`flat` es un **array method** que crea un nuevo arreglo con los elementos concatenados recursivamente hasta una profundidad especificada.
+
+Dicho en otras palabras, permite "aplanar" un arreglo anidado un número determinado de veces. Es una buena alernativa a usar por ejemplo `reduce` para hacer lo mismo. No muchos desarrolladores conocen esta característica en el lenguaje.
 
 ---
 
@@ -1822,9 +1826,24 @@ La respuesta del [Reto #81](#sec-array-81) es:
 
 La respuesta del [Reto #82](#sec-array-82) es:
 
-**C. `Ambas`**
+**A.** 
+
+```js
+--- Menu ---
+tea.....:$1.50
+coffee..:$3.75
+RangeError: repeat count must be non-negative
+```
 
 **Explicación:**
+
+El método `repeat` se encarga como su nombre lo dice de repetir `n` veces una cadena bajo ciertas condiciones:
+
+* `n` debe ser un número entre `0` e infinito que no desborde el tamaño máximo para una cadena (`2^28 - 1`).
+
+* Sí `n` es un decimal (como en el ejemplo) entonces JavaScript redondea **hacia abajo** dicho número y ejecuta la operación con normalidad.
+
+* Sí `n` es un número negativo lanzará un `RangeError` indicando que no se pueden usar negativos.
 
 ---
 
@@ -1832,9 +1851,13 @@ La respuesta del [Reto #82](#sec-array-82) es:
 
 La respuesta del [Reto #83](#sec-array-83) es:
 
-**C. `Ambas`**
+**A. `Camila`, `Rodriguez`, `25`**
 
 **Explicación:**
+
+Independientemente de la palabra reservada con la que declaremos una variable (`var`, `let`, `const`), esta tendrá **scope global** siempre y cuando no este dentro de un bloque o dentro de una función. 
+
+Por este motivo, `name`, `lastName` y `age` son **variables de scope global** y por ello pueden ser accedidas desde la función `getPersonalData`.
 
 ---
 
@@ -1842,9 +1865,34 @@ La respuesta del [Reto #83](#sec-array-83) es:
 
 La respuesta del [Reto #84](#sec-array-84) es:
 
-**C. `Ambas`**
+**B. `El código es correcto, esta característica de JavaScript se denomina Trailing commas y es perfectamente válido.`**
 
 **Explicación:**
+
+**Trailing commas** es una peculiaridad de ES2015.
+
+Si deseas agregar una nueva propiedad, puede agregar una nueva línea sin modificar la última línea anterior si esa línea ya usa una coma final. Esto hace que las diferencias de control de versiones sean más limpias y que la edición del código sea menos problemática. 
+
+Esta característica puede ser usada en **objetos**, **arreglos**, **desestructuración de arreglos y objetos**, **parámetros de funciones**, **llamadas a funciones**, **métodos de clases**, etc.
+Por ejemplo:
+
+```js
+const dog = {
+  id:1,
+  name:"Boby",
+  age:7,
+};
+const {name, age,} = dog;
+
+const numbers = [1,2,3,4,5,];
+const [one,two,] = numbers;
+
+const greeting = (name,)=>{
+  return `Hello ${name}`
+}
+console.log(greeting("Cris",)); // Hello Cris
+
+```
 
 ---
 
@@ -1852,9 +1900,15 @@ La respuesta del [Reto #84](#sec-array-84) es:
 
 La respuesta del [Reto #85](#sec-array-85) es:
 
-**C. `Ambas`**
+**B. `Es un bucle`**
 
 **Explicación:**
+
+Dentro de un objeto literal es posible usar nombres de palabras reservadas del lenguaje como nombres de `keys`, esto es perfectamente valido.
+
+Pese a que es valido, se recomienda no hacer esto y respetar las palabras reservadas de JavaScript. ¡No hagas nunca esto!
+
+Solo se consciente que es posible. 
 
 ---
 
