@@ -1806,6 +1806,205 @@ Acá se observa mejor que `multiply` regresa una función anónima que realiza l
 
 `test` recibe 2 parámetros, uno de ellos es una función que en el ejemplo es `console.log` de javascript nativo, esto es motivo suficiente para que sea considerada una **Higher Order Function**.
 
+---
 
+## Reto #81 {#sec-sol-array-81}
+
+La respuesta del [Reto #81](#sec-array-81) es:
+
+**C. `Ambas`**
+
+**Explicación:**
 
 ---
+
+## Reto #82 {#sec-sol-array-82}
+
+La respuesta del [Reto #82](#sec-array-82) es:
+
+**C. `Ambas`**
+
+**Explicación:**
+
+---
+
+## Reto #83 {#sec-sol-array-83}
+
+La respuesta del [Reto #83](#sec-array-83) es:
+
+**C. `Ambas`**
+
+**Explicación:**
+
+---
+
+## Reto #84 {#sec-sol-array-84}
+
+La respuesta del [Reto #84](#sec-array-84) es:
+
+**C. `Ambas`**
+
+**Explicación:**
+
+---
+
+## Reto #85 {#sec-sol-array-85}
+
+La respuesta del [Reto #85](#sec-array-85) es:
+
+**C. `Ambas`**
+
+**Explicación:**
+
+---
+
+## Reto #86 {#sec-sol-array-86}
+
+La respuesta del [Reto #86](#sec-array-86) es:
+
+**C. `Ambas`**
+
+**Explicación:**
+
+---
+
+## Reto #87 {#sec-sol-array-87}
+
+La respuesta del [Reto #87](#sec-array-87) es:
+
+**C. `Ambas`**
+
+**Explicación:**
+
+---
+
+## Reto #88 {#sec-sol-array-88}
+
+La respuesta del [Reto #88](#sec-array-88) es:
+
+**C. `Ambas`**
+
+**Explicación:**
+
+---
+
+## Reto #89 {#sec-sol-array-89}
+
+La respuesta del [Reto #89](#sec-array-89) es:
+
+**C. `Ambas`**
+
+**Explicación:**
+
+---
+
+## Reto #90 {#sec-sol-array-90}
+
+La respuesta del [Reto #90](#sec-array-90) es:
+
+**C. `Ambas`**
+
+**Explicación:**
+
+---
+
+## Reto #91 {#sec-sol-array-91}
+
+La respuesta del [Reto #91](#sec-array-91) es:
+
+**C. `Ambas`**
+
+**Explicación:**
+
+---
+
+## Reto #92 {#sec-sol-array-92}
+
+La respuesta del [Reto #92](#sec-array-92) es:
+
+**C. `Ambas`**
+
+**Explicación:**
+
+---
+
+## Reto #93 {#sec-sol-array-93}
+
+La respuesta del [Reto #93](#sec-array-93) es:
+
+**C. `Ambas`**
+
+**Explicación:**
+
+---
+
+## Reto #94 {#sec-sol-array-94}
+
+La respuesta del [Reto #94](#sec-array-94) es:
+
+**C. `Ambas`**
+
+**Explicación:**
+
+---
+
+## Reto #95 {#sec-sol-array-95}
+
+La respuesta del [Reto #95](#sec-array-95) es:
+
+**C. `Ambas`**
+
+**Explicación:**
+
+---
+
+## Reto #96 {#sec-sol-array-96}
+
+La respuesta del [Reto #96](#sec-array-96) es:
+
+**C. `Ambas`**
+
+**Explicación:**
+
+---
+
+## Reto #97 {#sec-sol-array-97}
+
+La respuesta del [Reto #97](#sec-array-97) es:
+
+**C. `Ambas`**
+
+**Explicación:**
+
+---
+
+## Reto #98 {#sec-sol-array-98}
+
+La respuesta del [Reto #98](#sec-array-98) es:
+
+**C. `Ambas`**
+
+**Explicación:**
+
+---
+
+## Reto #99 {#sec-sol-array-99}
+
+La respuesta del [Reto #99](#sec-array-99) es:
+
+**C. `Ambas`**
+
+**Explicación:**
+
+---
+
+## Reto #100 {#sec-sol-array-100}
+
+La respuesta del [Reto #100](#sec-array-100) es:
+
+**C. `Ambas`**
+
+**Explicación:**
+
+---
+

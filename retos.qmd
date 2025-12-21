@@ -2207,3 +2207,342 @@ console.log(test("Ana", console.log));
 **[Ver solución](#sec-sol-array-80)**
 
 ---
+
+## Reto #81: {#sec-array-81}
+
+::: {.callout-caution title="Dificultad" collapse="true"}
+**Intermedio**
+:::
+
+**¿Qué imprime este código?**
+
+```js
+
+```
+
+**Pista:** 
+
+* A. `multiply`
+* B. `test`
+* C. `Ambas`
+* D. `Ninguna`
+
+**[Ver solución](#sec-sol-array-81)**
+
+---
+
+## Reto #82: {#sec-array-82}
+
+::: {.callout-caution title="Dificultad" collapse="true"}
+**Intermedio**
+:::
+
+**¿Qué imprime este código?**
+
+```js
+
+```
+
+**Pista:** 
+
+* A. `multiply`
+* B. `test`
+* C. `Ambas`
+* D. `Ninguna`
+
+**[Ver solución](#sec-sol-array-82)**
+
+---
+
+## Reto #83: {#sec-array-83}
+
+::: {.callout-caution title="Dificultad" collapse="true"}
+**Intermedio**
+:::
+
+**¿Qué imprime este código?**
+
+```js
+
+```
+
+**Pista:** 
+
+* A. `multiply`
+* B. `test`
+* C. `Ambas`
+* D. `Ninguna`
+
+**[Ver solución](#sec-sol-array-83)**
+
+---
+
+## Reto #84: {#sec-array-84}
+
+::: {.callout-caution title="Dificultad" collapse="true"}
+**Intermedio**
+:::
+
+**¿Qué imprime este código?**
+
+```js
+
+```
+
+**Pista:** 
+
+* A. `multiply`
+* B. `test`
+* C. `Ambas`
+* D. `Ninguna`
+
+**[Ver solución](#sec-sol-array-84)**
+
+---
+
+## Reto #85: {#sec-array-85}
+
+::: {.callout-caution title="Dificultad" collapse="true"}
+**Intermedio**
+:::
+
+**¿Qué imprime este código?**
+
+```js
+
+```
+
+**Pista:** 
+
+* A. `multiply`
+* B. `test`
+* C. `Ambas`
+* D. `Ninguna`
+
+**[Ver solución](#sec-sol-array-85)**
+
+---
+
+## Reto #86: {#sec-array-86}
+
+::: {.callout-caution title="Dificultad" collapse="true"}
+**Intermedio**
+:::
+
+**¿Qué imprime este código?**
+
+```js
+
+```
+
+**Pista:** 
+
+* A. `multiply`
+* B. `test`
+* C. `Ambas`
+* D. `Ninguna`
+
+**[Ver solución](#sec-sol-array-86)**
+
+---
+
+## Reto #87: {#sec-array-87}
+
+::: {.callout-caution title="Dificultad" collapse="true"}
+**Intermedio**
+:::
+
+**¿Qué imprime este código?**
+
+```js
+
+```
+
+**Pista:** 
+
+* A. `multiply`
+* B. `test`
+* C. `Ambas`
+* D. `Ninguna`
+
+**[Ver solución](#sec-sol-array-87)**
+
+---
+
+## Reto #88: {#sec-array-88}
+
+::: {.callout-caution title="Dificultad" collapse="true"}
+**Intermedio**
+:::
+
+**¿Qué imprime este código?**
+
+```js
+
+```
+
+**Pista:** 
+
+* A. `multiply`
+* B. `test`
+* C. `Ambas`
+* D. `Ninguna`
+
+**[Ver solución](#sec-sol-array-88)**
+
+---
+
+## Reto #89: {#sec-array-89}
+
+::: {.callout-caution title="Dificultad" collapse="true"}
+**Intermedio**
+:::
+
+**¿Qué imprime este código?**
+
+```js
+
+```
+
+**Pista:** 
+
+* A. `multiply`
+* B. `test`
+* C. `Ambas`
+* D. `Ninguna`
+
+**[Ver solución](#sec-sol-array-89)**
+
+---
+
+## Reto #90: {#sec-array-90}
+
+::: {.callout-caution title="Dificultad" collapse="true"}
+**Intermedio**
+:::
+
+**¿Qué imprime este código?**
+
+```js
+
+```
+
+**Pista:** 
+
+* A. `multiply`
+* B. `test`
+* C. `Ambas`
+* D. `Ninguna`
+
+**[Ver solución](#sec-sol-array-90)**
+
+---
+
+## Reto #91: {#sec-array-91}
+
+::: {.callout-caution title="Dificultad" collapse="true"}
+**Intermedio**
+:::
+
+**¿Qué imprime este código?**
+
+```js
+
+```
+
+**Pista:** 
+
+* A. `multiply`
+* B. `test`
+* C. `Ambas`
+* D. `Ninguna`
+
+**[Ver solución](#sec-sol-array-91)**
+
+---
+
+## Reto #92: {#sec-array-92}
+
+::: {.callout-caution title="Dificultad" collapse="true"}
+**Intermedio**
+:::
+
+**¿Qué imprime este código?**
+
+```js
+
+```
+
+**Pista:** 
+
+* A. `multiply`
+* B. `test`
+* C. `Ambas`
+* D. `Ninguna`
+
+**[Ver solución](#sec-sol-array-92)**
+
+---
+
+## Reto #93: {#sec-array-93}
+
+::: {.callout-caution title="Dificultad" collapse="true"}
+**Intermedio**
+:::
+
+**¿Qué imprime este código?**
+
+```js
+
+```
+
+**Pista:** 
+
+* A. `multiply`
+* B. `test`
+* C. `Ambas`
+* D. `Ninguna`
+
+**[Ver solución](#sec-sol-array-93)**
+
+---
+
+## Reto #94: {#sec-array-94}
+
+::: {.callout-caution title="Dificultad" collapse="true"}
+**Intermedio**
+:::
+
+**¿Qué imprime este código?**
+
+```js
+
+```
+
+**Pista:** 
+
+* A. `multiply`
+* B. `test`
+* C. `Ambas`
+* D. `Ninguna`
+
+**[Ver solución](#sec-sol-array-94)**
+
+---
+
+## Reto #95: {#sec-array-95}
+
+::: {.callout-caution title="Dificultad" collapse="true"}
+**Intermedio**
+:::
+
+**¿Qué imprime este código?**
+
+```js
+
+```
+
+**Pista:** 
+
+* A. `multiply`
+* B
