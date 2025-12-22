@@ -2135,9 +2135,31 @@ En JavaScript existen 4 maneras de obtener un `undefined` como resultado:
 
 La respuesta del [Reto #96](#sec-array-96) es:
 
-**C. `Ambas`**
+**B. `4`, `3`, `Error: missing parameters`**
 
 **Explicación:**
+
+**Primer caso:**
+
+Simple suma de números enteros.
+
+**Segundo caso:**
+
+Por inferencia de tipos, el parámetro `true` se convierte en `1`, por ello el resultado es `3`.
+
+**Tercer caso:**
+
+En el `if` usamos el operador de negación para la validación de parámetros, esto hace que los valores falsy también se vean afectados y nos arroje la excepción. Para arreglar esto podríamos hacer lo siguiente:
+
+```js
+const sumar = (a,b) => {
+  if(a === undefined || b === undefined){
+    throw new Error("faltan parametros");
+  }
+  return a + b;
+}
+```
+De esa manera no solo cuando alguno de los parámtros no este definido en la llamada de la función se lanza la excepción.
 
 ---
 
@@ -2145,9 +2167,33 @@ La respuesta del [Reto #96](#sec-array-96) es:
 
 La respuesta del [Reto #97](#sec-array-97) es:
 
-**C. `Ambas`**
+**A. `true`, `false`, `false`, `true`, `true`**
 
 **Explicación:**
+
+El constructor `Boolean` permite convertir valores a tipo boolean.
+
+Los valores `truthy` como el número `37`, un objeto vacío, o un `Symbol` infieren a `true` sin ninguna complicación.
+
+Valores como `NaN`, cadenas vacías o `0` al ser considerados valores `falsy` inferirán a `false`.
+
+A continuación una tabla que resume todas las posibles conversiones a boolean:
+
+
+| `x`              | `Boolean(x)`                      |
+| ---------------- | --------------------------------- |
+| `undefined`      | `false`                           |
+| `null`           | `false`                           |
+| `true` o `false` | Sin cambios                       |
+| `number`         | `0` => `false`,  `NaN` => `false` |
+|                  | Cualquier otro `number` => `true` |
+| `bigint`         | `0n` => `false`                   |
+|                  | Cualquier otro `bigint` => `true` |
+| `string`         | `""`, `''`, ` `` ` =>  `false`    |
+|                  | Cualquier otro `string` => `true` |
+| `symbol`         | `true`                            |
+| `object`         | Siempre `true`                    |
+
 
 ---
 
@@ -2155,9 +2201,20 @@ La respuesta del [Reto #97](#sec-array-97) es:
 
 La respuesta del [Reto #98](#sec-array-98) es:
 
-**C. `Ambas`**
+**A. `[ 'id', 'weight', 'height' ]`**
 
 **Explicación:**
+
+Las variables de tipo `Symbol` son relativamente nuevas y tienen peculiaridades muy interesantes, una de ellas es la creación de propiedades ocultas o privadas dentro de los objetos.
+
+Por este motivo las propiedades `name` y `lastname` no se muestran al ejecutar `Object.keys(person)`, esto puede ser de mucha útilidad para no contaminar nuestros objetos de manera arbitraria y poder tener un código mas profesional y limpio en nuestros desarrollos aprovechando las últimas caracteristicas del lenguaje.
+
+Por si te lo preguntabas, ¿entonces como podemos acceder a las propiedades que son `Symbol` dentro de los objetos? Podemos hacer esto:
+
+```js
+console.log(Object.getOwnPropertySymbols(persona)); 
+// [ Symbol(firstName'), Symbol(lastName) ]
+```
 
 ---
 
@@ -2165,9 +2222,17 @@ La respuesta del [Reto #98](#sec-array-98) es:
 
 La respuesta del [Reto #99](#sec-array-99) es:
 
-**C. `Ambas`**
+**C. `null`, `Symbol("hola")`, `string`, `"hi"`**
 
 **Explicación:**
+
+El operador `||` solo se ejecuta si el primer operando es un valor falsy.
+
+El operador `&&` solo se ejecuta si el primer operando es un valor truthy.
+
+El operador `??` solo se ejecuta si el primer operando es `null` o `undefined`.
+
+Dicho todo esto y conociendo los valores truthy y los valores falsy no debería costarte llegar a que la respuesta correcta es C.
 
 ---
 
@@ -2175,9 +2240,19 @@ La respuesta del [Reto #99](#sec-array-99) es:
 
 La respuesta del [Reto #100](#sec-array-100) es:
 
-**C. `Ambas`**
+**B. `9`, `10`, `10`**
 
 **Explicación:**
+
+Javascript tiene 3 métodos pertenecientes al objecto `Math` útiles para redondeo de números.
+
+* `Math.floor()` Siempre redondea el valor hacía abajo.
+
+* `Math.ceil()` Siempre redondea el valor hacía arriba.
+
+* `Math.round()` Redondea el valor de una manera un poco mas inteligente, siguiendo las reglas de redondeo que nos enseñaron en colegio.
+
+Los 3 métodos tienen inferencia de tipos, esto quiere decir que sino le pasamos un valor numérico como parámetro, javascript intentará hacer su mejor esfuerzo para poder realizar la operación.
 
 ---
 
