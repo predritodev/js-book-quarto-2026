@@ -1462,3 +1462,120 @@ console.log(typeof sayHi()); // string
 
 ---
 
+## Reto #66 {#sec-sol-array-66}
+
+La respuesta del [Reto #66](#sec-array-66) es:
+
+**C. `{ name:"not name" }`**
+
+**Explicación:**
+
+El operador `??=` se llama **Logical Nullish Assignment** es un operador de corto circuito moderno que consiste en ejecutar porciones de código si evaluamos una condición como **nullish**, osea, como valor `null` o `undefined`.
+
+Entonces, en el ejemplo, si `obj.name` evalua como **nullish**, ejecutamos `"not name"`.
+
+Llamamos a la función `getName` pasandole un objeto vacío, entonces todas sus propiedades son `undefined` y por consecuencia `nullish`, por ello a `obj.name` se el asigna el valor `"not name"` y retornamos ese objeto.
+
+
+---
+
+## Reto #67 {#sec-sol-array-67}
+
+La respuesta del [Reto #67](#sec-array-67) es:
+
+**A. `Pedro`**
+
+**Explicación:**
+
+Inicialmente el objeto `person` tiene en la llave `name` la cadena `Fernando` pero luego hacemos `person.name = "Pedro"` que actualiza el valor de `name` perdiendo la cadena `Fernando`. 
+
+---
+
+## Reto #68 {#sec-sol-array-68}
+
+La respuesta del [Reto #68](#sec-array-68) es:
+
+**B. `true`, `false`**
+
+**Explicación:**
+
+Existe diferencias entre declarar la propiedad de un objeto como `undefined` o eliminarla con el operador unario `delete`.
+
+El objeto `band` original no tiene la propiedad `voice`, pero lo agregamos con el valor `undefined`, entonces el objeto quedaria así:
+
+```js
+const band = {
+  id:1,
+  name: "Radiohead",
+  "type of music": "Rock",
+  albums: ["Pablo Honey", "Ok Computer", "In Rainbows"],
+  voice: undefined
+};
+```
+
+Pese a que el valor de `voice` es `undefined` la propiedad existe como tal dentro del objeto, es por ello que al verificarlo con el operador `in` obtenemos `true`.
+
+Algo diferente pasa cuando eliminamos con `delete` la propiedad `tipe of music`, esta deja de existir en el objeto, no tiene ningún tipo de valor, ni siquiera `undefined`, el objeto quedaría así:
+
+```js
+const band = {
+  id:1,
+  name: "Radiohead",
+  albums: ["Pablo Honey", "Ok Computer", "In Rainbows"],
+  voice: undefined
+};
+```
+Por ello al verificar nuevamente con `in` la existencia de una propiedad con la llave `type of music` obtenemos `false`.
+
+---
+
+## Reto #69 {#sec-sol-array-69}
+
+La respuesta del [Reto #69](#sec-array-69) es:
+
+**A. `Radiohead`**
+
+**Explicación:**
+
+En JavaScript hay dos maneras de acceder a las propiedades de un objeto, con la **notación de punto** y con la **notación de corchetes**.
+
+Usamos la **notación de punto** cuando conocemos el nombre literal de la propiedad a la que queremos acceder. 
+
+La `key` a la que accedemos con esta notación debe ser un nombre de variable válido.
+
+La **notación de corchetes** se diferencia en que todo lo que este dentro de los corchetes debe ser un `string` y es evaluado por JavaScript como una expresión.
+
+Por este motivo, cuando hacemos `console.log(band["na"+"me"])` el lenguaje evalua los corchetes concatenando las cadenas de texto y mostramos por consola `Radiohead`. 
+
+---
+
+## Reto #70 {#sec-sol-array-70}
+
+La respuesta del [Reto #70](#sec-array-70) es:
+
+**A. `true`, `false`, `15`, `10`**
+
+**Explicación:**
+
+Al trabajar con objetos en JavaScript hay que difereciar 2 aspectos fundamentales: **tener 2 referencias la mismo objeto** y **tener 2 objetos diferentes pero con las mismas propiedades**.
+
+Al crear `objeto1` estamos reservando un espacio en memoria para guardar dicho objeto.
+
+Cuando asignamos `objeto1` a `objeto2` lo único que hacemos es que ambos objetos apunten a la misma dirección de memoria donde esta almacenado el `objeto1`. En otras palabras, tanto `objeto1` y `objeto2` no son independientes el uno del otro, si modificamos uno el otro también se vera afectado.
+
+Como ambos apuntan a la misma dirección de memoria entonces al usar el operador débil de comparación `==` obtenemos `true`.
+
+Pero si comparamos el `objeto1` contra el `objeto3` tendremos `false` puesto que si bien ambos tienen las mismas propiedades, estan almacenados en direcciones de memoria diferentes.
+
+Para finalizar, cuando hacemos:
+
+```js
+objeto1.valor = 15;
+console.log(objeto2.valor);
+console.log(objeto3.valor);
+```
+Modificamos el `valor` de `objeto1` pero como apuntan a la misma dirección de momoria entonces también modificamos el valor del `objeto2` a `15`.
+
+El `objeto3` no sufre ningún cambio. 
+
+---

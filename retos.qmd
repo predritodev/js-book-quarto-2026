@@ -1785,7 +1785,7 @@ const sayHi = () => {
 console.log(typeof sayHi());
 ```
 
-**Pista:** Ojo con el valor de retorno de la función `sayHi`
+**Pista:** Ojo con el valor de retorno de la función `sayHi`.
 
 * A. `number`
 * B. `object`
@@ -1793,6 +1793,156 @@ console.log(typeof sayHi());
 * D. `TypeError`
 
 **[Ver solución](#sec-sol-array-65)**
+
+---
+
+## Reto #66: Logical Nullish Assignment {#sec-array-66}
+
+::: {.callout-caution title="Dificultad" collapse="true"}
+**Intermedio**
+:::
+
+**¿Qué imprime este código?**
+
+```js
+const getName = (obj) => {
+  obj.name ??= "not name";
+  return obj;
+}
+console.log(getName({}))
+```
+
+**Pista:** Recuerda que un valor **nullish** es aquel que evalua `undefined` o `null`.
+
+* A. `undefined`
+* B. `{}`
+* C. `{ name:"not name" }`
+* D. `Ninguno de los anteriores`
+
+**[Ver solución](#sec-sol-array-66)**
+
+---
+
+## Reto #67: Actulizar propiedades de objetos {#sec-array-67}
+
+::: {.callout-caution title="Dificultad" collapse="true"}
+**Básico**
+:::
+
+**¿Qué imprime este código?**
+
+```js
+const person = {
+  id: 1,
+  name:"Fernando",
+};
+person.name = "Pedro";
+console.log(persona.nombre);
+```
+
+**Pista:** Podemos actualizar valores de una propiedad de un objeto con la notación de punto.
+
+* A. `Pedro`
+* B. `Fernando`
+* C. `null`
+* D. `TypeError`
+
+**[Ver solución](#sec-sol-array-67)**
+
+---
+
+## Reto #68: Operador `in` y eliminación de propiedades {#sec-array-68}
+
+::: {.callout-caution title="Dificultad" collapse="true"}
+**Básico**
+:::
+
+**¿Qué imprime este código?**
+
+```js
+const band = {
+  id:1,
+  name: "Radiohead",
+  "type of music": "Rock",
+  albums: ["Pablo Honey", "Ok Computer", "In Rainbows"]
+};
+
+band.voice = undefined;
+console.log("voice" in band);
+delete band["type of music"];
+console.log("type of music" in band);
+```
+
+**Pista:** `in` sirve para poder verificar si una propiedad existe en un objeto.
+
+* A. `false`, `false`
+* B. `true`, `false`
+* C. `false`, `true`
+* D. `undefined`, `true`
+
+**[Ver solución](#sec-sol-array-68)**
+
+---
+
+## Reto #69: Propiedades dinámicas de objetos {#sec-array-69}
+
+::: {.callout-caution title="Dificultad" collapse="true"}
+**Básico**
+:::
+
+**¿Qué imprime este código?**
+
+```js
+const band = {
+  id:1,
+  name: "Radiohead",
+  "tipe of music": "Rock",
+  albums: ["Pablo Honey", "Ok Computer", "In Rainbows"]
+};
+
+console.log(band["na"+"me"])
+```
+
+**Pista:** La notación de corchetes en los objetos permite acceder a propiedades usando una expresión como clave.
+
+* A. `Radiohead`
+* B. `undefined`
+* C. `name`
+* D. `SyntaxError`
+
+**[Ver solución](#sec-sol-array-69)**
+
+---
+
+## Reto #70: Más objetos y valores por referencia {#sec-array-70}
+
+::: {.callout-caution title="Dificultad" collapse="true"}
+**Básico**
+:::
+
+**¿Qué imprime este código?**
+
+```js
+let objeto1 = { valor: 10 };
+let objeto2 = objeto1;
+let objeto3 = { valor: 10 };
+
+console.log(objeto1 == objeto2);
+console.log(objeto1 == objeto3);
+
+objeto1.valor = 15;
+console.log(objeto2.valor);
+console.log(objeto3.valor);
+```
+
+**Pista:** Recuerda cómo funcionan las referencias en JavaScript con los objetos. Piensa en cómo se comportan las asignaciones de objetos y las comparaciones de igualdad con el operador `==`.
+
+* A. `true`, `false`, `15`, `10`
+* B. `false`, `true`, `10`, `20`
+* C. `true`, `true`, `15`, `20`
+* D. `false`, `false`, `20`, `15`
+
+**[Ver solución](#sec-sol-array-70)**
 
 ---
 
