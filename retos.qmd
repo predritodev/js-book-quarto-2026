@@ -2667,30 +2667,40 @@ console.log(y())
 
 ---
 
-## Reto #96: {#sec-array-96}
+## Reto #96: El objeto `Error` {#sec-array-96}
 
 ::: {.callout-caution title="Dificultad" collapse="true"}
-**Intermedio**
+**Básico**
 :::
 
 **¿Qué imprime este código?**
 
 ```js
+const add = (a,b) => {
+  if(!a || !b){
+    throw new Error("missing parameters");
+  }
+  return a + b;
+}
 
+console.log(add(2, 2));
+console.log(add(2, true));
+console.log(add(2, 0));
 ```
 
-**Pista:** 
+**Pista:** Tener en cuenta los valores `falsy` y la coersión de tipos.
 
-* A. `multiply`
-* B. `test`
-* C. `Ambas`
-* D. `Ninguna`
+* A. `4`, `"2true"`, `2`
+* B. `4`, `3`, `Error: missing parameters`
+* C. `"22"`, `"3true"`, `"20"`
+* D. `4`, `3`, `2`
+
 
 **[Ver solución](#sec-sol-array-96)**
 
 ---
 
-## Reto #97: {#sec-array-97}
+## Reto #97: Convirtiendo valores a booleanos {#sec-array-97}
 
 ::: {.callout-caution title="Dificultad" collapse="true"}
 **Intermedio**
@@ -2699,15 +2709,21 @@ console.log(y())
 **¿Qué imprime este código?**
 
 ```js
+const toBolean = x => Boolean(x);
 
+console.log(toBolean(37));
+console.log(toBolean(0/0));
+console.log(toBolean(0));
+console.log(toBolean({}));
+console.log(toBolean(Symbol("I'am a symbol")));
 ```
 
-**Pista:** 
+**Pista:** El objeto `Boolean` permite convertir valores a tipo boolean basandose en los valores `falsy` y `truthy`.
 
-* A. `multiply`
-* B. `test`
-* C. `Ambas`
-* D. `Ninguna`
+* A. `true`, `false`, `false`, `true`, `true`
+* B. `false`, `false`, `true`, `true`, `false`
+* C. `true`, `true`, `false`, `false`, `false`
+* D. `false`, `ReferenceError`, `false`, `false`, `true`
 
 **[Ver solución](#sec-sol-array-97)**
 
@@ -2716,27 +2732,72 @@ console.log(y())
 ## Reto #98: {#sec-array-98}
 
 ::: {.callout-caution title="Dificultad" collapse="true"}
-**Intermedio**
+**Avanzado**
 :::
 
 **¿Qué imprime este código?**
 
 ```js
+const nombre = Symbol("primer nombre");
+const apellido = Symbol("apellido paterno");
 
+const persona = {
+  id: 1,
+  [nombre]: "Cristian",
+  [apellido]: "Villca",
+  peso: 82,
+  estatura: 180,
+};
+
+console.log(Object.keys(persona));
 ```
 
 **Pista:** 
 
-* A. `multiply`
-* B. `test`
-* C. `Ambas`
-* D. `Ninguna`
+A. [ 'id', 'peso', 'estatura' ]
+B. [ 'id', 'nombre', 'apellido', 'peso', 'estatura' ]
+C. [ 'nombre', 'apellido' ]
+D. Ninguno de los anteriores
 
 **[Ver solución](#sec-sol-array-98)**
 
 ---
 
-## Reto #99: {#sec-array-99}
+## Challenge #98: El tipo `Symbol` como llaves de objetos {#sec-array-98-en}
+
+::: {.callout-caution title="Difficulty" collapse="true"}
+**Advanced**
+:::
+
+**What does this code print?**
+
+```js
+const firstName = Symbol("first name");
+const lastName = Symbol("last name");
+
+const person = {
+  id: 1,
+  [firstName]: "Cristian",
+  [lastName]: "Villca",
+  weight: 82,
+  height: 180,
+};
+
+console.log(Object.keys(person));
+```
+
+**Hint:** Los valores `Symbol` son únicos en un programa, muy útiles para crear propiedades privadas en objetos.
+
+* A. `[ 'id', 'weight', 'height' ]`
+* B. `[ 'id', 'firstName', 'lastName', 'weight', 'height' ]`
+* C. `[ 'firstName', 'lastName' ]`
+* D. `Ninguna de las anteriores`
+
+**[See solution](#sec-sol-array-98)**
+
+---
+
+## Reto #99: Operadores de corto circuito {#sec-array-99}
 
 ::: {.callout-caution title="Dificultad" collapse="true"}
 **Intermedio**
@@ -2745,38 +2806,43 @@ console.log(y())
 **¿Qué imprime este código?**
 
 ```js
-
+console.log(([] || {}) && (undefined ?? "") || null);
+console.log(0 || false || Symbol("hi") || 2n);
+console.log(typeof (undefined || null || 0 || ("0" ?? 0)));
+console.log((() => "hi")() || (false && true));
 ```
 
-**Pista:** 
+**Pista:** Los valores falsy y truthy son clave para resolver este reto.
 
-* A. `multiply`
-* B. `test`
-* C. `Ambas`
-* D. `Ninguna`
+* A. `{}`, `2n`, `number`, `false`
+* B. `undefined`, `Symbol("hi")`, `string`, `"hi"`
+* C. `null`, `Symbol("hi")`, `string`, `"hi"`
+* D. `null`, `0`, `number`, `true`
 
 **[Ver solución](#sec-sol-array-99)**
 
 ---
 
-## Reto #100: {#sec-array-100}
+## Reto #100: Redondeo de números con el objeto `Math`{#sec-array-100}
 
 ::: {.callout-caution title="Dificultad" collapse="true"}
-**Intermedio**
+**Básico**
 :::
 
 **¿Qué imprime este código?**
 
 ```js
-
+console.log(Math.floor(9.8));
+console.log(Math.ceil(9.8));
+console.log(Math.round("9.8"));
 ```
 
-**Pista:** 
+**Pista:** Algunos métodos redondean hacia abajo, otros hacia arriba y otros redondean al número más cercano.
 
-* A. `multiply`
-* B. `test`
-* C. `Ambas`
-* D. `Ninguna`
+* A. `10`, `10`, `"10"`
+* B. `9`, `10`, `10`
+* C. `9`, `9`, `9`
+* D. `10`, `10`, `"9"`
 
 **[Ver solución](#sec-sol-array-100)**
 
