@@ -1417,7 +1417,7 @@ console.log(Object.keys(info))
 
 ---
 
-## Reto #53: {#sec-array-53}
+## Reto #53: Cuidado con el return implicito de las funciones {#sec-array-53}
 
 ::: {.callout-caution title="Dificultad" collapse="true"}
 **Básico**
@@ -1657,3 +1657,142 @@ console.log(colorConfig.colors[1])
 **[Ver solución](#sec-sol-array-60)**
 
 ---
+
+## Reto #61: Métodos de arreglo inmutables {#sec-array-61}
+
+::: {.callout-caution title="Dificultad" collapse="true"}
+**Intermedio**
+:::
+
+**¿Cuál o cuales de estos métodos modifica el array original?**
+
+```js
+const points = ['.', '..', '...']
+
+emojis.map(x => x + '.')
+emojis.filter(x => x !== '..')
+emojis.find(x => x !== '..')
+emojis.reduce((acc, cur) => acc + '.')
+emojis.slice(1, 2, '.') 
+emojis.splice(1, 2, '.')
+```
+
+**Pista:** Los métodos inmutables no modifican el arreglo original.
+
+* A. `Todos los anteriores`
+* B. `map`, `reduce`, `slice`, `splice`
+* C. `map`, `slice`, `splice`
+* D. `splice`
+
+**[Ver solución](#sec-sol-array-61)**
+
+---
+
+## Reto #62: Acceso a propiedades de objetos y elementos de arreglos {#sec-array-62}
+
+::: {.callout-caution title="Dificultad" collapse="true"}
+**Básico**
+:::
+
+**¿Qué imprime este código?**
+
+```js
+const food = ['pizza', 'chocolat', 'avocat', 'egg']
+const info = { favoriteFood: food[0] }
+
+info.favoriteFood = 'apple'
+
+console.log(food)
+```
+
+**Pista:** La notación de punto sirve para acceder a propiedades de objetos y la notación de corchetes para acceder a elementos de arreglos.
+
+* A. `['pizza', 'chocolat', 'avocat', 'egg']`
+* B. `['apple', 'chocolat', 'avocat', 'egg']`
+* C. `['apple', 'pizza', 'chocolat', 'avocat', 'egg']`
+* D. `ReferenceError`
+
+**[Ver solución](#sec-sol-array-62)**
+
+---
+
+## Reto #63: Temporal Dead Zone {#sec-array-63}
+
+::: {.callout-caution title="Dificultad" collapse="true"}
+**Avanzado**
+:::
+
+**¿Qué imprime este código?**
+
+```js
+let name = 'Abigail'
+
+function getName() {
+  console.log(name)
+  let name = 'Norah'
+}
+
+getName()
+```
+
+**Pista:** Cuidado con los scopes de las variables, no es lo mismo una variable con scope global y una variable con scope de bloque.
+
+* A. `Abigail`
+* B. `Norah`
+* C. `undefined`
+* D. `ReferenceError`
+
+**[Ver solución](#sec-sol-array-63)**
+
+---
+
+## Reto #64: Interpolación de cadenas {#sec-array-64}
+
+::: {.callout-caution title="Dificultad" collapse="true"}
+**Básico**
+:::
+
+**¿Qué imprime este código?**
+
+```js
+console.log(`${(x => x)('I love')} to program`)
+```
+
+**Pista:** En las plantillas con backticks, todo lo que este dentro de `{}` se evalua como una expresión de JavaScript.
+
+* A. `I love to program`
+* B. `undefined to program`
+* C. `${(x => x)('I love') to program`
+* D. `TypeError`
+
+**[Ver solución](#sec-sol-array-64)**
+
+---
+
+## Reto #65: `typeof` y funciones {#sec-array-65}
+
+::: {.callout-caution title="Dificultad" collapse="true"}
+**Básico**
+:::
+
+**¿Qué imprime este código?**
+
+```js
+const sayHi = () => {
+  return (() =>"Hi Javascript!")();
+}
+
+console.log(typeof sayHi());
+```
+
+**Pista:** Ojo con el valor de retorno de la función `sayHi`
+
+* A. `number`
+* B. `object`
+* C. `string`
+* D. `TypeError`
+
+**[Ver solución](#sec-sol-array-65)**
+
+---
+
