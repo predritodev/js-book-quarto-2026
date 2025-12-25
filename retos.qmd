@@ -1524,3 +1524,136 @@ console.log(one, two, three)
 **[Ver solución](#sec-sol-array-56)**
 
 ---
+
+## Reto #57: Promesas y funciones asíncronas {#sec-array-57}
+
+::: {.callout-caution title="Dificultad" collapse="true"}
+**Avanzado**
+:::
+
+**¿Qué imprime este código?**
+
+```js
+const myPromise = () => Promise.resolve('I have resolved!')
+
+function firstFunction() {
+  myPromise().then(res => console.log(res))
+  console.log('second')
+}
+
+async function secondFunction() {
+  console.log(await myPromise())
+  console.log('second')
+}
+
+firstFunction()
+secondFunction()
+```
+
+**Pista:** Recordar que cuando tenemos sintaxis `async await` escribimos código de manera síncrona pero se ejecuta de manera asíncrona.
+
+* A. `I have resolved!`, `second` y `I have resolved!`, `second`
+* B. `second`, `I have resolved!` y `second`, `I have resolved!`
+* C. `I have resolved!`, `second` y `second`, `I have resolved!`
+* D. `second`, `I have resolved!` y `I have resolved!`, `second`
+
+**[Ver solución](#sec-sol-array-57)**
+
+---
+
+## Reto #58: Conjuntos en JavaScript {#sec-array-58}
+
+::: {.callout-caution title="Dificultad" collapse="true"}
+**Avanzado**
+:::
+
+**¿Qué imprime este código?**
+
+```js
+const set = new Set()
+
+set.add(1)
+set.add("Cris")
+set.add({ name: "Cris" })
+
+for (let item of set) {
+  console.log(item + 2)
+}
+```
+
+**Pista:** Recordar que el operador `+` puede ser usado para sumar números y para concatenar cadenas de texto.
+
+* A. `3`, `NaN`, `NaN`
+* B. `3`, `7`, `NaN`
+* C. `3`, `Cris2`, `[Object object]2`
+* D. `"12"`, `Cris2`, `[Object object]2`
+
+**[Ver solución](#sec-sol-array-58)**
+
+---
+
+## Reto #59: Objetos y sus referencias {#sec-array-59}
+
+::: {.callout-caution title="Dificultad" collapse="true"}
+**Básico**
+:::
+
+**¿Qué imprime este código?**
+
+```js
+function compareMembers(person1, person2 = person) {
+  if (person1 !== person2) {
+    console.log("Not the same!")
+  } else {
+    console.log("They are the same!")
+  }
+}
+
+const person = { name: "Allan" }
+
+compareMembers(person)
+```
+
+**Pista:** Cuidado con las referencias de los objetos.
+
+* A. `Not the same!`
+* B. `They are the same!`
+* C. `ReferenceError`
+* D. `SyntaxError`
+
+**[Ver solución](#sec-sol-array-59)**
+
+---
+
+## Reto #60: Acceso a propiedades de objetos {#sec-array-60}
+
+::: {.callout-caution title="Dificultad" collapse="true"}
+**Básico**
+:::
+
+**¿Qué imprime este código?**
+
+```js
+const colorConfig = {
+  red: true,
+  blue: false,
+  green: true,
+  black: true,
+  yellow: false,
+}
+
+const colors = ["pink", "red", "blue"]
+
+console.log(colorConfig.colors[1])
+```
+
+**Pista:** Recuerda que las propiedades de los objetos son accedidas por medio de `.` y los arreglos son accedidos por medio de `[]`.
+
+* A. `true`
+* B. `false`
+* C. `undefined`
+* D. `TypeError`
+
+**[Ver solución](#sec-sol-array-60)**
+
+---
