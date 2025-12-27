@@ -1943,7 +1943,7 @@ La respuesta del [Reto #87](#sec-array-87) es:
 
 **Explicación:**
 
-Cuando pretendemos hacer una desestructuración de arreglos es súper importante tener en cuenta los índices del mismo. Usando la sintaxis de la `,` podemos saltar posiciones del arreglo hasta encontrar la propiedad que se desea obtener.
+Cuando pretendemos hacer una desestructuración de arreglos es súper importante tener en cuenta los índices del mismo. Usando la sintaxis de la coma `,` podemos "saltar" posiciones del arreglo hasta encontrar la propiedad que se desea obtener.
 
 En el ejemplo usamos 3 veces `,` por ello saltamos 3 posiciones del arreglo `names` para poder obtener (con spread operator) la cadena `Cris` del arreglo anidado.
 
@@ -1969,7 +1969,7 @@ default:5
 
 `console.count()` se encarga como su nombre lo dice de contar acciones que ocurren en el código, desde cuantas veces se repite un bucle (como en el ejemplo) hasta poder determinar cuantas veces se llamo a una función. 
 
-Puede llegar a ser útil para hacer un debbuging básico, no esta de más conocerla, quiza te saque de un apaño
+Puede llegar a ser útil para hacer un debbuging básico, no esta de más conocerla, quiza te saque de un apaño.
 
 ---
 
@@ -1977,7 +1977,7 @@ Puede llegar a ser útil para hacer un debbuging básico, no esta de más conoce
 
 La respuesta del [Reto #89](#sec-array-89) es:
 
-**B. `ReferenceError: Cannot access 'nombre' before initialization`**
+**B. `ReferenceError: Cannot access 'name' before initialization`**
 
 **Explicación:**
 
@@ -2018,9 +2018,11 @@ Recibe como parámetro un número que representa en este ejemplo el índice al c
 
 La respuesta del [Reto #91](#sec-array-91) es:
 
-**D. `false` `false` `true`**
+**D. `false`, `false`, `true`**
 
-Este ejemplo es bien sencillo pero abarca varios temas interesantes de javascript.
+**Explicación:**
+
+Este ejemplo es bien sencillo pero abarca varios temas interesantes de JavaScript.
 
 La función se encarga de verificar si un arreglo esta vacío o no, para ello hacemos una doble verificación:
 
@@ -2034,14 +2036,13 @@ Veamos caso por caso:
 Entonces tendriamos: `true` && `false`, que evalua a `false`.
 
 * `[0]`, es un arreglo y tampoco esta vacío.
-Entonces tendriamos: `true` && `false`, que evalua a `false`.
+Entonces tendríamos: `true` && `false`, que evalua a `false`.
 
 * `[]` es un arreglo y si esta vacío.
-Entonces tendriamos: `true` && `true`, que evalua a `true`.
+Entonces tendríamos: `true` && `true`, que evalua a `true`.
 
-Conclusión: `false` `false` `true`.
+Conclusión: `false`, `false`, `true`.
 
-**Explicación:**
 
 ---
 
@@ -2049,7 +2050,7 @@ Conclusión: `false` `false` `true`.
 
 La respuesta del [Reto #92](#sec-array-92) es:
 
-**A. `true` `false`**
+**A. `true`, `false`**
 
 **Explicación:**
 
@@ -2069,7 +2070,7 @@ console.log("[1, 2, 3]" === "[1, 2, "3"]"); //false
 
 Son simples comparaciones de primitivos, en este caso de cadenas.
 
-Usar `JSON.stringify` es muy común cuando se quiere verificar si 2 arreglos son iguales o no.
+Usar `JSON.stringify` es muy común cuando se quiere verificar si dos arreglos son iguales o no.
 
 ---
 
@@ -2110,11 +2111,11 @@ La respuesta del [Reto #94](#sec-array-94) es:
 
 El operador de igualdad estricta es muy potente, pero ¿sabias que existe uno aún mejor?
 
-`Object.is` recibe 2 parámetros y hace una comparación profunda entre ellos, pero va un poco más lejos.
+`Object.is` recibe dos parámetros y hace una comparación profunda entre ellos, pero va un poco más lejos.
 
 Casos como: `0 === -0` y `NaN === NaN` son mejor manejados con `Object.is`.
 
-Cuando comparamos un `NaN` vs otro `NaN` usando `===` obtenemos siempre `false` lo que no tiene mucho sentido, en estos casos es mejor usar `Object.is`.
+Cuando comparamos un `NaN` contra otro `NaN` usando `===` obtenemos siempre `false` lo que no tiene mucho sentido, en estos casos es mejor usar `Object.is`.
 
 ---
 

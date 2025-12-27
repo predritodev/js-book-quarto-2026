@@ -2493,19 +2493,20 @@ console.log(test());
 
 ```js
 const teachers = ["Oscar", "Nico", "Freddy", "Christian", "Angela"];
-console.log(teachers.at(1)); //?
-console.log(teachers.at(-1)); //?
-console.log(teachers.at(10)); //?
-console.log(teachers.at(3.8)); //?
-console.log(teachers.at(-3.3)); //?
+
+console.log(teachers.at(1));
+console.log(teachers.at(-1));
+console.log(teachers.at(10));
+console.log(teachers.at(3.8));
+console.log(teachers.at(-3.3));
 ```
 
 **Pista:** `at` es un método relativamente nuevo que permite acceder a un elemento de un array por su índice. 
 
-* A. `Nico Angela undefined Christian Freddy`
-* B. `Oscar undefined undefined Freddy undefined`
-* C. `Nico SyntaxError null Christian SyntaxError`
-* D. `Nico null undefined undefined null`
+* A. `Nico, Angela, undefined, Christian, Freddy`
+* B. `Oscar, undefined, undefined, Freddy, undefined`
+* C. `Nico, SyntaxError, null, Christian, SyntaxError`
+* D. `Nico, null, undefined, undefined, null`
 
 **[Ver solución](#sec-sol-array-90)**
 
@@ -2530,10 +2531,10 @@ console.log(f([]));
 
 **Pista:** `length` verifica cuantos elementos tiene un arreglo.
 
-* A. `true` `false` `true`
-* B. `false` `false` `false`
-* C. `true` `true` `true`
-* D. `false` `false` `true`
+* A. `true`, `false`, `true`
+* B. `false`, `false`, `false`
+* C. `true`, `true`, `true`
+* D. `false`, `false`, `true`
 
 **[Ver solución](#sec-sol-array-91)**
 
@@ -2558,10 +2559,10 @@ console.log(JSON.stringify(a) === JSON.stringify(c));
 
 **Pista:** `JSON.stringify` convierte un objeto en una cadena de texto.
 
-* A. `true` `false`
-* B. `false` `false`
-* C. `false` `true`
-* D. `true` `true`
+* A. `true`, `false`
+* B. `false`, `false`
+* C. `false`, `true`
+* D. `true`, `true`
 
 **[Ver solución](#sec-sol-array-92)**
 
@@ -2581,7 +2582,7 @@ let b = [4, 5, 6];
 console.log(a + b);
 ```
 
-**Pista:** Cuidado con el operador `+`, especialmente cuando se usan arreglos.
+**Pista:** REcuerda que el operador `+` concatena cadenas de texto o hace sumas aritmeticas.
 
 * A. `[1, 2, 3, 4, 5, 6]`
 * B. `[1, 2, 3, [4, 5, 6]]`
