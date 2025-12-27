@@ -1920,16 +1920,16 @@ console.log(band["na"+"me"])
 **¿Qué imprime este código?**
 
 ```js
-let objeto1 = { valor: 10 };
-let objeto2 = objeto1;
-let objeto3 = { valor: 10 };
+let object1 = { value: 10 };
+let object2 = object1;
+let object3 = { value: 10 };
 
-console.log(objeto1 == objeto2);
-console.log(objeto1 == objeto3);
+console.log(object1 == object2);
+console.log(object1 == object3);
 
-objeto1.valor = 15;
-console.log(objeto2.valor);
-console.log(objeto3.valor);
+object1.value = 15;
+console.log(object2.value);
+console.log(object3.value);
 ```
 
 **Pista:** Recuerda cómo funcionan las referencias en JavaScript con los objetos. Piensa en cómo se comportan las asignaciones de objetos y las comparaciones de igualdad con el operador `==`.
