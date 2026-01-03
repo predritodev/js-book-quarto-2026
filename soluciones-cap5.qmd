@@ -1,0 +1,482 @@
+# Soluciones - Objetos
+
+## Reto 5.1 {#sec-sol-cap5-reto1}
+
+La respuesta del [Reto 5.1](#sec-cap5-reto1) es:
+
+**A. `Hello`**
+
+**Explicación:**
+
+Cuando aplicamos el operador de asignación `=` entre objetos pensado que así lograremos obtener una copia del mismo estamos cayendo en un **error de novato**.
+
+Recuerda que los objetos se manejan segun su **referencia** y no por su **valor** como lo hacen los tipos primitivos del lenguaje, esto significa que al hacer esto:
+
+```js
+let c = { greeting: "Hey!" };
+let d;
+
+d = c;
+```
+
+No solo estamos copiando los valores del objeto `c` al objeto `d` sino que también copiamos su **referencia en memoria**. Esta referencia es la dirección donde dicho objeto se almacenerá en el disco duro del ordenador; en JavaScript al ser un lenguaje de alto nivel no podemos acceder a dichas direcciones como en lenguajes de bajo nivel como por ejemplo **lenguaje ensamblador** (aunque en Python si se pude con la función `id()` pero este no es un libro de Python).
+
+Dicho en otras palabras, las direcciones de memoria del objeto `c` y del objeto `d` son las mismas, apuntan a la misma dirección, por ello, cuando intentamos modificar el objeto `c`:
+
+```js
+c.greeting = "Hello";
+```
+
+En realidad, estamos modificando ambos objetos.
+
+Para crear copias de objetos de manera segura se recomienda usar el **spread operator** con su sintaxis de tres puntos `...`
+
+```js
+let c = { greeting: "Hey!" };
+let d;
+
+d = {...c};
+
+c.greeting = "Hello";
+console.log(d.greeting); // Hey!
+console.log(c.greeting); // Hello
+```
+
+Este método solo sirve para copiar objetos en el primer nivel, si deseamos realizar copias de objetos anidados se puede recurrir a otras alternativas como por ejemplo `JSON.stringify`.
+
+---
+
+## Reto 5.2 {#sec-sol-cap5-reto2}
+
+La respuesta del [Reto 5.2](#sec-cap5-reto2) es:
+
+**C: `true`, `true`, `false`, `true`**
+
+**Explicación:**
+
+En el objeto:
+
+```js
+const obj = { 1: "a", 2: "b", 3: "c" };
+obj.hasOwnProperty("1"); //true
+obj.hasOwnProperty(1); //true
+```
+
+El método `hasOwnProperty` propio de los objetos retorna un `boolean` dependiendo **si la key del objeto existe o no**.
+
+Lo que hay que tener en cuenta es que las claves de un objeto siempre son de tipo `string` aunque no lo especifiquemos.
+
+En el `set`:
+
+```js
+const set = new Set([1, 2, 3, 4, 5]);
+set.has("1"); //false
+set.has(1); //true
+```
+
+Esto no funciona como en un objeto, recuerda que un `set` es como un tipo de arreglo de valores no repetidos. Por ello `1` `string` no concuerda con `1` `number`.
+
+---
+
+## Reto 5.3 {#sec-sol-cap5-reto3}
+
+La respuesta del [Reto 5.3](#sec-cap5-reto3) es:
+
+**C: `{ a: "three", b: "two" }`**
+
+**Explicación:**
+
+Cuando en un objeto tenemos keys repetidas, estas se sobre escriben respetando el orden alfabético. Por ello la respuesta es C.
+
+---
+
+## Reto 5.4 {#sec-sol-cap5-reto4}
+
+La respuesta del [Reto 5.4](#sec-cap5-reto4) es:
+
+**A. "Just give Lydia pizza already!"**
+
+**Explicación:**
+
+`String` es el contructor que tiene JavaScript para gestionar las cadenas de texto. En el ejemplo se agrega la función `giveLydiaPizza` al prototipo de las cadenas, con ello, esta función estará disponible para todas las cadenas.
+
+Si intentamos hacer algo como lo siguiente:
+
+```js
+String.prototype.giveLydiaPizza = () => {
+  return "Just give Lydia pizza already!";
+};
+
+const bool = true;
+console.log(bool.giveLydiaPizza()); 
+//TypeError: bool.giveLydiaPizza is not a function 
+```
+
+Obtendremos un error, `giveLydiaPizza` solo se puede usar con un `string`. 
+
+---
+
+## Reto 5.5 {#sec-sol-cap5-reto5}
+
+La respuesta del [Reto 5.5](#sec-cap5-reto5) es:
+
+**D. `[{ name: "Carmen" }]`**
+
+**Explicación:**
+
+Cuando hacemos:
+
+```js
+const members = [person];
+```
+
+En realidad estamos realizando una copia a la referencia de `person`, tanto `person` como `members` apuntan a la misma referencia del objeto en memoria.
+
+Por este motivo al hacer:
+
+```js
+person = null;
+```
+
+Cambiamos el valor de `person` a `null` pero `members` conserva la referencia al objeto y por ello también su valor.
+
+---
+
+## Reto 5.6 {#sec-sol-cap5-reto6}
+
+La respuesta del [Reto 5.6](#sec-cap5-reto6) es:
+
+**B. `"name"`, `"age"`**
+
+**Explicación:**
+
+El bucle `for...in` en JavaScript aplicado sobre un objeto nos brinda las llaves del objeto per se. Recuerda que aunque no lo veamos el lenguaje interpreta las llaves de los objetos como un `string` a no ser que dichas llaves sean de tipo `symbol`. 
+
+Si vemos esto:
+
+```js
+const person = {
+  name: "Carla",
+  age: 26
+};
+```
+
+JavaScript verá esto:
+
+```js
+const person = {
+  "name": "Carla",
+  "age": 26
+};
+
+```
+Es por este motivo que cuando ejecutamos: 
+
+```js
+for (const item in person) {
+  console.log(item);
+}
+```
+
+La variable `item` tendrá el valor de cada llave del objeto en cada iteración; en el ejemplo al tener solo 2 llaves, entonces `item` valdrá `name` y luego `age`.
+
+---
+
+## Reto 5.7 {#sec-sol-cap5-reto7}
+
+La respuesta del [Reto 5.7](#sec-cap5-reto7) es:
+
+**B. { admin: true, name: "Hernan", age: 21 }**
+
+**Explicación:**
+
+El **spread operator** en este ejemplo se encarga de propagar el objeto `user` dentro del objeto `admin`.
+
+**Sin** usar el `spread operator` tendriamos un objeto anidado:
+
+```js
+{ admin: true, { name: "Hernan", age: 21 } }
+```
+
+Justamente el **spread operator** se encarga de expandir `user` para evitar el anidamiento.
+
+---
+
+## Reto 5.8 {#sec-sol-cap5-reto8}
+
+La respuesta del [Reto 5.8](#sec-cap5-reto8) es:
+
+**C. `20`, `20`, `20`, `40`**
+
+**Explicación:**
+
+Hay que concentrarse en el orden en que se llaman las funciones para comprender que es lo que pasa acá.
+
+**Primera llamada:**
+A `multiply` no le pasamos ningún parámetro, por ende, toma el parámetro por defecto `x` que es un objeto desestructurado cuya key `number` tiene el valor de `10`. Entonces `x.number *= 2` nos retorna `20`.
+
+**Segunda llamada:**
+Similar a la primera llamada, hacemos lo mismo, entonces obtenemos nuevamente `20`.
+
+**Tercera llamada:**
+A `multiply` en su llamada le pasamos el argumento `value` por lo que la función ahora ignora el parámetro por defecto. `number` es nuevamente `10`, por ello el resultado de la multiplicación nuevamente será `20`.
+
+**Cuarta llamada:**
+Similar a la tercera llamada, pero el valor de `value` actual es `20` que fue el resultado de la tercera llamada, entonces ahora `x.number *= 2`, será `40`.
+
+
+---
+
+## Reto 5.9 {#sec-sol-cap5-reto9}
+
+La respuesta del [Reto 5.9](#sec-cap5-reto9) es:
+
+**A. `name Robert` y `age 30`**
+
+**Explicación:**
+
+El método `entries` del constructor `Object` regresa un arreglo anidado donde cada sub arreglo corresponde a la llave y valor del objeto:
+
+```js
+[ [ 'name', 'Robert' ], [ 'age', 30 ] ]
+```
+
+Con el bucle `for...of` iteramos sobre el objeto desestructurando los valores con la sintaxis `[x, y]`.
+
+El primer sub arreglo es `[ "name", "Robert" ]` donde `x` toma el valor `name` y `y` toma el valor `Robert`.
+
+El segundo arreglo es `[ 'age', 30 ]` donde `x` toma el valor `age` e `y` toma el valor `30`.
+
+---
+
+## Reto 5.10 {#sec-sol-cap5-reto10}
+
+La respuesta del [Reto 5.10](#sec-cap5-reto10) es:
+
+**C. `3`, `Cris2`, `[Object object]2`**
+
+**Explicación:**
+
+A cada `item` de la variable `set` aplicamos el operador `+` con el número `2`.
+
+Para `1` que es `number` realizamos una suma simple obteniendo como resultado `3`.
+
+Para la cadena `Cris` y por **coerción de tipos** convertimos al número `2` en `string` y realizamos una concatenación obteniendo `Cris2`.
+
+Para el objeto `{ name: "Cris" }` nuevemente por **coerción de tipos** convertimos tanto al objeto y al número `2` a `string` obteniendo `[Object object]2`.
+
+Recuerda que en JavaScript el operador `+` puede ser usado para sumar números y para concatenar cadenas de texto.
+
+---
+
+## Reto 5.11 {#sec-sol-cap5-reto11}
+
+La respuesta del [Reto 5.11](#sec-cap5-reto11) es:
+
+**B. `They are the same!`**
+
+**Explicación:**
+
+Tanto el parámetro `person1` como `person2` adoptará el valor de `person`, osea el objeto `{ name: "Allan" }`.
+
+Los objetos se pasan por referencia. En el ejemplo, `person1` y `person2` apuntan a la misma dirección de memoria entonces la condición del `if` no se cumple y pasamos a imprimir `They are the same!`.
+
+---
+
+## Reto 5.12 {#sec-sol-cap5-reto12}
+
+La respuesta del [Reto 5.12](#sec-cap5-reto12) es:
+
+**A. `['pizza', 'chocolat', 'avocat', 'egg']`**
+
+**Explicación:**
+
+Tenemos un arreglo `food` y un objeto `info` independiente uno del otro.
+
+`info` solo tiene la propiedad `favoriteFood` que apunta al índice `0` del arreglo `food`, por lo tanto `info` seria igual a:
+
+```js
+const info = { favoriteFood:'pizza'}
+```
+
+Posteriormente "pisamos" o sobre escribimos este valor modifiando `'pizza'` por `'apple'`.
+
+```js
+info.favoriteFood = 'apple'
+```
+
+Ahora `info` se ve así:
+
+```js
+const info = { favoriteFood:'apple'}
+```
+
+En ningún momento modificamos de ninguna manera el array `food`, por ende sigue siendo el mismo: `['pizza', 'chocolat', 'avocat', 'egg']`
+
+
+---
+
+## Reto 5.13 {#sec-sol-cap5-reto13}
+
+La respuesta del [Reto 5.13](#sec-cap5-reto13) es:
+
+**C. `{ name:"not name" }`**
+
+**Explicación:**
+
+El operador `??=` se llama **Logical Nullish Assignment** es un operador de corto circuito moderno que consiste en ejecutar porciones de código si evaluamos una condición como **nullish**, osea, como valor `null` o `undefined`.
+
+Entonces, en el ejemplo, si `obj.name` evalua como **nullish**, ejecutamos `"not name"`.
+
+Llamamos a la función `getName` pasandole un objeto vacío, entonces todas sus propiedades son `undefined` y por consecuencia `nullish`, por ello a `obj.name` se el asigna el valor `"not name"` y retornamos ese objeto.
+
+---
+
+## Reto 5.14 {#sec-sol-cap5-reto14}
+
+La respuesta del [Reto 5.14](#sec-cap5-reto14) es:
+
+**A. `Pedro`**
+
+**Explicación:**
+
+Inicialmente el objeto `person` tiene en la llave `name` la cadena `Fernando` pero luego hacemos `person.name = "Pedro"` que actualiza el valor de `name` perdiendo la cadena `Fernando`. 
+
+Esta es una de las formas mas comunues de actualizar valores de un objeto en JavaScript.
+
+---
+
+## Reto 5.15 {#sec-sol-cap5-reto15}
+
+La respuesta del [Reto 5.15](#sec-cap5-reto15) es:
+
+**B. `true`, `false`**
+
+**Explicación:**
+
+Existe diferencias entre declarar la propiedad de un objeto como `undefined` o eliminarla con el operador unario `delete`.
+
+El objeto `band` original no tiene la propiedad `voice`, pero lo agregamos con el valor `undefined`, entonces el objeto quedaria así:
+
+```js
+const band = {
+  id:1,
+  name: "Radiohead",
+  "type of music": "Rock",
+  albums: ["Pablo Honey", "Ok Computer", "In Rainbows"],
+  voice: undefined
+};
+```
+
+Pese a que el valor de `voice` es `undefined` la propiedad existe como tal dentro del objeto, es por ello que al verificarlo con el operador `in` obtenemos `true`.
+
+Algo diferente pasa cuando eliminamos con `delete` la propiedad `tipe of music`, esta deja de existir en el objeto, no tiene ningún tipo de valor, ni siquiera `undefined`, el objeto quedaría así:
+
+```js
+const band = {
+  id:1,
+  name: "Radiohead",
+  albums: ["Pablo Honey", "Ok Computer", "In Rainbows"],
+  voice: undefined
+};
+```
+Por ello al verificar nuevamente con `in` la existencia de una propiedad con la llave `type of music` obtenemos `false`.
+
+Existe una explicación mas profunda sobre porque `in` funciona de esta manera y tiene que ver con los valores heredables de los objetos pero esto lo veremos con mas detalle en otros retos.
+
+---
+
+## Reto 5.16 {#sec-sol-cap5-reto16}
+
+La respuesta del [Reto 5.16](#sec-cap5-reto16) es:
+
+**A. `Radiohead`**
+
+**Explicación:**
+
+En JavaScript hay dos maneras de acceder a las propiedades de un objeto, con la **notación de punto** por ejemplo `object.value` y con la **notación de corchetes** por ejemplo `object["value"]`.
+
+Usamos la **notación de punto** cuando conocemos el nombre literal de la propiedad a la que queremos acceder. 
+
+La `key` a la que accedemos con esta notación debe ser un nombre de variable válido.
+
+La **notación de corchetes** se diferencia en que todo lo que este dentro de los corchetes debe ser un `string` y **es evaluado por JavaScript como una expresión**.
+
+Por este motivo, cuando hacemos `console.log(band["na"+"me"])` el lenguaje evalua los corchetes concatenando las cadenas de texto y mostramos por consola `Radiohead`. 
+
+---
+
+## Reto 5.17 {#sec-sol-cap5-reto17}
+
+La respuesta del [Reto 5.17](#sec-cap5-reto17) es:
+
+**B.`El código es correcto, esta característica de JavaScript se denomina Trailing commas y es perfectamente válido.`**
+
+**Explicación:**
+
+**Trailing commas** es una peculiaridad de ES2015.
+
+Si deseas agregar una nueva propiedad, puede agregar una nueva línea sin modificar la última línea anterior si esa línea ya usa una coma final. Esto hace que las diferencias de control de versiones sean más limpias y que la edición del código sea menos problemática. 
+
+Esta característica puede ser usada en **objetos**, **arreglos**, **desestructuración de arreglos y objetos**, **parámetros de funciones**, **llamadas a funciones**, **métodos de clases**, etc.
+Por ejemplo:
+
+```js
+const dog = {
+  id:1,
+  name:"Boby",
+  age:7,
+};
+
+const {name, age,} = dog;
+
+const numbers = [1,2,3,4,5,];
+const [one,two,] = numbers;
+
+const greeting = (name,)=>{
+  return `Hello ${name}`
+}
+
+console.log(greeting("Cris",)); // Hello Cris
+
+```
+
+---
+
+## Reto 5.18 {#sec-sol-cap5-reto18}
+
+La respuesta del [Reto 5.18](#sec-cap5-reto18) es:
+
+**B. `It's a loop`**
+
+**Explicación:**
+
+Dentro de un objeto literal es posible usar nombres de palabras reservadas del lenguaje como nombres de `keys`, esto es perfectamente valido.
+
+Pese a que es valido, se recomienda no hacer esto y respetar las palabras reservadas de JavaScript. ¡No hagas nunca esto!
+
+Solo se consciente que es posible. 
+
+---
+
+## Reto 5.19 {#sec-sol-cap5-reto19}
+
+La respuesta del [Reto 5.19](#sec-cap5-reto19) es:
+
+**A. `[ 'id', 'weight', 'height' ]`**
+
+**Explicación:**
+
+Las variables de tipo `Symbol` son relativamente nuevas y tienen peculiaridades muy interesantes, una de ellas es la creación de propiedades ocultas o privadas dentro de los objetos.
+
+Por este motivo las propiedades `name` y `lastname` no se muestran al ejecutar `Object.keys(person)`, esto puede ser de mucha útilidad para no contaminar nuestros objetos de manera arbitraria y poder tener un código mas profesional y limpio en nuestros desarrollos aprovechando las últimas caracteristicas del lenguaje.
+
+Si te lo preguntabas, ¿entonces como podemos acceder a las propiedades que son `Symbol` dentro de los objetos? Podemos hacer lo siguiente:
+
+```js
+console.log(Object.getOwnPropertySymbols(persona)); 
+// [ Symbol(firstName'), Symbol(lastName) ]
+```
+
+---
+

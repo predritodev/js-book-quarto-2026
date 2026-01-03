@@ -1,0 +1,663 @@
+# Soluciones - Tipos de Datos y Coerción
+
+## Reto 1.1 {#sec-sol-cap1-reto1}
+
+La respuesta del [Reto 1.1](#sec-cap1-reto1) es:
+
+**A. `[1, 33, 9, -2]`**
+
+**Explicación:**
+
+El objeto `Number` de JavaScript puede convertir los los valores de un arreglo a números, pero hay que tener cuidado con tipos `boolean`, `undefined` o `null`.
+
+Este hack es muy útil cuando tenemos un arreglo de strings que queremos convertir a números.
+
+---
+
+## Reto 1.2 {#sec-sol-cap1-reto2}
+
+La respuesta del [Reto 1.2](#sec-cap1-reto2) es:
+
+**A. `1`, `false`**
+
+**Explicación:**
+
+El el primer caso, el operador `+` intenta convertir a `number` al valor `true`, por **coerción de tipos** JavaScript infiere a `true` como 1. 
+
+En el segundo caso, intentamos negar un `string`, dicho `string` es un valor truthy, por ende, nuevamente por **coerción de tipos** JavaScript infiere al `string` "Lydia" como `true`, y la negación de `true` es `false`.
+
+---
+
+## Reto 1.3 {#sec-sol-cap1-reto3}
+
+La respuesta del [Reto 1.3](#sec-cap1-reto3) es:
+
+**C. `"11111"`, `10`**
+
+**Explicación:**
+
+Vayamos por partes.
+
+En el primer `console.log(x + y)`:
+Intentamos sumar las variables `x` y `y`, pero `x` es una cadena y `y` es un número, por **coersión de tipos** la operación ya no será una suma aritmética sino una concatenación de cadenas. Dicho en otras palabras la variable `y` sera convetida implicitamente por el interprete de JavaScript a cadena, por lo que el resultado será `"11111"`.
+
+En el segundo `console.log(y - z)`:
+Intentamos restar las variables `y` y `z`, pero `y` es una cadena y `z` es un número, por **coersión de tipos** la operación será una resta artimética de toda la vida. Dicho en otras palabras la variable `z` sera convetida implicitamente por el interprete de JavaScript a número, por lo que el resultado será `10`.
+
+::: {.callout-tip}
+## Tip
+En JavaScript el operador `+` puede significar una suma o una concatenación según el caso de uso, pero el operador `-` siempre significara una resta artimética.
+:::
+
+---
+
+## Reto 1.4 {#sec-sol-cap1-reto4}
+
+La respuesta del [Reto 1.4](#sec-cap1-reto4) es:
+
+**D. `string`**
+
+**Explicación:**
+
+El operador `+` por lo general intentará realizar una concateneción, en este caso, el interprete de JavaScript, por **coerción de tipos** intentará convertir los arreglos a cadenas de texto, haciendo algo como esto aunque no lo veamos:
+
+```js
+console.log(typeof ([].toString() + [].toString())); 
+console.log(typeof ("" + ""));
+console.log(typeof ("")); //string
+```
+
+---
+
+## Reto 1.5 {#sec-sol-cap1-reto5}
+
+La respuesta del [Reto 1.5](#sec-cap1-reto5) es:
+
+**B. `string`**
+
+**Explicación:**
+
+Esta pregunta es un poco trampa. Pero la respuesta es chistosa:
+
+`typeof 1` regresa `"number"`, literalemnte la cadena `"number"`, entonces tendriamos `typeof "number"` y esto da obiamente `string`. 
+
+---
+
+## Reto 1.6 {#sec-sol-cap1-reto6}
+
+La respuesta del [Reto 1.6](#sec-cap1-reto6) es:
+
+**B. `false`, `false`, `true`**
+
+**Explicación:**
+
+El operador `!!` realiza una doble negación.
+
+En el primer caso, por **coerción de tipos**, `null` es un valor **falsy**, si lo negamos 2 veces, tendríamos `false`.
+
+En el segundo caso, por **coerción de tipos**, `""` es un valor **falsy**, si lo negamos 2 veces tendríamos `false`.
+
+Por último, el tercer caso, y nuevamente por **coerción de tipos**, el valor `1` es un valor `truthy`, si lo negamos 2 veces, obtendremos `true`.
+
+Dicho de otra manera, el operador de doble negación realiza una conversión de tipo a booleano, es decir, transforma cualquier valor en su equivalente booleano.
+
+---
+
+## Reto 1.7 {#sec-sol-cap1-reto7}
+
+La respuesta del [Reto 1.7](#sec-cap1-reto7) es:
+
+**B. `"75"`**
+
+**Explicación:**
+
+El código JavaScript se ejecuta de arriba hacia abajo y de izquierda a derecha.
+
+Primero realizamos la suma `3 + 4`, puesto que ambos son  de tipo `number` obtenemos `7`.
+
+Ahora tenemos `7 + "5"`, como `"5"` es de tipo `string`, ahora realizamos una concatenación de valores y por `coerción de tipos` el resultado final es `"75"` como `string`.
+
+---
+
+## Reto 1.8 {#sec-sol-cap1-reto8}
+
+La respuesta del [Reto 1.8](#sec-cap1-reto8) es:
+
+**C. `7`**
+
+**Explicación:**
+
+`parseInt` convierte un valor a tipo `number` de una base concreta (base binaria, octal, decimal, etc).
+
+En el ejemplo intentamos convertir `"7*6"` a base `10`, osea, a base decimal.
+
+`parseInt` toma los valores validos de izquierda a derecha, dicho esto, solo tomará el valor `7` (el `*` y todo lo que le precede no es un valor valido para `parseInt`).
+
+En conclusión, solo convierte al `7` de `string` a `number`. 
+
+---
+
+## Reto 1.9 {#sec-sol-cap1-reto9}
+
+La respuesta del [Reto 1.9](#sec-cap1-reto9) es:
+
+**A. `true`, `true`, `false`**
+
+**Explicación:**
+
+Primero, usamos el constructor `Number` para convertir `2` a `number`, como solo es una conversión de primitivos entonces el resultado es `true`.
+
+Segundo, usamos el constructor `Boolean` para convertir `false` a boleano, nuevamente solo es una conversión, entonces el resultado de la comparación es `true`.
+
+Tercero, ningún `Symbol` es igual a otro `Symbol`, por más que en el ejemplo tengan los mismos placeholders `foo`, nunca serán iguales. Entonces siempre nos dará `false`.
+
+No debemos confundir el contructor `Number` y `Boolean` por sí mismos, con dichos costructores acompañados de la palabra `new`, si hacemos lo siguiente:
+
+```js
+const a = new Number(2);
+const b = new Boolean(true);
+```
+
+Ambas variables serán objetos creados por medio de estos contructores y no solo conversiones como en este reto.
+
+---
+
+## Reto 1.10 {#sec-sol-cap1-reto10}
+
+La respuesta del [Reto 1.10](#sec-cap1-reto10) es:
+
+**B. `"I"`**
+
+**Explicación:**
+
+Las cadenas de texto en JavaScript son iterables, por ello, al igual que con los arreglos es posible acceder a sus caracteres individuales con la notación de corchetes.
+
+---
+
+## Reto 1.11 {#sec-sol-cap1-reto11}
+
+La respuesta del [Reto 1.11](#sec-cap1-reto11) es:
+
+**D. `{Symbol('a'): 'b'}` y `[]`**
+
+**Explicación:**
+
+Una variable de tipo `Symbol` cumple con 3 características principales:
+
+* No es un elemento enumerable.
+* Permite representar valores completamente únicos en el código, útil para crear llaves de objetos y evitar colisiones.
+* Podemos crear propiedades "ocultas" en objetos.
+
+El primer `console.log` imprime el objeto en su totalidad, incluyendo los valores no enumerables, por ello podemos ver la `key` de tipo `Symbol` que es un `string` con valor `b`.
+
+Al intentar obtener las `keys` del objeto con `Object.keys` obtendremos un arreglo vacío justamente por que el `Symbol` no es un elemento que se pueda enumerar, de esta manera es posible "ocultar" ciertas propiedades de un objeto.
+
+---
+
+## Reto 1.12 {#sec-sol-cap1-reto12}
+
+La respuesta del [Reto 1.12](#sec-cap1-reto12) es:
+
+**B. `Impossible! You should see a therapist after so much JavaScript lol`**
+
+**Explicación:**
+
+Muchas cosas que analizar en este ejemplo.
+
+La sintaxis de backticks, comillas simples invertidas o comillas francesas (alt+96) sirven para evaluar expresiones dentro de cadenas de texto.
+
+**Primera expresión a evaluar:** 
+
+En `${[] && 'Im'}` tenemos el operador de **corto circuito** `&&`. 
+
+Para usar los operadores de corto circuito debemos tener en cuanta los valores `truthy` y `falsy`. 
+
+Si la primera parte de la expresión evalua como `truthy` entonces ejecutamos la segunda parte de la expresión. 
+
+Los valores `truthy` son:
+
+* `true`
+* `{}`
+* `[]`
+* Cualquier valor de tipo `number` (`42`, `-56`, `1.5`, `-6.33`)
+* Cualquier `string` que no sea vacío (`"0"`, `"Hola mundo"`, `"false"`)
+* El objeto `Date` (`new Date()`)
+
+Volviendo al ejemplo, un arreglo vacio `[]` es `truthy` entonces se ejecuta la segunda parte de la expresión, osea, el `string` `'Im'`.
+
+**Segunda expresión a evaluar:** 
+
+En `${'' && `n't`}` nuevamente tenemos el **operador de corto circuito** `&&`, esta vez la primera parte de la expresión es un valor `falsy`.
+
+Los valores `falsy` son:
+
+* `false`
+* `0`
+* `""` (cualquier cadena vacía)
+* `undefined`
+* `null`
+* `NaN`
+
+La primera parte de la expresión es una cadena vacia que vendría a representar un valor `falsy` y por ello la segunda parte de la expresión `n't` no se ejecuta.
+
+En conclusión, la respuesta es: `Impossible! You should see a therapist after so much JavaScript lol`
+
+---
+
+## Reto 1.13 {#sec-sol-cap1-reto13}
+
+La respuesta del [Reto 1.13](#sec-cap1-reto13) es:
+
+**C. `{}`, `""`, `[]`**
+
+**Explicación:**
+
+En JavaScript el código se lee de arriba hacia abajo y de izquierda a derecha.
+
+* **Para la variable `one`**:
+
+`false || {} || null`
+
+Primero evaluamos `false || {}` y obtenemos `{}`.
+
+Entonces nos queda `{} || null` y como las llaves vacías es un valor `truthy` entonces el `null` no se evalua dando como resultado `{}`.
+
+* **Para la variable `two`**:
+
+`null || false || ""`
+
+Primero evaluamos `null || false`, `null` es `falsy` entonces si ejecutamos `false`.
+
+Entonces nos queda `false || ""`, y obtenemos como resultado la cadena vacía `""`
+
+* **Para la variable `three`**:
+
+`[] || 0 || true`
+
+Primero evaluamos `[] || 0`, el arreglo vacío es un valor `truthy` por lo que `0` no se ejecuta.
+
+Entonces nos queda `[] || true`, nuevamente el arreglo vacío es `truthy` y esta vez es `true` quien no se llega a ejecutar, entonces el resultado es `[]`.
+
+---
+
+## Reto 1.14 {#sec-sol-cap1-reto14}
+
+La respuesta del [Reto 1.14](#sec-cap1-reto14) es:
+
+**D. `TypeError`**
+
+**Explicación:**
+
+En JavaScript existen 2 maneras de acceder a las propiedades de los objetos, por notación del punto o por notación de corchetes.
+
+Cuando hacemos `colorConfig.colors[1]` literalmente estamos buscando una propiedad `colors` en el objeto `colorConfig` y como no existe esta propiedad entonces obtenemos un `undefiend`, entonces ahora JavaScript intentará hacer `undefined[1]` y esto no es un código valido, por ello la consola muestra un `TypeError`.
+
+Cuando queremos usar variables para hacer lo que se denomina **acceso a propiedades dinámicas de objetos** necesitamos usar la notación de corchetes: `colorConfig[colors[1]]` que nos devolverá `true`, el valor de la propiedad `red` del objeto `colorConfig`.
+
+---
+
+## Reto 1.15 {#sec-sol-cap1-reto15}
+
+La respuesta del [Reto 1.15](#sec-cap1-reto15) es:
+
+**A. `I love to program`**
+
+**Explicación:**
+
+Al usar los **backtiks de ES6**, las expresiones se evaluan primero.
+
+En este caso la expresión completa es:
+
+```js
+${(x => x)('I love')}
+```
+
+Donde:
+* `(x => x)` es una función anónima de tipo flecha, que recibe un parámetro `x` y con un **return implícito** lo devuelve.
+
+* `('I love')` es la llamada a la función anónima, acá pasamos como argumento a la función la cadena `I love`.
+
+Entonces, la función es llamada y regresa únicamente el parámetro que se le pasa. Por ello la respuesta es `I love to program`.
+
+---
+
+## Reto 1.16 {#sec-sol-cap1-reto16}
+
+La respuesta del [Reto 1.16](#sec-cap1-reto16) es:
+
+**C. `string`**
+
+**Explicación:**
+
+La función `sayHi` regresa una otra función de tipo flecha, dicha función es anónima y solo devuelve la cadena `Hi JavaScript`, el detalle acá es que esta función anónima una vez regresada es inmediatamente llamada.
+
+Entonces `sayHi` será igual a la cadena `Hi Javascript` y en conclusión su `typeof` igual a `string`.
+
+Podríamos ver también este ejemplo si extraemos la función anónima y escribimos en una función auxiliar por aparte, de la siguente manera:
+
+```js
+const aux = () => {
+  return "Hi Javascript!"
+}
+
+const sayHi = () => {
+  return aux();
+}
+
+console.log(typeof sayHi()); // string
+```
+
+---
+
+## Reto 1.17 {#sec-sol-cap1-reto17}
+
+La respuesta del [Reto 1.17](#sec-cap1-reto17) es:
+
+**C. `8`, `3`**
+
+**Explicación:**
+
+Tanto cadenas como arreglos son iterables, entonces podemos usar la nomenclatura de corchetes para acceder a sus valores.
+
+Todo lo que este dentro de los corchetes será evaluado como expresión, entonces ambos casos se ejecutaran correctamente, el primero solo ejecuta el método `length` y el segundo concatena lascadenas `"len"+"gth"` para finalmente ejecutar `length` para el arreglo y calcular su correspondiente longitud.
+
+---
+
+## Reto 1.18 {#sec-sol-cap1-reto18}
+
+La respuesta del [Reto 1.18](#sec-cap1-reto18) es:
+
+**B. `"0"`**
+
+**Explicación:**
+
+El operador de corto circuito OR (`||`) solo se ejecuta si el primer operando es **falsy**.
+
+El nullish coalescing operator (`??`) solo se ejecuta si el primer operando es **nullish** (`null` o `undefined`).
+
+Vamos paso por paso:
+
+* `undefined || "0"`:
+
+`undefined` evalua como **falsy** entonces tendriamos `"0"`.
+
+Nos quedaría el siguiente código:
+
+```js
+console.log("0" || null || (undefined ?? 0))
+```
+
+* `"0" || null`:
+`"0"` no evalua como **falsy** entonces no se ejecuta el operador de corto circuito.
+
+Nos quedaría el siguiente código:
+
+```js
+console.log("0" || (undefined ?? 0))
+```
+
+* `undefined ?? 0`:
+
+Operando tenemos como resultado `0` por que `undefined` es un valor **nullish**.
+
+Nos quedaría el siguiente código:
+
+```js
+console.log("0" || 0)
+```
+
+Finalmente `"0"` como cadena no es un valor **falsy** entonces no podemos ejecutar el operador de corto circuito dando como resultado final `"0"`.
+
+---
+
+## Reto 1.19 {#sec-sol-cap1-reto19}
+
+La respuesta del [Reto 1.19](#sec-cap1-reto19) es:
+
+**A. `number`**
+
+**Explicación:**
+
+Podemos convertir un `string` valido a `number` tan solo restandole `0`.
+
+Es un hack interesante y una alternativa valida a usar el objeto `Number`, la función `parseInt` o el operador `+`.
+
+El operador `-` solo cumple la tarea de realizar una resta en JavaScript, cuando se lo aplicamos a un `string` valido entonces el interprete tiene que convertir dicha cadena a `number` y luego realizar la operación, entonces nos aprovechamos de que el `0` es neutro aditivo para que la conversión sea exitosa.
+
+Si intentamos usar este hack con cadenas no numéricas la conversión se realiza pero obtendremos un `NaN` como resultado, así que mucho ojo con eso.
+
+```js
+console.log(typeof("aaa" - 0)); // number
+console.log(("aaa" - 0)); // NaN
+```
+
+Personalmente no recomiendo hacer conversiones de tipos usando este hack, hay mejores maneras de hacerlo. Considera a este reto meramente ilustrativo y didáctico. 
+
+---
+
+## Reto 1.20 {#sec-sol-cap1-reto20}
+
+La respuesta del [Reto 1.20](#sec-cap1-reto20) es:
+
+**A. `true`**
+
+**Explicación:**
+
+Pese a que `null` es un primitivo, debido a un bug del lenguaje su tipo de dato es `object`.
+
+Este bug es muy antiguo y se determino que no vale la pena arreglarlo al día de hoy ya que se pueden romper muchos programas que dependen de este error.
+
+Este bug es bastante conocido en programadores experimentados y usado en entrevistas laborales para estimar tu conocimiento del lenguaje.  
+
+---
+
+## Reto 1.21 {#sec-sol-cap1-reto21}
+
+La respuesta del [Reto 1.21](#sec-cap1-reto21) es:
+
+**A.** 
+
+```js
+--- Menu ---
+tea.....:$1.50
+coffee..:$3.75
+RangeError: repeat count must be non-negative
+```
+
+**Explicación:**
+
+El método `repeat` se encarga como su nombre lo dice de repetir `n` veces una cadena bajo ciertas condiciones:
+
+* `n` debe ser un número entre `0` e infinito que no desborde el tamaño máximo para una cadena (`2^28 - 1`).
+
+* Sí `n` es un decimal (como en el ejemplo) entonces JavaScript redondea **hacia abajo** dicho número y ejecuta la operación con normalidad.
+
+* Sí `n` es un número negativo lanzará un `RangeError` indicando que no se pueden usar negativos.
+
+---
+
+## Reto 1.22 {#sec-sol-cap1-reto22}
+
+La respuesta del [Reto 1.22](#sec-cap1-reto22) es:
+
+**C. `Mi nombre es Cris y tengo 25`**
+
+**Explicación:**
+
+En JavaScript como en Java y otros lenguajes de programación es posible usar **sustituciones de variables** con el operador `%` seguido de un caracter que especifica el tipo de dato que se pretende imprimir.
+
+En este caso, `$s` reemplaza un `string` (`"Cris"`) y `%d` reemplaza un valor decimal o dígito numérico (`25`). 
+
+Este método de imprimir por consola no es muy usado, ni siquiera es conocido, pero esta bueno saber que existe. 
+
+---
+
+## Reto 1.23 {#sec-sol-cap1-reto23}
+
+La respuesta del [Reto 1.23](#sec-cap1-reto23) es:
+
+**D. `4`**
+
+**Explicación:**
+
+Cuando pretendemos hacer una desestructuración de arreglos es súper importante tener en cuenta los índices del mismo. Usando la sintaxis de la coma `,` podemos "saltar" posiciones del arreglo hasta encontrar la propiedad que se desea obtener.
+
+En el ejemplo usamos 3 veces `,` por ello saltamos 3 posiciones del arreglo `names` para poder obtener (con spread operator) la cadena `Cris` del arreglo anidado.
+
+Finalmente aplicamos el método `length` con sintaxis de corchete.
+
+---
+
+## Reto 1.24 {#sec-sol-cap1-reto24}
+
+La respuesta del [Reto 1.24](#sec-cap1-reto24) es:
+
+**A. `true`, `false`**
+
+**Explicación:**
+
+`JSON.stringify` convierte al los arreglos en cadenas.
+
+Para los arreglos `a` y `b` tendríamos:
+
+```js
+console.log("[1, 2, 3]" === "[1, 2, 3]"); //true
+```
+
+Para los arreglos `a` y `c` tendríamos:
+
+```js
+console.log("[1, 2, 3]" === "[1, 2, "3"]"); //false
+```
+
+Son simples comparaciones de primitivos, en este caso de cadenas.
+
+Usar `JSON.stringify` es muy común cuando se quiere verificar si dos arreglos son iguales o no.
+
+---
+
+## Reto 1.25 {#sec-sol-cap1-reto25}
+
+La respuesta del [Reto 1.25](#sec-cap1-reto25) es:
+
+**B. `false`, `true`**
+
+**Explicación:**
+
+El operador de igualdad estricta es muy potente, pero ¿sabias que existe uno aún mejor?
+
+`Object.is` recibe dos parámetros y hace una comparación profunda entre ellos, pero va un poco más lejos.
+
+Casos como: `0 === -0` y `NaN === NaN` son mejor manejados con `Object.is`.
+
+Cuando comparamos un `NaN` contra otro `NaN` usando `===` obtenemos siempre `false` lo que no tiene mucho sentido, en estos casos es mejor usar `Object.is`.
+
+---
+
+## Reto 1.26 {#sec-sol-cap1-reto26}
+
+La respuesta del [Reto 1.26](#sec-cap1-reto26) es:
+
+**D. `Todos los ejemplos`**
+
+**Explicación:**
+
+En JavaScript existen 4 maneras de obtener un `undefined` como resultado:
+
+* Cuando declaramos una variable con `let` o `var` sin inicializarla, como en el ejemplo #1.
+
+* Cuando en la llamada de una función omitimos parámetros obligatorios, como en el ejemplo #2.
+
+* Cuando intenamos acceder a una propiedad de un objeto que no existe, como en el ejemplo #3.
+
+* Cuando llamamos a una función que no tiene la sentencia `return` en su cuerpo, como en el ejemplo #4.
+
+---
+
+## Reto 1.27 {#sec-sol-cap1-reto27}
+
+La respuesta del [Reto 1.27](#sec-cap1-reto27) es:
+
+**B. `4`, `3`, `Error: missing parameters`**
+
+**Explicación:**
+
+**Primer caso:**
+
+Simple suma de números enteros.
+
+**Segundo caso:**
+
+Por inferencia de tipos, el parámetro `true` se convierte en `1`, por ello el resultado es `3`.
+
+**Tercer caso:**
+
+En el `if` usamos el operador de negación para la validación de parámetros, esto hace que los valores falsy también se vean afectados y nos arroje la excepción. Para arreglar esto podríamos hacer lo siguiente:
+
+```js
+const sumar = (a,b) => {
+  if(a === undefined || b === undefined){
+    throw new Error("faltan parametros");
+  }
+  return a + b;
+}
+```
+De esa manera no solo cuando alguno de los parámtros no este definido en la llamada de la función se lanza la excepción.
+
+---
+
+## Reto 1.28 {#sec-sol-cap1-reto28}
+
+La respuesta del [Reto 1.28](#sec-cap1-reto28) es:
+
+**A. `true`, `false`, `false`, `true`, `true`**
+
+**Explicación:**
+
+El constructor `Boolean` permite convertir valores a tipo boolean.
+
+Los valores `truthy` como el número `37`, un objeto vacío, o un `Symbol` infieren a `true` sin ninguna complicación.
+
+Valores como `NaN`, cadenas vacías o `0` al ser considerados valores `falsy` inferirán a `false`.
+
+A continuación una tabla que resume todas las posibles conversiones a boolean:
+
+\begin{center}
+Tabla 1: Conversión de valores a Boolean
+\end{center}
+
+| `x`              | `Boolean(x)`                      |
+| ---------------- | --------------------------------- |
+| `undefined`      | `false`                           |
+| `null`           | `false`                           |
+| `true` o `false` | Sin cambios                       |
+| `number`         | `0` => `false`,  `NaN` => `false` |
+|                  | Cualquier otro `number` => `true` |
+| `bigint`         | `0n` => `false`                   |
+|                  | Cualquier otro `bigint` => `true` |
+| `string`         | `""`, `''`, ` `` ` =>  `false`    |
+|                  | Cualquier otro `string` => `true` |
+| `symbol`         | `true`                            |
+| `object`         | Siempre `true`                    |
+
+
+---
+
+## Reto 1.29 {#sec-sol-cap1-reto29}
+
+La respuesta del [Reto 1.29](#sec-cap1-reto29) es:
+
+**C. `null`, `Symbol("hola")`, `string`, `"hi"`**
+
+**Explicación:**
+
+El operador `||` solo se ejecuta si el primer operando es un valor falsy.
+
+El operador `&&` solo se ejecuta si el primer operando es un valor truthy.
+
+El operador `??` solo se ejecuta si el primer operando es `null` o `undefined`.
+
+Dicho todo esto y conociendo los valores truthy y los valores falsy no debería costarte llegar a que la respuesta correcta es C.
+
+---
+

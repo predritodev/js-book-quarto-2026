@@ -1,0 +1,204 @@
+# Funciones
+
+## Reto 6.1: Una curiosidad sobre funciones  {#sec-cap6-reto1}
+
+::: {.callout-caution title="Dificultad" collapse="true"}
+**Intermedio**
+:::
+
+**¿Qué imprime este código?**
+
+```js
+function bark() {
+  console.log("Woof!");
+}
+
+bark.animal = "dog";
+```
+
+**Pista:** Todo en JavaScript es una función.
+
+* A. `No pasa nada, es totalmente correcto.`
+* B. `SyntaxError. No es posible agregar propiedades a una función de esta manera.`
+* C. `undefined`
+* D. `ReferenceError`
+
+**[Ver solución](#sec-sol-cap6-reto1)**
+
+---
+
+## Reto 6.2: Funciones Tradicionales vs Funciones Flecha {#sec-cap6-reto2}
+
+::: {.callout-caution title="Dificultad" collapse="true"}
+**Intermedio**
+:::
+
+**Explica este código JavaScript**
+
+¿Cuál es la diferencia entre las siguientes funciones?
+
+```js
+function addTraditional(a, b){
+  return a + b;
+}
+
+const addArrow = (a, b) => {
+  return a + b;
+}
+```
+
+**Pista:** No tiene nada que ver con la sintaxis.
+
+* A. `No hay diferencia, son exactamente iguales.`
+* B. `La primera función es más rápida que la segunda.`
+* C. `La primera función tiene hoisting, la segunda no.`
+* D. `Solo cambia la sintaxis, luego son iguales.`
+
+**[Ver solución](#sec-sol-cap6-reto2)**
+
+---
+
+## Reto 6.3: Olvidar el parámetro de la función {#sec-cap6-reto3}
+
+::: {.callout-caution title="Dificultad" collapse="true"}
+**Básico**
+:::
+
+**¿Qué imprime este código?**
+
+```js
+function sayHi(name) {
+  return `Hi there, ${name}`
+}
+
+console.log(sayHi())
+```
+
+**Pista:** No imprime ningún tipo de error.
+
+* A. `Hi there`
+* B. `Hi there, undefined`
+* C. `Hi there, null`
+* D. `ReferenceError`
+
+**[Ver solución](#sec-sol-cap6-reto3)**
+
+---
+
+## Reto 6.4: Parámetros de funciones y valores por defecto {#sec-cap6-reto4}
+
+::: {.callout-caution title="Dificultad" collapse="true"}
+**Básico**
+:::
+
+**¿Qué imprime este código?**
+
+```js
+function sum(num1, num2 = num1) {
+  console.log(num1 + num2)
+}
+
+sum(10)
+```
+
+**Pista:** Los parámetros por defecto toman el valor pertinente cuando no proporcionamos el argumento correspondiente.
+
+* A. `NaN`
+* B. `20`
+* C. `ReferenceError`
+* D. `undefined`
+
+**[Ver solución](#sec-sol-cap6-reto4)**
+
+---
+
+## Reto 6.5: Una función rara {#sec-cap6-reto5}
+
+::: {.callout-caution title="Dificultad" collapse="true"}
+**Básico**
+:::
+
+**¿Qué imprime este código?**
+
+```js
+function nums(a, b) {
+  if
+  (a > b)
+  console.log('a is bigger')
+  else 
+  console.log('b is bigger')
+  return 
+  a + b
+}
+
+console.log(nums(4, 2))
+console.log(nums(1, 2))
+```
+
+**Pista:** Notar que no existe ningún punto y coma en ninguna línea de código de la función.
+
+* A. `a is bigger, 6` y `b is bigger, 3`
+* B. `a is bigger, undefined` y `b is bigger, undefined`
+* C. `undefined` y `undefined`
+* D. `SyntaxError`
+
+**[Ver solución](#sec-sol-cap6-reto5)**
+
+---
+
+## Reto 6.6: Invocar una variable como función {#sec-cap6-reto6}
+
+::: {.callout-caution title="Dificultad" collapse="true"}
+**Intermedio**
+:::
+
+**¿Qué imprime este código?**
+
+```js
+const name = "Pepe"
+console.log(name())
+```
+
+**Pista:** Las variables no pueden ser invocadas como funciones, ¿o si pueden?
+
+* A. `SyntaxError`
+* B. `ReferenceError`
+* C. `TypeError`
+* D. `undefined`
+
+**[Ver solución](#sec-sol-cap6-reto6)**
+
+--- 
+
+## Reto 6.7: Higher Order Functions {#sec-cap6-reto7}
+
+::: {.callout-caution title="Dificultad" collapse="true"}
+**Intermedio**
+:::
+
+**¿Qué imprime este código?**
+
+```js
+//A
+const multiply = a => b => a * b ;
+
+//B
+const test = (name, action) => {
+  return action(name); 
+}
+
+console.log(test("Ana", console.log)); 
+//Ana (por consola)
+```
+
+**Pista:** Las Higher Order Functions son aquellas que pueden recibir funciones como parámetros o regresar funciones.
+
+* A. `multiply`
+* B. `test`
+* C. `Ambas`
+* D. `Ninguna`
+
+**[Ver solución](#sec-sol-cap6-reto7)**
+
+---
+

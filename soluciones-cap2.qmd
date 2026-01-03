@@ -1,0 +1,185 @@
+# Soluciones - Operadores de Igualdad y Comparación
+
+## Reto 2.1 {#sec-sol-cap2-reto1}
+
+**Explicación:**
+
+JavaScript tiene una peculiaridad que se denomina **coerción de tipos**. Al intentar realizar algún tipo de operación o comparación ambigua el lenguaje tratará de realizar una conversión de tipos implícita para poder devolver un resultado más o menos lógico, el problema acá radica en que muchas veces el resultado obtenido será diferente al esperado.
+
+Veamos el primer ejemplo:
+
+```js
+console.log(false == 0)
+```
+
+En JavaScript existen lo que denomina **valores `falsy`** y son los siguientes:
+
+* `0`
+* `-0`
+* `0n`
+* `false`
+* `null`
+* `undefined`
+* `NaN`
+* Cualquier tipo de cadena vacía: `'', ""`
+
+Todos estos valores son considerados como falsos para el lenguaje.
+
+Como `0` es un **valor falsy** entonces, aunque no lo veamos, JavaScript hace algo como esto tras bambalinas:
+
+```js
+console.log(false == false)
+```
+
+Y como estamos usando el operador de comparación débil `==` nos limitamos a comparar los valores **más NO los tipos de datos**.
+
+En conclusión, la respuesta es `true` por **coerción de tipos**
+
+Pasemos al siguiente ejemplo:
+
+```js
+console.log(false === 0)
+```
+
+Al usar el **operador estricto de comparación** `===` comparamos tanto el **valor** como el **tipo de dato**, `false` es de tipo `boolean` y `0` es de tipo `number` ergo, la respuesta es `false`.
+
+En otras palabras, también es correcto afirmar que al usar el `===` JavaScript no hace **coerciones de tipo**, por ello es ampliamente sugerido usarlo.
+
+--- 
+
+## Reto 2.2 {#sec-sol-cap2-reto2}
+
+**Explicación:**
+
+Si bien `null` y `undefined` son valores `falsy` al momento de que JavaScript haga **coerciones de tipo** pasa algo raro, esto se debe a que tanto `null` como `undefined` sólo son **iguales** a sí mismos y entre ellos:
+
+```js
+console.log(null == null); // true
+console.log(undefined == undefined); // true
+console.log(undefined == null); // true
+```
+
+Solo en estos casos obtendremos como salida un `true`.
+
+Pero es recomendable usar siempre el **operador estricto de igualdad** `===`:
+
+```js
+console.log(null === null); // true
+console.log(undefined === undefined); // true
+console.log(undefined === null); // false
+```
+
+Esto para evitar que JavaScript haga **coerciones de tipos** y obtengamos resultados no esperados.
+
+--- 
+
+## Reto 2.3 {#sec-sol-cap2-reto3}
+
+**Explicación:**
+
+`NaN` o "Not a Number" es el resultado que nos brinda JavaScript cuando intentamos hacer una operación que no tiene sentido, y por ende el resultado no será un número, por ejemplo:
+
+```js
+console.log(Math.sqrt(-1)) // NaN
+console.log(10 / "hola") // NaN
+console.log(Number("hola")) // NaN
+```
+
+Obtener la raiz cuadrada de `-1`, dividir un entero entre una cadena y convertir una cadena a un número son algunas operaciones que nos dan `NaN`.
+
+Ahora bien, cuando intentamos hacer `console.log(NaN === NaN)`, aún usando el operador `===` obtenemos `false` ya que el `NaN` de una operación no puede ser igual al `NaN` de otra. Dos `NaN` nunca serán iguales por este motivo. 
+
+En conclusión, no existe ningún valor en JavaScript que igualado a `NaN` sea `true`, ni siquiera el mismo `NaN`. Esto es una característica propia del lenguaje.
+
+---
+
+## Reto 2.4 {#sec-sol-cap2-reto4}
+
+La respuesta del [Reto 2.1](#sec-cap2-reto1) es:
+
+**C. `true`, `false`, `false`**
+
+**Explicación:**
+
+En el primer `console.log`:
+
+```js
+console.log(a == b);
+```
+
+Vemos que hacemos una comparación débil con el operador `==`, esto significa que **solo compararemos los valores de `a` y `b`**, por ende obtendremos un `true`.
+
+En el segundo `console.log`:
+
+```js
+console.log(a === b);
+```
+
+Hacemos una comparación estricta usando el operador `===`, esto significa que compararemos **valores** y **tipos de datos**, `a` y `b` tienen el mismo valor, pero `a` es de tipo `number` y `b` esta siendo inicializada usando el contructor `Number`, por ende es un objeto; entonces obtendremos un `false`.
+
+En el tercer `console.log`
+
+```js
+console.log(b === c);
+```
+
+Al igual que el caso anterior, intentamos comparar de manera estricta un objeto contra un número, entonces tendremos como resultado un `false`.
+
+**Conclusión: trata de usar simpre `===`**
+
+---
+
+## Reto 2.5 {#sec-sol-cap2-reto5}
+
+La respuesta del [Reto 2.2](#sec-cap2-reto2) es:
+
+**C. `Hmm... You don't have an age I guess`**
+
+**Explicación:**
+
+Cuando comparamos objetos hay que tener mucho cuidado.
+
+Comparar primitivos es sencillo, pero recuerda que los objetos se almacenan en memoria teniendo en cuenta su **referencia** y no su **valor**.
+
+Dicho esto, el objeto que pasamos como argumento a `checkAge` es el objeto `{ age: 18 }`, este es diferente al objeto que evaluamos en los `if` de la función, por más que usemos comparación estricta, seguirán siendo objetos diferentes **por que sus referencias son diferentes**:
+
+```js
+{ age: 18 } == { age: 18 } //false
+{ age: 18 } === { age: 18 } //false
+```
+
+Entonces nunca se cumple ni la condición del `if` ni del `else if` y se ejecuta el `else` directamente, imprimiendo `Hmm... You don't have an age I guess` como resultado final.
+
+---
+
+## Reto 2.6 {#sec-sol-cap2-reto6}
+
+La respuesta del [Reto 2.3](#sec-cap2-reto3) es:
+
+**A. `true`, `false`, `15`, `10`**
+
+**Explicación:**
+
+Al trabajar con objetos en JavaScript hay que difereciar 2 aspectos fundamentales: **tener 2 referencias la mismo objeto** y **tener 2 objetos diferentes pero con las mismas propiedades**.
+
+Al crear `object1` estamos reservando un espacio en memoria para guardar dicho objeto.
+
+Cuando asignamos `object1` a `object2` lo único que hacemos es que ambos objetos apunten a la misma dirección de memoria donde esta almacenado el `object1`. En otras palabras, tanto `object1` y `object2` no son independientes el uno del otro, si modificamos uno el otro también se vera afectado.
+
+Como ambos apuntan a la misma dirección de memoria entonces al usar el operador débil de comparación `==` obtenemos `true`.
+
+Pero si comparamos el `object1` contra el `object3` tendremos `false` puesto que si bien ambos tienen las mismas propiedades, estan almacenados en direcciones de memoria diferentes.
+
+Para finalizar, cuando hacemos:
+
+```js
+object1.value = 15;
+console.log(object2.value);
+console.log(object3.value);
+```
+Modificamos `value` de `object1` pero como apuntan a la misma dirección de momoria entonces también modificamos el valor del `object2` a `15`.
+
+El `object3` no sufre ningún cambio. 
+
+---
+

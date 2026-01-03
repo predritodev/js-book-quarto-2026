@@ -1,0 +1,282 @@
+# El Alcance (Scope)
+
+## Reto 3.1: Variables sin `var`, `let` o `const` {#sec-cap3-reto1}
+
+::: {.callout-caution title="Dificultad" collapse="true"}
+**Básico**
+:::
+
+**¿Qué imprime este código?**
+
+```js
+let greeting;
+greetign = {}; // Typo!
+console.log(greetign);
+```
+
+**Pista:** ¿Qué pasa cuando declaramos una variable sin `var`, `let` o `const`? ¿Piensas que es posible hacer algo así o tendremos algún tipo de error por parte de JavaScript?
+
+* A. `{}`
+* B. `ReferenceError: greetign is not defined`
+* C. `undefined`
+* D. `Ninguna de las anteriores`
+
+**[Ver solución](#sec-sol-cap3-reto1)**
+
+---
+
+
+## Reto 3.2: Alcance de variables {#sec-cap3-reto2}
+
+::: {.callout-caution title="Dificultad" collapse="true"}
+**Básico**
+:::
+
+**¿Qué imprime este código?**
+
+```js
+let x = 10;
+if (true) {
+  let y = 20;
+  var z = 30;
+  console.log(x + y + z);
+}
+console.log(x + z);
+```
+
+**Pista:** Diferenciar los diferentes alcances de las variables con `let` y `var`.
+
+* A. `60`, `40`
+* B. `undefined`, `10`
+* C. `50`, `10`
+* D. `null`, `40`
+
+**[Ver solución](#sec-sol-cap3-reto2)**
+
+---
+
+## Reto 3.3: Alcance de variables y paso de parámetros {#sec-cap3-reto3}
+
+::: {.callout-caution title="Dificultad" collapse="true"}
+**Básico**
+:::
+
+**¿Qué imprime este código?**
+
+```js
+let num = 10;
+
+const increaseNumber = () => num++;
+const increasePassedNumber = number => number++;
+
+const num1 = increaseNumber();
+const num2 = increasePassedNumber(num1);
+
+console.log(num1);
+console.log(num2);
+```
+
+**Pista:** La variable `num` tiene alcance global.
+
+* A. `10`, `10`
+* B. `10`, `11`
+* C. `11`, `11`
+* D. `11`, `12`
+
+**[Ver solución](#sec-sol-cap3-reto3)**
+
+---
+
+## Reto 3.4: Otra vez el alcance de las variables {#sec-cap3-reto4}
+
+::: {.callout-caution title="Dificultad" collapse="true"}
+**Básico**
+:::
+
+**¿Qué imprime este código?**
+
+```js
+var status = "A"
+
+setTimeout(() => {
+  const status = "B"
+
+  const data = {
+    status: "C",
+    getStatus() {
+      return this.status
+    }
+  }
+  console.log(data.getStatus())
+}, 0)
+```
+
+**Pista:** `var` tiene scope de función mientras que `const`scope de bloque.
+
+* A. `"C"`
+* B. `"B"`
+* C. `"A"`
+* D. `ReferenceError`
+
+**[Ver solución](#sec-sol-cap3-reto4)**
+
+---
+
+## Reto 3.5: `const` y el alcance de bloque {#sec-cap3-reto5}
+
+::: {.callout-caution title="Dificultad" collapse="true"}
+**Básico**
+:::
+
+**¿Qué imprime este código?**
+
+```js
+function checkAge(age) {
+  if (age < 18) {
+    const message = "Sorry, you're too young."
+  } else {
+    const message = "Yay! You're old enough!"
+  }
+  return message
+}
+
+console.log(checkAge(21))
+```
+
+**Pista:** El valor de una variable `const` solo existe en el bloque donde fue declarada.
+
+* A. `"Sorry, you're too young."`
+* B. `"Yay! You're old enough!"`
+* C. `ReferenceError`
+* D. `undefined`
+
+**[Ver solución](#sec-sol-cap3-reto5)**
+
+---
+
+## Reto 3.6: Temporal Dead Zone {#sec-cap3-reto6}
+
+::: {.callout-caution title="Dificultad" collapse="true"}
+**Avanzado**
+:::
+
+**¿Qué imprime este código?**
+
+```js
+let name = 'Abigail'
+
+function getName() {
+  console.log(name)
+  let name = 'Norah'
+}
+
+getName()
+```
+
+**Pista:** Cuidado con los scopes de las variables, no es lo mismo una variable con scope global y una variable con scope de bloque.
+
+* A. `Abigail`
+* B. `Norah`
+* C. `undefined`
+* D. `ReferenceError`
+
+**[Ver solución](#sec-sol-cap3-reto6)**
+
+---
+
+## Reto 3.7: `const` en primitivos y objetos {#sec-cap3-reto7}
+
+::: {.callout-caution title="Dificultad" collapse="true"}
+**Básico**
+:::
+
+**¿Qué imprime este código?**
+
+```js
+const name = "Cristian";
+name = "Fernando";
+console.log(name)
+
+const person = {
+  id: 1,
+  name: "Cristian",
+};
+
+person.name = "Fernando";
+console.log(person.name);
+```
+
+**Pista:** `const` actua diferente en objetos y primitivos.
+
+* A. `Fernando`, `Fernando`
+* B. `Cristian`, `TypeError`
+* C. `Cristian`, `Fernando`
+* D. `TypeError`, `Fernando`
+
+**[Ver solución](#sec-sol-cap3-reto7)**
+
+---
+
+## Reto 3.8: `var`, `let`, `const` y el alcance global {#sec-cap3-reto8}
+
+::: {.callout-caution title="Dificultad" collapse="true"}
+**Básico**
+:::
+
+**¿Qué imprime este código?**
+
+```js
+var name = "Camila";
+let lastName = "Rodriguez";
+const age = 25;
+
+const getPersonalData = () => {
+  console.log(name);
+  console.log(lastName);
+  console.log(age);
+}
+
+console.log(getPersonalData());
+```
+
+**Pista:** Diferenciar entre alcance global y de bloque.
+
+* A. `Camila`, `Rodriguez`, `25`
+* B. `Camila`, `undefined`, `undefined`
+* C. `ReferenceError`
+* D. `undefined`, `Rodriguez`, `25`
+
+**[Ver solución](#sec-sol-cap3-reto8)**
+
+---
+
+## Reto 3.9: Nuavamente la Temporal Dead Zone {#sec-cap3-reto9}
+
+::: {.callout-caution title="Dificultad" collapse="true"}
+**Intermedio**
+:::
+
+**¿Qué imprime este código?**
+
+```js
+function test(){
+  let name = "Alex";
+  if(true){
+    console.log(nombre);
+    let name = "Oscar";
+  }
+}
+console.log(test());
+```
+
+**Pista:** Cuidado con intentar acceder a una variable antes de su declaración.
+
+* A. `Alex`
+* B. `ReferenceError: Cannot access 'name' before initialization`
+* C. `Oscar`
+* D. `SyntaxError`
+
+**[Ver solución](#sec-sol-cap3-reto9)**
+
+---
+

@@ -1,0 +1,557 @@
+# Objetos
+
+## Reto 5.1: Copia de objetos por referencia  {#sec-cap5-reto1}
+
+::: {.callout-caution title="Dificultad" collapse="true"}
+**Básico**
+:::
+
+**¿Puedes explicar el siguiente código?**
+
+```js
+let c = { greeting: "Hey!" };
+let d;
+
+d = c;
+c.greeting = "Hello";
+console.log(d.greeting);
+```
+
+**Pista:** Recordar las diferencias de las copias por valor y copias por referencia.
+
+* A. `Hello`
+* B. `undefined`
+* C. `ReferenceError`
+* D. `TypeError`
+
+**[Ver solución](#sec-sol-cap5-reto1)**
+
+---
+
+## Reto 5.2: Objetos y conjuntos {#sec-cap5-reto2}
+
+::: {.callout-caution title="Dificultad" collapse="true"}
+**Avanzado**
+:::
+
+**¿Qué imprime este código?**
+
+```js
+const obj = { 1: "a", 2: "b", 3: "c" };
+const set = new Set([1, 2, 3, 4, 5]);
+
+obj.hasOwnProperty("1");
+obj.hasOwnProperty(1);
+set.has("1");
+set.has(1);
+```
+
+**Pista:** Recuerda que un `set` no es lo mismo que un objeto.
+
+* A. `false`, `true`, `false`, `true`
+* B. `false`, `true`, `true`, `true`
+* C. `true`, `true`, `false`, `true`
+* D. `true`, `true`, `true`, `true`
+
+**[Ver solución](#sec-sol-cap5-reto2)**
+
+---
+
+## Reto 5.3: Una curiosidad sobre los objetos {#sec-cap5-reto3}
+
+::: {.callout-caution title="Dificultad" collapse="true"}
+**Intermedio**
+:::
+
+**¿Qué imprime este código?**
+
+```js
+const obj = { a: "one", b: "two", a: "three" };
+console.log(obj);
+```
+
+**Pista:** Los objetos son estructuras de datos no indexadas.
+
+* A. `{ a: "one", b: "two" }`
+* B. `{ b: "two", a: "three" }`
+* C. `{ a: "three", b: "two" }`
+* D. `SyntaxError`
+
+**[Ver solución](#sec-sol-cap5-reto3)**
+
+---
+
+## Reto 5.4: Hablemos sobre prototipos  {#sec-cap5-reto4}
+
+::: {.callout-caution title="Dificultad" collapse="true"}
+**Intermedio**
+:::
+
+**¿Qué imprime este código?**
+
+```js
+String.prototype.giveLydiaPizza = () => {
+  return "Just give Lydia pizza already!";
+};
+
+const name = "Lydia";
+
+name.giveLydiaPizza();
+```
+
+**Pista:** Los objetos son estructuras de datos no indexadas.
+
+* A. `"Just give Lydia pizza already!"`
+* B. `TypeError: not a function`
+* C. `SyntaxError`
+* D. `undefined`
+
+**[Ver solución](#sec-sol-cap5-reto4)**
+
+---
+
+## Reto 5.5: Objeto por referencia {#sec-cap5-reto5}
+
+::: {.callout-caution title="Dificultad" collapse="true"}
+**Básico**
+:::
+
+**¿Qué imprime este código?**
+
+```js
+let person = { name: "Carmen" };
+const members = [person];
+person = null;
+
+console.log(members);
+```
+
+**Pista:** Los objetos pasan sus valores por referencia.
+
+* A. `null`
+* B. `[null]`
+* C. `[{}]`
+* D. `[{ name: "Carmen" }]`
+
+**[Ver solución](#sec-sol-cap5-reto5)**
+
+---
+
+## Reto 5.6: El bucle `for...in` con objetos {#sec-cap5-reto6}
+
+::: {.callout-caution title="Dificultad" collapse="true"}
+**Básico**
+:::
+
+**¿Qué imprime este código?**
+
+```js
+const person = {
+  name: "Carla",
+  age: 26
+};
+
+for (const item in person) {
+  console.log(item);
+}
+```
+
+**Pista:** El bucle `for...in` no itera sobre los valores de un objeto.
+
+* A. `{ name: "Carla" }`, `{ age: 26 }`
+* B. `"name"`, `"age"`
+* C. `"Carla"`, `26`
+* D. `["name", "Carla"]`, `["age", 26]`
+
+**[Ver solución](#sec-sol-cap5-reto6)**
+
+---
+
+## Reto 5.7: Spread operator con objetos {#sec-cap5-reto7}
+
+::: {.callout-caution title="Dificultad" collapse="true"}
+**Básico**
+:::
+
+**¿Qué imprime este código?**
+
+```js
+const user = { name: "Hernan", age: 21 };
+const admin = { admin: true, ...user };
+
+console.log(admin);
+```
+
+**Pista:** El **spread operator** expande las propiedades del objeto. 
+
+* A. `{ admin: true, user: { name: "Hernan", age: 21 } }`
+* B. `{ admin: true, name: "Hernan", age: 21 }`
+* C. `{ admin: true, user: ["Hernan", 21] }`
+* D. `{ admin: true }`
+
+**[Ver solución](#sec-sol-cap5-reto7)**
+
+---
+
+## Reto 5.8: Multiples llamadas a una función {#sec-cap5-reto8}
+
+::: {.callout-caution title="Dificultad" collapse="true"}
+**Intermedio**
+:::
+
+**¿Qué imprime este código?**
+
+```js
+const value = { number: 10 };
+
+const multiply = (x = { ...value }) => {
+  console.log((x.number *= 2));
+};
+
+multiply();
+multiply();
+multiply(value);
+multiply(value);
+```
+
+**Pista:** Atención al objeto como parámetro en la función y los valores por defecto.
+
+* A. `20`, `40`, `80`, `160`
+* B. `20`, `40`, `20`, `40`
+* C. `20`, `20`, `20`, `40`
+* D. `NaN`, `NaN`, `20`, `40`
+
+**[Ver solución](#sec-sol-cap5-reto8)**
+
+---
+
+## Reto 5.9: `Object.entries` para iterar objetos {#sec-cap5-reto9}
+
+::: {.callout-caution title="Dificultad" collapse="true"}
+**Intermedio**
+:::
+
+**¿Qué imprime este código?**
+
+```js
+const person = {
+  name: "Robert",
+  age: 30
+}
+
+for (const [x, y] of Object.entries(person)) {
+  console.log(x, y)
+}
+```
+
+**Pista:** Notar la desestructuración de variables en el bucle `for...of`.
+
+* A. `name Robert` y `age 30`
+* B. `["name", "Robert"]` y `["age", 30]`
+* C. `["name", "age"]` y `undefined`
+* D. `SyntaxError`
+
+
+**[Ver solución](#sec-sol-cap5-reto9)**
+
+---
+
+## Reto 5.10: Conjuntos en JavaScript {#sec-cap5-reto10}
+
+::: {.callout-caution title="Dificultad" collapse="true"}
+**Avanzado**
+:::
+
+**¿Qué imprime este código?**
+
+```js
+const set = new Set()
+
+set.add(1)
+set.add("Cris")
+set.add({ name: "Cris" })
+
+for (let item of set) {
+  console.log(item + 2)
+}
+```
+
+**Pista:** Recordar que el operador `+` puede ser usado para sumar números y para concatenar cadenas de texto.
+
+* A. `3`, `NaN`, `NaN`
+* B. `3`, `7`, `NaN`
+* C. `3`, `Cris2`, `[Object object]2`
+* D. `"12"`, `Cris2`, `[Object object]2`
+
+**[Ver solución](#sec-sol-cap5-reto10)**
+
+---
+
+## Reto 5.11: Objetos y sus referencias {#sec-cap5-reto11}
+
+::: {.callout-caution title="Dificultad" collapse="true"}
+**Básico**
+:::
+
+**¿Qué imprime este código?**
+
+```js
+function compareMembers(person1, person2 = person) {
+  if (person1 !== person2) {
+    console.log("Not the same!")
+  } else {
+    console.log("They are the same!")
+  }
+}
+
+const person = { name: "Allan" }
+
+compareMembers(person)
+```
+
+**Pista:** Cuidado con las referencias de los objetos.
+
+* A. `Not the same!`
+* B. `They are the same!`
+* C. `ReferenceError`
+* D. `SyntaxError`
+
+**[Ver solución](#sec-sol-cap5-reto11)**
+
+---
+
+## Reto 5.12: Acceso a propiedades de objetos y elementos de arreglos {#sec-cap5-reto12}
+
+::: {.callout-caution title="Dificultad" collapse="true"}
+**Básico**
+:::
+
+**¿Qué imprime este código?**
+
+```js
+const food = ['pizza', 'chocolat', 'avocat', 'egg']
+const info = { favoriteFood: food[0] }
+
+info.favoriteFood = 'apple'
+
+console.log(food)
+```
+
+**Pista:** La notación de punto sirve para acceder a propiedades de objetos y la notación de corchetes para acceder a elementos de arreglos.
+
+* A. `['pizza', 'chocolat', 'avocat', 'egg']`
+* B. `['apple', 'chocolat', 'avocat', 'egg']`
+* C. `['apple', 'pizza', 'chocolat', 'avocat', 'egg']`
+* D. `ReferenceError`
+
+**[Ver solución](#sec-sol-cap5-reto12)**
+
+---
+
+## Reto 5.13: Logical Nullish Assignment {#sec-cap5-reto13}
+
+::: {.callout-caution title="Dificultad" collapse="true"}
+**Intermedio**
+:::
+
+**¿Qué imprime este código?**
+
+```js
+const getName = (obj) => {
+  obj.name ??= "not name";
+  return obj;
+}
+console.log(getName({}))
+```
+
+**Pista:** Recuerda que un valor **nullish** es aquel que evalua `undefined` o `null`.
+
+* A. `undefined`
+* B. `{}`
+* C. `{ name:"not name" }`
+* D. `Ninguno de los anteriores`
+
+**[Ver solución](#sec-sol-cap5-reto13)**
+
+---
+
+## Reto 5.14: Actulizar propiedades de objetos {#sec-cap5-reto14}
+
+::: {.callout-caution title="Dificultad" collapse="true"}
+**Básico**
+:::
+
+**¿Qué imprime este código?**
+
+```js
+const person = {
+  id: 1,
+  name:"Fernando",
+};
+person.name = "Pedro";
+console.log(persona.nombre);
+```
+
+**Pista:** Podemos actualizar valores de una propiedad de un objeto con la notación de punto.
+
+* A. `Pedro`
+* B. `Fernando`
+* C. `null`
+* D. `TypeError`
+
+**[Ver solución](#sec-sol-cap5-reto14)**
+
+---
+
+## Reto 5.15: Operador `in` y eliminación de propiedades {#sec-cap5-reto15}
+
+::: {.callout-caution title="Dificultad" collapse="true"}
+**Básico**
+:::
+
+**¿Qué imprime este código?**
+
+```js
+const band = {
+  id:1,
+  name: "Radiohead",
+  "type of music": "Rock",
+  albums: ["Pablo Honey", "Ok Computer", "In Rainbows"]
+};
+
+band.voice = undefined;
+console.log("voice" in band);
+delete band["type of music"];
+console.log("type of music" in band);
+```
+
+**Pista:** `in` sirve para poder verificar si una propiedad existe en un objeto.
+
+* A. `false`, `false`
+* B. `true`, `false`
+* C. `false`, `true`
+* D. `undefined`, `true`
+
+**[Ver solución](#sec-sol-cap5-reto15)**
+
+---
+
+## Reto 5.16: Propiedades dinámicas de objetos {#sec-cap5-reto16}
+
+::: {.callout-caution title="Dificultad" collapse="true"}
+**Básico**
+:::
+
+**¿Qué imprime este código?**
+
+```js
+const band = {
+  id:1,
+  name: "Radiohead",
+  "tipe of music": "Rock",
+  albums: ["Pablo Honey", "Ok Computer", "In Rainbows"]
+};
+
+console.log(band["na"+"me"])
+```
+
+**Pista:** La notación de corchetes en los objetos permite acceder a propiedades usando una expresión como clave.
+
+* A. `Radiohead`
+* B. `undefined`
+* C. `name`
+* D. `SyntaxError`
+
+**[Ver solución](#sec-sol-cap5-reto16)**
+
+---
+
+## Reto 5.17: Trailing commas {#sec-cap5-reto17}
+
+::: {.callout-caution title="Dificultad" collapse="true"}
+**Intermedio**
+:::
+
+**Explica este código JavaScript**
+
+Nota que en la línea `age:7,` termina con `,` pero no hay ninguna sentencia del objeto `dog` después 😯
+
+```js
+const dog = {
+  id:1,
+  name:"Boby",
+  age:7,
+};
+```
+
+**Pista:** Esta sintaxis es común en lenguajes modernos para facilitar el control de versiones al añadir nuevos elementos sin modificar líneas anteriores.
+
+* A. `El código es incorrecto, no es posible escribir una , al final de una sentencia de objeto.`
+* B. `El código es correcto, esta característica de JavaScript se denomina Trailing commas y es perfectamente válido.`
+
+**[Ver solución](#sec-sol-cap5-reto17)**
+
+---
+
+## Reto 5.18: Algo raro pasa con las palabras reservadas {#sec-cap5-reto18}
+
+::: {.callout-caution title="Dificultad" collapse="true"}
+**Intermedio**
+:::
+
+**¿Qué imprime este código?**
+
+```js
+const test = {
+  if:"It's a conditional",
+  let: "It's a way to declare variables",
+  for: "It's a loop",
+};
+console.log(test.for); 
+```
+
+**Pista:** Cuidado con el uso de palabras reservadas como nombres de `keys` en objetos.
+
+* A. `SyntaxError: unexpected token: keyword 'for'`
+* B. `It's a loop`
+* C. `ReferenceError`
+* D. `Ninguna de las anteriores`
+
+**[Ver solución](#sec-sol-cap5-reto18)**
+
+---
+
+## Reto #98: El tipo `Symbol` como llaves de objetos {#sec-array-98-en}
+
+::: {.callout-caution title="Difficulty" collapse="true"}
+**Avanzado**
+:::
+
+**¿Qué imprime este código?**
+
+```js
+const firstName = Symbol("first name");
+const lastName = Symbol("last name");
+
+const person = {
+  id: 1,
+  [firstName]: "Cristian",
+  [lastName]: "Villca",
+  weight: 82,
+  height: 180,
+};
+
+console.log(Object.keys(person));
+```
+
+**Pista:** Los valores `Symbol` son únicos en un programa, muy útiles para crear propiedades privadas en objetos.
+
+* A. `[ 'id', 'weight', 'height' ]`
+* B. `[ 'id', 'firstName', 'lastName', 'weight', 'height' ]`
+* C. `[ 'firstName', 'lastName' ]`
+* D. `Ninguna de las anteriores`
+
+**[Ver solución](#sec-sol-cap5-reto19)**
+
+---
+

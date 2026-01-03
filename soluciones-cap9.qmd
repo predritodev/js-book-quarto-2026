@@ -1,0 +1,78 @@
+# Soluciones - Objetos Globales y Utilidades
+
+## Reto 9.1 {#sec-sol-cap9-reto1}
+
+La respuesta del [Reto 9.1](#sec-cap9-reto1) es:
+
+**A: `'{"level":19, "health":90}'`**
+
+**Explicación:**
+
+`JSON.stringify` puede recibir un segundo parámetro opcional denominado `replacer`, puede ser una función o un arreglo, y se encarga de hacer un filtro de las propiedades del objeto que deseamos convertir a `string`, en el ejemplo solo deseamos convertir las propiedades `["level", "health"]`, ignorando `username`. 
+
+---
+
+## Reto 9.2 {#sec-sol-cap9-reto2}
+
+La respuesta del [Reto 9.2](#sec-cap9-reto2) es:
+
+**A. Los 3 imprimen: `['P','e','p','e']`**
+
+**Explicación:**
+
+* `split` es un **String Method** que se encarga de convertir una cadena en arreglo, donde cada elemento del arreglo lo determina el separador que recibe `split` como parámetro. 
+Como le pasamos una cadena vacía entonces `Pepe` se convierte en `['P','e','p','e']`.
+
+* Spread Operator (`...`) expandirá o propagará la cadena `Pepe` en `['P','e','p','e']`. El Spread Operator no solo funciona con arreglos, también puede ser usado con cadenas.
+
+* `Array.from` es desde ES6 una manera más de convertir cadenas a arreglos, tambiém regresa `['P','e','p','e']`.
+
+
+---
+
+## Reto 9.3 {#sec-sol-cap9-reto3}
+
+La respuesta del [Reto 9.3](#sec-cap9-reto3) es:
+
+**D. `"olleh"`**
+
+**Explicación:**
+
+Estos 3 métodos de cadenas se preguntan mucho en entrevistas.
+
+Veamos paso por paso que sucede:
+
+* Aplicamos `split`:
+
+`split` convierte una cadena en arreglo dependiendo del parámetro que se le pase, en este caso una cedena vacía: `['h','e','l','l','o']`.
+
+* Aplicamos `reverse`:
+
+`reverse` es un método de arreglos, invierte todos los elementos del arreglo: `['o','l','l','e','h']`.
+
+* Aplicamos `join`:
+
+`join` es un método de arreglos que convierte un arreglo en cadena nuevamente dependiendo del parámetro que se le pase, en este caso una cadena vacía:  `"olleh"`
+
+---
+
+## Reto 9.4 {#sec-sol-cap9-reto4}
+
+La respuesta del [Reto 9.4](#sec-cap9-reto4) es:
+
+**B. `9`, `10`, `10`**
+
+**Explicación:**
+
+Javascript tiene 3 métodos pertenecientes al objecto `Math` útiles para redondeo de números.
+
+* `Math.floor()` Siempre redondea el valor hacía abajo.
+
+* `Math.ceil()` Siempre redondea el valor hacía arriba.
+
+* `Math.round()` Redondea el valor de una manera un poco mas inteligente, siguiendo las reglas de redondeo que nos enseñaron en colegio.
+
+Los 3 métodos tienen inferencia de tipos, esto quiere decir que sino le pasamos un valor numérico como parámetro, javascript intentará hacer su mejor esfuerzo para poder realizar la operación.
+
+---
+
