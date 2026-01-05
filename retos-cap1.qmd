@@ -231,7 +231,7 @@ console.log(one, two, three)
 * D. `null`, `null`, `true`
 
 ::: {.callout-tip title="Pista" collapse="true"}
-El operador de corto circuito `or` se ejecuta con valores **falsy**.
+[El operador de corto circuito](#glos-corto_circuito) `or` se ejecuta con valores **falsy**.
 :::
 
 **[Ver solución](#sec-sol-cap1-reto8)**

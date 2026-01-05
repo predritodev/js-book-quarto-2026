@@ -1,10 +1,6 @@
----
-nocite: |
-  @mdn_number
----
-
-# Referencias {.unnumbered} 
+# Referencias {.unnumbered}
 
 ::: {#refs}
 :::
+
 

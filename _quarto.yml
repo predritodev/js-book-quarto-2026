@@ -42,6 +42,7 @@ book:
     - references.qmd         # Referencias
 
 bibliography: references.bib
+nocite: '@*'
 
 format:
   html:
