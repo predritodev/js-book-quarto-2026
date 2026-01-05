@@ -1,7 +1,5 @@
 # Soluciones - Cadenas
 
-
-
 ---
 
 ## Reto 2.1 {#sec-sol-cap2-reto1}
@@ -12,7 +10,9 @@ La respuesta del [Reto 2.1](#sec-cap2-reto1) es:
 
 **Explicación:**
 
-Las cadenas de texto en JavaScript son iterables, por ello, al igual que con los arreglos es posible acceder a sus caracteres individuales con la notación de corchetes.
+Las cadenas de texto en JavaScript son [iterables](#glos-iterable), por ello, al igual que con los arreglos es posible acceder a sus caracteres individuales con la [notación de corchetes](#glos-notacion_corchetes).
+
+Según la documentación de @mdn_iterators_generators los iteradores son objetos que permiten recorrer una colección y devolver un valor al terminar.
 
 ---
 
@@ -24,7 +24,7 @@ La respuesta del [Reto 2.2](#sec-cap2-reto2) es:
 
 **Explicación:**
 
-Al usar los **backtiks de ES6**, las expresiones se evaluan primero.
+Al usar los [template literals](#glos-template_literals) de [ES6](#glos-es6), las expresiones se evaluan primero.
 
 En este caso la expresión completa es:
 
@@ -33,11 +33,15 @@ ${(x => x)('I love')}
 ```
 
 Donde:
-* `(x => x)` es una función anónima de tipo flecha, que recibe un parámetro `x` y con un **return implícito** lo devuelve.
+* `(x => x)` es una función anónima de tipo flecha, que recibe un parámetro `x` y con un [return implícito](#glos-return_implícito) lo devuelve.
 
-* `('I love')` es la llamada a la función anónima, acá pasamos como argumento a la función la cadena `I love`.
+* `('I love')` es la llamada a la [función anónima](#glos-funcion_anonima), acá pasamos como argumento a la función la cadena `I love`.
 
 Entonces, la función es llamada y regresa únicamente el parámetro que se le pasa. Por ello la respuesta es `I love to program`.
+
+Para la @mdn_template_literals son cadenas que estan delimitadas por comillas francesas o por backticks (`) que permiten crear cadenas multilineas y también evaluar expresiones dentro de ellas con **interpolación de cadenas**.
+
+Por otro lado la documentación de @geeksforgeeks_anonymous explica que las funciones anónimas son aquellas que no tienen nombre y que son muy útiles como callbacks.
 
 ---
 
@@ -49,11 +53,13 @@ La respuesta del [Reto 2.3](#sec-cap2-reto3) es:
 
 **Explicación:**
 
-En JavaScript como en Java y otros lenguajes de programación es posible usar **sustituciones de variables** con el operador `%` seguido de un caracter que especifica el tipo de dato que se pretende imprimir.
+En JavaScript como en [Java](#glos-java) y otros lenguajes de programación es posible usar **sustituciones de variables** con el operador `%` seguido de un caracter que especifica el tipo de dato que se pretende imprimir.
 
 En este caso, `$s` reemplaza un `string` (`"Cris"`) y `%d` reemplaza un valor decimal o dígito numérico (`25`). 
 
 Este método de imprimir por consola no es muy usado, ni siquiera es conocido, pero esta bueno saber que existe.
+
+Nota: No confundir JavaScript con Java son lenguajes de programación diferentes.
 
 ---
 
@@ -65,7 +71,7 @@ La respuesta del [Reto 2.4](#sec-cap2-reto4) es:
 
 **Explicación:**
 
-Un `string` es un elemento iterable en JavaScript, por ende es posible usar el `spread operator` directamente obteniendo la propagación de la cadena letra por letra.
+Un `string` es un elemento iterable en JavaScript, por ende es posible usar el [spread operator](#glos-spread_operator) directamente obteniendo la propagación de la cadena letra por letra.
 
 ---
 
@@ -77,12 +83,12 @@ La respuesta del [Reto 2.5](#sec-cap2-reto5) es:
 
 **Explicación:**
 
-* `split` es un **String Method** que se encarga de convertir una cadena en arreglo, donde cada elemento del arreglo lo determina el separador que recibe `split` como parámetro. 
+* [split](#glos-split) es un **String Method** que se encarga de convertir una cadena en arreglo, donde cada elemento del arreglo lo determina el separador que recibe `split` como parámetro. 
 Como le pasamos una cadena vacía entonces `Pepe` se convierte en `['P','e','p','e']`.
 
-* Spread Operator (`...`) expandirá o propagará la cadena `Pepe` en `['P','e','p','e']`. El Spread Operator no solo funciona con arreglos, también puede ser usado con cadenas.
+* [Spread Operator](#glos-spread_operator) expandirá o propagará la cadena `Pepe` en `['P','e','p','e']`. El Spread Operator no solo funciona con arreglos, también puede ser usado con cadenas.
 
-* `Array.from` es desde ES6 una manera más de convertir cadenas a arreglos, tambiém regresa `['P','e','p','e']`.
+* [Array.from](#glos-array_from) es desde ES6 una manera más de convertir cadenas a arreglos, tambiém regresa `['P','e','p','e']`.
 
 ---
 
@@ -104,7 +110,7 @@ En `${[] && 'Im'}` tenemos el operador de **corto circuito** `&&`.
 
 Para usar los operadores de corto circuito debemos tener en cuanta los valores `truthy` y `falsy`. 
 
-Si la primera parte de la expresión evalua como `truthy` entonces ejecutamos la segunda parte de la expresión. 
+Si la primera parte de la [expresión](#glos-expresion) evalua como `truthy` entonces ejecutamos la segunda parte de la expresión. 
 
 Los valores `truthy` son:
 
@@ -188,9 +194,11 @@ La respuesta del [Reto 2.9](#sec-cap2-reto9) es:
 Vayamos por partes.
 
 En el primer `console.log(x + y)`:
-Intentamos sumar las variables `x` y `y`, pero `x` es una cadena y `y` es un número, por **coersión de tipos** la operación ya no será una suma aritmética sino una concatenación de cadenas. Dicho en otras palabras la variable `y` sera convetida implicitamente por el interprete de JavaScript a cadena, por lo que el resultado será `"11111"`.
+
+Intentamos sumar las variables `x` y `y`, pero `x` es una cadena y `y` es un número, por **coersión de tipos** la operación ya no será una suma aritmética sino una [concatenación](#glos-concatenacion) de cadenas. Dicho en otras palabras la variable `y` sera convetida implicitamente por el interprete de JavaScript a cadena, por lo que el resultado será `"11111"`.
 
 En el segundo `console.log(y - z)`:
+
 Intentamos restar las variables `y` y `z`, pero `y` es una cadena y `z` es un número, por **coersión de tipos** la operación será una resta artimética de toda la vida. Dicho en otras palabras la variable `z` sera convetida implicitamente por el interprete de JavaScript a número, por lo que el resultado será `10`.
 
 ::: {.callout-tip}
@@ -208,7 +216,7 @@ La respuesta del [Reto 2.10](#sec-cap2-reto10) es:
 
 **Explicación:**
 
-El operador `+` por lo general intentará realizar una concateneción, en este caso, el interprete de JavaScript, por **coerción de tipos** intentará convertir los arreglos a cadenas de texto, haciendo algo como esto aunque no lo veamos:
+El operador `+` por lo general intentará realizar una concateneción, en este caso, el [interprete de JavaScript](#glos-interpreter), por **coerción de tipos** intentará convertir los arreglos a cadenas de texto, haciendo algo como esto aunque no lo veamos:
 
 ```js
 console.log(typeof ([].toString() + [].toString())); 
@@ -228,7 +236,7 @@ La respuesta del [Reto 2.11](#sec-cap2-reto11) es:
 
 Tanto cadenas como arreglos son iterables, entonces podemos usar la nomenclatura de corchetes para acceder a sus valores.
 
-Todo lo que este dentro de los corchetes será evaluado como expresión, entonces ambos casos se ejecutaran correctamente, el primero solo ejecuta el método `length` y el segundo concatena lascadenas `"len"+"gth"` para finalmente ejecutar `length` para el arreglo y calcular su correspondiente longitud.
+Todo lo que este dentro de los corchetes será evaluado como expresión, entonces ambos casos se ejecutaran correctamente, el primero solo ejecuta el método [length](#glos-length) y el segundo concatena lascadenas `"len"+"gth"` para finalmente ejecutar `length` para el arreglo y calcular su correspondiente longitud.
 
 ---
 
@@ -247,13 +255,13 @@ RangeError: repeat count must be non-negative
 
 **Explicación:**
 
-El método `repeat` se encarga como su nombre lo dice de repetir `n` veces una cadena bajo ciertas condiciones:
+El método [repeat](#glos-repeat) se encarga como su nombre lo dice de repetir `n` veces una cadena bajo ciertas condiciones:
 
 * `n` debe ser un número entre `0` e infinito que no desborde el tamaño máximo para una cadena (`2^28 - 1`).
 
 * Sí `n` es un decimal (como en el ejemplo) entonces JavaScript redondea **hacia abajo** dicho número y ejecuta la operación con normalidad.
 
-* Sí `n` es un número negativo lanzará un `RangeError` indicando que no se pueden usar negativos.
+* Sí `n` es un número negativo lanzará un [RangeError](#glos-rangeerror) indicando que no se pueden usar negativos.
 
 ---
 
@@ -271,12 +279,12 @@ Veamos paso por paso que sucede:
 
 * Aplicamos `split`:
 
-`split` convierte una cadena en arreglo dependiendo del parámetro que se le pase, en este caso una cedena vacía: `['h','e','l','l','o']`.
+El método [split](#glos-split) convierte una cadena en arreglo dependiendo del parámetro que se le pase, en este caso una cedena vacía: `['h','e','l','l','o']`.
 
 * Aplicamos `reverse`:
 
-`reverse` es un método de arreglos, invierte todos los elementos del arreglo: `['o','l','l','e','h']`.
+El método [reverse](#glos-reverse) es un método de arreglos, invierte todos los elementos del arreglo: `['o','l','l','e','h']`.
 
 * Aplicamos `join`:
 
-`join` es un método de arreglos que convierte un arreglo en cadena nuevamente dependiendo del parámetro que se le pase, en este caso una cadena vacía:  `"olleh"`
+El método [join](#glos-join) es un método de arreglos que convierte un arreglo en cadena nuevamente dependiendo del parámetro que se le pase, en este caso una cadena vacía:  `"olleh"`
