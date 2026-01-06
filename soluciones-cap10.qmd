@@ -1,0 +1,35 @@
+# Soluciones - Objetos Globales y Utilidades
+
+## Reto 10.1 {#sec-sol-cap10-reto1}
+
+La respuesta del [Reto 10.1](#sec-cap10-reto1) es:
+
+**A: `'{"level":19, "health":90}'`**
+
+**Explicación:**
+
+`JSON.stringify` puede recibir un segundo parámetro opcional denominado `replacer`, puede ser una función o un arreglo, y se encarga de hacer un filtro de las propiedades del objeto que deseamos convertir a `string`, en el ejemplo solo deseamos convertir las propiedades `["level", "health"]`, ignorando `username`. 
+
+
+
+
+
+---
+
+## Reto 10.2 {#sec-sol-cap10-reto2}
+
+La respuesta del [Reto 10.2](#sec-cap10-reto2) es:
+
+**B. `9`, `10`, `10`**
+
+**Explicación:**
+
+Javascript tiene 3 métodos pertenecientes al objecto `Math` útiles para redondeo de números.
+
+* `Math.floor()` Siempre redondea el valor hacía abajo.
+
+* `Math.ceil()` Siempre redondea el valor hacía arriba.
+
+* `Math.round()` Redondea el valor de una manera un poco mas inteligente, siguiendo las reglas de redondeo que nos enseñaron en colegio.
+
+Los 3 métodos tienen inferencia de tipos, esto quiere decir que sino le pasamos un valor numérico como parámetro, javascript intentará hacer su mejor esfuerzo para poder realizar la operación.

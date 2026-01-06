@@ -1,0 +1,227 @@
+# Soluciones - Funciones
+
+## Reto 7.1 {#sec-sol-cap7-reto1}
+
+La respuesta del [Reto 7.1](#sec-cap7-reto1) es:
+
+**A. `No pasa nada, es totalmente correcto.`**
+
+**Explicación:**
+
+WTF! Cuando vi que hacer esto es posible casi me caigo de la silla. Expliquemos por que:
+
+Oiste o leiste alguna vez esta frase: **"Todo en JavaScript es un objeto"** Dejame decirte que no es mentira, literalmente todo es un objeto, todo lo que no sea un tipo primitivo en JavaScript es un objeto, desde arreglos, los propios objetos claro, las promesas, y también las **funciones**.
+
+En el ejemplo, la función `bark()` funciona completamente bien:
+
+```js
+function bark() {
+  console.log("Woof!");
+}
+console.log(bark()) // Woof!
+```
+
+Y si intentamos acceder a la propiedad `animal` no tendremos ningún problema:
+
+```js
+function bark() {
+  return "Woof!"
+}
+
+bark.animal = "dog";
+console.log(bark.animal); // dog
+```
+Este es un comportamiento muy jocoso del lenguaje y esta bueno saber que es posible hacer estas cosas aunque no tenga muchos casos de uso.
+
+
+---
+
+## Reto 7.2 {#sec-sol-cap7-reto2}
+
+La respuesta del [Reto 7.2](#sec-cap7-reto2) es:
+
+**C. La primera función tiene hoisting, la segunda no.**
+
+**Explicación:**
+
+Con una función como la primera es posible hacer esto:
+
+```js
+console.log(addTraditional(3,5)); //8
+function addTraditional(a, b){
+  return a + b;
+}
+```
+
+Podemos llamar a la función antes de su declaración, caracteristica que se denomina **hoisting**.
+
+Con una función de flecha esto no es posible:
+
+```js
+// ReferenceError: can't access lexical declaration 
+// 'addArrow' before initialization 
+console.log(addArrow(3,5)); 
+
+const addArrow = (a, b) => {
+  return a + b;
+}
+```
+
+_Nota_: Esta es solo una de las diferencias entre ambas funciones. También podemos mencionar como diferencia el contexto de `this` en ambas funciones pero eso lo dejamos para otro reto.
+
+---
+
+## Reto 7.3 {#sec-sol-cap7-reto3}
+
+La respuesta del [Reto 7.3](#sec-cap7-reto3) es:
+
+**B. `Hi there, undefined`**
+
+**Explicación:**
+
+En JavaScript los parámetros tienen por defecto el valor `undefined`, esto quiere decir que sino pasamos ningún parámetro a una función que los necesite tendremos `undefined`.
+
+---
+
+## Reto 7.4 {#sec-sol-cap7-reto4}
+
+La respuesta del [Reto 7.4](#sec-cap7-reto4) es:
+
+**B. `20`**
+
+**Explicación:**
+
+Desde ES6 es posible usar parámetros por defecto siempre y cuando sean los últimos declarados en la función.
+
+En este caso el parámetro por defecto `num1` es el mismo que el primer parámetro, no hay ningún problema simpre y cuando este declarado al final de la lista de parámetros de la función.
+
+Pasamos el argumento `10` a la función `sum`, esto significa que `num2` deberá usar su valor por defecto que sería el mismo de `num1`, osea `10`; entonces `10 + 10` nos da el resultado final `20`.
+
+---
+
+## Reto 7.5 {#sec-sol-cap7-reto5}
+
+La respuesta del [Reto 7.5](#sec-cap7-reto5) es:
+
+**B. `a is bigger`, `undefined` y `b is bigger`, `undefined`**
+
+**Explicación:**
+
+Después de una expresión JavaScript pone automáticamente un punto y coma para indicar al interprete que dicha expresión finalizo en una línea de código en concreto. Esto se denomina **Inserción automática de punto y coma**.
+
+Al llegar al `return` el programador ve esto:
+
+```js
+return 
+a + b
+```
+
+Pero el interprete reconoce la palabra `return` con el fin de una expresión, por lo tanto, aunque no lo veas, JavaScript hará esto:
+
+```js
+  return;
+  a + b; // jamás llegamos a ejecutar esta línea
+```
+
+Y ya sabemos que en una función al encontrar la palabra `return` todo el código posterior que pueda haber no se ejecuta, ni si quiera se evalua, entonces jamás se llegara a hacer la operación `a + b`.
+
+Cuando una función no retorna nada explicitamente, JavaScript hace que el `return` arroje un `undefined` de manera implicita.
+
+---
+
+## Reto 7.6 {#sec-sol-cap7-reto6}
+
+La respuesta del [Reto 7.6](#sec-cap7-reto6) es:
+
+**C. `TypeError`**
+
+**Explicación:**
+
+`name` no es ni hace referencia a una función, no tiene sentido intentar invocar a un `string` como si fuera una función. 
+
+No pude ser un `SyntaxError` porque no se cometio ningún error de tipeo, el código no esta mal escrito pero tampoco es un código valido.
+
+No puede ser `ReferenceError` porque no hay problemas de referencia al intentar acceder a la variable `name`.
+
+Se genera una excepción de tipo `TypeError` cuando un valor no es del tipo esperado, entonces se lanza un `TypeError: name is not a function!`
+
+---
+
+## Reto 7.7 {#sec-sol-cap7-reto7}
+
+La respuesta del [Reto 7.7](#sec-cap7-reto7) es:
+
+**C. `Ambas`**
+
+**Explicación:**
+
+Por definición una Higher Order Function es:
+
+* Una función que regresa otra función.
+* Una función que puede tener funciones en sus parámetros.
+
+`multiply` aunque no lo parezca regresa otra función, podría escribirse también de la siguiente manera:
+
+```js
+function multiply(a){
+  return function(b){
+    return a * b;
+  }
+}
+```
+
+Acá se observa mejor que `multiply` regresa una función anónima que realiza la operación del producto, es mucho más sencillo usar retornos implícitos para poder escribir lo mismo en una sola línea como en el ejemplo original.
+
+`test` recibe 2 parámetros, uno de ellos es una función que en el ejemplo es `console.log` de JavaScript nativo, esto es motivo suficiente para que sea considerada una **Higher Order Function**.
+
+---
+
+## Reto 7.8 {#sec-sol-cap7-reto8}
+
+La respuesta del [Reto 7.8](#sec-cap7-reto8) es:
+
+**C. `string`**
+
+**Explicación:**
+
+La función `sayHi` regresa una otra función de tipo flecha, dicha función es anónima y solo devuelve la cadena `Hi JavaScript`, el detalle acá es que esta función anónima una vez regresada es inmediatamente llamada.
+
+Entonces `sayHi` será igual a la cadena `Hi Javascript` y en conclusión su `typeof` igual a `string`.
+
+Podríamos ver también este ejemplo si extraemos la función anónima y escribimos en una función auxiliar por aparte, de la siguente manera:
+
+```js
+const aux = () => {
+  return "Hi Javascript!"
+}
+
+const sayHi = () => {
+  return aux();
+}
+
+console.log(typeof sayHi()); // string
+```
+
+---
+
+## Reto 7.9 {#sec-sol-cap7-reto9}
+
+La respuesta del [Reto 7.9](#sec-cap7-reto9) es:
+
+**C. `20`, `20`, `20`, `40`**
+
+**Explicación:**
+
+Hay que concentrarse en el orden en que se llaman las funciones para comprender que es lo que pasa acá.
+
+**Primera llamada:**
+A `multiply` no le pasamos ningún parámetro, por ende, toma el parámetro por defecto `x` que es un objeto desestructurado cuya key `number` tiene el valor de `10`. Entonces `x.number *= 2` nos retorna `20`.
+
+**Segunda llamada:**
+Similar a la primera llamada, hacemos lo mismo, entonces obtenemos nuevamente `20`.
+
+**Tercera llamada:**
+A `multiply` en su llamada le pasamos el argumento `value` por lo que la función ahora ignora el parámetro por defecto. `number` es nuevamente `10`, por ello el resultado de la multiplicación nuevamente será `20`.
+
+**Cuarta llamada:**
+Similar a la tercera llamada, pero el valor de `value` actual es `20` que fue el resultado de la tercera llamada, entonces ahora `x.number *= 2`, será `40`.

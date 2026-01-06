@@ -1,0 +1,73 @@
+# Soluciones - Programación Asíncrona
+
+## Reto 9.1 {#sec-sol-cap9-reto1}
+
+La respuesta del [Reto 9.1](#sec-cap9-reto1) es:
+
+**B. `First`, `Third`, `Second`**
+
+**Explicación:**
+
+Para comprender la respuesta es necesario entender temas estructurales del lenjuage, es decir, ir a las bases de JavaScript y conocer conceptos como **Event Loop**, **Call Stack**, **Task Queue**, **Web API's** entre otros. 
+
+Para poder darse cuenta, el secreto que puedo compartirte es concentrarse en el orden de las llamadas a las funciones, es decir en estas líneas:
+
+```js
+bar(); // primero llamamos a bar()
+foo(); // luego a foo()
+baz(); // finalmente baz()
+```
+
+Primero, llamamos a la función `bar()` que tiene en su cuerpo un `setTimeout` puedes pensar que al carecer de delay en ms este código se ejecuta de inmediato, pero no es así, ya que `setTimeout` es una `Web API`, por este motivo este código debe almacenarse en lo que llamamos **Task Queue**.
+
+Segundo, llamamos a la función `foo()`, que contiene código síncrono, por ende pasa directamente al **Call Stack** y mostramos por consola `First`.
+
+Tercero, llamamos a la función `baz()`, que contiene código síncrono nuevamente, por ello pasa al **Call Stack** y mostramos por consola `Third`.
+
+Ahora, el algotirmo del **Even Loop** se da cuenta que no hay mas funciones por llamar, y verifica que el **Call Stack** esta vacio, entonces busca si hay algo en el **Task Queue**, y oh sorpresa, esta nuestro `setTimeout`, entonces lo pasa al **Call Stack** para finalmente mostrar por consola `Second`
+
+Es complicado de entender al principio, te dejo una [demostración gráfica](https://www.jsv9000.app/?code=Y29uc3QgZm9vID0gKCkgPT4gY29uc29sZS5sb2coIkZpcnN0Iik7CmNvbnN0IGJhciA9ICgpID0%2BIHNldFRpbWVvdXQoKCkgPT4gY29uc29sZS5sb2coIlNlY29uZCIpKTsKY29uc3QgYmF6ID0gKCkgPT4gY29uc29sZS5sb2coIlRoaXJkIik7CgpiYXIoKTsKZm9vKCk7CmJheigpOw%3D%3D) 
+
+
+---
+
+## Reto 9.2 {#sec-sol-cap9-reto2}
+
+La respuesta del [Reto 9.2](#sec-cap9-reto2) es:
+
+**C. `Hi cada segundo`**
+
+**Explicación:**
+
+La función `setInterval` es una `Web API` que recibe un intervalo en milisegundos, e imprime el cuerpo de la función en dicho intervalo.
+
+---
+
+## Reto 9.3 {#sec-sol-cap9-reto3}
+
+La respuesta del [Reto 9.3](#sec-cap9-reto3) es:
+
+**C. `Promise {<pending>}`**
+
+**Explicación:**
+
+Una función asíncrona siempre regresa una **promesa** pero dicha promesa no basta con ser devuelta sino que debe ser consumida, una posible solución es usar las palabras reservadas `then` y `catch`.
+
+Cuando llamamos `getData()` no consumimos la promesa con `then`, solo llamamos a la función por ende no podemos afirmar que la promesa esta en **estado resuelto** o **estado rechazado**, en conclusión inevitablemente la promesa esta en **estado pendiente**.
+
+---
+
+## Reto 9.4 {#sec-sol-cap9-reto4}
+
+La respuesta del [Reto 9.4](#sec-cap9-reto4) es:
+
+**D. `second`, `I have resolved!` y `I have resolved!`, `second`**
+
+**Explicación:**
+
+`firstFunction` es una función simple que llama a `myPromise` usando el método `then` propio de las promesas. Por **Event Loop** las promesas pasan al **Task Queue** entonces primero ejecutamos el `console.log` y mostramos `second` por consola, ahora el **Call Stack** esta vacío y la promesa que estaba en la **Task Queue** pasa al **Call Stack** y resolvemos la promesa mostrando `'I have resolved!'`.
+
+
+`secondFunction` es una función asíncrona, al llamar a `myPromise` con `await` esperamos el tiempo necesario para que la promesa se ejecute, entonces mostramos primero por consola `'I have resolved!'` y luego `second`.
+
+Cuando tenemos sintaxis `async await` escribimos código de manera síncrona pero se ejecuta de manera asíncrona.

@@ -1,0 +1,99 @@
+# Operadores de Igualdad y Comparación
+
+## Reto 3.1: Igualdad débil vs Igualdad estricta {#sec-cap3-reto1}
+
+::: {.callout-caution title="Dificultad" collapse="true"}
+**Básico**
+:::
+
+**¿Puedes explicar el siguiente código?**
+
+```js
+console.log(false == 0) // true
+console.log(false === 0) // false
+```
+
+::: {.callout-tip title="Pista" collapse="true"}
+Notar la comparación de variables con igualdad débil e igualdad estricta.
+:::
+
+**[Ver solución](#sec-sol-cap3-reto1)**
+
+
+---
+
+## Reto 3.2: Comparación de valores falsy {#sec-cap3-reto2}
+
+::: {.callout-caution title="Dificultad" collapse="true"}
+**Básico**
+:::
+
+**¿Puedes explicar el siguiente código?**
+
+```js
+console.log(false == null); // false
+console.log(false == undefined); // false
+```
+
+Siendo `null` y `undefined` valores falsy, ¿por qué pasa esto?
+
+::: {.callout-tip title="Pista" collapse="true"}
+Notar que todos los valores de la comparación son considerados valores falsy para el interprete de JavaScript 
+:::
+
+**[Ver solución](#sec-sol-cap3-reto2)**
+
+---
+
+## Reto 3.3: Igualdad estricta con `NaN` {#sec-cap3-reto3}
+
+::: {.callout-caution title="Dificultad" collapse="true"}
+**Básico**
+:::
+
+**¿Puedes explicar el siguiente código?**
+
+```js
+console.log(NaN === NaN) // false
+```
+
+¿Por qué pasa esto?
+
+::: {.callout-tip title="Pista" collapse="true"}
+Piensa en la naturaleza de `NaN`. 
+:::
+
+**[Ver solución](#sec-sol-cap3-reto3)**
+
+---
+
+## Reto 3.4: Comparaciones entre primitivos y objetos {#sec-cap3-reto4}
+
+::: {.callout-caution title="Dificultad" collapse="true"}
+**Básico**
+:::
+
+**¿Qué imprime este código?**
+
+```js
+let a = 3;
+let b = new Number(3);
+let c = 3;
+
+console.log(a == b);
+console.log(a === b);
+console.log(b === c);
+```
+
+**Opciones:**
+
+* A. `true`, `false`, `true`
+* B. `false`, `false`, `true`
+* C. `true`, `false`, `false`
+* D. `false`, `true`, `true`
+
+::: {.callout-tip title="Pista" collapse="true"}
+Notar la diferencia entre `==` y `===`. Notar que `b` es un objeto y no primitivo.
+:::
+
+**[Ver solución](#sec-sol-cap3-reto4)**

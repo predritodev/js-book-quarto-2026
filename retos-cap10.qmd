@@ -1,0 +1,62 @@
+# Objetos Globales y Utilidades
+
+## Reto 10.1: El segundo parámetro de `JSON.stringify` {#sec-cap10-reto1}
+
+::: {.callout-caution title="Dificultad" collapse="true"}
+**Intermedio**
+:::
+
+**¿Qué imprime este código?**
+
+```js
+const settings = {
+  username: "asterion",
+  level: 80,
+  health: 25
+};
+
+const data = JSON.stringify(settings, ["level", "health"]);
+console.log(data);
+```
+
+**Opciones:**
+
+* A. `'{"level":80, "health":25}'`
+* B. `'{"username": "asterion"}'`
+* C. `'["level", "health"]'`
+* D. `'{"username": "asterion", "level":80, "health":25}'`
+
+::: {.callout-tip title="Pista" collapse="true"}
+`JSON.stringify` convierte un objeto a cadena.
+:::
+
+**[Ver solución](#sec-sol-cap10-reto1)**
+
+---
+
+## Reto 10.2: Redondeo de números con el objeto `Math` {#sec-cap10-reto2}
+
+::: {.callout-caution title="Dificultad" collapse="true"}
+**Básico**
+:::
+
+**¿Qué imprime este código?**
+
+```js
+console.log(Math.floor(9.8));
+console.log(Math.ceil(9.8));
+console.log(Math.round("9.8"));
+```
+
+**Opciones:**
+
+* A. `10`, `10`, `"10"`
+* B. `9`, `10`, `10`
+* C. `9`, `9`, `9`
+* D. `10`, `10`, `"9"`
+
+::: {.callout-tip title="Pista" collapse="true"}
+Algunos métodos redondean hacia abajo, otros hacia arriba y otros redondean al número más cercano.
+:::
+
+**[Ver solución](#sec-sol-cap10-reto2)**

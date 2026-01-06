@@ -1,0 +1,141 @@
+# Soluciones - Operadores de Igualdad y Comparación
+
+## Reto 3.1 {#sec-sol-cap3-reto1}
+
+La respuesta del [Reto 3.1](#sec-cap3-reto1) es:
+
+**A. `true`, `false`**
+
+**Explicación:**
+
+JavaScript tiene una peculiaridad que se denomina **coerción de tipos**. Al intentar realizar algún tipo de operación o comparación ambigua el lenguaje tratará de realizar una conversión de tipos implícita para poder devolver un resultado más o menos lógico, el problema acá radica en que muchas veces el resultado obtenido será diferente al esperado.
+
+Veamos el primer ejemplo:
+
+```js
+console.log(false == 0)
+```
+
+En JavaScript existen lo que denomina **valores `falsy`** y son los siguientes:
+
+* `0`
+* `-0`
+* `0n`
+* `false`
+* `null`
+* `undefined`
+* `NaN`
+* Cualquier tipo de cadena vacía: `'', ""`
+
+Todos estos valores son considerados como falsos para el lenguaje.
+
+Como `0` es un **valor falsy** entonces, aunque no lo veamos, JavaScript hace algo como esto tras bambalinas:
+
+```js
+console.log(false == false)
+```
+
+Y como estamos usando el operador de comparación débil `==` nos limitamos a comparar los valores **más NO los tipos de datos**.
+
+En conclusión, la respuesta es `true` por **coerción de tipos**
+
+Pasemos al siguiente ejemplo:
+
+```js
+console.log(false === 0)
+```
+
+Al usar el **operador estricto de comparación** `===` comparamos tanto el **valor** como el **tipo de dato**, `false` es de tipo `boolean` y `0` es de tipo `number` ergo, la respuesta es `false`.
+
+En otras palabras, también es correcto afirmar que al usar el `===` JavaScript no hace **coerciones de tipo**, por ello es ampliamente sugerido usarlo.
+
+--- 
+
+## Reto 3.2 {#sec-sol-cap3-reto2}
+
+La respuesta del [Reto 3.2](#sec-cap3-reto2) es:
+
+**B. `true`, `false`**
+
+**Explicación:**
+
+Si bien `null` y `undefined` son valores `falsy` al momento de que JavaScript haga **coerciones de tipo** pasa algo raro, esto se debe a que tanto `null` como `undefined` sólo son **iguales** a sí mismos y entre ellos:
+
+```js
+console.log(null == null); // true
+console.log(undefined == undefined); // true
+console.log(undefined == null); // true
+```
+
+Solo en estos casos obtendremos como salida un `true`.
+
+Pero es recomendable usar siempre el **operador estricto de igualdad** `===`:
+
+```js
+console.log(null === null); // true
+console.log(undefined === undefined); // true
+console.log(undefined === null); // false
+```
+
+Esto para evitar que JavaScript haga **coerciones de tipos** y obtengamos resultados no esperados.
+
+--- 
+
+## Reto 3.3 {#sec-sol-cap3-reto3}
+
+La respuesta del [Reto 3.3](#sec-cap3-reto3) es:
+
+**B. `false`**
+
+**Explicación:**
+
+`NaN` o "Not a Number" es el resultado que nos brinda JavaScript cuando intentamos hacer una operación que no tiene sentido, y por ende el resultado no será un número, por ejemplo:
+
+```js
+console.log(Math.sqrt(-1)) // NaN
+console.log(10 / "hola") // NaN
+console.log(Number("hola")) // NaN
+```
+
+Obtener la raiz cuadrada de `-1`, dividir un entero entre una cadena y convertir una cadena a un número son algunas operaciones que nos dan `NaN`.
+
+Ahora bien, cuando intentamos hacer `console.log(NaN === NaN)`, aún usando el operador `===` obtenemos `false` ya que el `NaN` de una operación no puede ser igual al `NaN` de otra. Dos `NaN` nunca serán iguales por este motivo. 
+
+En conclusión, no existe ningún valor en JavaScript que igualado a `NaN` sea `true`, ni siquiera el mismo `NaN`. Esto es una característica propia del lenguaje.
+
+
+---
+
+## Reto 3.4 {#sec-sol-cap3-reto4}
+
+La respuesta del [Reto 3.4](#sec-cap3-reto4) es:
+
+**C. `true`, `false`, `false`**
+
+**Explicación:**
+
+En el primer `console.log`:
+
+```js
+console.log(a == b);
+```
+
+Vemos que hacemos una comparación débil con el operador `==`, esto significa que **solo compararemos los valores de `a` y `b`**, por ende obtendremos un `true`.
+
+En el segundo `console.log`:
+
+```js
+console.log(a === b);
+```
+
+Hacemos una comparación estricta usando el operador `===`, esto significa que compararemos **valores** y **tipos de datos**, `a` y `b` tienen el mismo valor, pero `a` es de tipo `number` y `b` esta siendo inicializada usando el contructor `Number`, por ende es un objeto; entonces obtendremos un `false`.
+
+En el tercer `console.log`
+
+```js
+console.log(b === c);
+```
+
+Al igual que el caso anterior, intentamos comparar de manera estricta un objeto contra un número, entonces tendremos como resultado un `false`.
+
+**Conclusión: trata de usar simpre `===`**

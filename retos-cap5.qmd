@@ -1,0 +1,655 @@
+# Arreglos
+
+## Reto 5.1: Desestructuración de arreglos {#sec-cap5-reto1}
+
+::: {.callout-caution title="Dificultad" collapse="true"}
+**Intermedio**
+:::
+
+**¿Qué crees que imprime el siguiente código?**
+
+```js
+const fruits = ["Mango", "Manzana", "Naranja", "Pera"];
+const { 3:pear } = fruits;
+console.log(pear);
+```
+
+**Opciones:**
+
+* A. `Uncaught TypeError : cannot read property`
+* B. `TypeError: null is not an object (evaluating)`
+* C. `Naranja`
+* D. `Pera`
+
+::: {.callout-tip title="Pista" collapse="true"}
+Es simplemente una desestructuración de arreglos.
+:::
+
+**[Ver solución](#sec-sol-cap5-reto1)**
+
+
+
+---
+
+## Reto 5.2: Parámetros REST {#sec-cap5-reto2}
+
+::: {.callout-caution title="Dificultad" collapse="true"}
+**Básico**
+:::
+
+**¿Qué imprime este código?**
+
+```js
+function getAge(...args) {
+  console.log(typeof args);
+}
+
+getAge(21);
+```
+
+**Opciones:**
+
+* A. `number`
+* B. `array`
+* C. `objet`
+* D. `NaN`
+
+::: {.callout-tip title="Pista" collapse="true"}
+Los parámetros REST permiten pasar un número variable de argumentos a una función.
+:::
+
+**[Ver solución](#sec-sol-cap5-reto2)**
+
+---
+
+## Reto 5.3: Posiciones indexadas de un arreglo {#sec-cap5-reto3}
+
+::: {.callout-caution title="Dificultad" collapse="true"}
+**Básico**
+:::
+
+**¿Qué imprime este código?**
+
+```js
+const numbers = [1, 2, 3];
+numbers[10] = 11;
+console.log(numbers);
+```
+
+**Opciones:**
+
+* A. `[1, 2, 3, 7 x null, 11]`
+* B. `[1, 2, 3, 11]`
+* C. `[1, 2, 3, 7 x empty, 11]`
+* D. `SyntaxError`
+
+::: {.callout-tip title="Pista" collapse="true"}
+Los arreglos en JavaScript son muy permisivos.
+:::
+
+**[Ver solución](#sec-sol-cap5-reto3)**
+
+---
+
+## Reto 5.4: Entendiendo `reduce` con matrices {#sec-cap5-reto4}
+
+::: {.callout-caution title="Dificultad" collapse="true"}
+**Básico**
+:::
+
+**¿Qué imprime este código?**
+
+```js
+[[0, 1], [2, 3]].reduce(
+  (acc, cur) => {
+    return acc.concat(cur);
+  },
+  [1, 2]
+);
+```
+
+**Opciones:**
+
+* A. `[0, 1, 2, 3, 1, 2]`
+* B. `[6, 1, 2]`
+* C. `[1, 2, 0, 1, 2, 3]`
+* D. `[1, 2, 6]`
+
+::: {.callout-tip title="Pista" collapse="true"}
+El segundo parámetro de `reduce` es el valor inicial de `acc`.
+:::
+
+**[Ver solución](#sec-sol-cap5-reto4)**
+
+---
+
+## Reto 5.5: Transformaciones de arreglos con `map()` {#sec-cap5-reto5}
+
+::: {.callout-caution title="Dificultad" collapse="true"}
+**Básico**
+:::
+
+**¿Qué imprime este código?**
+
+```js
+[1, 2, 3].map(num => {
+  if (typeof num === "number") return;
+  return num * 2;
+});
+```
+
+**Opciones:**
+
+* A. `[]`
+* B. `[null, null, null]`
+* C. `[undefined, undefined, undefined]`
+* D. `[ 3 huecos vacíos ]`
+
+::: {.callout-tip title="Pista" collapse="true"}
+Ojo con la sentencia `return`
+:::
+
+**[Ver solución](#sec-sol-cap5-reto5)**
+
+---
+
+## Reto 5.6: Otra desestructuración de arreglos {#sec-cap5-reto6}
+
+::: {.callout-caution title="Dificultad" collapse="true"}
+**Básico**
+:::
+
+**¿Qué imprime este código?**
+
+```js
+const fn = () => {
+  return [1000, 9000+1]
+}
+
+const [, second] = fn()
+console.log(second.toString())
+```
+
+**Opciones:**
+
+* A. `1000`
+* B. `9001`
+* C. `"9001"`
+* D. `SyntaxError`
+
+::: {.callout-tip title="Pista" collapse="true"}
+Es posible omitir posiciones no deseadas del arreglo usando `,` en la desestructuración.
+:::
+
+**[Ver solución](#sec-sol-cap5-reto6)**
+
+---
+
+## Reto 5.7: Agregar elementos con `Array.push` {#sec-cap5-reto7}
+
+::: {.callout-caution title="Dificultad" collapse="true"}
+**Básico**
+:::
+
+**¿Qué imprime este código?**
+
+```js
+function addToList(item, list) {
+  return list.push(item);
+}
+
+const result = addToList("apple", ["banana"]);
+console.log(result);
+```
+
+**Opciones:**
+
+* A. `['banana', 'apple']`
+* B. `2`
+* C. `true`
+* D. `undefined`
+
+::: {.callout-tip title="Pista" collapse="true"}
+¿El método `push` de los arreglos solo agrega un elemento al final de un arreglo?
+:::
+
+**[Ver solución](#sec-sol-cap5-reto7)**
+
+---
+
+## Reto 5.8: `for...of` vs `for...in` {#sec-cap5-reto8}
+
+::: {.callout-caution title="Dificultad" collapse="true"}
+**Básico**
+:::
+
+**¿Qué imprime este código?**
+
+```js
+const bands = ["Radiohead", "Coldplay", "Nirvana"]
+
+for (let item in bands) {
+  console.log(item)
+}
+
+for (let item of bands) {
+  console.log(item)
+}
+```
+
+**Opciones:**
+
+* A. `0 1 2` y `"Radiohead" "Coldplay" "Nirvana"`
+* B. `"Radiohead" "Coldplay" "Nirvana"` y `"Radiohead" "Coldplay" "Nirvana"`
+* C. `"Radiohead" "Coldplay" "Nirvana"` y `0 1 2`
+* D. `0 1 2` y `{0: "Radiohead", 1: "Coldplay", 2: "Nirvana"}`
+
+::: {.callout-tip title="Pista" collapse="true"}
+Ambos sirven para iterar pero no son lo mismo.
+:::
+
+**[Ver solución](#sec-sol-cap5-reto8)**
+
+---
+
+## Reto 5.9: Expresiones en elementos de arreglos {#sec-cap5-reto9}
+
+::: {.callout-caution title="Dificultad" collapse="true"}
+**Básico**
+:::
+
+**¿Qué imprime este código?**
+
+```js
+const list = [1 + 2, 1 * 2, 1 / 2]
+console.log(list)
+```
+
+**Opciones:**
+
+* A. `["1 + 2", "1 * 2", "1 / 2"]`
+* B. `["12", 2, 0.5]`
+* C. `[3, 2, 0.5]`
+* D. `[1, 1, 1]`
+
+::: {.callout-tip title="Pista" collapse="true"}
+Los elementos de un arreglo pueden contener expresiones a ser evaluadas por el interprete de JavaScript.
+:::
+
+**[Ver solución](#sec-sol-cap5-reto9)**
+
+---
+
+## Reto 5.10: Otra vez el método `push` {#sec-cap5-reto10}
+
+::: {.callout-caution title="Dificultad" collapse="true"}
+**Intermedio**
+:::
+
+**¿Qué imprime este código?**
+
+```js
+let newList = [1, 2, 3].push(4)
+
+console.log(newList.push(5))
+```
+
+**Opciones:**
+
+* A. `[1, 2, 3, 4, 5]`
+* B. `[1, 2, 3, 5]`
+* C. `[1, 2, 3, 4]`
+* D. `TypeError: newList.push is not a function`
+
+::: {.callout-tip title="Pista" collapse="true"}
+Notar que no estamos imprimiendo el arreglo `newList` suelto, sino usando el método `push`.
+:::
+
+**[Ver solución](#sec-sol-cap5-reto10)**
+
+---
+
+## Reto 5.11: Parámetros REST en funciones modernas {#sec-cap5-reto11}
+
+::: {.callout-caution title="Dificultad" collapse="true"}
+**Básico**
+:::
+
+**¿Qué imprime este código?**
+
+```js
+function getItems(fruitList, ...args, favoriteFruit) {
+  return [...fruitList, ...args, favoriteFruit]
+}
+
+getItems(["banana", "apple"], "pear", "orange")
+```
+
+**Opciones:**
+
+* A. `["banana", "apple", "pear", "orange"]`
+* B. `[["banana", "apple"], "pear", "orange"]`
+* C. `["banana", "apple", ["pear"], "orange"]`
+* D. `SyntaxError`
+
+::: {.callout-tip title="Pista" collapse="true"}
+Cuidado con el orden de los parámetros en las funciones.
+:::
+
+**[Ver solución](#sec-sol-cap5-reto11)**
+
+---
+
+## Reto 5.12: Cuidado con el return implícito de las funciones {#sec-cap5-reto12}
+
+::: {.callout-caution title="Dificultad" collapse="true"}
+**Básico**
+:::
+
+**¿Qué imprime este código?**
+
+```js
+const getList = ([x, ...y]) => [x, y]
+const getUser = user => { name: user.name, age: user.age }
+
+const list = [1, 2, 3, 4]
+const user = { name: "Messi", age: 40 }
+
+console.log(getList(list))
+console.log(getUser(user))
+```
+
+**Opciones:**
+
+* A. `[1, [2, 3, 4]]` y `SyntaxError`
+* B. `[1, [2, 3, 4]]` y `{ name: "Messi", age: 40 }`
+* C. `[1, 2, 3, 4]` y `{ name: "Messi", age: 40 }`
+* D. `SyntaxError` y `{ name: "Messi", age: 40 }`
+
+::: {.callout-tip title="Pista" collapse="true"}
+Cuidado con la sintaxis de **return implícito** en las funciones flecha.
+:::
+
+**[Ver solución](#sec-sol-cap5-reto12)**
+
+---
+
+## Reto 5.13: Métodos de arreglo inmutables {#sec-cap5-reto13}
+
+::: {.callout-caution title="Dificultad" collapse="true"}
+**Intermedio**
+:::
+
+**¿Cuál o cuales de estos métodos modifica el array original?**
+
+```js
+const points = ['.', '..', '...']
+
+emojis.map(x => x + '.')
+emojis.filter(x => x !== '..')
+emojis.find(x => x !== '..')
+emojis.reduce((acc, cur) => acc + '.')
+emojis.slice(1, 2, '.') 
+emojis.splice(1, 2, '.')
+```
+
+**Opciones:**
+
+* A. `Todos los anteriores`
+* B. `map`, `reduce`, `slice`, `splice`
+* C. `map`, `slice`, `splice`
+* D. `splice`
+
+::: {.callout-tip title="Pista" collapse="true"}
+Los métodos inmutables no modifican el arreglo original.
+:::
+
+**[Ver solución](#sec-sol-cap5-reto13)**
+
+---
+
+## Reto 5.14: `length` como un setter {#sec-cap5-reto14}
+
+::: {.callout-caution title="Dificultad" collapse="true"}
+**Intermedio**
+:::
+
+**¿Qué imprime este código?**
+
+```js
+const numbers = [1, 2, 3, 4, 5];
+numbers.length = 0;
+console.log(numbers);
+```
+
+**Opciones:**
+
+* A. `1`
+* B. `0`
+* C. `[]`
+* D. `[1]`
+
+::: {.callout-tip title="Pista" collapse="true"}
+`length` no solo sirve para calcular la longitud de un iterable, también puede usarse para establecer el número de elementos.
+:::
+
+**[Ver solución](#sec-sol-cap5-reto14)**
+
+---
+
+## Reto 5.15: ¿`typeof` para arreglos? {#sec-cap5-reto15}
+
+::: {.callout-caution title="Dificultad" collapse="true"}
+**Básico**
+:::
+
+**¿Qué imprime este código?**
+
+```js
+const arr = [];
+console.log(Array.isArray(arr));
+```
+
+**Opciones:**
+
+* A. `true`
+* B. `false`
+* C. `[]`
+* D. `ReferenceError`
+
+::: {.callout-tip title="Pista" collapse="true"}
+`Array.isArray` es un método que nos permite comprobar si una variable es un arreglo o no.
+:::
+
+**[Ver solución](#sec-sol-cap5-reto15)**
+
+---
+
+## Reto 5.16: El método `flat` de los arreglos {#sec-cap5-reto16}
+
+::: {.callout-caution title="Dificultad" collapse="true"}
+**Básico**
+:::
+
+**¿Qué imprime este código?**
+
+```js
+const numbers = [1, 2, [3, 4], 5, 6, [7, 8], 9, 0];
+console.log(numbers.flat());
+```
+
+**Opciones:**
+
+* A. `Error, el método flat no existe.`
+* B. `[1, 2, 3, 4, 5, 6, 7, 8, 9, 0]`
+* C. `[1, 2, 3, 4, 5, 6, [7, 8], 9, 0]`
+* D. `[1, 2, [3, 4], 5, 7, 8, 9, 0]`
+
+::: {.callout-tip title="Pista" collapse="true"}
+`flat` permite aplanar arreglos en JavaScript.
+:::
+
+**[Ver solución](#sec-sol-cap5-reto16)**
+
+---
+
+## Reto 5.17: `forEach` y `console.count` {#sec-cap5-reto17}
+
+::: {.callout-caution title="Dificultad" collapse="true"}
+**Intermedio**
+:::
+
+**¿Qué imprime este código?**
+
+```js
+const fruits  = ["orange", "pear", "watermelon", "banana", "strawberries"];
+fruits.forEach(() => {
+  console.count();
+});
+```
+
+**Opciones:**
+
+* A. `5`
+* B. `SyntaxisError`
+* C. 
+
+```js
+default:1
+default:2
+default:3
+default:4
+default:5
+```
+
+* D. `Ninguna de las anteriores`
+
+::: {.callout-tip title="Pista" collapse="true"}
+`console.count` es un método que cuenta las veces que se ejecuta una acción, en este caso una función.
+:::
+
+**[Ver solución](#sec-sol-cap5-reto17)**
+
+---
+
+## Reto 5.18: Conociendo `Array.at` {#sec-cap5-reto18}
+
+::: {.callout-caution title="Dificultad" collapse="true"}
+**Intermedio**
+:::
+
+**¿Qué imprime este código?**
+
+```js
+const teachers = ["Oscar", "Nico", "Freddy", "Christian", "Angela"];
+
+console.log(teachers.at(1));
+console.log(teachers.at(-1));
+console.log(teachers.at(10));
+console.log(teachers.at(3.8));
+console.log(teachers.at(-3.3));
+```
+
+**Opciones:**
+
+* A. `Nico, Angela, undefined, Christian, Freddy`
+* B. `Oscar, undefined, undefined, Freddy, undefined`
+* C. `Nico, SyntaxError, null, Christian, SyntaxError`
+* D. `Nico, null, undefined, undefined, null`
+
+::: {.callout-tip title="Pista" collapse="true"}
+`at` es un método relativamente nuevo que permite acceder a un elemento de un array por su índice. 
+:::
+
+**[Ver solución](#sec-sol-cap5-reto18)**
+
+---
+
+## Reto 5.19: Verificar si un arreglo esta vacío {#sec-cap5-reto19}
+
+::: {.callout-caution title="Dificultad" collapse="true"}
+**Básico**
+:::
+
+**¿Qué imprime este código?**
+
+```js
+const f = arr => Array.isArray(arr) && !arr.length;
+
+console.log(f([1,2,3]));
+console.log(f([0])); 
+console.log(f([])); 
+
+```
+
+**Opciones:**
+
+* A. `true`, `false`, `true`
+* B. `false`, `false`, `false`
+* C. `true`, `true`, `true`
+* D. `false`, `false`, `true`
+
+::: {.callout-tip title="Pista" collapse="true"}
+`length` verifica cuantos elementos tiene un arreglo.
+:::
+
+**[Ver solución](#sec-sol-cap5-reto19)**
+
+---
+
+## Reto 5.20: ¿Suma de arreglos? {#sec-cap5-reto20}
+
+::: {.callout-caution title="Dificultad" collapse="true"}
+**Intermedio**
+:::
+
+**¿Qué imprime este código?**
+
+```js
+const a = [1, 2, 3];
+let b = [4, 5, 6];
+console.log(a + b);
+```
+
+**Opciones:**
+
+* A. `[1, 2, 3, 4, 5, 6]`
+* B. `[1, 2, 3, [4, 5, 6]]`
+* C. `"1, 2, 3, 4, 5, 6"`
+* D. `"1, 2, 34, 5, 6"`
+
+::: {.callout-tip title="Pista" collapse="true"}
+REcuerda que el operador `+` concatena cadenas de texto o hace sumas aritmeticas.
+:::
+
+**[Ver solución](#sec-sol-cap5-reto20)**
+
+---
+
+## Reto 5.21: Desestructuración de arreglos y `length` {#sec-cap5-reto21}
+
+::: {.callout-caution title="Dificultad" collapse="true"}
+**Básico**
+:::
+
+**¿Qué imprime este código?**
+
+```js
+const names = ["Ana", "Sofia", "Carmen", ...["Cris"]];
+const [, , , myName] = names;
+console.log(myName["length"]);
+```
+
+**Opciones:**
+
+* A. `SyntaxError`
+* B. `6`
+* C. `5`
+* D. `4`
+
+::: {.callout-tip title="Pista" collapse="true"}
+En una desestructuración de arreglos es muy importante tener en cuenta que los elementos estan debidamente indexados y el orden de los mismos si importan.
+:::
+
+
+**[Ver solución](#sec-sol-cap5-reto21)**

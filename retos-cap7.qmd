@@ -1,0 +1,297 @@
+# Funciones
+
+## Reto 7.1: Una curiosidad sobre funciones {#sec-cap7-reto1}
+
+::: {.callout-caution title="Dificultad" collapse="true"}
+**Intermedio**
+:::
+
+**¿Qué imprime este código?**
+
+```js
+function bark() {
+  console.log("Woof!");
+}
+
+bark.animal = "dog";
+```
+
+**Opciones:**
+
+* A. `No pasa nada, es totalmente correcto.`
+* B. `SyntaxError. No es posible agregar propiedades a una función de esta manera.`
+* C. `undefined`
+* D. `ReferenceError`
+
+::: {.callout-tip title="Pista" collapse="true"}
+Todo en JavaScript es una función.
+:::
+
+**[Ver solución](#sec-sol-cap7-reto1)**
+
+
+---
+
+## Reto 7.2: Funciones Tradicionales vs Funciones Flecha {#sec-cap7-reto2}
+
+::: {.callout-caution title="Dificultad" collapse="true"}
+**Intermedio**
+:::
+
+**Explica este código JavaScript**
+
+¿Cuál es la diferencia entre las siguientes funciones?
+
+```js
+function addTraditional(a, b){
+  return a + b;
+}
+
+const addArrow = (a, b) => {
+  return a + b;
+}
+```
+
+**Opciones:**
+
+* A. `No hay diferencia, son exactamente iguales.`
+* B. `La primera función es más rápida que la segunda.`
+* C. `La primera función tiene hoisting, la segunda no.`
+* D. `Solo cambia la sintaxis, luego son iguales.`
+
+::: {.callout-tip title="Pista" collapse="true"}
+No tiene nada que ver con la sintaxis.
+:::
+
+**[Ver solución](#sec-sol-cap7-reto2)**
+
+---
+
+## Reto 7.3: Olvidar el parámetro de la función {#sec-cap7-reto3}
+
+::: {.callout-caution title="Dificultad" collapse="true"}
+**Básico**
+:::
+
+**¿Qué imprime este código?**
+
+```js
+function sayHi(name) {
+  return `Hi there, ${name}`
+}
+
+console.log(sayHi())
+```
+
+**Opciones:**
+
+* A. `Hi there`
+* B. `Hi there, undefined`
+* C. `Hi there, null`
+* D. `ReferenceError`
+
+::: {.callout-tip title="Pista" collapse="true"}
+No imprime ningún tipo de error.
+:::
+
+**[Ver solución](#sec-sol-cap7-reto3)**
+
+---
+
+## Reto 7.4: Parámetros de funciones y valores por defecto {#sec-cap7-reto4}
+
+::: {.callout-caution title="Dificultad" collapse="true"}
+**Básico**
+:::
+
+**¿Qué imprime este código?**
+
+```js
+function sum(num1, num2 = num1) {
+  console.log(num1 + num2)
+}
+
+sum(10)
+```
+
+**Opciones:**
+
+* A. `NaN`
+* B. `20`
+* C. `ReferenceError`
+* D. `undefined`
+
+::: {.callout-tip title="Pista" collapse="true"}
+Los parámetros por defecto toman el valor pertinente cuando no proporcionamos el argumento correspondiente.
+:::
+
+**[Ver solución](#sec-sol-cap7-reto4)**
+
+---
+
+## Reto 7.5: Una función rara {#sec-cap7-reto5}
+
+::: {.callout-caution title="Dificultad" collapse="true"}
+**Básico**
+:::
+
+**¿Qué imprime este código?**
+
+```js
+function nums(a, b) {
+  if
+  (a > b)
+  console.log('a is bigger')
+  else 
+  console.log('b is bigger')
+  return 
+  a + b
+}
+
+console.log(nums(4, 2))
+console.log(nums(1, 2))
+```
+
+**Opciones:**
+
+* A. `a is bigger, 6` y `b is bigger, 3`
+* B. `a is bigger, undefined` y `b is bigger, undefined`
+* C. `undefined` y `undefined`
+* D. `SyntaxError`
+
+::: {.callout-tip title="Pista" collapse="true"}
+Notar que no existe ningún punto y coma en ninguna línea de código de la función.
+:::
+
+**[Ver solución](#sec-sol-cap7-reto5)**
+
+---
+
+## Reto 7.6: Invocar una variable como función {#sec-cap7-reto6}
+
+::: {.callout-caution title="Dificultad" collapse="true"}
+**Intermedio**
+:::
+
+**¿Qué imprime este código?**
+
+```js
+const name = "Pepe"
+console.log(name())
+```
+
+**Opciones:**
+
+* A. `SyntaxError`
+* B. `ReferenceError`
+* C. `TypeError`
+* D. `undefined`
+
+::: {.callout-tip title="Pista" collapse="true"}
+Las variables no pueden ser invocadas como funciones, ¿o si pueden?
+:::
+
+**[Ver solución](#sec-sol-cap7-reto6)**
+
+--- 
+
+## Reto 7.7: Higher Order Functions {#sec-cap7-reto7}
+
+::: {.callout-caution title="Dificultad" collapse="true"}
+**Intermedio**
+:::
+
+**¿Qué imprime este código?**
+
+```js
+//A
+const multiply = a => b => a * b ;
+
+//B
+const test = (name, action) => {
+  return action(name); 
+}
+
+console.log(test("Ana", console.log)); 
+//Ana (por consola)
+```
+
+**Opciones:**
+
+* A. `multiply`
+* B. `test`
+* C. `Ambas`
+* D. `Ninguna`
+
+::: {.callout-tip title="Pista" collapse="true"}
+Las Higher Order Functions son aquellas que pueden recibir funciones como parámetros o regresar funciones.
+:::
+
+**[Ver solución](#sec-sol-cap7-reto7)**
+
+---
+
+## Reto 7.8: `typeof` y funciones {#sec-cap7-reto8}
+
+::: {.callout-caution title="Dificultad" collapse="true"}
+**Básico**
+:::
+
+**¿Qué imprime este código?**
+
+```js
+const sayHi = () => {
+  return (() =>"Hi Javascript!")();
+}
+
+console.log(typeof sayHi());
+```
+
+**Opciones:**
+
+* A. `number`
+* B. `object`
+* C. `string`
+* D. `TypeError`
+
+::: {.callout-tip title="Pista" collapse="true"}
+Ojo con el valor de retorno de la función `sayHi`.
+:::
+
+**[Ver solución](#sec-sol-cap7-reto8)**
+
+---
+
+## Reto 7.9: Multiples llamadas a una función {#sec-cap7-reto9}
+
+::: {.callout-caution title="Dificultad" collapse="true"}
+**Intermedio**
+:::
+
+**¿Qué imprime este código?**
+
+```js
+const value = { number: 10 };
+
+const multiply = (x = { ...value }) => {
+  console.log((x.number *= 2));
+};
+
+multiply();
+multiply();
+multiply(value);
+multiply(value);
+```
+
+**Opciones:**
+
+* A. `20`, `40`, `80`, `160`
+* B. `20`, `40`, `20`, `40`
+* C. `20`, `20`, `20`, `40`
+* D. `NaN`, `NaN`, `20`, `40`
+
+::: {.callout-tip title="Pista" collapse="true"}
+Atención al objeto como parámetro en la función y los valores por defecto.
+:::
+
+**[Ver solución](#sec-sol-cap7-reto9)**

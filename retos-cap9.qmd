@@ -1,0 +1,132 @@
+# Programación Asíncrona
+
+## Reto 9.1: Simulando asincronía con `setTimeOut()` {#sec-cap9-reto1}
+
+::: {.callout-caution title="Dificultad" collapse="true"}
+**Intermedio**
+:::
+
+**¿Qué imprime este código?**
+
+```js
+const foo = () => console.log("First");
+const bar = () => setTimeout(() => console.log("Second"));
+const baz = () => console.log("Third");
+
+bar();
+foo();
+baz();
+```
+
+**Opciones:**
+
+* A. `First`, `Second`, `Third`
+* B. `First`, `Third`, `Second`
+* C. `Second`, `First`, `Third`
+* D. `Second`, `Third`, `First`
+
+::: {.callout-tip title="Pista" collapse="true"}
+`setTimeout` es una Web API.
+:::
+
+**[Ver solución](#sec-sol-cap9-reto1)**
+
+
+---
+
+## Reto 9.2: Uso de `setInterval` {#sec-cap9-reto2}
+
+::: {.callout-caution title="Dificultad" collapse="true"}
+**Básico**
+:::
+
+**¿Qué imprime este código?**
+
+```js
+setInterval(() => console.log("Hi"), 1000);
+```
+
+**Opciones:**
+
+* A. `1000`
+* B. `Hi 1000 veces`
+* C. `Hi cada segundo`
+* D. `undefined`
+
+::: {.callout-tip title="Pista" collapse="true"}
+`setInterval` es una Web API que se ejecuta cada x milisegundos.
+:::
+
+**[Ver solución](#sec-sol-cap9-reto2)**
+
+---
+
+## Reto 9.3: Funciones asíncronas {#sec-cap9-reto3}
+
+::: {.callout-caution title="Dificultad" collapse="true"}
+**Intermedio**
+:::
+
+**¿Qué imprime este código?**
+
+```js
+async function getData() {
+  return await Promise.resolve("I made it!");
+}
+
+const data = getData();
+console.log(data);
+```
+
+**Opciones:**
+
+* A. `"I made it!"`
+* B. `Promise {<resolved>: "I made it!"}`
+* C. `Promise {<pending>}`
+* D. `undefined`
+
+::: {.callout-tip title="Pista" collapse="true"}
+Las promesas son objetos especiales de JavaScript que solo tienen tres posibles estados: promesa resuelta, promesa rechazada o promesa pendiente.
+:::
+
+**[Ver solución](#sec-sol-cap9-reto3)**
+
+---
+
+## Reto 9.4: Promesas y funciones asíncronas {#sec-cap9-reto4}
+
+::: {.callout-caution title="Dificultad" collapse="true"}
+**Avanzado**
+:::
+
+**¿Qué imprime este código?**
+
+```js
+const myPromise = () => Promise.resolve('I have resolved!')
+
+function firstFunction() {
+  myPromise().then(res => console.log(res))
+  console.log('second')
+}
+
+async function secondFunction() {
+  console.log(await myPromise())
+  console.log('second')
+}
+
+firstFunction()
+secondFunction()
+```
+
+**Opciones:**
+
+* A. `I have resolved!`, `second` y `I have resolved!`, `second`
+* B. `second`, `I have resolved!` y `second`, `I have resolved!`
+* C. `I have resolved!`, `second` y `second`, `I have resolved!`
+* D. `second`, `I have resolved!` y `I have resolved!`, `second`
+
+::: {.callout-tip title="Pista" collapse="true"}
+Recordar que cuando tenemos sintaxis `async await` escribimos código de manera síncrona pero se ejecuta de manera asíncrona.
+:::
+
+**[Ver solución](#sec-sol-cap9-reto4)**

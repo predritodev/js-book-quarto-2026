@@ -1,0 +1,315 @@
+# El Alcance (Scope)
+
+## Reto 4.1: Variables sin `var`, `let` o `const` {#sec-cap4-reto1}
+
+::: {.callout-caution title="Dificultad" collapse="true"}
+**Básico**
+:::
+
+**¿Qué imprime este código?**
+
+```js
+let greeting;
+greetign = {}; // Typo!
+console.log(greetign);
+```
+
+**Opciones:**
+
+* A. `{}`
+* B. `ReferenceError: greetign is not defined`
+* C. `undefined`
+* D. `Ninguna de las anteriores`
+
+::: {.callout-tip title="Pista" collapse="true"}
+¿Qué pasa cuando declaramos una variable sin `var`, `let` o `const`? ¿Piensas que es posible hacer algo así o tendremos algún tipo de error por parte de JavaScript?
+:::
+
+**[Ver solución](#sec-sol-cap4-reto1)**
+
+
+---
+
+## Reto 4.2: Alcance de variables {#sec-cap4-reto2}
+
+::: {.callout-caution title="Dificultad" collapse="true"}
+**Básico**
+:::
+
+**¿Qué imprime este código?**
+
+```js
+let x = 10;
+if (true) {
+  let y = 20;
+  var z = 30;
+  console.log(x + y + z);
+}
+console.log(x + z);
+```
+
+**Opciones:**
+
+* A. `60`, `40`
+* B. `undefined`, `10`
+* C. `50`, `10`
+* D. `null`, `40`
+
+::: {.callout-tip title="Pista" collapse="true"}
+Diferenciar los diferentes alcances de las variables con `let` y `var`.
+:::
+
+**[Ver solución](#sec-sol-cap4-reto2)**
+
+---
+
+## Reto 4.3: Alcance de variables y paso de parámetros {#sec-cap4-reto3}
+
+::: {.callout-caution title="Dificultad" collapse="true"}
+**Básico**
+:::
+
+**¿Qué imprime este código?**
+
+```js
+let num = 10;
+
+const increaseNumber = () => num++;
+const increasePassedNumber = number => number++;
+
+const num1 = increaseNumber();
+const num2 = increasePassedNumber(num1);
+
+console.log(num1);
+console.log(num2);
+```
+
+**Opciones:**
+
+* A. `10`, `10`
+* B. `10`, `11`
+* C. `11`, `11`
+* D. `11`, `12`
+
+::: {.callout-tip title="Pista" collapse="true"}
+La variable `num` tiene alcance global.
+:::
+
+**[Ver solución](#sec-sol-cap4-reto3)**
+
+---
+
+## Reto 4.4: Otra vez el alcance de las variables {#sec-cap4-reto4}
+
+::: {.callout-caution title="Dificultad" collapse="true"}
+**Básico**
+:::
+
+**¿Qué imprime este código?**
+
+```js
+var status = "A"
+
+setTimeout(() => {
+  const status = "B"
+
+  const data = {
+    status: "C",
+    getStatus() {
+      return this.status
+    }
+  }
+  console.log(data.getStatus())
+}, 0)
+```
+
+**Opciones:**
+
+* A. `"C"`
+* B. `"B"`
+* C. `"A"`
+* D. `ReferenceError`
+
+::: {.callout-tip title="Pista" collapse="true"}
+`var` tiene scope de función mientras que `const`scope de bloque.
+:::
+
+**[Ver solución](#sec-sol-cap4-reto4)**
+
+---
+
+## Reto 4.5: `const` y el alcance de bloque {#sec-cap4-reto5}
+
+::: {.callout-caution title="Dificultad" collapse="true"}
+**Básico**
+:::
+
+**¿Qué imprime este código?**
+
+```js
+function checkAge(age) {
+  if (age < 18) {
+    const message = "Sorry, you're too young."
+  } else {
+    const message = "Yay! You're old enough!"
+  }
+  return message
+}
+
+console.log(checkAge(21))
+```
+
+**Opciones:**
+
+* A. `"Sorry, you're too young."`
+* B. `"Yay! You're old enough!"`
+* C. `ReferenceError`
+* D. `undefined`
+
+::: {.callout-tip title="Pista" collapse="true"}
+El valor de una variable `const` solo existe en el bloque donde fue declarada.
+:::
+
+**[Ver solución](#sec-sol-cap4-reto5)**
+
+---
+
+## Reto 4.6: Temporal Dead Zone {#sec-cap4-reto6}
+
+::: {.callout-caution title="Dificultad" collapse="true"}
+**Avanzado**
+:::
+
+**¿Qué imprime este código?**
+
+```js
+let name = 'Abigail'
+
+function getName() {
+  console.log(name)
+  let name = 'Norah'
+}
+
+getName()
+```
+
+**Opciones:**
+
+* A. `Abigail`
+* B. `Norah`
+* C. `undefined`
+* D. `ReferenceError`
+
+::: {.callout-tip title="Pista" collapse="true"}
+Cuidado con los scopes de las variables, no es lo mismo una variable con scope global y una variable con scope de bloque.
+:::
+
+**[Ver solución](#sec-sol-cap4-reto6)**
+
+---
+
+## Reto 4.7: `const` en primitivos y objetos {#sec-cap4-reto7}
+
+::: {.callout-caution title="Dificultad" collapse="true"}
+**Básico**
+:::
+
+**¿Qué imprime este código?**
+
+```js
+const name = "Cristian";
+name = "Fernando";
+console.log(name)
+
+const person = {
+  id: 1,
+  name: "Cristian",
+};
+
+person.name = "Fernando";
+console.log(person.name);
+```
+
+**Opciones:**
+
+* A. `Fernando`, `Fernando`
+* B. `Cristian`, `TypeError`
+* C. `Cristian`, `Fernando`
+* D. `TypeError`, `Fernando`
+
+::: {.callout-tip title="Pista" collapse="true"}
+`const` actua diferente en objetos y primitivos.
+:::
+
+**[Ver solución](#sec-sol-cap4-reto7)**
+
+---
+
+## Reto 4.8: `var`, `let`, `const` y el alcance global {#sec-cap4-reto8}
+
+::: {.callout-caution title="Dificultad" collapse="true"}
+**Básico**
+:::
+
+**¿Qué imprime este código?**
+
+```js
+var name = "Camila";
+let lastName = "Rodriguez";
+const age = 25;
+
+const getPersonalData = () => {
+  console.log(name);
+  console.log(lastName);
+  console.log(age);
+}
+
+console.log(getPersonalData());
+```
+
+**Opciones:**
+
+* A. `Camila`, `Rodriguez`, `25`
+* B. `Camila`, `undefined`, `undefined`
+* C. `ReferenceError`
+* D. `undefined`, `Rodriguez`, `25`
+
+::: {.callout-tip title="Pista" collapse="true"}
+Diferenciar entre alcance global y de bloque.
+:::
+
+**[Ver solución](#sec-sol-cap4-reto8)**
+
+---
+
+## Reto 4.9: Nuavamente la Temporal Dead Zone {#sec-cap4-reto9}
+
+::: {.callout-caution title="Dificultad" collapse="true"}
+**Intermedio**
+:::
+
+**¿Qué imprime este código?**
+
+```js
+function test(){
+  let name = "Alex";
+  if(true){
+    console.log(nombre);
+    let name = "Oscar";
+  }
+}
+console.log(test());
+```
+
+**Opciones:**
+
+* A. `Alex`
+* B. `ReferenceError: Cannot access 'name' before initialization`
+* C. `Oscar`
+* D. `SyntaxError`
+
+::: {.callout-tip title="Pista" collapse="true"}
+Cuidado con intentar acceder a una variable antes de su declaración.
+:::
+
+**[Ver solución](#sec-sol-cap4-reto9)**

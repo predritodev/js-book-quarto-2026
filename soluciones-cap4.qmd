@@ -1,0 +1,180 @@
+# Soluciones - El Alcance (Scope)
+
+## Reto 4.1 {#sec-sol-cap4-reto1}
+
+La respuesta del [Reto 4.1](#sec-cap4-reto1) es:
+
+**A. `{}`**
+
+**Explicación:**
+
+En la primera línea declaramos `let greeting;`, al declarar una variable con `let` sin inicializarla, esta toma el valor de `undefined`.
+
+En la segunda línea, se comete un error de tipeo `greetign = {};`, pero como la variable no esta declarada ni con `var`, `let` o `const`; Javascript tras bambalinas hace algo como lo siguiente aunque el programador no lo vea:
+
+```js
+var greetign = {}; // Typo!
+```
+
+Entonces `greetign` se crea como **variable global**, en el navegador en el objeto `window` y en un entorno de Node.js en el objeto `global`.
+
+El código final se veria así:
+
+```js
+let greeting; // undefined
+var greetign = {}; // Typo!
+console.log(greetign); // {}
+```
+
+::: {.callout-tip}
+## Tip
+
+Siempre declara tus variables con `let` o `const`. Deja que `var` muera y no la uses más.
+:::
+
+
+---
+
+## Reto 4.2 {#sec-sol-cap4-reto2}
+
+La respuesta del [Reto 4.2](#sec-cap4-reto2) es:
+
+**A. `60`, `40`**
+
+**Explicación:**
+
+Las variables declaradas con `let` y `const` tienen un contexto de bloque, esto significa que solo podrán ser accedidas dentro del bloque de llaves donde fueron declaradas, por ejemplo dentro de un bloque `if` o dentro de una función.
+
+Esta premisa se cumple siempre y cuando esten declaradas dentro de un bloque, si una variable esta fuera de todo bloque entonces se dice que es una variable global y por ende puede ser accedida desde cualquier parte del código.
+
+`let x = 10` es una variable global, puesto que no esta encerrada en ningún tipo de bloque.
+
+Dentro del `if` :
+
+```js
+console.log(x + y + z);
+```
+En el bloque del `if` no se tiene acceso a ninguna variable `x`, por lo tanto JavaScript subirá al siguiente contexto para buscar una variable `x`, al encontrarla recien realiza la suma `x + y + z` que sería `60`.
+
+En el último `console`:
+
+```js
+console.log(x + z);
+```
+La variable `x` esta en el contexto global, por ende accedemos a su valor sin problema alguno.
+
+La variable `z` esta dentro del bloque `if` y no deberiamos poder acceder a ella, pero `z` esta declarada con `var`, esto la convierte en una variable con **contexto de función** y no de bloque, entonces accedemos a su valor, para poder sumar `x + z` que sería `40`.
+
+---
+
+## Reto 4.3 {#sec-sol-cap4-reto3}
+
+La respuesta del [Reto 4.3](#sec-cap4-reto3) es:
+
+**A. `10`, `10`**
+
+**Explicación:**
+
+La primera función en llamarse es `increaseNumber` que solo se encarga de retornar la variable `num` y luego la incrementa; `num` no esta en el scope de la función por eso pasamos a buscar la variable en el scope global. Esta función regresará `10`.
+
+`num1` se pasa como parámetro a `increasePassedNumber` que hace lo mismo que `increaseNumber`, regresa primero el valor de la variable y luego la incrementa, por ello obtenemos nuevamente como salida el valor `10`.
+
+---
+
+## Reto 4.4 {#sec-sol-cap4-reto4}
+
+La respuesta del [Reto 4.4](#sec-cap4-reto4) es:
+
+**A. `"C"`**
+
+**Explicación:**
+
+Al llamar a `getStatus` debemos tener el cuenta el scope de las variables, recuerda que tanto `let` como `const` tienen scope de bloque, por ende buscara una variable `status` dentro del bloque de `data` y regresara la cadena `"C"`.
+
+---
+
+## Reto 4.5 {#sec-sol-cap4-reto5}
+
+La respuesta del [Reto 4.5](#sec-cap4-reto5) es:
+
+**C. `ReferenceError`**
+
+**Explicación:**
+
+`const` tiene scope de bloque para las variables, cuando intentamos hacer `return message` la variable `message` no puede ser accedida. Tanto `message` en el bloque `if` como en el `else` son variables diferentes por que estan en bloques diferentes pese a que se llaman igual. Como no es posible acceder a la variable la respuesta es `ReferenceError`.
+
+---
+
+## Reto 4.6 {#sec-sol-cap4-reto6}
+
+La respuesta del [Reto 4.6](#sec-cap4-reto6) es:
+
+**D. `ReferenceError`**
+
+**Explicación:**
+
+Las variables declaradas con `let` y `const` tienen **scope de bloque** es por este motivo que si bien tenemos 2 variables con el nombre `name`, ambas son diferentes e independientes en sus respectivos scopes.
+
+La función `getName` intenta imprimir por consola `name` antes de ser declarada, por **hoisting** el interprete de JavaScript hará que `name` entre en lo que se denomina **Temporal Dead Zone**, una región del código donde la variable esta declarada pero no es posible acceder a ella.
+
+Todo esto producirá un `ReferenceError`.
+
+Si dentro de la función `getName` la variable `name` estuviera declara con `var`:
+
+```js
+function getName() {
+  console.log(name)
+  var name = 'Sarah'
+}
+```
+Por **hoisting** el resultado seria `undefined` puesto que la **Temporal Dead Zone** solo existe con variables declaradas con `let` y `const`.
+
+---
+
+## Reto 4.7 {#sec-sol-cap4-reto7}
+
+La respuesta del [Reto 4.7](#sec-cap4-reto7) es:
+
+**D. `TypeError`, `Fernando`**
+
+**Explicación:**
+
+Cuando declaramos variables primitivas con `const` estas deben ser como su nombre lo indica valores contantes, por ende no podemos motificar su valor, si intenamos cambiarlo obtendremos un `TypeError`.
+
+Lo anterior mencionado no pasa con los objetos, si declaramos un objeto con `const` luego podemos tranquilamente modificar sus propiedades. ¿Por que pasa esto?
+
+Las variables primitivas tienen **asignación por valor**, pero las variables complejas como los objetos tienen **asignación por referencia**, entonces cuando se intenta cambiar las propiedades de un objeto declarado con `const` estamos alterando sus propiedades pero no al objeto en si, en el ejemplo el objeto `persona` al ser creado reservamos un espacio en memoria que lo almacene, pero no cambiamos dicho espacio, solo sus propiedades.
+
+Haciendo una analogía para comprederlo mejor, una persona, yo por ejemplo: Cristian; desde que naci soy Cristian, a medida que paso el tiempo varias cosas cambiaron en mi, aumento mi estatura, ahora uso lentes, mi cabello esta mas largo, etc., pero sigo siendo yo, pueden cambiar mis propiedades pero en el fondo sigo siendo yo.
+
+---
+
+## Reto 4.8 {#sec-sol-cap4-reto8}
+
+La respuesta del [Reto 4.8](#sec-cap4-reto8) es:
+
+**A. `Camila`, `Rodriguez`, `25`**
+
+**Explicación:**
+
+Independientemente de la palabra reservada con la que declaremos una variable (`var`, `let`, `const`), esta tendrá **scope global** siempre y cuando no este dentro de un bloque o dentro de una función. 
+
+Por este motivo, `name`, `lastName` y `age` son **variables de scope global** y por ello pueden ser accedidas desde la función `getPersonalData`.
+
+---
+
+## Reto 4.9 {#sec-sol-cap4-reto9}
+
+La respuesta del [Reto 4.9](#sec-cap4-reto9) es:
+
+**B. `ReferenceError: Cannot access 'name' before initialization`**
+
+**Explicación:**
+
+Dos aspectos a tomar en cuenta en este ejemplo.
+
+* Primero, recordar que las variables declaradas con `let` o `const` tienen **scope de bloque**.
+
+* Segundo, recordar que las variables declaradas con `let` o `const` no tienen **hoisting**, cuando intentamos acceder a una variable antes de su inicializción entra en la `Temporal Dead Zone`.
+
+La variable `name` no puede ser mostrada sin antes inicializarla, `name` esta  en su **Temporal Dead Zone**.

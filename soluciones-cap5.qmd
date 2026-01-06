@@ -1,0 +1,430 @@
+# Soluciones - Arreglos
+
+## Reto 5.1 {#sec-sol-cap5-reto1}
+
+La respuesta del [Reto 5.1](#sec-cap5-reto1) es:
+
+**D. `Pera`**
+
+**Explicación:**
+
+Para usar la desestructuración en arreglos es importante tener en cuenta los índices de los elementos. Por ello para acceder a `Pera` en el arreglo `fruits` haríamos algo como:
+
+```js
+const [, , , pear]  = fruits;
+```
+
+Donde cada `,` representa el salto de un índice del arreglo.
+
+Para una sistaxis mas breve podemos usar esto:
+
+```js
+const { 3:pear } = fruits;
+```
+
+Donde el `3` representa las posiciones que deseamos saltar.
+
+Nota que aunque frutas sea un arreglo usamos `{}` para la desestructuración.
+
+
+
+
+---
+
+## Reto 5.2 {#sec-sol-cap5-reto2}
+
+La respuesta del [Reto 5.2](#sec-cap5-reto2) es:
+
+**C. `object`**
+
+**Explicación:**
+
+Cuando usamos la sintaxis de `...` en los parámetros de una función (REST parameter desde ES6) convertimos a dicho parámetro en un arreglo. Entonces es tentador marcar la opción **B. `"array"`** pero esto sería un **error de novato**. En JavaScript no existe el tipo de dato `array`, para **tipos no primitivos** el lenguaje los evalua como `object`. Por ese motivo la respuesta correcta es la opción **C. `object`**.
+
+---
+
+## Reto 5.3 {#sec-sol-cap5-reto3}
+
+La respuesta del [Reto 5.3](#sec-cap5-reto3) es:
+
+**C. `[1, 2, 3, 7 x empty, 11]`**
+
+**Explicación:**
+
+JavaScript no arroja ningún error, crea valores `undefined` hasta completar los índices pertinentes, luego muestra el último valor creado, en este caso `11`.
+
+Dependiendo en que entorno de ejecución se ejecute el código puede variar un poco la salida, una respuesta valida también sería:
+
+```js
+[1, 2, 3, undefined, undefined, undefined, undefined, 
+undefined, undefined, undefined, 11]
+```
+
+---
+
+## Reto 5.4 {#sec-sol-cap5-reto4}
+
+La respuesta del [Reto 5.4](#sec-cap5-reto4) es:
+
+**C. `[1, 2, 0, 1, 2, 3]`**
+
+**Explicación:**
+
+`acc` se inicializa con `[1, 2]`. En el `return` de la función concatenamos este valor de inicialización con el arreglo anidado, arreglo por arreglo.
+
+---
+
+## Reto 5.5 {#sec-sol-cap5-reto5}
+
+La respuesta del [Reto 5.5](#sec-cap5-reto5) es:
+
+**C. `[undefined, undefined, undefined]`**
+
+**Explicación:**
+
+El método `map` es propio del paradigma de la programación funcional. Este método siempre retorna una nuevo arreglo de longitud igual al arreglo original.
+
+En el ejemplo, puesto que estamos iterando sobre un arreglo de números, la condición evaluará `true` para cada uno de los elementos del arreglo, pero hay 2 sentencias `return`. JavaScript ignora todo el código que esta después del primer `return` que encuntra. Dicho esto, tenemos algo así:
+
+```js
+[1, 2, 3].map(num => {
+  if (typeof num === "number") return;
+});
+```
+Ahora, si bien la condición se evalua a `true`, el `return` no devuelve nada, simplemente hace que el código se salga del `map`.
+
+Cuando no devolvemos nada en la sentencia `return`, `map` regresa siempre `undefined`.
+
+Al tener 3 elementos en el arreglo, y recordando siempre que `map` regresa un nuevo arreglo, obtenemos como resultado final un arreglo de 3 `undefined`.
+
+---
+
+## Reto 5.6 {#sec-sol-cap5-reto6}
+
+La respuesta del [Reto 5.6](#sec-cap5-reto6) es:
+
+**C. `"9001"`**
+
+**Explicación:**
+
+Cuando una función regresa un arreglo en Javascript es muy usual utilizar la sintaxis de desestructuración para poder acceder a sus elementos por separado. 
+
+En este ejemplo accedemos a la segunda posición del arreglo de la siguiente manera: 
+
+```js
+const [, second] = fn()
+```
+
+Esto es lo mismo que decir:
+
+```js
+const second = fn()[1]
+```
+
+Finalmente convertimos el valor de `number` a `string`.
+
+---
+
+## Reto 5.7 {#sec-sol-cap5-reto7}
+
+La respuesta del [Reto 5.7](#sec-cap5-reto7) es:
+
+**B. `2`**
+
+**Explicación:**
+
+El método `push` regresa la longitud del arreglo. Inicialmente el arreglo `["banana"]` tiene langitud `1`, al hacer el `push` del item `apple` la longitud será de `2` y ojo, no hacemos un `return` de `list` sino de `list.push(item)` por ello regresamos la longitud que es `2`.
+
+Si quisieramos regresar el arreglo resultante completo deberiamos hacer:
+
+```js
+function addToList(item, list) {
+  list.push(item);
+  return list; // ["banana","apple"]
+}
+```
+
+---
+
+## Reto 5.8 {#sec-sol-cap5-reto8}
+
+La respuesta del [Reto 5.8](#sec-cap5-reto8) es:
+
+**A. `0 1 2` y `"Radiohead" "Coldplay" "Nirvana"`**
+
+**Explicación:**
+
+Con el bucle _for...in_, podemos iterar sobre propiedades **enumerables**. Los enumerables en el arreglo son justamente sus índices. Por ello el resultado es `0` `1` `2`.
+
+Con un bucle _for...of_, podemos recorrer sobre **iterables**. Un arreglo por definición es un iterable, en cada iteración la variable `item` es igual al elemento sobre el cual se itera en ese momento. Por ello el resultado es `"Radiohead"` `"Coldplay"` `"Nirvana"`.
+
+En la practica los bucles _for...of_ son más usados y usualmente en raras ocaciones se ven bucles _for...in_.
+
+---
+
+## Reto 5.9 {#sec-sol-cap5-reto9}
+
+La respuesta del [Reto 5.9](#sec-cap5-reto9) es:
+
+**C. `[3, 2, 0.5]`**
+
+**Explicación:**
+
+Los arreglos en JavaScript pueden soportar cualquier tipo de dato incluyendo expresiones a ser evaluadas, por ello todas las operaciones aritméticas se resuelven y acomodan en los índices correspondientes del arreglo.
+
+---
+
+## Reto 5.10 {#sec-sol-cap5-reto10}
+
+La respuesta del [Reto 5.10](#sec-cap5-reto10) es:
+
+**D. `TypeError: newList.push is not a function`**
+
+**Explicación:**
+
+El método `push` regresa la longitud de un arreglo y no el arreglo en si mismo, podemos ver este comportamiento si hacemos lo siguiente:
+
+```js
+let newList = [1, 2, 3].push(4)
+console.log(typeof newList); // number
+```
+
+Después de aplicar por primera vez el método `push`, `newList` ahora ya no es un arreglo, sino un primitivo de tipo `number` entonces cuando intentamos aplicar `push` por segunda vez tratamos de implementar un método propio de los arreglos a una variable de tipo `number`, es justo aquí es donde se genera el error.
+
+---
+
+## Reto 5.11 {#sec-sol-cap5-reto11}
+
+La respuesta del [Reto 5.11](#sec-cap5-reto11) es:
+
+**D. `SyntaxError`**
+
+**Explicación:**
+
+Cuando vemos en la lista de parámetros de una función la sintaxis de tres puntos `...` nos referimos a lo que se denomina un **paramétro de tipo REST**. En el cuerpo de la función este tipo de parámetro se trata como un arreglo pero **siempre debe estar declarado al final de la lista de parámetros**, caso contrario tendremos un error de sintaxis.
+
+Si volvemos a escribir la función pero esta vez teniendo en cuenta lo anterior dicho:
+
+```js
+function getItems(fruitList, favoriteFruit, ...args) {
+  return [...fruitList, ...args, favoriteFruit]
+}
+
+console.log(getItems(["banana", "apple"], "pear", "orange"))
+```
+Obtemos por consola: `["banana", "apple", "orange", "pear"]`
+
+---
+
+## Reto 5.12 {#sec-sol-cap5-reto12}
+
+La respuesta del [Reto 5.12](#sec-cap5-reto12) es:
+
+**A. `[1, [2, 3, 4]]` y `SyntaxError`**
+
+**Explicación:**
+
+* En la función `getList`:
+
+Tenemos una desestructuración de arreglos en la lista de parámetros de la función y además `y` es un parámetro de tipo REST. 
+
+Por ende, al pasar el argumento `list`, `x` será igual al primer elemento del arreglo, ósea, `1`. Entonces como `y` es de tipo REST será un arreglo con todos los elementos restantes de `list`, ósea, `[2, 3, 4]`.
+
+La función regresa un nuevo arreglo `[x, y]`, entonces tendríamos un arreglo anidado y como resultado `[1, [2, 3, 4]]`
+
+* En la función `getUser`:
+
+Recibe un único parámetro `user` que es un objeto y luego lo regresa. 
+
+Las funciones de tipo flecha tiene la característica denominada **return implícito** con esto se logra escribir funciones más compactas y de una sola línea, pero cuando intentamos usar un **return implícito** para devolver un objeto es **obligatorio** usar paréntesis para envolver al objeto en cuestión, sino hacemos esto el interprete nos arrojará un `SyntaxError`.
+
+Para que el **return implícito** tenga sentido tendríamos que usar paréntesis para envolver el objeto:
+
+```js
+const getUser = user => ({ name: user.name, age: user.age })
+const user = { name: "Messi", age: 40 }
+console.log(getUser(user)); // {name: "Messi", age: 40}
+```
+
+---
+
+## Reto 5.13 {#sec-sol-cap5-reto13}
+
+La respuesta del [Reto 5.13](#sec-cap5-reto13) es:
+
+**D. `splice`**
+
+**Explicación:**
+
+`splice` es un método mutable de arreglos capaz de agregar, eliminar o reemplazar los elementos del mismo.
+
+El resto de los métodos son usados mucho en programación funcional y por ende son **inmutables**.
+
+---
+
+## Reto 5.14 {#sec-sol-cap5-reto14}
+
+La respuesta del [Reto 5.14](#sec-cap5-reto14) es:
+
+**C. `[]`**
+
+**Explicación:**
+
+El método `lenght` es un getter y un setter al mismo tiempo, esto quiere decir que podemos obtener valores y podemos establecer los mismos dependiendo a lo que se necesite.
+
+En este caso usar `length` y setterlo a `0` es una buena manera de borrar todos los elementos de un arreglo. 
+
+Saber esto es muy útil cuando tengamos qu eliminar algunos o todos los elementos de un arreglo.
+
+---
+
+## Reto 5.15 {#sec-sol-cap5-reto15}
+
+La respuesta del [Reto 5.15](#sec-cap5-reto15) es:
+
+**A. `true`**
+
+**Explicación:**
+
+Una manera adecuada de comprobar que un arreglo es efectivamente un arreglo es usar el constructor `Array` con su método `isArray`.
+
+Como `arr` es un arreglo (vacío pero arreglo al fin), entonces regresamos `true`.
+
+Como los arreglos no son un tipo de dato per se en JavaScript, la mejor manera de comprobar si un arreglo es un arreglo es de esta manera.
+
+¿Te cuento un secreto? Esta pregunta es bastante frecuente en entrevistas laborales, pero shhh, no se lo digas a nadie.
+
+---
+
+## Reto 5.16 {#sec-sol-cap5-reto16}
+
+La respuesta del [Reto 5.16](#sec-cap5-reto16) es:
+
+**B. `[1, 2, 3, 4, 5, 6, 7, 8, 9, 0]`**
+
+**Explicación:**
+
+`flat` es un **array method** que crea un nuevo arreglo con los elementos concatenados recursivamente hasta una profundidad especificada.
+
+Dicho en otras palabras, permite "aplanar" un arreglo anidado un número determinado de veces. Es una buena alernativa a usar por ejemplo `reduce` para hacer lo mismo. 
+
+No muchos desarrolladores conocen esta característica en el lenguaje.
+
+---
+
+## Reto 5.17 {#sec-sol-cap5-reto17}
+
+La respuesta del [Reto 5.17](#sec-cap5-reto17) es:
+
+**C.**
+
+```js
+default:1
+default:2
+default:3
+default:4
+default:5
+```
+
+**Explicación:**
+
+`console.count()` se encarga como su nombre lo dice de contar acciones que ocurren en el código, desde cuantas veces se repite un bucle (como en el ejemplo) hasta poder determinar cuantas veces se llamo a una función. 
+
+Puede llegar a ser útil para hacer un debbuging básico, no esta de más conocerla, quiza te saque de un apaño.
+
+---
+
+## Reto 5.18 {#sec-sol-cap5-reto18}
+
+La respuesta del [Reto 5.18](#sec-cap5-reto18) es:
+
+**A. `Nico Angela undefined Christian Freddy`**
+
+**Explicación:**
+
+El método `.at` es una nueva forma de poder acceder a elementos de arreglos o caracteres de cadenas.
+
+Recibe como parámetro un número que representa en este ejemplo el índice al cual se quiere acceder.
+
+* `.at(1)` regresa el item "Nico" puesto que tiene el índice 1. 
+
+* `.at(-1)` regresa el item "Angela", es una manera elegante de acceder al último item de un arreglo.
+
+* `.at(10)` regresa `undefiend` puesto que no existe un item con dicho índice en el arreglo.
+
+* `.at(3.8)` y `.at(-3.3)` solo tomaran la parte entera del parámetro, por ende tendremos `.at(3)` que regresa "Christian".
+ * `at.(-3)` que regresa "Freddy".
+
+---
+
+## Reto 5.19 {#sec-sol-cap5-reto19}
+
+La respuesta del [Reto 5.19](#sec-cap5-reto19) es:
+
+**D. `false`, `false`, `true`**
+
+**Explicación:**
+
+Este ejemplo es bien sencillo pero abarca varios temas interesantes de JavaScript.
+
+La función se encarga de verificar si un arreglo esta vacío o no, para ello hacemos una doble verificación:
+
+Primero, corroboramos que el parámetro `arr` sea un arreglo, la manera más eficiente de hacerlo es usando el método `isArray` del objeto `Array` el cual regresa `true` si es un arreglo y `false` sino lo es. 
+
+Segundo, corroboramos que la longitud del arreglo sea 0 y convertimos esa salida a boolean para poder hacer una comparación de boeleanos con el operador de corto circuito `&&`
+
+Veamos caso por caso:
+
+* `[1,2,3]`, es un arreglo pero no esta vacío. 
+Entonces tendriamos: `true` && `false`, que evalua a `false`.
+
+* `[0]`, es un arreglo y tampoco esta vacío.
+Entonces tendríamos: `true` && `false`, que evalua a `false`.
+
+* `[]` es un arreglo y si esta vacío.
+Entonces tendríamos: `true` && `true`, que evalua a `true`.
+
+Conclusión: `false`, `false`, `true`.
+
+---
+
+## Reto 5.20 {#sec-sol-cap5-reto20}
+
+La respuesta del [Reto 5.20](#sec-cap5-reto20) es:
+
+**D. `"1, 2, 34, 5, 6"`**
+
+**Explicación:**
+
+Los operadores de JavaScript, como por ejemplo el operador suma (+), están diseñados para tipos de datos primitivos, especialmente para cadenas de caracteres y números.
+
+Cuando intentamos usar dichos operadores para tipos no primitivos, JavaScript hará su mayor esfuerzo para devolver un resultado lógico, pero la mayoría de las veces obtendremos salidas no esperadas o ambiguas.
+
+Lo primero que tratará de hacer el interprete de JavaScript es tratar de convertir los arreglos a cadenas, aunque no lo veamos hará algo como esto:
+
+```js
+const a = [1, 2, 3];
+let b = [4, 5, 6];
+console.log(a.toString() + b.toString()); 
+//"1, 2, 3" + "4, 5, 6"
+```
+
+La operación de "suma de arreglos" al final se convierte en una concatenación de cadenas.
+
+Para realizar una concatenación de arreglos podemos usar el operador spread `...` o métodos como `concat`.
+
+---
+
+## Reto 5.21 {#sec-sol-cap5-reto21}
+
+La respuesta del [Reto 5.21](#sec-cap5-reto21) es:
+
+**D. `4`**
+
+**Explicación:**
+
+Cuando pretendemos hacer una desestructuración de arreglos es súper importante tener en cuenta los índices del mismo. Usando la sintaxis de la coma `,` podemos "saltar" posiciones del arreglo hasta encontrar la propiedad que se desea obtener.
+
+En el ejemplo usamos 3 veces `,` por ello saltamos 3 posiciones del arreglo `names` para poder obtener (con spread operator) la cadena `Cris` del arreglo anidado.
+
+Finalmente aplicamos el método `length` con sintaxis de corchete.

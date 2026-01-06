@@ -1,3 +1,985 @@
 # Glosario {.unnumbered}
 
-Glosario del libro
+```{=html}
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&display=swap');
+
+.glossary-container {
+  font-family: 'Outfit', sans-serif;
+  color: #34495e;
+  line-height: 1.8;
+}
+
+.glossary-container h2 {
+  font-size: 3rem;
+  color: #1a2a6c;
+  border-bottom: 4px solid #f2a365;
+  margin-top: 3rem;
+  padding-bottom: 0.5rem;
+  display: inline-block;
+  width: 100%;
+}
+
+.glossary-container h3 {
+  font-size: 1.8rem;
+  color: #2c3e50;
+  margin-top: 2rem;
+  background: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
+  padding: 10px 15px;
+  border-left: 5px solid #1a2a6c;
+  border-radius: 0 5px 5px 0;
+}
+
+.glossary-container p {
+  font-size: 1.15rem;
+  margin-bottom: 1rem;
+}
+
+.glossary-container strong {
+  color: #1a2a6c;
+  font-weight: 700;
+}
+
+.glossary-container .code-example {
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  padding: 1rem;
+  border: 1px solid #e9ecef;
+  margin: 1rem 0;
+}
+</style>
+```
+
+::: {.glossary-container}
+
+Definiciones de términos técnicos utilizados en este libro para facilitar la comprensión de conceptos clave de JavaScript.
+
+## A
+
+### Array.from {#glos-array_from}
+
+**Inglés:** Array.from
+
+**Tipo:** Método estático
+
+**Definición:**
+
+El método `Array.from()` crea una nueva instancia de `Array` a partir de un objeto iterable.
+
+**Ejemplo:**
+
+```javascript
+console.log(Array.from("JavaScript"));
+// [ 'J', 'a', 'v', 'a', 'S', 'c', 'r', 'i', 'p', 't' ]
+```
+
+**Referencias:** @mdn_array_from
+
+### Arreglo {#glos-arreglo}
+
+**Inglés:** Array
+
+**Tipo:** Objeto
+
+**Definición:**
+
+Una colección ordenada de valores donde cada elemento tiene una posición numérica denominada índice. En JavaScript, los arreglos son objetos globales especializados que permiten almacenar múltiples elementos bajo un solo nombre de variable, son dinámicos y pueden contener datos de diferentes tipos simultáneamente.
+
+**Ejemplo:**
+
+```javascript
+const miArreglo = ["JavaScript", 2024, true];
+console.log(miArreglo[0]); // "JavaScript"
+```
+
+**Referencias:** @mdn_array 
+
+---
+
+## B
+
+### Base binaria {#glos-binaria}
+
+**Inglés:** Binary
+
+**Tipo:** Concepto
+
+**Definición:**
+
+Sistema numérico que utiliza solo dos símbolos para representar valores: 0 y 1.
+
+**Ejemplo:**
+
+```javascript
+let binario = 0b1010; // Representa el número 10 en decimal
+console.log(binario); // 10
+```
+
+**Referencias:** @loor_delgado_2018
+
+### Base octal {#glos-octal}
+
+**Inglés:** Octal
+
+**Tipo:** Concepto
+
+**Definición:**
+Sistema numérico que utiliza ocho símbolos para representar valores: 0, 1, 2, 3, 4, 5, 6 y 7.
+
+**Ejemplo:**
+
+```javascript
+let octal = 0o12; // Representa el número 10 en decimal
+console.log(octal); // 10
+```
+
+**Referencias:** @cuemath_octal
+
+### Base decimal {#glos-decimal}
+
+**Inglés:** Decimal
+
+**Tipo:** Concepto
+
+**Definición:**
+Sistema numérico que utiliza diez símbolos para representar valores: 0, 1, 2, 3, 4, 5, 6, 7, 8 y 9.
+
+**Ejemplo:**
+
+```javascript
+let decimal = 10; // Representa el número 10 en decimal
+console.log(decimal); // 10
+```
+
+**Referencias:** @britannica_binary
+
+---
+
+## C 
+
+### Cadena de caracteres {#glos-cadena}
+
+**Inglés:** String
+
+**Tipo:** Primitivo
+
+**Definición:**
+
+Tipo de dato primitivo que representa una secuencia inmutable de caracteres utilizada para representar texto. En JavaScript, las cadenas se almacenan como una serie de unidades de código de 16 bits siguiendo el estándar UTF-16, donde cada elemento ocupa una posición indexada comenzando desde cero.
+
+**Ejemplo:**
+
+```javascript
+let cadena = "Hola, mundo!";
+console.log(cadena.length); // 13
+```
+
+**Referencias:** @mdn_string
+
+
+### Coerción de tipos {#glos-coercion}
+
+**Inglés:** Type Coercion  
+
+**Tipo:** Concepto  
+
+**Definición:**  
+Conversión automática o implícita de valores de un tipo de dato a otro realizada por el intérprete de JavaScript.
+
+**Ejemplo:**
+
+```javascript
+"5" + 3   // "53" - convierte number a string
+"5" - 3   // 2 - convierte string a number
+```
+
+**Referencias:** @mdn_type_coercion
+
+### Concatenación {#glos-concatenacion}
+
+**Inglés:** Concatenation
+
+**Tipo:** Concepto
+
+**Definición:**
+Operación que une dos cadenas de texto para formar una nueva cadena.
+
+**Ejemplo:**
+
+```javascript
+let string1 = "Hello";
+let string2 = "world";
+let result = string1 + ", " + string2; // "Hello, world"
+```
+
+**Referencias:** @mdn_strings_concat
+
+### Corto circuito {#glos-corto_circuito}
+
+**Inglés:** Short-circuit
+
+**Tipo:** Concepto
+
+**Definición:**
+Comportamiento de los operadores lógicos en el que el segundo operando es evaluado solo si el primero no es suficiente para determinar el resultado de la expresión.
+
+**Ejemplo:**
+
+```javascript
+"Usuario" || "Invitado"; // "Usuario"
+0 && "No se evalúa"; // 0
+```
+
+**Referencias:** @geeksforgeeks_short_circuit
+
+---
+
+## D
+
+### Doble negación {#glos-doble-negacion}
+
+**Inglés:** Double Negation
+
+**Tipo:** Concepto
+
+**Definición:**
+Uso de dos operadores de negación lógica (`!`) consecutivos para convertir un valor de cualquier tipo a su valor booleano explícito. El primer `!` convierte el valor a su opuesto booleano y el segundo lo invierte de nuevo, devolviendo `true` para valores *truthy* y `false` para valores *falsy*.
+
+
+**Ejemplo:**
+
+```javascript
+!!"hola"  // true
+!!0       // false
+!!null    // false
+```
+
+**Referencias:** @mdn_type_coercion
+
+---
+
+## E
+
+### Expresión {#glos-expresion}
+
+**Inglés:** Expression
+
+**Tipo:** Concepto
+
+**Definición:**
+Cualquier unidad de código válida que se resuelve en un valor. En JavaScript, las expresiones pueden consistir en valores literales, variables, operadores o llamadas a funciones que el intérprete evalúa para producir un resultado único.
+
+**Ejemplo:**
+
+```javascript
+console.log(5 + 3);          // Expresión aritmética
+console.log("Hello" + "!");  // Expresión de cadena
+console.log(true && false);  // Expresión lógica
+```
+
+**Referencias:** @mdn_expressions_operators
+
+
+
+### ES6 {#glos-es6}
+
+**Inglés:** ES6
+
+**Tipo:** Concepto
+
+**Definición:**
+Sexta edición del estándar ECMAScript publicada en 2015. Representa una de las actualizaciones más significativas del lenguaje JavaScript, introduciendo nuevas características y sintaxis que modernizaron el desarrollo, como las declaraciones `let` y `const`, funciones de flecha, clases, plantillas de cadena y módulos.
+
+**Ejemplo:**
+
+```javascript
+// Uso de arrow functions y template literals (características de ES6)
+const saludar = (nombre) => `Hola, ${nombre}!`;
+console.log(saludar("JavaScript")); // "Hola, JavaScript!"
+```
+
+**Referencias:** @w3schools_es6
+
+---
+
+
+
+## F
+
+### Falsy {#glos-falsy}
+
+**Inglés:** Falsy
+
+**Tipo:** Concepto
+
+**Definición:**
+Valor que se convierte en `false` cuando se evalúa en un contexto booleano.
+
+**Ejemplo:**
+
+```javascript
+Boolean(0);         // false
+Boolean("");        // false
+Boolean(null);      // false
+Boolean(undefined); // false
+Boolean(NaN);       // false
+```
+
+**Referencias:** @mdn_falsy
+
+### Función anónima {#glos-funcion_anonima}
+
+**Inglés:** Anonymous Function
+
+**Tipo:** Concepto
+
+**Definición:**
+Función que no tiene nombre y se puede asignar a una variable o pasar como argumento a otra función.
+
+**Ejemplo:**
+
+```javascript
+const miFuncion = function() {
+    console.log("Hola, mundo!");
+};
+```
+
+**Referencias:** @geeksforgeeks_anonymous
+
+---
+
+## I 
+
+### Igualdad estricta {#glos-igualdad_estricta}
+
+**Inglés:** Strict Equality
+
+**Tipo:** Concepto
+
+**Definición:**
+Operador que compara dos valores para verificar si son iguales y del mismo tipo.
+
+**Ejemplo:**
+
+```javascript
+1 === 1; // true
+1 === "1"; // false
+```
+
+**Referencias:** @mdn_strict_equality
+
+### Interprete de JavaScript {#glos-interpreter}
+
+**Inglés:** JavaScript Interpreter
+
+**Tipo:** Concepto
+
+**Definición:**
+Programa que procesa y ejecuta el código fuente de JavaScript directamente, traduciéndolo a instrucciones de máquina en tiempo de ejecución. A diferencia de los lenguajes compilados, no requiere una fase de traducción previa a un archivo binario ejecutable.
+
+**Ejemplo:**
+
+```javascript
+console.log("The interpreter processes this line");
+```
+
+**Referencias:** @geeksforgeeks_interpreted_compiled
+
+
+
+### Iterador {#glos-iterador}
+
+**Inglés:** Iterator
+
+**Tipo:** Concepto
+
+**Definición:**
+Objeto que permite recorrer los elementos de una colección uno a uno. En JavaScript, las cadenas de texto son iterables, lo que permite acceder a cada uno de sus caracteres de forma secuencial mediante estructuras de control como bucles o a través de su índice.
+
+**Ejemplo:**
+
+```javascript
+const text = "Hello";
+
+for (const char of text) {
+  console.log(char);
+}
+// "H"
+// "e"
+// "l"
+// "l"
+// "o"
+
+```
+
+**Referencias:** @mdn_iterators_generators
+
+---
+
+
+## J
+
+### Java {#glos-java}
+
+**Inglés:** Java
+
+**Tipo:** Lenguaje de programación
+
+**Definición:**
+Lenguaje de programación orientado a objetos que se utiliza para crear aplicaciones empresariales, aplicaciones móviles, aplicaciones del lado del servidor, etc.
+
+**Ejemplo:**
+
+```java
+public class HolaMundo {
+    public static void main(String[] args) {
+        System.out.println("Hola, mundo!");
+    }
+}
+```
+
+**Referencias:** @azure_java
+
+### JavaScript {#glos-javascript}
+
+**Inglés:** JavaScript
+
+**Tipo:** Lenguaje de programación
+
+**Definición:**
+Lenguaje de programación interpretado, dinámico y orientado a prototipos que se utiliza para crear aplicaciones web interactivas, aplicaciones móviles, aplicaciones de escritorio, aplicaciones del lado del servidor, etc.
+
+**Ejemplo:**
+
+```javascript
+console.log("Hola, mundo!");
+```
+
+**Referencias:** @mdn_javascript
+
+### join {#glos-join}
+
+**Inglés:** join
+
+**Tipo:** Método
+
+**Definición:**
+Método que convierte un arreglo a cadena de texto mediante un separador pasado como parámetro.
+
+**Ejemplo:**
+
+```javascript
+let result = ["Hello", "JavaScript"].join(" ");
+console.log(result); // "Hello JavaScript"
+```
+
+**Referencias:** @percival2021javascript
+
+### JSON {#glos-json}
+
+**Inglés:** JSON
+
+**Tipo:** Objeto
+
+**Definición:**
+Formato ligero de intercambio de datos, basado en texto y fácil de leer para los humanos. Aunque se deriva de la sintaxis de objetos de JavaScript, es un formato independiente del lenguaje y es ampliamente utilizado para almacenar y transmitir datos estructurados entre un servidor y una aplicación web o entre diferentes sistemas.
+
+
+**Ejemplo:**
+
+```javascript
+{
+  "nombre": "Juan Pérez",
+  "edad": 30,
+  "esEstudiante": false,
+  "hobbies": ["lectura", "programación"],
+  "direccion": {
+    "calle": "Calle Benito de los Palotes 123",
+    "ciudad": "Springfield"
+  }
+}
+
+```
+
+**Referencias:** @mdn_learn_json
+
+### JSON.stringify {#glos-json_stringify}
+
+**Inglés:** JSON.stringify
+
+**Tipo:** Método estático
+
+**Definición:**
+Método estático que convierte un valor de JavaScript en una cadena JSON.
+
+**Ejemplo:**
+
+```javascript
+JSON.stringify({ a: 1, b: 2 }) // "{"a":1,"b":2}"
+```
+
+**Referencias:** @mdn_json_stringify
+
+---
+
+## L 
+
+### length {#glos-length}
+
+**Inglés:** length
+
+**Tipo:** Propiedad
+
+**Definición:**
+Propiedad que indica la longitud de una cadena de texto o un arreglo.
+
+**Ejemplo:**
+
+```javascript
+console.log("hello".length); // 4
+console.log([1, 2, 3].length); // 3
+```
+
+**Referencias:** @w3schools_string_length
+
+### let {#glos-let}
+
+**Inglés:** let
+
+**Tipo:** Operador
+
+**Definición:**
+Operador que crea una variable con ámbito de bloque.
+
+**Ejemplo:**
+
+```javascript
+let a = 1;
+let b = 2;
+```
+
+**Referencias:** @mdn_let
+
+---
+
+## N 
+
+### NaN {#glos-nan}
+
+**Inglés:** NaN
+
+**Tipo:** Primitivo
+
+**Definición:**
+Valor especial que representa un número no válido.
+
+**Ejemplo:**
+
+```javascript
+0 / 0 // NaN
+"hola" * 2 // NaN
+```
+
+**Referencias:** @mdn_nan
+
+### new {#glos-new}
+
+**Inglés:** new
+
+**Tipo:** Operador
+
+**Definición:**
+Operador que crea una instancia de un objeto.
+
+**Ejemplo:**
+
+```javascript
+const a = new Number(2);
+```
+
+**Referencias:** @mdn_new_operator
+
+### Notación de corchetes {#glos-notacion_corchetes}
+
+**Inglés:** Bracket Notation
+
+**Tipo:** Concepto
+
+**Definición:**
+Sintaxis que permite acceder a las propiedades de un objeto o a los elementos de un arreglo utilizando corchetes `[]`. En los objetos, esta notación permite emplear cadenas de texto para referenciar claves, lo que resulta esencial cuando el nombre de la propiedad es dinámico, contiene espacios, caracteres especiales o comienza con un número. En el caso de los arreglos, se utiliza para acceder a sus elementos mediante su índice numérico posicional.
+
+
+**Ejemplo:**
+
+```javascript
+const persona = {
+  nombre: "Juan",
+  edad: 30
+};
+
+console.log(persona["nombre"]); // "Juan"
+console.log(persona["edad"]); // 30
+```
+
+**Referencias:** @freecodecamp_dot_vs_bracket
+
+### null {#glos-null}
+
+**Inglés:** null
+
+**Tipo:** Primitivo
+
+**Definición:**
+Valor especial que representa la ausencia de valor o un objeto que no existe.
+
+**Ejemplo:**
+
+```javascript
+let usuario = null; // Representa la ausencia intencional de un objeto
+console.log(usuario); // null
+```
+
+**Referencias:** @mdn_null
+
+### Number {#glos-number}
+
+**Inglés:** Number  
+
+**Tipo:** Objeto  
+
+**Definición:**  
+Objeto global que proporciona propiedades y métodos para trabajar con números.
+
+**Ejemplo:**
+
+```javascript
+Number.parseInt("5") // 5
+```
+
+**Referencias:** @mdn_number_2024
+
+### Nullish coalescing operator {#glos-nullish_coalescing}
+
+**Inglés:** Nullish coalescing operator
+
+**Tipo:** Operador
+
+**Definición:**
+Operador que evalúa dos valores y regresa el primero si es **nullish** (es decir, `null` o `undefined`), de lo contrario regresa el segundo valor.
+
+**Ejemplo:**
+
+```javascript
+const a = null ?? "Valor por defecto"; // "Valor por defecto"
+const b = "Valor" ?? "Valor por defecto"; // "Valor"
+```
+
+**Referencias:** @javascript_info_nullish
+
+---
+
+## O
+
+### Object.keys {#glos-object_keys}
+
+**Inglés:** Object.keys
+
+**Tipo:** Método estático
+
+**Definición:**
+Método estático que regresa un arreglo con las claves (propiedades) de un objeto.
+
+**Ejemplo:**
+
+```javascript
+Object.keys({ a: 1, b: 2 }) // ["a", "b"]
+```
+
+**Referencias:** @mdn_object_keys
+
+---
+
+## P
+
+### parseInt {#glos-parseint}
+
+**Inglés:** parseInt
+
+**Tipo:** Función
+
+**Definición:**
+Función que convierte un valor a tipo `number` de una base concreta (base binaria, base octal, base decimal, etc).
+
+**Ejemplo:**
+
+```javascript
+Number.parseInt("5") // 5
+```
+
+**Referencias:** @mdn_parseint
+
+---
+
+## R 
+
+### repeat {#glos-repeat}
+
+**Inglés:** repeat
+
+**Tipo:** Método
+
+**Definición:**
+Método que concatena una cadena de texto un número determinado de veces.
+
+**Ejemplo:**
+
+```javascript
+console.info("hello".repeat(3)); // "hellohellohello"
+```
+
+**Referencias:** @rauschmayer2021javascript
+
+### return {#glos-return}
+
+**Inglés:** return
+
+**Tipo:** Operador
+
+**Definición:**
+Operador que regresa un valor desde una función.
+
+**Ejemplo:**
+
+```javascript
+function sum(a, b) {
+  return a + b;
+}
+```
+
+**Referencias:** @mdn_return
+
+### return implícito {#glos-return_implícito}
+
+**Inglés:** Return implicit
+
+**Tipo:** Concepto
+
+**Definición:**
+Comportamiento en el que una función devuelve un valor sin necesidad de utilizar explícitamente la palabra clave `return`. En JavaScript, esto ocurre principalmente en las funciones de flecha (arrow functions) cuando el cuerpo de la función consiste en una sola expresión.
+
+**Ejemplo:**
+
+```javascript
+const sumar = (a, b) => a + b;
+```
+
+**Referencias:** @gitbook_implicit_return
+
+### reverse {#glos-reverse}
+
+**Inglés:** reverse
+
+**Tipo:** Método
+
+**Definición:**
+Método que invierte el orden de los elementos de un arreglo.
+
+**Ejemplo:**
+
+```javascript
+console.info([1, 2, 3].reverse()); // [3, 2, 1]
+```
+
+**Referencias:** @rauschmayer2021javascript
+
+---
+
+## S
+
+### split {#glos-split}
+
+**Inglés:** split
+
+**Tipo:** Método
+
+**Definición:**
+Método que divide una cadena en un array de subcadenas, utilizando un separador como parámetro.
+
+**Ejemplo:**
+
+```javascript
+let result = "Hello JavaScript";
+let arr_result = result.split(" ");
+console.log(arr_result);
+// [ 'Hello', 'JavaScript' ]
+```
+
+**Referencias:** @percival2021javascript
+
+### Spread Operator {#glos-spread_operator}
+
+**Inglés:** Spread Operator
+
+**Tipo:** Operador
+
+**Definición:**
+Operador que permite expandir los elementos de un iterable (como un array o una cadena) en una lista de argumentos o en una nueva estructura de datos.
+
+**Ejemplo:**
+
+```javascript
+const array1 = [1, 2, 3];
+const array2 = [...array1, 4, 5]; // [1, 2, 3, 4, 5]
+```
+
+**Referencias:** @packt_mastering_javascript
+
+### Symbol {#glos-symbol}
+
+**Inglés:** Symbol
+
+**Tipo:** Objeto
+
+**Definición:**
+Objeto global que proporciona propiedades y métodos para trabajar con símbolos. Muy útiles y comunes para crear propiedades privadas en objetos.
+
+**Ejemplo:**
+
+```javascript
+Symbol("foo") // Symbol("foo")
+```
+
+**Referencias:** @mdn_symbol
+
+---
+
+## T
+
+### Template Literals {#glos-template_literals}
+
+**Inglés:** Template Literals
+
+**Tipo:** Concepto
+
+**Definición:**
+Literales de cadena que permiten expresiones incrustadas. Permiten el uso de cadenas multilínea y la interpolación de expresiones mediante el uso de comillas invertidas (backticks).
+
+**Ejemplo:**
+
+```javascript
+const nombre = "Mundo";
+console.log(`Hola ${nombre}`); // "Hola Mundo"
+```
+
+**Referencias:** @freecodecamp_dot_vs_bracket
+
+
+### Truthy {#glos-truthy}
+
+**Inglés:** Truthy
+
+**Tipo:** Concepto
+
+**Definición:**
+Valor que se convierte en `true` cuando se evalúa en un contexto booleano.
+
+**Ejemplo:**
+
+```javascript
+Boolean(1);         // true
+Boolean("hola");    // true
+Boolean({});        // true
+Boolean([]);        // true
+Boolean(function() {}); // true
+Boolean(Infinity);  // true
+```
+
+**Referencias:** @mdn_truthy
+
+### typeof {#glos-typeof}
+
+**Inglés:** typeof
+
+**Tipo:** Operador
+
+**Definición:**
+Operador que regresa una cadena con el tipo de dato de una variable.
+
+**Ejemplo:**
+
+```javascript
+typeof 5 // "number"
+typeof "hola" // "string"
+typeof true // "boolean"
+typeof {} // "object"
+typeof [] // "object"
+typeof function() {} // "function"
+typeof null // "object"
+typeof undefined // "undefined"
+```
+
+**Referencias:** @mdn_typeof
+
+---
+
+## U
+
+### undefined {#glos-undefined}
+
+**Inglés:** undefined
+
+**Tipo:** Primitivo
+
+**Definición:**
+Valor especial que representa la ausencia de valor o una variable que no ha sido inicializada.
+
+**Ejemplo:**
+
+```javascript
+let a;
+console.log(a); // undefined
+```
+
+**Referencias:** @mdn_undefined
+
+## V
+
+### var {#glos-var}
+
+**Inglés:** var
+
+**Tipo:** Operador
+
+**Definición:**
+Operador que crea una variable con ámbito de función.
+
+**Ejemplo:**
+
+```javascript
+var a = 1;
+```
+
+**Referencias:** @mdn_var
+
+### Valor primitivo {#glos-primitivo}
+
+**Inglés:** Primitive value
+
+**Tipo:** Concepto
+
+**Definición:**
+Dato que no es un objeto y no tiene métodos ni propiedades. JavaScript define siete tipos de datos primitivos: string, number, bigint, boolean, undefined, symbol y null. Estos valores son inmutables, lo que significa que no pueden ser modificados una vez creados.
+
+**Ejemplo:**
+
+```javascript
+5 // number
+"hola" // string
+true // boolean
+null // null
+undefined // undefined
+```
+
+**Referencias:** @mdn_primitive
+
+:::

@@ -1,0 +1,353 @@
+# Soluciones - Tipos de Datos y Coerción
+
+## Reto 1.1 {#sec-sol-cap1-reto1}
+
+La respuesta del [Reto 1.1](#sec-cap1-reto1) es:
+
+**A. `[1, 33, 9, -2]`**
+
+**Explicación:**
+
+El objeto [Number](#glos-number) de JavaScript puede convertir los los valores de un arreglo a números, pero hay que tener cuidado con tipos `boolean`, `undefined` o `null`.
+
+Este hack es muy útil cuando tenemos un arreglo de strings que queremos convertir a números.
+
+---
+
+## Reto 1.2 {#sec-sol-cap1-reto2}
+
+La respuesta del [Reto 1.2](#sec-cap1-reto2) es:
+
+**A. `1`, `false`**
+
+**Explicación:**
+
+En el primer caso, el operador `+` intenta convertir a `number` al valor `true`, por [coerción de tipos](#glos-coercion) JavaScript infiere a `true` como 1. 
+
+En el segundo caso, intentamos negar un `string`, dicho `string` es un valor truthy, por ende, nuevamente por **coerción de tipos** JavaScript infiere al `string` "Messi" como `true`, y la negación de `true` es `false`.
+
+En otras palabras, según la @mdn_type_coercion, la coerción de tipos es el proceso por el cual [JavaScript](#glos-javascript) convierte un valor de un tipo a otro.
+
+---
+
+## Reto 1.3 {#sec-sol-cap1-reto3}
+
+La respuesta del [Reto 1.3](#sec-cap1-reto3) es:
+
+**B. `string`**
+
+**Explicación:**
+
+Según la @mdn_typeof, [typeof](#glos-typeof) es un operador que regresa una cadena con el tipo de dato de una variable.
+
+Por ende, esta pregunta es un poco trampa. Pero la respuesta es chistosa:
+
+`typeof 1` regresa `"number"`, literalmente la cadena `"number"`, entonces tenemos `typeof "number"` y esto da obiamente `string`.
+
+---
+
+## Reto 1.4 {#sec-sol-cap1-reto4}
+
+La respuesta del [Reto 1.4](#sec-cap1-reto4) es:
+
+**B. `false`, `false`, `true`**
+
+**Explicación:**
+
+El operador `!!` realiza una doble negación.
+
+En el primer caso, por **coerción de tipos**, `null` es un valor [falsy](#glos-falsy), si lo negamos 2 veces, tendríamos `false`.
+
+En el segundo caso, por **coerción de tipos**, `""` es un valor [falsy](#glos-falsy), si lo negamos 2 veces tendríamos `false`.
+
+Por último, el tercer caso, y nuevamente por **coerción de tipos**, el valor `1` es un valor [truthy](#glos-truthy), si lo negamos 2 veces, obtendremos `true`.
+
+Dicho de otra manera, el operador de doble negación realiza una conversión de tipo a booleano, es decir, transforma cualquier valor en su equivalente booleano.
+
+---
+
+## Reto 1.5 {#sec-sol-cap1-reto5}
+
+La respuesta del [Reto 1.5](#sec-cap1-reto5) es:
+
+**C. `7`**
+
+**Explicación:**
+
+Según la @mdn_parseint, [parseInt](#glos-parseint) convierte un valor a tipo `number` de una base concreta ([base binaria](#glos-binaria), [base octal](#glos-octal), [base decimal](#glos-decimal), etc).
+
+En el ejemplo intentamos convertir `"7*6"` a base `10`, osea, a base decimal.
+
+`parseInt` toma los valores validos de izquierda a derecha, dicho esto, solo tomará el valor `7` (el `*` y todo lo que le precede no es un valor valido para `parseInt`).
+
+En conclusión, solo convierte al `7` de `string` a `number`.
+
+---
+
+## Reto 1.6 {#sec-sol-cap1-reto6}
+
+La respuesta del [Reto 1.6](#sec-cap1-reto6) es:
+
+**A. `true`, `true`, `false`**
+
+**Explicación:**
+
+Primero, usamos el constructor `Number` para convertir `2` a `number`, como solo es una conversión de [valores primitivos](#glos-primitivo) entonces el resultado es `true`.
+
+Segundo, usamos el constructor `Boolean` para convertir `false` a boleano, nuevamente solo es una conversión, entonces el resultado de la comparación es `true`.
+
+Tercero, ningún `Symbol` es igual a otro `Symbol`, por más que en el ejemplo tengan los mismos placeholders `foo`, nunca serán iguales. Entonces siempre nos dará `false`.
+
+No debemos confundir el contructor `Number` y `Boolean` por sí mismos, con dichos costructores acompañados de la palabra [new](#glos-new), si hacemos lo siguiente:
+
+```js
+const a = new Number(2);
+const b = new Boolean(true);
+```
+
+Ambas variables serán objetos creados por medio de estos contructores y no solo conversiones como en este reto.
+
+---
+
+## Reto 1.7 {#sec-sol-cap1-reto7}
+
+La respuesta del [Reto 1.7](#sec-cap1-reto7) es:
+
+**D. `{Symbol('a'): 'b'}` y `[]`**
+
+**Explicación:**
+
+Una variable de tipo `Symbol` cumple con 3 características principales:
+
+* No es un elemento enumerable.
+* Permite representar valores completamente únicos en el código, útil para crear llaves de objetos y evitar colisiones.
+* Podemos crear propiedades "ocultas" en objetos.
+
+El primer `console.log` imprime el objeto en su totalidad, incluyendo los valores no enumerables, por ello podemos ver la `key` de tipo `Symbol` que es un `string` con valor `b`.
+
+Al intentar obtener las `keys` del objeto con [Object.keys](#glos-object_keys) obtendremos un arreglo vacío justamente por que el `Symbol` no es un elemento que se pueda enumerar, de esta manera es posible "ocultar" ciertas propiedades de un objeto.
+
+---
+
+## Reto 1.8 {#sec-sol-cap1-reto8}
+
+La respuesta del [Reto 1.8](#sec-cap1-reto8) es:
+
+**C. `{}`, `""`, `[]`**
+
+**Explicación:**
+
+En JavaScript el código se lee de arriba hacia abajo y de izquierda a derecha.
+
+* **Para la variable `one`**:
+
+`false || {} || null`
+
+Primero evaluamos `false || {}` y obtenemos `{}`.
+
+Entonces nos queda `{} || null` y como las llaves vacías es un valor `truthy` entonces el `null` no se evalua dando como resultado `{}`.
+
+* **Para la variable `two`**:
+
+`null || false || ""`
+
+Primero evaluamos `null || false`, `null` es `falsy` entonces si ejecutamos `false`.
+
+Entonces nos queda `false || ""`, y obtenemos como resultado la cadena vacía `""`
+
+* **Para la variable `three`**:
+
+`[] || 0 || true`
+
+Primero evaluamos `[] || 0`, el arreglo vacío es un valor `truthy` por lo que `0` no se ejecuta.
+
+Entonces nos queda `[] || true`, nuevamente el arreglo vacío es `truthy` y esta vez es `true` quien no se llega a ejecutar, entonces el resultado es `[]`.
+
+---
+
+## Reto 1.9 {#sec-sol-cap1-reto9}
+
+La respuesta del [Reto 1.9](#sec-cap1-reto9) es:
+
+**B. `"0"`**
+
+**Explicación:**
+
+El operador de corto circuito OR (`||`) solo se ejecuta si el primer operando es **falsy**.
+
+El [nullish coalescing operator](#glos-nullish_coalescing) (`??`) solo se ejecuta si el primer operando es **nullish** (`null` o `undefined`).
+
+Vamos paso por paso:
+
+* `undefined || "0"`:
+
+`undefined` evalua como **falsy** entonces tendriamos `"0"`.
+
+Nos quedaría el siguiente código:
+
+```js
+console.log("0" || null || (undefined ?? 0))
+```
+
+* `"0" || null`:
+`"0"` no evalua como **falsy** entonces no se ejecuta el operador de corto circuito.
+
+Nos quedaría el siguiente código:
+
+```js
+console.log("0" || (undefined ?? 0))
+```
+
+* `undefined ?? 0`:
+
+Operando tenemos como resultado `0` por que `undefined` es un valor **nullish**.
+
+Nos quedaría el siguiente código:
+
+```js
+console.log("0" || 0)
+```
+
+Finalmente `"0"` como cadena no es un valor **falsy** entonces no podemos ejecutar el operador de corto circuito dando como resultado final `"0"`.
+
+---
+
+## Reto 1.10 {#sec-sol-cap1-reto10}
+
+La respuesta del [Reto 1.10](#sec-cap1-reto10) es:
+
+**A. `true`**
+
+**Explicación:**
+
+Pese a que [null](#glos-null) es un primitivo, debido a un bug del lenguaje su tipo de dato es `object`.
+
+Este bug es muy antiguo y se determino que no vale la pena arreglarlo al día de hoy ya que se pueden romper muchos programas que dependen de este error.
+
+Este bug es bastante conocido en programadores experimentados y usado en entrevistas laborales para estimar tu conocimiento del lenguaje.
+
+Según @mdn_null el valor `null` es un literal de Javascript que representa intencionalmente un valor nulo o "vacío". Es uno de los valores primitivos de Javascript.
+
+---
+
+## Reto 1.11 {#sec-sol-cap1-reto11}
+
+La respuesta del [Reto 1.11](#sec-cap1-reto11) es:
+
+**A. `true`, `false`**
+
+**Explicación:**
+
+Según @mdn_json_stringify [JSON.stringify](#glos-json_stringify) es un método estático que convierte un valor de JavaScript en una cadena [JSON](#glos-json).
+
+Para los [arreglos](#glos-arreglo) `a` y `b` tenemos:
+
+```js
+console.log("[1, 2, 3]" === "[1, 2, 3]"); //true
+```
+
+Para los arreglos `a` y `c` tenemos:
+
+```js
+console.log("[1, 2, 3]" === "[1, 2, "3"]"); //false
+```
+
+Son simples comparaciones de primitivos, en este caso de [cadenas](#glos-cadena).
+
+Usar `JSON.stringify` es muy común cuando se quiere verificar si dos arreglos son iguales o no.
+
+---
+
+## Reto 1.12 {#sec-sol-cap1-reto12}
+
+La respuesta del [Reto 1.12](#sec-cap1-reto12) es:
+
+**B. `false`, `true`**
+
+**Explicación:**
+
+El operador de [igualdad estricta](#glos-igualdad_estricta) es muy potente, pero ¿sabias que existe uno aún mejor?
+
+[Object.is](#glos-object_is) recibe dos parámetros y hace una comparación profunda entre ellos, pero va un poco más lejos.
+
+Según la documentación de @mdn_object_is es un método estático que determina si dos valores son iguales.
+
+Casos como: `0 === -0` y `NaN === NaN` son mejor manejados con `Object.is`.
+
+Cuando comparamos un [NaN](#glos-nan) contra otro `NaN` usando `===` obtenemos siempre `false` lo que no tiene mucho sentido, en estos casos es mejor usar `Object.is`.
+
+---
+
+## Reto 1.13 {#sec-sol-cap1-reto13}
+
+La respuesta del [Reto 1.13](#sec-cap1-reto13) es:
+
+**D. `Todos los ejemplos`**
+
+**Explicación:**
+
+En JavaScript existen 4 maneras de obtener un [undefined](#glos-undefined) como resultado:
+
+* Cuando declaramos una variable con [let](#glos-let) o [var](#glos-var) sin inicializarla, como en el ejemplo #1.
+
+* Cuando en la llamada de una función omitimos parámetros obligatorios, como en el ejemplo #2.
+
+* Cuando intenamos acceder a una propiedad de un objeto que no existe, como en el ejemplo #3.
+
+* Cuando llamamos a una función que no tiene la sentencia [return](#glos-return) en su cuerpo, como en el ejemplo #4.
+
+
+---
+
+
+## Reto 1.14 {#sec-sol-cap1-reto14}
+
+La respuesta del [Reto 1.14](#sec-cap1-reto14) es:
+
+**A. `true`, `false`, `false`, `true`, `true`**
+
+**Explicación:**
+
+El constructor `Boolean` permite convertir valores a tipo boolean.
+
+Los valores `truthy` como el número `37`, un objeto vacío, o un `Symbol` infieren a `true` sin ninguna complicación.
+
+Valores como `NaN`, cadenas vacías o `0` al ser considerados valores `falsy` inferirán a `false`.
+
+A continuación una tabla que resume todas las posibles conversiones a boolean:
+
+\begin{center}
+Tabla 1: Conversión de valores a Boolean
+\end{center}
+
+| `x`              | `Boolean(x)`                      |
+| ---------------- | --------------------------------- |
+| `undefined`      | `false`                           |
+| `null`           | `false`                           |
+| `true` o `false` | Sin cambios                       |
+| `number`         | `0` => `false`,  `NaN` => `false` |
+|                  | Cualquier otro `number` => `true` |
+| `bigint`         | `0n` => `false`                   |
+|                  | Cualquier otro `bigint` => `true` |
+| `string`         | `""`, `''`, ` `` ` =>  `false`    |
+|                  | Cualquier otro `string` => `true` |
+| `symbol`         | `true`                            |
+| `object`         | Siempre `true`                    |
+
+---
+
+## Reto 1.15 {#sec-sol-cap1-reto15}
+
+La respuesta del [Reto 1.15](#sec-cap1-reto15) es:
+
+**C. `null`, `Symbol("hola")`, `string`, `"hi"`**
+
+**Explicación:**
+
+El operador `||` solo se ejecuta si el primer operando es un valor falsy.
+
+El operador `&&` solo se ejecuta si el primer operando es un valor truthy.
+
+El operador `??` solo se ejecuta si el primer operando es `null` o `undefined`.
+
+Dicho todo esto y conociendo los valores truthy y los valores falsy no debería costarte llegar a que la respuesta correcta es C.
